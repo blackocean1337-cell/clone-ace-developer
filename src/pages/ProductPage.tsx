@@ -338,39 +338,45 @@ const ProductPage = () => {
               </div>
             </div>
 
-            {/* Accordion */}
-            <div className="border-t border-border">
-              {accordionSections.map(section => (
-                <div key={section.id} className="border-b border-border">
+            {/* Tabs */}
+            <div>
+              <div className="flex border-b border-border">
+                {accordionSections.map(section => (
                   <button
-                    onClick={() =>
-                      setOpenAccordion(openAccordion === section.id ? null : section.id)
-                    }
-                    className="w-full flex items-center justify-between py-4 font-display text-sm font-semibold text-foreground"
+                    key={section.id}
+                    onClick={() => setOpenAccordion(section.id)}
+                    className={`flex-1 flex items-center justify-between py-4 px-2 font-display text-sm font-semibold transition-colors duration-200 ${
+                      openAccordion === section.id
+                        ? "text-foreground border-b-2 border-foreground"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
                   >
                     {section.title}
                     <ChevronRight
-                      size={16}
+                      size={14}
                       className={`transition-transform duration-200 ${
                         openAccordion === section.id ? "rotate-90" : ""
                       }`}
                     />
                   </button>
-                  <AnimatePresence>
-                    {openAccordion === section.id && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="pb-4">{section.content}</div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
+                ))}
+              </div>
+              <AnimatePresence mode="wait">
+                {accordionSections.map(section =>
+                  openAccordion === section.id ? (
+                    <motion.div
+                      key={section.id}
+                      initial={{ opacity: 0, y: 4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -4 }}
+                      transition={{ duration: 0.15 }}
+                      className="py-4"
+                    >
+                      {section.content}
+                    </motion.div>
+                  ) : null
+                )}
+              </AnimatePresence>
             </div>
           </div>
         </div>
