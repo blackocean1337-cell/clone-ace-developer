@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { ShoppingBag, User, Menu, X, ChevronDown, ChevronUp } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useCart } from "@/context/CartContext";
 import { AnimatePresence, motion } from "framer-motion";
 import packImage from "@/assets/pack-image.jpg";
@@ -17,6 +17,7 @@ const SiteHeader = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const { totalItems, openCart } = useCart();
+  const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -118,15 +119,25 @@ const SiteHeader = () => {
                     <br />
                     100% personalizado
                   </h3>
-                  <button
-                    onClick={() => {
-                      setProductsOpen(false);
-                      window.dispatchEvent(new Event("open-pack-builder"));
-                    }}
-                    className="inline-block border-2 border-fincut-black px-6 py-3 font-display text-xs font-bold tracking-[0.15em] text-fincut-black uppercase hover:bg-fincut-black hover:text-white transition-colors duration-200"
-                  >
-                    CRIO O MEU PACK
-                  </button>
+                  {location.pathname.startsWith("/products") ? (
+                    <button
+                      onClick={() => {
+                        setProductsOpen(false);
+                        window.dispatchEvent(new Event("open-pack-builder"));
+                      }}
+                      className="inline-block border-2 border-fincut-black px-6 py-3 font-display text-xs font-bold tracking-[0.15em] text-fincut-black uppercase hover:bg-fincut-black hover:text-white transition-colors duration-200"
+                    >
+                      CRIO O MEU PACK
+                    </button>
+                  ) : (
+                    <Link
+                      to="/#custom-pack"
+                      onClick={() => setProductsOpen(false)}
+                      className="inline-block border-2 border-fincut-black px-6 py-3 font-display text-xs font-bold tracking-[0.15em] text-fincut-black uppercase hover:bg-fincut-black hover:text-white transition-colors duration-200"
+                    >
+                      CRIO O MEU PACK
+                    </Link>
+                  )}
                 </div>
                 <div className="w-[280px] h-full flex-shrink-0">
                   <img src={packImage} alt="Pack personalizado" className="w-full h-full object-cover" />
