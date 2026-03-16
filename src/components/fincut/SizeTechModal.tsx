@@ -473,10 +473,10 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                        className="bg-fincut-black text-white px-10 py-5 mb-5"
+                        className="w-24 h-24 rounded-full border-4 border-fincut-black flex items-center justify-center mb-5"
                       >
-                        <span className="font-display text-3xl font-bold tracking-wider">
-                          Tamanho : {result.size}
+                        <span className="font-display text-3xl font-bold text-fincut-black">
+                          {result.size}
                         </span>
                       </motion.div>
 
