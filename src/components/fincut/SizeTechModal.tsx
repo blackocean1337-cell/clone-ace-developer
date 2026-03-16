@@ -504,8 +504,20 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
                   }}
                   className="w-full h-14 bg-fincut-black text-white font-display text-sm font-bold tracking-widest uppercase hover:bg-fincut-black/90 transition-colors duration-200"
                 >
-                  {step === 5 ? "CONFIRMAR" : "SEGUINTE"}
+                  {step === 5 ? "VALIDAR E COMPOR O MEU PACK" : "SEGUINTE"}
                 </button>
+                {step === 5 && (
+                  <button
+                    onClick={() => {
+                      setStep(1);
+                      setSelectedBodyType("");
+                      setSelectedBellyType("");
+                    }}
+                    className="w-full mt-3 font-body text-sm text-muted-foreground underline hover:text-fincut-black transition-colors"
+                  >
+                    Recomeçar
+                  </button>
+                )}
               </div>
             )}
             {step === 4 && (
