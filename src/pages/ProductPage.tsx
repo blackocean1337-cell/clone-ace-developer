@@ -440,6 +440,7 @@ const ProductPage = () => {
         </section>
       </main>
 
+      <SizeTechModal open={sizeTechOpen} onClose={() => setSizeTechOpen(false)} />
       <SiteFooter />
     </div>
   );
