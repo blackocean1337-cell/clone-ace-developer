@@ -1,43 +1,11 @@
 import { motion } from "framer-motion";
-import { Ruler, Scissors, Shirt, Heart, Users, Globe } from "lucide-react";
-
-const values = [
-  {
-    icon: Ruler,
-    title: "Corte perfeito",
-    desc: "Cada peça é desenhada para se adaptar a todos os tipos de corpo.",
-  },
-  {
-    icon: Scissors,
-    title: "Melhor projetado",
-    desc: "Padrões repensados do zero para um ajuste sem compromissos.",
-  },
-  {
-    icon: Shirt,
-    title: "Qualidade premium",
-    desc: "Tecidos selecionados para conforto e durabilidade excecionais.",
-  },
-  {
-    icon: Users,
-    title: "Para todos",
-    desc: "Do S ao 4XL, vestimos todos os homens sem exceção.",
-  },
-  {
-    icon: Heart,
-    title: "Feito com paixão",
-    desc: "Cada detalhe é pensado por uma equipa que ama o que faz.",
-  },
-  {
-    icon: Globe,
-    title: "Alcance global",
-    desc: "De Portugal para o mundo, a revolução do essencial masculino.",
-  },
-];
+import historyColors from "@/assets/history-colors.jpeg";
+import historyCraft from "@/assets/history-craft.jpeg";
 
 const BrandManifesto = () => {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* Brand statement */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -62,65 +30,51 @@ const BrandManifesto = () => {
           </p>
         </motion.div>
 
-        {/* Measuring tape visual */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center mb-20"
-        >
-          <div className="relative w-full max-w-lg">
-            <div className="bg-foreground rounded-xl overflow-hidden p-6 flex items-center gap-6">
-              <div className="flex-shrink-0 bg-muted/20 rounded-lg p-4">
-                <Ruler className="w-10 h-10 text-background" />
-              </div>
-              <div className="flex-1">
-                <p className="font-display text-background text-lg font-bold mb-2">62cm</p>
-                <div className="flex items-end gap-[3px] h-8">
-                  {Array.from({ length: 40 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="w-[2px] rounded-full"
-                      style={{
-                        height: `${Math.random() * 60 + 40}%`,
-                        backgroundColor:
-                          i % 10 === 0
-                            ? "hsl(var(--fincut-gold))"
-                            : "hsl(var(--muted-foreground) / 0.4)",
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
+        {/* Two-column editorial section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+          {/* Left — Colors */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="overflow-hidden rounded-sm mb-6">
+              <img
+                src={historyColors}
+                alt="Gama de cores das t-shirts Fincut"
+                className="w-full aspect-[4/3] object-cover"
+              />
             </div>
-            {/* Shadow glow */}
-            <div className="absolute -inset-2 bg-foreground/10 rounded-2xl blur-xl -z-10" />
-          </div>
-        </motion.div>
+            <p className="font-body text-foreground text-base leading-relaxed mb-4">
+              Um corte projetado para todos os homens. Conforto, qualidade, tecnologia, sem concessões.
+            </p>
+            <p className="font-body text-muted-foreground text-sm leading-relaxed">
+              Para lhe oferecer itens básicos atemporais, projetados para seu guarda-roupa e oferecidos pelo preço certo. Para isso, reduzimos intermediários, abandonamos coleções efémeras e optamos por produzir apenas quando há demanda.
+            </p>
+          </motion.div>
 
-        {/* Values grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {values.map((v, i) => (
-            <motion.div
-              key={v.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group border border-border rounded-xl p-6 hover:border-foreground/30 transition-colors duration-300"
-            >
-              <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center mb-4 group-hover:bg-foreground group-hover:text-background transition-colors duration-300">
-                <v.icon className="w-5 h-5" />
-              </div>
-              <h3 className="font-display text-lg font-bold text-foreground mb-2">
-                {v.title}
-              </h3>
-              <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                {v.desc}
-              </p>
-            </motion.div>
-          ))}
+          {/* Right — Craft */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <div className="overflow-hidden rounded-sm mb-6">
+              <img
+                src={historyCraft}
+                alt="Detalhe da produção têxtil Fincut"
+                className="w-full aspect-[4/3] object-cover"
+              />
+            </div>
+            <p className="font-body text-foreground text-base leading-relaxed mb-4">
+              Por trás dessa simplicidade, meses de pesquisa para testar, testar novamente, eliminar, até encontrar a fórmula certa.
+            </p>
+            <p className="font-body text-muted-foreground text-sm leading-relaxed">
+              Um essencial. Projetado para você. Por muito tempo.
+            </p>
+          </motion.div>
         </div>
       </div>
     </section>
