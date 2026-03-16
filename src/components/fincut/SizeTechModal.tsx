@@ -136,7 +136,7 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
               <div className="h-0.5 bg-muted rounded-full">
                 <div
                   className="h-full bg-fincut-black rounded-full transition-all duration-300"
-                  style={{ width: step === 1 ? "33%" : step === 2 ? "66%" : "100%" }}
+                  style={{ width: step <= 3 ? `${step * 25}%` : "100%" }}
                 />
               </div>
             </div>
