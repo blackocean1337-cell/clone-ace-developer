@@ -388,6 +388,9 @@ const ProductPage = () => {
       {/* Before/After Section */}
       <BeforeAfterSection />
 
+      {/* Trustpilot Reviews */}
+      <ReviewsSection />
+
       {/* Custom Pack Section */}
       <CustomPackSection />
 
