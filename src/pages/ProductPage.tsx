@@ -10,6 +10,17 @@ import BeforeAfterSection from "@/components/fincut/BeforeAfterSection";
 import CustomPackSection from "@/components/fincut/CustomPackSection";
 import SizeTechModal from "@/components/fincut/SizeTechModal";
 import { getProductBySlug } from "@/data/products";
+import lifestyleOffice from "@/assets/lifestyle-office.jpg";
+import lifestyleGym from "@/assets/lifestyle-gym.jpg";
+import lifestyleHome from "@/assets/lifestyle-home.jpg";
+import lifestyleStreet from "@/assets/lifestyle-street.jpg";
+
+const lifestyleItems = [
+  { image: lifestyleOffice, label: "No escritório" },
+  { image: lifestyleGym, label: "Para o quarto" },
+  { image: lifestyleHome, label: "Em casa" },
+  { image: lifestyleStreet, label: "Todos os dias" },
+];
 
 const featureIcons = [Ruler, Droplets, Award];
 
