@@ -2,6 +2,7 @@ import AnnouncementBar from "@/components/fincut/AnnouncementBar";
 import SiteHeader from "@/components/fincut/SiteHeader";
 import HeroSection from "@/components/fincut/HeroSection";
 import IconiqueSection from "@/components/fincut/IconiqueSection";
+import IconiqueSection2 from "@/components/fincut/IconiqueSection2";
 import VestiaireSection from "@/components/fincut/VestiaireSection";
 import PackSection from "@/components/fincut/PackSection";
 import CustomPackSection from "@/components/fincut/CustomPackSection";
