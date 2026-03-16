@@ -40,7 +40,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const addItem = (newItem: CartItem) => {
-    setItems((prev) => {
+    updateItems((prev) => {
       const existing = prev.findIndex(
         (i) => i.name === newItem.name && i.color === newItem.color && i.size === newItem.size
       );
@@ -56,9 +56,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const updateQuantity = (index: number, quantity: number) => {
     if (quantity <= 0) {
-      setItems((prev) => prev.filter((_, i) => i !== index));
+      updateItems((prev) => prev.filter((_, i) => i !== index));
     } else {
-      setItems((prev) => {
+      updateItems((prev) => {
         const updated = [...prev];
         updated[index] = { ...updated[index], quantity };
         return updated;
