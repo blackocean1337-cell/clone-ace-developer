@@ -365,7 +365,29 @@ const ProductPage = () => {
             </div>
 
             {/* Add to cart */}
-            <button className="w-full h-14 bg-foreground text-background font-display text-sm font-bold tracking-widest uppercase hover:bg-foreground/90 transition-colors duration-200 flex items-center justify-center gap-2">
+            <button
+              onClick={() => {
+                const existing = cartItems.findIndex(
+                  (item) => item.name === product.name && item.color === selectedColor && item.size === selectedSize
+                );
+                if (existing >= 0) {
+                  const updated = [...cartItems];
+                  updated[existing] = { ...updated[existing], quantity: updated[existing].quantity + 1 };
+                  setCartItems(updated);
+                } else {
+                  setCartItems([...cartItems, {
+                    name: product.name,
+                    size: selectedSize,
+                    color: selectedColor,
+                    unitPrice: product.price,
+                    quantity: 1,
+                    image: product.cardImage,
+                  }]);
+                }
+                setCartOpen(true);
+              }}
+              className="w-full h-14 bg-foreground text-background font-display text-sm font-bold tracking-widest uppercase hover:bg-foreground/90 transition-colors duration-200 flex items-center justify-center gap-2"
+            >
               ADICIONAR AO CARRINHO
               <span className="text-muted-foreground/60">|</span>
               {product.priceLabel}
