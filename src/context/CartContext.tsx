@@ -20,8 +20,24 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [items, setItems] = useState<CartItem[]>([]);
+  const [items, setItems] = useState<CartItem[]>(() => {
+    try {
+      const stored = localStorage.getItem("fincut-cart");
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
+  });
   const [isOpen, setIsOpen] = useState(false);
+
+  // Persist to localStorage
+  const updateItems = (updater: (prev: CartItem[]) => CartItem[]) => {
+    setItems((prev) => {
+      const next = updater(prev);
+      localStorage.setItem("fincut-cart", JSON.stringify(next));
+      return next;
+    });
+  };
 
   const addItem = (newItem: CartItem) => {
     setItems((prev) => {
