@@ -399,6 +399,21 @@ const ProductPage = () => {
       {/* Before/After Section */}
       <BeforeAfterSection />
 
+      {/* Lifestyle Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h2 className="font-display text-xl font-medium text-foreground mb-6">Ele acompanha você</h2>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {lifestyleItems.map((item, i) => (
+            <div key={i} className="relative group overflow-hidden rounded-sm">
+              <img src={item.image} alt={item.label} className="w-full aspect-[3/2] object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 pt-8">
+                <p className="font-body text-sm text-white">{item.label}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Trustpilot Reviews */}
       <ReviewsSection />
 
