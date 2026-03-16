@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import SizeTechModal from "./SizeTechModal";
 import tshirtWhite from "@/assets/tshirt-white.png";
 import tshirtNavy from "@/assets/tshirt-navy.png";
 import tshirtBlack from "@/assets/tshirt-black.png";
