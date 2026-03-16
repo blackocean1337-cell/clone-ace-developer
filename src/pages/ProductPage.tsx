@@ -436,43 +436,81 @@ const ProductPage = () => {
       {/* Trustpilot Reviews */}
       <ReviewsSection />
 
+      {/* Big Reviews Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-8">
-          <p className="font-display text-lg font-bold text-foreground mb-1">
-            Alfaiate de todos os corpos para todos os momentos
-          </p>
-          <p className="font-body text-sm text-muted-foreground max-w-xl mx-auto">
-            Junte-se a milhares de homens que escolheram adotar a Fincut no dia a dia para um estilo cuidado e um conforto incomparável.
-          </p>
-        </div>
-
-        <div className="flex items-center justify-center gap-3 mb-8">
-          <span className="font-body text-sm font-semibold text-foreground">Trustpilot</span>
-          <span className="bg-[#00b67a] text-white px-2 py-0.5 text-xs font-bold rounded-sm">4.5</span>
-          <div className="flex gap-0.5">
-            {[1, 2, 3, 4].map(i => (
-              <Star key={i} size={16} fill="#00b67a" className="text-[#00b67a]" />
-            ))}
-            <Star size={16} fill="#00b67a" className="text-[#00b67a] opacity-50" />
+        {/* Header */}
+        <div className="text-center mb-10">
+          <h2 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">
+            +100.000 homens já carregam Fincut
+          </h2>
+          <div className="flex items-center justify-center gap-2">
+            <div className="flex gap-0.5">
+              {[1, 2, 3, 4, 5].map(i => (
+                <Star key={i} size={18} fill="#00b67a" className="text-[#00b67a]" />
+              ))}
+            </div>
+            <span className="font-body text-sm font-semibold text-foreground">4.5</span>
+            <span className="font-body text-xs text-muted-foreground">| EM 6709 NOTAR</span>
           </div>
-          <span className="font-body text-xs text-muted-foreground">Baseado em 6709 avaliações</span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Subheader */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-2">
+            <div className="flex gap-0.5">
+              {[1, 2, 3, 4].map(i => (
+                <Star key={i} size={20} fill="#00b67a" className="text-[#00b67a]" />
+              ))}
+              <Star size={20} fill="#00b67a" className="text-[#00b67a] opacity-40" />
+            </div>
+            <span className="font-body text-sm text-foreground font-medium">5,325 Avis</span>
+          </div>
+          <button className="border border-border px-4 py-2 font-body text-sm text-foreground hover:bg-muted transition-colors">
+            Escrever um aviso
+          </button>
+        </div>
+
+        {/* Reviews grid - masonry style */}
+        <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
           {reviews.map((review, i) => (
             <div
               key={i}
-              className="border border-border p-5 space-y-2 hover:border-muted-foreground transition-colors duration-200"
+              className="break-inside-avoid border border-border rounded-sm overflow-hidden hover:shadow-md transition-shadow duration-200"
             >
-              <div className="flex gap-0.5">
-                {[1, 2, 3, 4, 5].map(s => (
-                  <Star key={s} size={14} fill="#00b67a" className="text-[#00b67a]" />
-                ))}
+              {review.image && (
+                <img
+                  src={review.image}
+                  alt={review.author}
+                  className="w-full aspect-[4/5] object-cover"
+                  loading="lazy"
+                />
+              )}
+              <div className="p-4 space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="font-body text-sm font-semibold text-foreground">{review.author}</span>
+                  {review.verified && (
+                    <span className="flex items-center gap-0.5 text-[#00b67a] text-xs">
+                      <svg viewBox="0 0 20 20" className="w-3.5 h-3.5 fill-[#00b67a]">
+                        <path d="M10 0a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.3 7.7l-5 5a1 1 0 0 1-1.4 0l-2-2a1 1 0 1 1 1.4-1.4L8.6 11l4.3-4.3a1 1 0 0 1 1.4 1.4z" />
+                      </svg>
+                      Verificado
+                    </span>
+                  )}
+                </div>
+                <p className="font-body text-[11px] text-muted-foreground">{review.date}</p>
+                <div className="flex gap-0.5">
+                  {[...Array(5)].map((_, s) => (
+                    <Star key={s} size={14} fill={s < review.stars ? "#00b67a" : "#e5e7eb"} className={s < review.stars ? "text-[#00b67a]" : "text-border"} />
+                  ))}
+                </div>
+                <p className="font-body text-sm text-foreground leading-relaxed">{review.text}</p>
+                {review.article && (
+                  <div className="pt-2">
+                    <p className="font-body text-[10px] text-muted-foreground uppercase tracking-wider">Tipo de artigo:</p>
+                    <p className="font-body text-xs text-foreground font-medium">{review.article}</p>
+                  </div>
+                )}
               </div>
-              <p className="font-body text-[10px] text-muted-foreground">{review.date}</p>
-              <p className="font-body text-sm font-semibold text-foreground">{review.title}</p>
-              <p className="font-body text-xs text-muted-foreground line-clamp-3">{review.text}</p>
-              <p className="font-body text-xs font-medium text-foreground">{review.author}</p>
             </div>
           ))}
         </div>
