@@ -79,7 +79,6 @@ const BeforeAfterSection = () => {
           className="absolute top-0 bottom-0 w-0.5 bg-white/70 cursor-col-resize z-10"
           style={{ left: `${sliderPos}%` }}
         >
-        >
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/40">
             <ChevronLeft size={12} className="text-white -mr-1" />
             <ChevronRight size={12} className="text-white -ml-1" />
