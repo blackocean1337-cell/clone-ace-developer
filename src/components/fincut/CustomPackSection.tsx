@@ -16,7 +16,7 @@ const packCards = [
 
 const sizes = ["S", "M", "L", "XL", "2XL", "3XL", "4XL"];
 
-const PackBuilderModal = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
+const PackBuilderModal = ({ open, onClose, onOpenSizeTech }: { open: boolean; onClose: () => void; onOpenSizeTech: () => void }) => {
   const [selectedSize, setSelectedSize] = useState("M");
 
   if (!open) return null;
