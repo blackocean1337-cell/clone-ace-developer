@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { ShoppingBag, User, Menu, X, ChevronDown, ChevronUp } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useCart } from "@/context/CartContext";
 import { AnimatePresence, motion } from "framer-motion";
 import packImage from "@/assets/pack-image.jpg";
