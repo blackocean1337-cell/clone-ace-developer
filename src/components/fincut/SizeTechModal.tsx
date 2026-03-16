@@ -46,6 +46,39 @@ const bodyTypes = [
   },
 ];
 
+const bellyTypes = [
+  {
+    id: "flat",
+    label: "Mais plano",
+    svg: (
+      <svg viewBox="0 0 80 100" className="w-full h-full text-muted-foreground/40">
+        <path d="M25 10 C25 8 30 5 40 5 C50 5 55 8 55 10 L56 70 C56 72 54 74 52 74 L28 74 C26 74 24 72 24 70 Z" fill="currentColor" />
+        <line x1="35" y1="25" x2="45" y2="25" stroke="white" strokeWidth="1.5" opacity="0.5" />
+      </svg>
+    ),
+  },
+  {
+    id: "normal",
+    label: "Normal",
+    svg: (
+      <svg viewBox="0 0 80 100" className="w-full h-full text-muted-foreground/40">
+        <path d="M25 10 C25 8 30 5 40 5 C50 5 55 8 55 10 L58 70 C58 72 56 74 54 74 L26 74 C24 74 22 72 22 70 Z" fill="currentColor" />
+        <ellipse cx="40" cy="50" rx="12" ry="8" fill="currentColor" opacity="0.6" />
+      </svg>
+    ),
+  },
+  {
+    id: "round",
+    label: "Mais redondo",
+    svg: (
+      <svg viewBox="0 0 80 100" className="w-full h-full text-muted-foreground/40">
+        <path d="M22 10 C22 8 28 5 40 5 C52 5 58 8 58 10 L62 70 C62 72 60 74 58 74 L22 74 C20 74 18 72 18 70 Z" fill="currentColor" />
+        <ellipse cx="40" cy="48" rx="16" ry="14" fill="currentColor" opacity="0.6" />
+      </svg>
+    ),
+  },
+];
+
 const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
   const [step, setStep] = useState(1);
   const [height, setHeight] = useState(175);
@@ -54,11 +87,13 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
   const [heightUnit, setHeightUnit] = useState<"CM" | "IN">("CM");
   const [weightUnit, setWeightUnit] = useState<"KG" | "LBS">("KG");
   const [selectedBodyType, setSelectedBodyType] = useState("");
+  const [selectedBellyType, setSelectedBellyType] = useState("");
 
   const handleClose = () => {
     onClose();
     setStep(1);
     setSelectedBodyType("");
+    setSelectedBellyType("");
   };
 
   if (!open) return null;
@@ -84,7 +119,7 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
             {/* Header */}
             <div className="flex items-center justify-between px-6 pt-6 pb-4">
               <button
-                onClick={step === 1 ? handleClose : () => setStep(1)}
+                onClick={step === 1 ? handleClose : () => setStep(step - 1)}
                 className="flex items-center gap-1 font-body text-sm text-fincut-black hover:opacity-70 transition-opacity"
               >
                 <ChevronLeft size={16} />
@@ -100,7 +135,7 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
               <div className="h-0.5 bg-muted rounded-full">
                 <div
                   className="h-full bg-fincut-black rounded-full transition-all duration-300"
-                  style={{ width: step === 1 ? "33%" : "66%" }}
+                  style={{ width: step === 1 ? "33%" : step === 2 ? "66%" : "100%" }}
                 />
               </div>
             </div>
@@ -211,7 +246,7 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
                     />
                   </div>
                 </motion.div>
-              ) : (
+              ) : step === 2 ? (
                 <motion.div
                   key="step2"
                   initial={{ opacity: 0, x: 20 }}
@@ -263,13 +298,69 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
                     ))}
                   </div>
                 </motion.div>
-              )}
+              ) : step === 3 ? (
+                <motion.div
+                  key="step3"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.2 }}
+                  className="px-6 flex-1"
+                >
+                  <h2 className="font-display text-xl font-bold text-fincut-black mb-6">
+                    Que barriga se parece com a sua?
+                  </h2>
+
+                  {/* Belly silhouette */}
+                  <div className="flex justify-center mb-8">
+                    <div className="w-56 h-44">
+                      <svg viewBox="0 0 200 140" className="w-full h-full">
+                        <defs>
+                          <radialGradient id="bellyGrad" cx="50%" cy="40%" r="60%">
+                            <stop offset="0%" stopColor="#e8e8e8" />
+                            <stop offset="100%" stopColor="#d0d0d0" />
+                          </radialGradient>
+                        </defs>
+                        <path d="M60 10 C60 5 75 0 100 0 C125 0 140 5 140 10 L145 100 C145 110 135 120 125 120 L75 120 C65 120 55 110 55 100 Z" fill="url(#bellyGrad)" />
+                        <path d="M60 10 L35 20 C28 24 25 30 25 38 L25 60" stroke="#d0d0d0" strokeWidth="8" fill="none" strokeLinecap="round" />
+                        <path d="M140 10 L165 20 C172 24 175 30 175 38 L175 60" stroke="#d0d0d0" strokeWidth="8" fill="none" strokeLinecap="round" />
+                        <ellipse cx="100" cy="70" rx="25" ry="4" fill="#d8d8d8" opacity="0.5" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Belly type options */}
+                  <div className="space-y-0">
+                    {bellyTypes.map((type) => (
+                      <button
+                        key={type.id}
+                        onClick={() => setSelectedBellyType(type.id)}
+                        className={`w-full flex items-center gap-4 py-4 border-b border-muted transition-colors ${
+                          selectedBellyType === type.id ? "bg-muted/30" : "hover:bg-muted/20"
+                        }`}
+                      >
+                        <div className="w-12 h-12 flex-shrink-0">
+                          {type.svg}
+                        </div>
+                        <span className="font-body text-sm font-medium text-fincut-black flex-1 text-left">
+                          {type.label}
+                        </span>
+                        <ChevronRight size={16} className="text-muted-foreground" />
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
+              ) : null}
             </AnimatePresence>
 
             {/* Footer button */}
             <div className="px-6 pb-6 mt-auto pt-4">
               <button
-                onClick={() => step === 1 ? setStep(2) : handleClose()}
+                onClick={() => {
+                  if (step === 1) setStep(2);
+                  else if (step === 2) setStep(3);
+                  else handleClose();
+                }}
                 className="w-full h-14 bg-fincut-black text-white font-display text-sm font-bold tracking-widest uppercase hover:bg-fincut-black/90 transition-colors duration-200"
               >
                 SEGUINTE
