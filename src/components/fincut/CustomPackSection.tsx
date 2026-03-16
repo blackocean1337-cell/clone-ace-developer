@@ -323,7 +323,7 @@ const PackBuilderModal = ({ open, onClose, onOpenSizeTech, onAddToCart, initialS
                 </div>
               ) : (
                 <button
-                  onClick={onClose}
+                  onClick={() => onAddToCart(selectedColors, selectedSize)}
                   className="w-full h-14 bg-fincut-black text-white font-display text-sm font-bold tracking-widest uppercase hover:bg-fincut-black/90 transition-colors duration-200"
                 >
                   ADICIONAR AO CARRINHO — {selectedColors.length * pricePerArticle(selectedColors.length)} €
