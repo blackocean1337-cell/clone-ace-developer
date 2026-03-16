@@ -37,10 +37,14 @@ const BeforeAfterSection = () => {
       <div
         ref={containerRef}
         className="relative w-full aspect-[2.4/1] overflow-hidden cursor-col-resize select-none"
+        onClick={(e) => updateSlider(e.clientX)}
+        onMouseDown={(e) => { isDragging.current = true; updateSlider(e.clientX); }}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
+        onTouchStart={(e) => { isDragging.current = true; updateSlider(e.touches[0].clientX); }}
         onTouchMove={handleTouchMove}
+        onTouchEnd={handleMouseUp}
       >
         {/* After image (full background) */}
         <img
