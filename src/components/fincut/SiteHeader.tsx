@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { ShoppingBag, User, Menu, X, ChevronDown } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
 const SiteHeader = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { totalItems, openCart } = useCart();
 
   return (
     <header className="sticky top-0 z-50 bg-fincut-black border-b border-fincut-slate/30">
@@ -27,11 +29,16 @@ const SiteHeader = () => {
           <button className="text-secondary-foreground hover:text-fincut-gold transition-colors duration-200">
             <User size={20} />
           </button>
-          <button className="relative text-secondary-foreground hover:text-fincut-gold transition-colors duration-200">
+          <button
+            onClick={openCart}
+            className="relative text-secondary-foreground hover:text-fincut-gold transition-colors duration-200"
+          >
             <ShoppingBag size={20} />
-            <span className="absolute -top-1 -right-1 bg-fincut-gold text-primary-foreground text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
-              0
-            </span>
+            {totalItems > 0 && (
+              <span className="absolute -top-1 -right-1 bg-fincut-gold text-primary-foreground text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
           </button>
           <button className="md:hidden text-secondary-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
