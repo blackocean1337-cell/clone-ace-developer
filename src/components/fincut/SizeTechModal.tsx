@@ -119,7 +119,7 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
             {/* Header */}
             <div className="flex items-center justify-between px-6 pt-6 pb-4">
               <button
-                onClick={step === 1 ? handleClose : () => setStep(1)}
+                onClick={step === 1 ? handleClose : () => setStep(step - 1)}
                 className="flex items-center gap-1 font-body text-sm text-fincut-black hover:opacity-70 transition-opacity"
               >
                 <ChevronLeft size={16} />
