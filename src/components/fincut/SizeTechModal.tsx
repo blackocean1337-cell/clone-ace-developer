@@ -80,6 +80,48 @@ const bellyTypes = [
   },
 ];
 
+// Size recommendation logic based on height, weight, body type, belly type
+function calculateSize(
+  height: number,
+  weight: number,
+  heightUnit: "CM" | "IN",
+  weightUnit: "KG" | "LBS",
+  bodyType: string,
+  bellyType: string
+): { size: string; confidence: number } {
+  const h = heightUnit === "IN" ? height * 2.54 : height;
+  const w = weightUnit === "LBS" ? weight * 0.4536 : weight;
+  
+  const bmi = w / ((h / 100) ** 2);
+  
+  // Base size from BMI + height
+  let sizeIndex: number;
+  if (bmi < 18.5) sizeIndex = 0; // S
+  else if (bmi < 21) sizeIndex = h < 175 ? 0 : 1; // S or M
+  else if (bmi < 24) sizeIndex = h < 170 ? 1 : (h < 180 ? 2 : 2); // M or L
+  else if (bmi < 27) sizeIndex = h < 175 ? 2 : 3; // L or XL
+  else if (bmi < 30) sizeIndex = 3; // XL
+  else if (bmi < 34) sizeIndex = 4; // 2XL
+  else if (bmi < 38) sizeIndex = 5; // 3XL
+  else sizeIndex = 6; // 4XL
+
+  // Body type adjustments
+  if (bodyType === "large") sizeIndex = Math.min(6, sizeIndex + 1);
+  else if (bodyType === "slim") sizeIndex = Math.max(0, sizeIndex - 1);
+
+  // Belly adjustments
+  if (bellyType === "round") sizeIndex = Math.min(6, sizeIndex + 1);
+  else if (bellyType === "flat") sizeIndex = Math.max(0, sizeIndex);
+
+  const sizes = ["S", "M", "L", "XL", "2XL", "3XL", "4XL"];
+  const size = sizes[Math.min(6, Math.max(0, sizeIndex))];
+  
+  // Confidence based on how "centered" the BMI is within the range
+  const confidence = Math.min(99, Math.max(85, 98 - Math.abs(bmi - 23) * 1.5));
+
+  return { size, confidence: Math.round(confidence) };
+}
+
 const analysisSteps = [
   "Análise do seu corpo e medidas",
   "Comparação com os nossos padrões",
@@ -412,30 +454,41 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
               ) : step === 4 ? (
                 <AnalysisStep key="step4" onComplete={() => setStep(5)} />
               ) : step === 5 ? (
-                <motion.div
-                  key="step5"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
-                  transition={{ duration: 0.2 }}
-                  className="px-6 flex-1 flex flex-col items-center justify-center text-center"
-                >
-                  <div className="w-16 h-16 rounded-full bg-fincut-gold/20 flex items-center justify-center mb-6">
-                    <Check size={32} className="text-fincut-gold" />
-                  </div>
-                  <h2 className="font-display text-xl font-bold text-fincut-black mb-2">
-                    O seu tamanho recomendado
-                  </h2>
-                  <p className="font-body text-sm text-muted-foreground mb-6">
-                    Com base nas suas informações, recomendamos:
-                  </p>
-                  <div className="w-24 h-24 rounded-full border-4 border-fincut-black flex items-center justify-center mb-4">
-                    <span className="font-display text-3xl font-bold text-fincut-black">M</span>
-                  </div>
-                  <p className="font-body text-xs text-muted-foreground">
-                    Tamanho ideal para o seu corpo
-                  </p>
-                </motion.div>
+                (() => {
+                  const result = calculateSize(height, weight, heightUnit, weightUnit, selectedBodyType, selectedBellyType);
+                  return (
+                    <motion.div
+                      key="step5"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 20 }}
+                      transition={{ duration: 0.2 }}
+                      className="px-6 flex-1 flex flex-col items-center justify-center text-center"
+                    >
+                      <h2 className="font-display text-xl font-bold text-fincut-black mb-16">
+                        Aqui está o melhor ajuste
+                      </h2>
+
+                      <motion.div
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                        className="bg-fincut-black text-white px-10 py-5 mb-5"
+                      >
+                        <span className="font-display text-3xl font-bold tracking-wider">
+                          Tamanho : {result.size}
+                        </span>
+                      </motion.div>
+
+                      <p className="font-body text-sm text-muted-foreground mb-2">
+                        Confiança: {result.confidence}%
+                      </p>
+                      <p className="font-body text-sm text-muted-foreground max-w-xs leading-relaxed">
+                        A maioria das pessoas com a sua morfologia escolhem este tamanho.
+                      </p>
+                    </motion.div>
+                  );
+                })()
               ) : null}
             </AnimatePresence>
 
@@ -451,8 +504,20 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
                   }}
                   className="w-full h-14 bg-fincut-black text-white font-display text-sm font-bold tracking-widest uppercase hover:bg-fincut-black/90 transition-colors duration-200"
                 >
-                  {step === 5 ? "CONFIRMAR" : "SEGUINTE"}
+                  {step === 5 ? "VALIDAR E COMPOR O MEU PACK" : "SEGUINTE"}
                 </button>
+                {step === 5 && (
+                  <button
+                    onClick={() => {
+                      setStep(1);
+                      setSelectedBodyType("");
+                      setSelectedBellyType("");
+                    }}
+                    className="w-full mt-3 font-body text-sm text-muted-foreground underline hover:text-fincut-black transition-colors"
+                  >
+                    Recomeçar
+                  </button>
+                )}
               </div>
             )}
             {step === 4 && (
