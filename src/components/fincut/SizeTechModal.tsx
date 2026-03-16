@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Check } from "lucide-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -79,6 +80,64 @@ const bellyTypes = [
   },
 ];
 
+const analysisSteps = [
+  "Análise do seu corpo e medidas",
+  "Comparação com os nossos padrões",
+  "Ajustes de conforto",
+];
+
+const AnalysisStep = ({ onComplete }: { onComplete: () => void }) => {
+  const [completed, setCompleted] = useState<number[]>([]);
+
+  useEffect(() => {
+    const timers = analysisSteps.map((_, i) =>
+      setTimeout(() => setCompleted((prev) => [...prev, i]), (i + 1) * 800)
+    );
+    const final = setTimeout(onComplete, 3000);
+    return () => { timers.forEach(clearTimeout); clearTimeout(final); };
+  }, [onComplete]);
+
+  return (
+    <motion.div
+      key="step4"
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 20 }}
+      transition={{ duration: 0.2 }}
+      className="px-6 flex-1"
+    >
+      <h2 className="font-display text-xl font-bold text-fincut-black mb-2">
+        Processo de análise em curso...
+      </h2>
+      <p className="font-body text-sm text-muted-foreground mb-10">
+        Estamos a analisar as suas informações para encontrar o tamanho perfeito.
+      </p>
+
+      <div className="space-y-6">
+        {analysisSteps.map((label, i) => (
+          <div key={i} className="flex items-center gap-4">
+            <div
+              className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                completed.includes(i) ? "bg-fincut-black" : "bg-muted-foreground/30"
+              }`}
+            />
+            <span className="font-body text-sm text-fincut-black flex-1">{label}</span>
+            {completed.includes(i) && (
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                className="w-6 h-6 rounded-full bg-fincut-gold flex items-center justify-center"
+              >
+                <Check size={14} className="text-fincut-black" />
+              </motion.div>
+            )}
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
 const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
   const [step, setStep] = useState(1);
   const [height, setHeight] = useState(175);
@@ -135,7 +194,7 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
               <div className="h-0.5 bg-muted rounded-full">
                 <div
                   className="h-full bg-fincut-black rounded-full transition-all duration-300"
-                  style={{ width: step === 1 ? "33%" : step === 2 ? "66%" : "100%" }}
+                  style={{ width: step <= 3 ? `${step * 25}%` : "100%" }}
                 />
               </div>
             </div>
@@ -350,22 +409,59 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
                     ))}
                   </div>
                 </motion.div>
+              ) : step === 4 ? (
+                <AnalysisStep key="step4" onComplete={() => setStep(5)} />
+              ) : step === 5 ? (
+                <motion.div
+                  key="step5"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.2 }}
+                  className="px-6 flex-1 flex flex-col items-center justify-center text-center"
+                >
+                  <div className="w-16 h-16 rounded-full bg-fincut-gold/20 flex items-center justify-center mb-6">
+                    <Check size={32} className="text-fincut-gold" />
+                  </div>
+                  <h2 className="font-display text-xl font-bold text-fincut-black mb-2">
+                    O seu tamanho recomendado
+                  </h2>
+                  <p className="font-body text-sm text-muted-foreground mb-6">
+                    Com base nas suas informações, recomendamos:
+                  </p>
+                  <div className="w-24 h-24 rounded-full border-4 border-fincut-black flex items-center justify-center mb-4">
+                    <span className="font-display text-3xl font-bold text-fincut-black">M</span>
+                  </div>
+                  <p className="font-body text-xs text-muted-foreground">
+                    Tamanho ideal para o seu corpo
+                  </p>
+                </motion.div>
               ) : null}
             </AnimatePresence>
 
             {/* Footer button */}
-            <div className="px-6 pb-6 mt-auto pt-4">
-              <button
-                onClick={() => {
-                  if (step === 1) setStep(2);
-                  else if (step === 2) setStep(3);
-                  else handleClose();
-                }}
-                className="w-full h-14 bg-fincut-black text-white font-display text-sm font-bold tracking-widest uppercase hover:bg-fincut-black/90 transition-colors duration-200"
-              >
-                SEGUINTE
-              </button>
-            </div>
+            {step !== 4 && (
+              <div className="px-6 pb-6 mt-auto pt-4">
+                <button
+                  onClick={() => {
+                    if (step === 1) setStep(2);
+                    else if (step === 2) setStep(3);
+                    else if (step === 3) setStep(4);
+                    else handleClose();
+                  }}
+                  className="w-full h-14 bg-fincut-black text-white font-display text-sm font-bold tracking-widest uppercase hover:bg-fincut-black/90 transition-colors duration-200"
+                >
+                  {step === 5 ? "CONFIRMAR" : "SEGUINTE"}
+                </button>
+              </div>
+            )}
+            {step === 4 && (
+              <div className="px-6 pb-6 mt-auto pt-4">
+                <div className="w-full h-14 bg-muted flex items-center justify-center font-display text-sm font-bold tracking-widest uppercase text-muted-foreground">
+                  ANÁLISE EM CURSO
+                </div>
+              </div>
+            )}
           </motion.div>
         </motion.div>
       )}
