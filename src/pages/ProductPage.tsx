@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import AnnouncementBar from "@/components/fincut/AnnouncementBar";
 import SiteHeader from "@/components/fincut/SiteHeader";
 import SiteFooter from "@/components/fincut/SiteFooter";
+import BeforeAfterSection from "@/components/fincut/BeforeAfterSection";
 import { getProductBySlug } from "@/data/products";
 
 const featureIcons = [Ruler, Droplets, Award];
@@ -379,6 +380,11 @@ const ProductPage = () => {
               </AnimatePresence>
             </div>
           </div>
+        </div>
+
+        {/* Before/After Section */}
+        <div className="mt-16 -mx-4 sm:-mx-6 lg:-mx-8">
+          <BeforeAfterSection />
         </div>
 
         {/* Trustpilot Reviews */}
