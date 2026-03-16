@@ -12,7 +12,7 @@ const VestiaireSection = () => {
     }
   };
 
-  return;
+  return null;
 
 
 
