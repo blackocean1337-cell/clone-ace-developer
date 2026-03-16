@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import SizeTechModal from "./SizeTechModal";
 import tshirtWhite from "@/assets/tshirt-white.png";
 import tshirtNavy from "@/assets/tshirt-navy.png";
 import tshirtBlack from "@/assets/tshirt-black.png";
@@ -15,7 +16,7 @@ const packCards = [
 
 const sizes = ["S", "M", "L", "XL", "2XL", "3XL", "4XL"];
 
-const PackBuilderModal = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
+const PackBuilderModal = ({ open, onClose, onOpenSizeTech }: { open: boolean; onClose: () => void; onOpenSizeTech: () => void }) => {
   const [selectedSize, setSelectedSize] = useState("M");
 
   if (!open) return null;
@@ -112,7 +113,10 @@ const PackBuilderModal = ({ open, onClose }: { open: boolean; onClose: () => voi
                     <span className="text-muted-foreground">(sizetech+)</span>
                   </p>
                 </div>
-                <button className="w-14 bg-fincut-gold flex items-center justify-center hover:bg-fincut-gold/90 transition-colors">
+                <button
+                  onClick={() => { onClose(); onOpenSizeTech(); }}
+                  className="w-14 bg-fincut-gold flex items-center justify-center hover:bg-fincut-gold/90 transition-colors"
+                >
                   <ChevronRight size={20} className="text-fincut-black" />
                 </button>
               </div>
@@ -126,6 +130,7 @@ const PackBuilderModal = ({ open, onClose }: { open: boolean; onClose: () => voi
 
 const CustomPackSection = () => {
   const [packBuilderOpen, setPackBuilderOpen] = useState(false);
+  const [sizeTechOpen, setSizeTechOpen] = useState(false);
 
   return (
     <>
@@ -184,7 +189,8 @@ const CustomPackSection = () => {
         </div>
       </section>
 
-      <PackBuilderModal open={packBuilderOpen} onClose={() => setPackBuilderOpen(false)} />
+      <PackBuilderModal open={packBuilderOpen} onClose={() => setPackBuilderOpen(false)} onOpenSizeTech={() => setSizeTechOpen(true)} />
+      <SizeTechModal open={sizeTechOpen} onClose={() => setSizeTechOpen(false)} />
     </>
   );
 };
