@@ -345,38 +345,44 @@ const ProductPage = () => {
               </div>
             </div>
 
-            {/* FAQ Accordions - 2 column grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8">
-              {accordionSections.map(section => (
-                <div key={section.id} className="border-b border-border">
-                  <button
-                    onClick={() => setOpenAccordion(openAccordion === section.id ? null : section.id)}
-                    className="w-full flex items-center justify-between py-5 font-display text-base font-semibold text-foreground hover:text-muted-foreground transition-colors duration-200"
+          </div>
+        </div>
+      </main>
+
+      {/* FAQ Accordions - full width */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+          {accordionSections.map(section => (
+            <div key={section.id} className="border-b border-border">
+              <button
+                onClick={() => setOpenAccordion(openAccordion === section.id ? null : section.id)}
+                className="w-full flex items-center justify-between py-5 font-display text-base font-semibold text-foreground hover:text-muted-foreground transition-colors duration-200"
+              >
+                {section.title}
+                <ChevronRight
+                  size={16}
+                  className={`transition-transform duration-200 ${
+                    openAccordion === section.id ? "-rotate-90" : "rotate-90"
+                  }`}
+                />
+              </button>
+              <AnimatePresence>
+                {openAccordion === section.id && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden"
                   >
-                    {section.title}
-                    <ChevronRight
-                      size={16}
-                      className={`transition-transform duration-200 ${
-                        openAccordion === section.id ? "-rotate-90" : "rotate-90"
-                      }`}
-                    />
-                  </button>
-                  <AnimatePresence>
-                    {openAccordion === section.id && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="pb-5">{section.content}</div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
+                    <div className="pb-5">{section.content}</div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
+          ))}
+        </div>
+      </div>
           </div>
         </div>
 
