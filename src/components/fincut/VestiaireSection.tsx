@@ -23,8 +23,8 @@ const VestiaireSection = () => {
           </button>
           <div ref={scrollRef} className="flex gap-4 overflow-x-auto scrollbar-hide">
             {vestiaireProducts.map((product) => (
-              <div key={product.id} className="w-[260px] flex-shrink-0">
-                <ProductCard product={product} />
+              <div key={product.slug} className="w-[260px] flex-shrink-0">
+                <ProductCard image={product.cardImage} name={product.name} price={product.priceLabel} slug={product.slug} />
               </div>
             ))}
           </div>
