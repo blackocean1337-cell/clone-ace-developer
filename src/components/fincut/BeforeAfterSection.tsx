@@ -1,7 +1,11 @@
 import { useState, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Shirt } from "lucide-react";
-import beforeFit from "@/assets/before-fit.jpg";
-import afterFit from "@/assets/after-fit.jpg";
+import beforeFitMedium from "@/assets/before-fit.jpg";
+import afterFitMedium from "@/assets/after-fit.jpg";
+import beforeFitSlim from "@/assets/before-fit-slim.jpg";
+import afterFitSlim from "@/assets/after-fit-slim.jpg";
+import beforeFitLarge from "@/assets/before-fit-large.jpg";
+import afterFitLarge from "@/assets/after-fit-large.jpg";
 
 const morphologies = [
   { id: "slim", label: "MAGRO" },
@@ -9,11 +13,19 @@ const morphologies = [
   { id: "large", label: "LARGO" },
 ];
 
+const imagesByMorphology: Record<string, { before: string; after: string }> = {
+  slim: { before: beforeFitSlim, after: afterFitSlim },
+  medium: { before: beforeFitMedium, after: afterFitMedium },
+  large: { before: beforeFitLarge, after: afterFitLarge },
+};
+
 const BeforeAfterSection = () => {
   const [sliderPos, setSliderPos] = useState(50);
   const [selectedMorphology, setSelectedMorphology] = useState("medium");
   const containerRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
+
+  const images = imagesByMorphology[selectedMorphology];
 
   const updateSlider = useCallback((clientX: number) => {
     if (!containerRef.current) return;
@@ -22,7 +34,6 @@ const BeforeAfterSection = () => {
     setSliderPos((x / rect.width) * 100);
   }, []);
 
-  const handleMouseDown = () => { isDragging.current = true; };
   const handleMouseUp = () => { isDragging.current = false; };
   const handleMouseMove = (e: React.MouseEvent) => {
     if (isDragging.current) updateSlider(e.clientX);
@@ -33,7 +44,6 @@ const BeforeAfterSection = () => {
 
   return (
     <section className="w-full bg-fincut-charcoal">
-      {/* Before/After Slider */}
       <div
         ref={containerRef}
         className="relative w-full aspect-[2.4/1] overflow-hidden cursor-col-resize select-none"
@@ -46,27 +56,24 @@ const BeforeAfterSection = () => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleMouseUp}
       >
-        {/* After image (full background) */}
         <img
-          src={afterFit}
+          src={images.after}
           alt="Depois"
           className="absolute inset-0 w-full h-full object-cover"
         />
 
-        {/* Before image (clipped) */}
         <div
           className="absolute inset-0 overflow-hidden"
           style={{ width: `${sliderPos}%` }}
         >
           <img
-            src={beforeFit}
+            src={images.before}
             alt="Antes"
             className="absolute inset-0 w-full h-full object-cover"
             style={{ width: `${containerRef.current?.offsetWidth || 1000}px`, maxWidth: "none" }}
           />
         </div>
 
-        {/* Labels */}
         <span className="absolute top-4 left-4 font-display text-sm font-semibold text-white/80 tracking-wider">
           Antes
         </span>
@@ -74,7 +81,6 @@ const BeforeAfterSection = () => {
           Depois
         </span>
 
-        {/* Slider handle */}
         <div
           className="absolute top-0 bottom-0 w-0.5 bg-white/70 cursor-col-resize z-10"
           style={{ left: `${sliderPos}%` }}
@@ -85,11 +91,9 @@ const BeforeAfterSection = () => {
           </div>
         </div>
 
-        {/* Gradient overlay at bottom */}
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-fincut-charcoal to-transparent" />
       </div>
 
-      {/* Morphology selector */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <p className="font-body text-sm text-muted-foreground mb-3">A sua morfologia:</p>
         <div className="grid grid-cols-3 gap-3">
