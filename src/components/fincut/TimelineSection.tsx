@@ -1,26 +1,26 @@
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import timeline1 from "@/assets/timeline-1.jpg";
-import timeline2 from "@/assets/timeline-2.jpg";
-import timeline3 from "@/assets/timeline-3.jpg";
-import timeline4 from "@/assets/timeline-4.jpg";
-import timeline5 from "@/assets/timeline-5.jpg";
-import timeline6 from "@/assets/timeline-6.jpg";
-import timeline7 from "@/assets/timeline-7.jpg";
-import timeline8 from "@/assets/timeline-8.jpg";
-import timeline9 from "@/assets/timeline-9.jpg";
+import timelineReal1 from "@/assets/timeline-real-1.png";
+import timelineReal2 from "@/assets/timeline-real-2.webp";
+import timelineReal3 from "@/assets/timeline-real-3.webp";
+import timelineReal4 from "@/assets/timeline-real-4.webp";
+import timelineReal5 from "@/assets/timeline-real-5.webp";
+import timelineReal6 from "@/assets/timeline-real-6.webp";
+import timelineReal7 from "@/assets/timeline-real-7.webp";
+import timelineReal8 from "@/assets/timeline-real-8.webp";
+import timelineReal9 from "@/assets/timeline-real-9.webp";
 
 const events = [
-  { date: "FEVEREIRO DE 2026", title: "Renovação", desc: "A Fincut instala-se nos novos escritórios da BrandSystem (700 m²) e integra plenamente o seu ecossistema: equipas, conhecimentos e ferramentas.", image: timeline1 },
-  { date: "JANEIRO DE 2026", title: "Nomeação", desc: "BrandSystem nomeia Hamdi Haben Diretor Artístico para redefinir a visão criativa e estratégica da Fincut.", image: timeline2 },
-  { date: "DEZEMBRO DE 2025", title: "Tecnologia", desc: "Criação da tecnologia têxtil Sizetech+. Abertura de uma unidade marítima em França dedicada à Europa.", image: timeline3 },
-  { date: "NOVEMBRO DE 2025", title: "Aquisição", desc: "A BrandSystem adquire a totalidade das participações da Fincut para uma visão de longo prazo.", image: timeline4 },
-  { date: "SETEMBRO DE 2025", title: "Produção", desc: "Nova linha de produção têxtil com tecidos premium e acabamentos de alta qualidade.", image: timeline5 },
-  { date: "JULHO DE 2024", title: "Expansão", desc: "Abertura do centro de expedição europeu para uma entrega mais rápida em toda a Europa.", image: timeline7 },
-  { date: "MARÇO DE 2024", title: "Campanha", desc: "Primeira campanha fotográfica profissional com modelos reais vestindo a coleção icónica.", image: timeline8 },
-  { date: "JULHO DE 2023", title: "Lançamento", desc: "Lançamento da t-shirt Fincut — primeira versão do produto icónico.", image: timeline6 },
-  { date: "MAIO DE 2023", title: "Génese", desc: "Thomas e Alex fundam a Fincut com a ambição de reinventar a t-shirt masculina.", image: timeline9 },
+  { date: "FEVEREIRO DE 2026", title: "Renovação", desc: "A Fincut instala-se nos novos escritórios da BrandSystem (700 m²) e integra plenamente o seu ecossistema: equipas, conhecimentos e ferramentas.", image: timelineReal1 },
+  { date: "JANEIRO DE 2026", title: "Nomeação", desc: "BrandSystem nomeia Hamdi Haben Diretor Artístico para redefinir a visão criativa e estratégica da Fincut.", image: timelineReal2 },
+  { date: "DEZEMBRO DE 2025", title: "Tecnologia", desc: "Criação da tecnologia têxtil Sizetech+. Abertura de uma unidade marítima em França dedicada à Europa.", image: timelineReal3 },
+  { date: "NOVEMBRO DE 2025", title: "Aquisição", desc: "A BrandSystem adquire a totalidade das participações da Fincut para uma visão de longo prazo.", image: timelineReal4 },
+  { date: "SETEMBRO DE 2025", title: "Escritórios", desc: "Abertura dos novos escritórios criativos dedicados ao desenvolvimento da marca e do produto.", image: timelineReal5 },
+  { date: "JULHO DE 2024", title: "Produto", desc: "Desenvolvimento do corte icónico — a t-shirt que se adapta a todas as morfologias.", image: timelineReal6 },
+  { date: "MARÇO DE 2024", title: "Produção", desc: "Nova linha de produção têxtil com tecidos premium e acabamentos de alta qualidade.", image: timelineReal7 },
+  { date: "JULHO DE 2023", title: "Lançamento", desc: "Lançamento oficial da marca Fincut — primeira versão do produto icónico.", image: timelineReal8 },
+  { date: "MAIO DE 2023", title: "Génese", desc: "Thomas e Alex fundam a Fincut com a ambição de reinventar a t-shirt masculina.", image: timelineReal9 },
 ];
 
 const TimelineSection = () => {
