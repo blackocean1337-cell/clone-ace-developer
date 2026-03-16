@@ -33,6 +33,7 @@ const ProductPage = () => {
   const [selectedQuantity, setSelectedQuantity] = useState("unite");
   const [openAccordion, setOpenAccordion] = useState<string | null>("description");
   const [countdown, setCountdown] = useState({ hours: 13, minutes: 39 });
+  const [sizeTechOpen, setSizeTechOpen] = useState(false);
 
   useEffect(() => {
     if (product) {
