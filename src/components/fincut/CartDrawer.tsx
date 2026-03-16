@@ -99,7 +99,7 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
                   <div className="relative mb-2">
                     <div className="h-2.5 bg-muted rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-fincut-gold rounded-full transition-all duration-500"
+                        className="h-full bg-[#c8e600] rounded-full transition-all duration-500"
                         style={{ width: `${shippingProgress * 100}%` }}
                       />
                     </div>
