@@ -76,6 +76,34 @@ const BrandManifesto = () => {
             </p>
           </motion.div>
         </div>
+
+        {/* Video section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="mt-20"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
+            <p className="font-body text-muted-foreground text-sm leading-relaxed">
+              Para lhe oferecer itens básicos atemporais, projetados para seu guarda-roupa e oferecidos pelo preço certo. Para isso, reduzimos intermediários, abandonamos coleções efémeras e optamos por produzir apenas quando há demanda.
+            </p>
+            <p className="font-body text-muted-foreground text-sm leading-relaxed lg:text-right">
+              Um essencial. Projetado para você. Por muito tempo.
+            </p>
+          </div>
+          <div className="relative w-full overflow-hidden rounded-sm bg-black">
+            <video
+              className="w-full aspect-video object-cover"
+              controls
+              preload="metadata"
+              poster=""
+            >
+              <source src="/videos/brand-video.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
