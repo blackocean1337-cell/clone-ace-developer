@@ -114,7 +114,7 @@ const PackBuilderModal = ({ open, onClose, onOpenSizeTech }: { open: boolean; on
                   </p>
                 </div>
                 <button
-                  onClick={() => { onClose(); setSizeTechOpen(true); }}
+                  onClick={() => { onClose(); onOpenSizeTech(); }}
                   className="w-14 bg-fincut-gold flex items-center justify-center hover:bg-fincut-gold/90 transition-colors"
                 >
                   <ChevronRight size={20} className="text-fincut-black" />
