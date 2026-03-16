@@ -11,35 +11,35 @@ const events = [
 
 const TimelineSection = () => {
   return (
-    <section id="histoire" className="bg-background py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="flex items-center justify-between mb-10">
-        <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground">Notre histoire</h2>
-        <a href="#" className="font-body text-xs text-fincut-gold hover:underline flex items-center gap-1">
-          Découvrir →
-        </a>
-      </div>
+    <section id="histoire" className="bg-fincut-black py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-center justify-between mb-10">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold text-secondary-foreground">Notre histoire</h2>
+          <a href="#" className="font-body text-xs text-fincut-gold hover:underline flex items-center gap-1">
+            Découvrir →
+          </a>
+        </div>
 
-      <div className="relative">
-        {/* Timeline line */}
-        <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-px bg-border" />
+        <div className="relative">
+          <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-px bg-fincut-slate" />
 
-        <div className="space-y-10">
-          {events.map((e, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="relative pl-12 sm:pl-16"
-            >
-              {/* Dot */}
-              <div className="absolute left-[11px] sm:left-[19px] top-1 w-2.5 h-2.5 bg-fincut-gold rounded-full" />
-              <p className="font-body text-[11px] text-fincut-gray uppercase tracking-wider">{e.date}</p>
-              <h3 className="font-display text-base font-bold text-foreground mt-1">{e.title}</h3>
-              <p className="font-body text-sm text-muted-foreground mt-1 max-w-md">{e.desc}</p>
-            </motion.div>
-          ))}
+          <div className="space-y-10">
+            {events.map((e, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                className="relative pl-12 sm:pl-16"
+              >
+                <div className="absolute left-[11px] sm:left-[19px] top-1 w-2.5 h-2.5 bg-fincut-gold rounded-full" />
+                <p className="font-body text-[11px] text-fincut-gray uppercase tracking-wider">{e.date}</p>
+                <h3 className="font-display text-base font-bold text-secondary-foreground mt-1">{e.title}</h3>
+                <p className="font-body text-sm text-fincut-gray mt-1 max-w-md">{e.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
