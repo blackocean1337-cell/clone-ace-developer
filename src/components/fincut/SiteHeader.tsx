@@ -47,9 +47,9 @@ const SiteHeader = () => {
           >
             Produtos {productsOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
           </button>
-          <a href="#histoire" className="font-body text-sm text-secondary-foreground hover:text-fincut-gold transition-colors duration-200">
+          <Link to="/historia" className="font-body text-sm text-secondary-foreground hover:text-fincut-gold transition-colors duration-200">
             A nossa história
-          </a>
+          </Link>
         </nav>
 
         <div className="flex items-center gap-4">
@@ -165,7 +165,7 @@ const SiteHeader = () => {
               </ul>
             )}
           </div>
-          <a href="#histoire" className="block font-body text-sm text-secondary-foreground">A nossa história</a>
+          <Link to="/historia" onClick={() => setMobileOpen(false)} className="block font-body text-sm text-secondary-foreground">A nossa história</Link>
         </div>
       )}
     </header>
