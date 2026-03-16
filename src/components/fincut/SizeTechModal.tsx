@@ -501,7 +501,14 @@ const SizeTechModal = ({ open, onClose, onValidate }: SizeTechModalProps) => {
                     if (step === 1) setStep(2);
                     else if (step === 2) setStep(3);
                     else if (step === 3) setStep(4);
-                    else handleClose();
+                    else if (step === 5) {
+                      const result = calculateSize(height, weight, heightUnit, weightUnit, selectedBodyType, selectedBellyType);
+                      if (onValidate) {
+                        onValidate(result.size);
+                      } else {
+                        handleClose();
+                      }
+                    } else handleClose();
                   }}
                   className="w-full h-14 bg-fincut-black text-white font-display text-sm font-bold tracking-widest uppercase hover:bg-fincut-black/90 transition-colors duration-200"
                 >
