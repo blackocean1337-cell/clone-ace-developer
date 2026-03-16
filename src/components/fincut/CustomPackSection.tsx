@@ -362,14 +362,14 @@ const CustomPackSection = () => {
 
   const handleAddToCart = (colors: string[], size: string) => {
     const price = pricePerArticle(colors.length);
-    setCartItems([{
-      name: "Pack personalizado de t-shirts col rond",
+    const cartItems: CartItem[] = colors.map((color) => ({
+      name: "A t-shirt Icónica",
       size,
-      colors,
+      color: color.toUpperCase(),
       unitPrice: price,
-      originalUnitPrice: 28,
       quantity: 1,
-    }]);
+    }));
+    setCartItems(cartItems);
     setPackBuilderOpen(false);
     setCartOpen(true);
   };
@@ -448,7 +448,6 @@ const CustomPackSection = () => {
         open={cartOpen}
         onClose={() => setCartOpen(false)}
         items={cartItems}
-        onModifyPack={() => handleOpenPack(2)}
       />
     </>
   );
