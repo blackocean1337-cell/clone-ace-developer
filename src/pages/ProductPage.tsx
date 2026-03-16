@@ -6,6 +6,7 @@ import AnnouncementBar from "@/components/fincut/AnnouncementBar";
 import SiteHeader from "@/components/fincut/SiteHeader";
 import SiteFooter from "@/components/fincut/SiteFooter";
 import BeforeAfterSection from "@/components/fincut/BeforeAfterSection";
+import CustomPackSection from "@/components/fincut/CustomPackSection";
 import { getProductBySlug } from "@/data/products";
 
 const featureIcons = [Ruler, Droplets, Award];
@@ -387,7 +388,10 @@ const ProductPage = () => {
           <BeforeAfterSection />
         </div>
 
-        {/* Trustpilot Reviews */}
+        {/* Custom Pack Section */}
+        <div className="mt-16 -mx-4 sm:-mx-6 lg:-mx-8">
+          <CustomPackSection />
+        </div>
         <section className="mt-20">
           <div className="text-center mb-8">
             <p className="font-display text-lg font-bold text-foreground mb-1">
