@@ -372,6 +372,51 @@ const ProductPage = () => {
               </div>
             </div>
 
+            {/* Pack selector visual */}
+            <div>
+              <h3 className="font-display text-sm font-semibold text-foreground mb-3">
+                Escolha o seu pacote : <span className="font-normal text-muted-foreground">{selectedColor} (x1) – Branco (x1)</span>
+              </h3>
+              <div className="grid grid-cols-4 gap-3">
+                {/* Pack 1: Black + White */}
+                <button
+                  className="rounded-lg border border-border hover:border-muted-foreground overflow-hidden bg-muted/30 transition-all duration-200 aspect-square flex items-center justify-center p-2"
+                >
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    <img src={tshirtBlack} alt="Preto" className="absolute w-3/5 h-3/5 object-contain left-1/4 top-1/2 -translate-y-1/2 -translate-x-1/4" />
+                    <img src={tshirtWhite} alt="Branco" className="absolute w-3/5 h-3/5 object-contain right-1/4 top-1/2 -translate-y-1/2 translate-x-1/4" />
+                  </div>
+                </button>
+                {/* Pack 2: 2x Black */}
+                <button
+                  className="rounded-lg border border-border hover:border-muted-foreground overflow-hidden bg-muted/30 transition-all duration-200 aspect-square flex items-center justify-center p-2"
+                >
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    <img src={tshirtBlack} alt="Preto" className="absolute w-3/5 h-3/5 object-contain left-1/4 top-1/2 -translate-y-1/2 -translate-x-1/4" />
+                    <img src={tshirtBlack} alt="Preto" className="absolute w-3/5 h-3/5 object-contain right-1/4 top-1/2 -translate-y-1/2 translate-x-1/4" />
+                  </div>
+                </button>
+                {/* Pack 3: 2x White */}
+                <button
+                  className="rounded-lg border border-border hover:border-muted-foreground overflow-hidden bg-muted/30 transition-all duration-200 aspect-square flex items-center justify-center p-2"
+                >
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    <img src={tshirtWhite} alt="Branco" className="absolute w-3/5 h-3/5 object-contain left-1/4 top-1/2 -translate-y-1/2 -translate-x-1/4" />
+                    <img src={tshirtWhite} alt="Branco" className="absolute w-3/5 h-3/5 object-contain right-1/4 top-1/2 -translate-y-1/2 translate-x-1/4" />
+                  </div>
+                </button>
+                {/* Custom pack */}
+                <button
+                  onClick={() => window.dispatchEvent(new Event("open-pack-builder"))}
+                  className="rounded-lg border-2 border-dashed border-muted-foreground/40 hover:border-muted-foreground overflow-hidden transition-all duration-200 aspect-square flex items-center justify-center p-2"
+                >
+                  <span className="font-body text-base italic text-muted-foreground text-center leading-tight">
+                    Criar<br />seu<br />paleta
+                  </span>
+                </button>
+              </div>
+            </div>
+
             {/* Add to cart */}
             <button
               onClick={() => {
