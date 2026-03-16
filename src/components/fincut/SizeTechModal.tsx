@@ -46,6 +46,39 @@ const bodyTypes = [
   },
 ];
 
+const bellyTypes = [
+  {
+    id: "flat",
+    label: "Mais plano",
+    svg: (
+      <svg viewBox="0 0 80 100" className="w-full h-full text-muted-foreground/40">
+        <path d="M25 10 C25 8 30 5 40 5 C50 5 55 8 55 10 L56 70 C56 72 54 74 52 74 L28 74 C26 74 24 72 24 70 Z" fill="currentColor" />
+        <line x1="35" y1="25" x2="45" y2="25" stroke="white" strokeWidth="1.5" opacity="0.5" />
+      </svg>
+    ),
+  },
+  {
+    id: "normal",
+    label: "Normal",
+    svg: (
+      <svg viewBox="0 0 80 100" className="w-full h-full text-muted-foreground/40">
+        <path d="M25 10 C25 8 30 5 40 5 C50 5 55 8 55 10 L58 70 C58 72 56 74 54 74 L26 74 C24 74 22 72 22 70 Z" fill="currentColor" />
+        <ellipse cx="40" cy="50" rx="12" ry="8" fill="currentColor" opacity="0.6" />
+      </svg>
+    ),
+  },
+  {
+    id: "round",
+    label: "Mais redondo",
+    svg: (
+      <svg viewBox="0 0 80 100" className="w-full h-full text-muted-foreground/40">
+        <path d="M22 10 C22 8 28 5 40 5 C52 5 58 8 58 10 L62 70 C62 72 60 74 58 74 L22 74 C20 74 18 72 18 70 Z" fill="currentColor" />
+        <ellipse cx="40" cy="48" rx="16" ry="14" fill="currentColor" opacity="0.6" />
+      </svg>
+    ),
+  },
+];
+
 const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
   const [step, setStep] = useState(1);
   const [height, setHeight] = useState(175);
