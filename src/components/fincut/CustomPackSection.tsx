@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Plus } from "lucide-react";
 import SizeTechModal from "./SizeTechModal";
 import CartDrawer, { type CartItem } from "./CartDrawer";
@@ -350,6 +350,12 @@ const CustomPackSection = () => {
     setPackPreselectedSize(size);
     setPackBuilderOpen(true);
   };
+
+  useEffect(() => {
+    const handler = () => handleOpenPack(1);
+    window.addEventListener("open-pack-builder", handler);
+    return () => window.removeEventListener("open-pack-builder", handler);
+  }, []);
 
   const handleSizeTechClose = () => {
     setSizeTechOpen(false);
