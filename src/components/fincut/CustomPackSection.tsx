@@ -63,7 +63,7 @@ interface PackBuilderModalProps {
   preselectedSize?: string;
 }
 
-const PackBuilderModal = ({ open, onClose, onOpenSizeTech, initialStep = 1, preselectedSize }: PackBuilderModalProps) => {
+const PackBuilderModal = ({ open, onClose, onOpenSizeTech, onAddToCart, initialStep = 1, preselectedSize }: PackBuilderModalProps) => {
   const [step, setStep] = useState(initialStep);
   const [selectedSize, setSelectedSize] = useState(preselectedSize || "M");
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
