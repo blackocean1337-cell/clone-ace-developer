@@ -8,6 +8,7 @@ import SiteHeader from "@/components/fincut/SiteHeader";
 import SiteFooter from "@/components/fincut/SiteFooter";
 import BeforeAfterSection from "@/components/fincut/BeforeAfterSection";
 import CustomPackSection from "@/components/fincut/CustomPackSection";
+import CartDrawer, { type CartItem } from "@/components/fincut/CartDrawer";
 import SizeTechModal from "@/components/fincut/SizeTechModal";
 import { getProductBySlug } from "@/data/products";
 import lifestyleOffice from "@/assets/lifestyle-office.jpg";
