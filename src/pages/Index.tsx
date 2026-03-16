@@ -1,12 +1,27 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import AnnouncementBar from "@/components/fincut/AnnouncementBar";
+import SiteHeader from "@/components/fincut/SiteHeader";
+import HeroSection from "@/components/fincut/HeroSection";
+import IconiqueSection from "@/components/fincut/IconiqueSection";
+import VestiaireSection from "@/components/fincut/VestiaireSection";
+import PackSection from "@/components/fincut/PackSection";
+import CustomerPhotos from "@/components/fincut/CustomerPhotos";
+import ReviewsSection from "@/components/fincut/ReviewsSection";
+import TimelineSection from "@/components/fincut/TimelineSection";
+import SiteFooter from "@/components/fincut/SiteFooter";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <AnnouncementBar />
+      <SiteHeader />
+      <HeroSection />
+      <IconiqueSection />
+      <VestiaireSection />
+      <PackSection />
+      <CustomerPhotos />
+      <ReviewsSection />
+      <TimelineSection />
+      <SiteFooter />
     </div>
   );
 };
