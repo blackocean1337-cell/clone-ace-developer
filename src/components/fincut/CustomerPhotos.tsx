@@ -1,14 +1,19 @@
-import photo1 from "@/assets/customer-photo-1.jpg";
-import photo2 from "@/assets/customer-photo-2.jpg";
-import photo3 from "@/assets/customer-photo-3.jpg";
+import reviewPhoto1 from "@/assets/review-photo-1.png";
+import reviewPhoto2 from "@/assets/review-photo-2.png";
+import reviewPhoto3 from "@/assets/review-photo-3.png";
+import reviewPhoto4 from "@/assets/review-photo-4.png";
+import reviewPhoto5 from "@/assets/review-photo-5.png";
+import reviewPhoto6 from "@/assets/review-photo-6.webp";
+import reviewPhoto7 from "@/assets/review-photo-7.png";
 
 const photos = [
-  { image: photo1, label: "A camiseta icónica" },
-  { image: photo2, label: "A camiseta icónica" },
-  { image: photo3, label: "A camiseta icónica" },
-  { image: photo1, label: "A camiseta icónica" },
-  { image: photo2, label: "A camiseta icónica" },
-  { image: photo3, label: "A camiseta icónica" },
+  { image: reviewPhoto1, label: "A camiseta icónica" },
+  { image: reviewPhoto2, label: "A camiseta icónica" },
+  { image: reviewPhoto3, label: "A camiseta icónica" },
+  { image: reviewPhoto4, label: "A camiseta icónica" },
+  { image: reviewPhoto5, label: "A camiseta icónica" },
+  { image: reviewPhoto6, label: "A camiseta icónica" },
+  { image: reviewPhoto7, label: "A camiseta icónica" },
 ];
 
 const CustomerPhotos = () => {
