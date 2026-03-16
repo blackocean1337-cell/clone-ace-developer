@@ -58,6 +58,7 @@ interface PackBuilderModalProps {
   open: boolean;
   onClose: () => void;
   onOpenSizeTech: () => void;
+  onAddToCart: (colors: string[], size: string) => void;
   initialStep?: number;
   preselectedSize?: string;
 }
