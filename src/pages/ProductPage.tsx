@@ -72,8 +72,7 @@ const ProductPage = () => {
   const [openAccordion, setOpenAccordion] = useState<string | null>("description");
   const [countdown, setCountdown] = useState({ hours: 13, minutes: 39 });
   const [sizeTechOpen, setSizeTechOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const { addItem } = useCart();
 
   useEffect(() => {
     if (product) {
