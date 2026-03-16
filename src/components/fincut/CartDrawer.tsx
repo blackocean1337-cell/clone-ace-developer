@@ -177,7 +177,7 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
                     <p className="font-body text-sm text-fincut-black mb-3 font-medium">
                       Eles também compraram :
                     </p>
-                    <div className="border-2 border-fincut-gold/40 bg-fincut-gold/8 p-3 flex gap-3 items-center">
+                    <div className="bg-[#fff9c4] p-3 flex gap-3 items-center rounded-sm">
                       <div className="w-14 h-14 bg-fincut-light flex-shrink-0 flex items-center justify-center rounded-sm">
                         <svg viewBox="0 0 40 50" className="w-8 h-8 text-fincut-black">
                           <rect x="5" y="5" width="30" height="40" rx="2" fill="currentColor" opacity="0.8" />
