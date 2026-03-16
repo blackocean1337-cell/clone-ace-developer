@@ -285,12 +285,10 @@ const ProductPage = () => {
                       }
                     }}
                     className={`relative border px-3 py-3 text-center transition-all duration-200 ${
-                      opt.id === "pack4"
+                      opt.id === "custom"
                         ? "border-foreground bg-foreground text-background"
-                        : opt.id === "pack6"
-                        ? "border-foreground bg-background text-foreground"
                         : selectedQuantity === opt.id
-                        ? "border-foreground bg-foreground text-background"
+                        ? "border-foreground bg-background text-foreground"
                         : "border-border hover:border-muted-foreground"
                     }`}
                   >
