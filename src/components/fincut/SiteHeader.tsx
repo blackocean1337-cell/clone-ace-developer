@@ -165,7 +165,7 @@ const SiteHeader = () => {
               </ul>
             )}
           </div>
-          <a href="#histoire" className="block font-body text-sm text-secondary-foreground">A nossa história</a>
+          <Link to="/historia" onClick={() => setMobileOpen(false)} className="block font-body text-sm text-secondary-foreground">A nossa história</Link>
         </div>
       )}
     </header>
