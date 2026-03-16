@@ -382,19 +382,13 @@ const ProductPage = () => {
             </div>
           ))}
         </div>
-      </div>
-          </div>
-        </div>
 
-        {/* Before/After Section */}
-        <div className="mt-16 -mx-4 sm:-mx-6 lg:-mx-8">
-          <BeforeAfterSection />
-        </div>
+      {/* Before/After Section */}
+      <BeforeAfterSection />
 
-        {/* Custom Pack Section */}
-        <div className="mt-16 -mx-4 sm:-mx-6 lg:-mx-8">
-          <CustomPackSection />
-        </div>
+      {/* Custom Pack Section */}
+      <CustomPackSection />
+
         <section className="mt-20">
           <div className="text-center mb-8">
             <p className="font-display text-lg font-bold text-foreground mb-1">
