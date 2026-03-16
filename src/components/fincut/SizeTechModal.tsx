@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 interface SizeTechModalProps {
   open: boolean;
   onClose: () => void;
+  onValidate?: (size: string) => void;
 }
 
 const bodyTypes = [
