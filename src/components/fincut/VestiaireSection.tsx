@@ -36,6 +36,5 @@ const VestiaireSection = () => {
     </section>
   );
 };
-};
 
 export default VestiaireSection;
