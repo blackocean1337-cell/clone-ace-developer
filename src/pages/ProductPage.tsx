@@ -3,6 +3,7 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import { ChevronRight, ChevronLeft, Truck, Star, Ruler, Droplets, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnnouncementBar from "@/components/fincut/AnnouncementBar";
+import ReviewsSection from "@/components/fincut/ReviewsSection";
 import SiteHeader from "@/components/fincut/SiteHeader";
 import SiteFooter from "@/components/fincut/SiteFooter";
 import BeforeAfterSection from "@/components/fincut/BeforeAfterSection";
@@ -386,6 +387,9 @@ const ProductPage = () => {
 
       {/* Before/After Section */}
       <BeforeAfterSection />
+
+      {/* Trustpilot Reviews */}
+      <ReviewsSection />
 
       {/* Custom Pack Section */}
       <CustomPackSection />
