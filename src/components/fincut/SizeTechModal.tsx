@@ -80,6 +80,48 @@ const bellyTypes = [
   },
 ];
 
+// Size recommendation logic based on height, weight, body type, belly type
+function calculateSize(
+  height: number,
+  weight: number,
+  heightUnit: "CM" | "IN",
+  weightUnit: "KG" | "LBS",
+  bodyType: string,
+  bellyType: string
+): { size: string; confidence: number } {
+  const h = heightUnit === "IN" ? height * 2.54 : height;
+  const w = weightUnit === "LBS" ? weight * 0.4536 : weight;
+  
+  const bmi = w / ((h / 100) ** 2);
+  
+  // Base size from BMI + height
+  let sizeIndex: number;
+  if (bmi < 18.5) sizeIndex = 0; // S
+  else if (bmi < 21) sizeIndex = h < 175 ? 0 : 1; // S or M
+  else if (bmi < 24) sizeIndex = h < 170 ? 1 : (h < 180 ? 2 : 2); // M or L
+  else if (bmi < 27) sizeIndex = h < 175 ? 2 : 3; // L or XL
+  else if (bmi < 30) sizeIndex = 3; // XL
+  else if (bmi < 34) sizeIndex = 4; // 2XL
+  else if (bmi < 38) sizeIndex = 5; // 3XL
+  else sizeIndex = 6; // 4XL
+
+  // Body type adjustments
+  if (bodyType === "large") sizeIndex = Math.min(6, sizeIndex + 1);
+  else if (bodyType === "slim") sizeIndex = Math.max(0, sizeIndex - 1);
+
+  // Belly adjustments
+  if (bellyType === "round") sizeIndex = Math.min(6, sizeIndex + 1);
+  else if (bellyType === "flat") sizeIndex = Math.max(0, sizeIndex);
+
+  const sizes = ["S", "M", "L", "XL", "2XL", "3XL", "4XL"];
+  const size = sizes[Math.min(6, Math.max(0, sizeIndex))];
+  
+  // Confidence based on how "centered" the BMI is within the range
+  const confidence = Math.min(99, Math.max(85, 98 - Math.abs(bmi - 23) * 1.5));
+
+  return { size, confidence: Math.round(confidence) };
+}
+
 const analysisSteps = [
   "Análise do seu corpo e medidas",
   "Comparação com os nossos padrões",
