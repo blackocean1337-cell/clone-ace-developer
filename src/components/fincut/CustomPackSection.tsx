@@ -448,7 +448,6 @@ const CustomPackSection = () => {
         open={cartOpen}
         onClose={() => setCartOpen(false)}
         items={cartItems}
-        onModifyPack={() => handleOpenPack(2)}
       />
     </>
   );
