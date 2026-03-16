@@ -20,11 +20,27 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [items, setItems] = useState<CartItem[]>([]);
+  const [items, setItems] = useState<CartItem[]>(() => {
+    try {
+      const stored = localStorage.getItem("fincut-cart");
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
+  });
   const [isOpen, setIsOpen] = useState(false);
 
-  const addItem = (newItem: CartItem) => {
+  // Persist to localStorage
+  const updateItems = (updater: (prev: CartItem[]) => CartItem[]) => {
     setItems((prev) => {
+      const next = updater(prev);
+      localStorage.setItem("fincut-cart", JSON.stringify(next));
+      return next;
+    });
+  };
+
+  const addItem = (newItem: CartItem) => {
+    updateItems((prev) => {
       const existing = prev.findIndex(
         (i) => i.name === newItem.name && i.color === newItem.color && i.size === newItem.size
       );
@@ -40,9 +56,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const updateQuantity = (index: number, quantity: number) => {
     if (quantity <= 0) {
-      setItems((prev) => prev.filter((_, i) => i !== index));
+      updateItems((prev) => prev.filter((_, i) => i !== index));
     } else {
-      setItems((prev) => {
+      updateItems((prev) => {
         const updated = [...prev];
         updated[index] = { ...updated[index], quantity };
         return updated;
