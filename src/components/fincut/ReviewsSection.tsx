@@ -94,17 +94,17 @@ const ReviewsSection = () => {
           {doubled.map((r, i) => (
             <div
               key={i}
-              className="min-w-[300px] sm:min-w-[340px] flex-shrink-0 border border-border p-6 flex flex-col justify-between"
+              className="min-w-[250px] sm:min-w-[280px] flex-shrink-0 border border-border p-4 flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-3">
                   <TrustpilotStars />
-                  <span className="font-body text-[11px] text-muted-foreground">{r.date}</span>
+                  <span className="font-body text-[10px] text-muted-foreground">{r.date}</span>
                 </div>
-                <h3 className="font-display text-[15px] font-bold text-foreground mb-2 leading-snug">{r.title}</h3>
-                <p className="font-body text-[13px] text-muted-foreground leading-relaxed">{r.text}</p>
+                <h3 className="font-display text-sm font-bold text-foreground mb-1 leading-snug">{r.title}</h3>
+                <p className="font-body text-xs text-muted-foreground leading-relaxed line-clamp-3">{r.text}</p>
               </div>
-              <p className="font-body text-[13px] text-foreground font-medium mt-8">{r.author}</p>
+              <p className="font-body text-xs text-foreground font-medium mt-5">{r.author}</p>
             </div>
           ))}
         </div>
