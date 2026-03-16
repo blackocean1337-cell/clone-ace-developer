@@ -454,30 +454,41 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
               ) : step === 4 ? (
                 <AnalysisStep key="step4" onComplete={() => setStep(5)} />
               ) : step === 5 ? (
-                <motion.div
-                  key="step5"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
-                  transition={{ duration: 0.2 }}
-                  className="px-6 flex-1 flex flex-col items-center justify-center text-center"
-                >
-                  <div className="w-16 h-16 rounded-full bg-fincut-gold/20 flex items-center justify-center mb-6">
-                    <Check size={32} className="text-fincut-gold" />
-                  </div>
-                  <h2 className="font-display text-xl font-bold text-fincut-black mb-2">
-                    O seu tamanho recomendado
-                  </h2>
-                  <p className="font-body text-sm text-muted-foreground mb-6">
-                    Com base nas suas informações, recomendamos:
-                  </p>
-                  <div className="w-24 h-24 rounded-full border-4 border-fincut-black flex items-center justify-center mb-4">
-                    <span className="font-display text-3xl font-bold text-fincut-black">M</span>
-                  </div>
-                  <p className="font-body text-xs text-muted-foreground">
-                    Tamanho ideal para o seu corpo
-                  </p>
-                </motion.div>
+                (() => {
+                  const result = calculateSize(height, weight, heightUnit, weightUnit, selectedBodyType, selectedBellyType);
+                  return (
+                    <motion.div
+                      key="step5"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 20 }}
+                      transition={{ duration: 0.2 }}
+                      className="px-6 flex-1 flex flex-col items-center justify-center text-center"
+                    >
+                      <h2 className="font-display text-xl font-bold text-fincut-black mb-16">
+                        Aqui está o melhor ajuste
+                      </h2>
+
+                      <motion.div
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                        className="bg-fincut-black text-white px-10 py-5 mb-5"
+                      >
+                        <span className="font-display text-3xl font-bold tracking-wider">
+                          Tamanho : {result.size}
+                        </span>
+                      </motion.div>
+
+                      <p className="font-body text-sm text-muted-foreground mb-2">
+                        Confiança: {result.confidence}%
+                      </p>
+                      <p className="font-body text-sm text-muted-foreground max-w-xs leading-relaxed">
+                        A maioria das pessoas com a sua morfologia escolhem este tamanho.
+                      </p>
+                    </motion.div>
+                  );
+                })()
               ) : null}
             </AnimatePresence>
 
