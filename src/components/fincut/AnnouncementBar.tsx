@@ -4,7 +4,7 @@ const AnnouncementBar = () => {
       <div className="animate-marquee whitespace-nowrap flex">
         {[...Array(4)].map((_, i) => (
           <span key={i} className="font-body text-xs tracking-widest text-secondary-foreground mx-8">
-            Aujourd'hui Fincut se réinvente
+            Hoje a Fincut reinventa-se
           </span>
         ))}
       </div>
