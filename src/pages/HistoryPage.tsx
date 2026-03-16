@@ -2,6 +2,7 @@ import SiteHeader from "@/components/fincut/SiteHeader";
 import AnnouncementBar from "@/components/fincut/AnnouncementBar";
 import SiteFooter from "@/components/fincut/SiteFooter";
 import TimelineSection from "@/components/fincut/TimelineSection";
+import BrandManifesto from "@/components/fincut/BrandManifesto";
 
 const HistoryPage = () => {
   return (
@@ -16,6 +17,7 @@ const HistoryPage = () => {
           Da ideia à revolução têxtil — descubra o percurso da Fincut desde a sua génese até aos dias de hoje.
         </p>
       </div>
+      <BrandManifesto />
       <TimelineSection />
       <SiteFooter />
     </div>
