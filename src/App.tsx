@@ -8,6 +8,7 @@ import CartDrawer from "@/components/fincut/CartDrawer";
 import { useCart } from "@/context/CartContext";
 import Index from "./pages/Index.tsx";
 import ProductPage from "./pages/ProductPage.tsx";
+import HistoryPage from "./pages/HistoryPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
