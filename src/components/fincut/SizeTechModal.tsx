@@ -93,6 +93,7 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
     onClose();
     setStep(1);
     setSelectedBodyType("");
+    setSelectedBellyType("");
   };
 
   if (!open) return null;
