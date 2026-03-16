@@ -113,7 +113,10 @@ const PackBuilderModal = ({ open, onClose }: { open: boolean; onClose: () => voi
                     <span className="text-muted-foreground">(sizetech+)</span>
                   </p>
                 </div>
-                <button className="w-14 bg-fincut-gold flex items-center justify-center hover:bg-fincut-gold/90 transition-colors">
+                <button
+                  onClick={() => { onClose(); setSizeTechOpen(true); }}
+                  className="w-14 bg-fincut-gold flex items-center justify-center hover:bg-fincut-gold/90 transition-colors"
+                >
                   <ChevronRight size={20} className="text-fincut-black" />
                 </button>
               </div>
