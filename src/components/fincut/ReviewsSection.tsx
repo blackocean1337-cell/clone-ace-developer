@@ -42,7 +42,7 @@ const ReviewsSection = () => {
     const el = scrollRef.current;
     if (!el) return;
     let animationId: number;
-    let speed = 0.5;
+    let speed = 1.2;
 
     const step = () => {
       if (el.scrollLeft >= el.scrollWidth / 2) {
