@@ -73,8 +73,8 @@ const SiteFooter = () => {
                 placeholder="Seu e-mail"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 min-w-0 bg-transparent border border-fincut-gray/40 px-4 py-3 text-sm font-body text-secondary-foreground placeholder:text-fincut-gray focus:outline-none focus:border-primary"
-              />
+                className="flex-1 min-w-0 bg-transparent border border-fincut-gray/40 px-4 py-3 text-sm font-body text-secondary-foreground placeholder:text-fincut-gray focus:outline-none focus:border-primary" />
+              
               <button className="bg-primary text-primary-foreground px-4 py-3 font-bold text-lg hover:bg-fincut-gold-hover transition-colors">
                 ›
               </button>
@@ -85,7 +85,7 @@ const SiteFooter = () => {
 
       {/* Giant FINCUT logo */}
       <div className="w-full overflow-hidden px-6 lg:px-8">
-        <h2 className="font-display font-black text-secondary-foreground text-[18vw] leading-[0.85] tracking-tighter select-none">
+        <h2 className="font-display font-black text-secondary-foreground text-[18vw] leading-[0.85] tracking-tighter select-none text-center">
           FINCUT
         </h2>
       </div>
@@ -95,11 +95,11 @@ const SiteFooter = () => {
         <div className="text-center mb-3">
           <p className="font-display text-xs font-bold text-secondary-foreground mb-3">Nós aceitamos</p>
           <div className="flex items-center justify-center gap-2 flex-wrap">
-            {["American Express", "Apple Pay", "CB", "Mastercard", "PayPal", "Shop Pay", "Visa", "Klarna"].map((name) => (
-              <div key={name} className="w-10 h-6 bg-secondary-foreground rounded-sm flex items-center justify-center">
+            {["American Express", "Apple Pay", "CB", "Mastercard", "PayPal", "Shop Pay", "Visa", "Klarna"].map((name) =>
+            <div key={name} className="w-10 h-6 bg-secondary-foreground rounded-sm flex items-center justify-center">
                 <span className="text-[6px] font-bold text-fincut-black">{name.slice(0, 4)}</span>
               </div>
-            ))}
+            )}
           </div>
         </div>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-4">
@@ -107,8 +107,8 @@ const SiteFooter = () => {
           <p className="font-body text-[11px] text-fincut-gray">Feito com Brandsystem</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>);
+
 };
 
 export default SiteFooter;
