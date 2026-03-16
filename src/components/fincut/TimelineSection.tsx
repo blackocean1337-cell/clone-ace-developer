@@ -12,16 +12,16 @@ import timelineReal8 from "@/assets/timeline-real-8.webp";
 import timelineReal9 from "@/assets/timeline-real-9.webp";
 
 const events = [
-  { date: "FEVEREIRO DE 2026", title: "Renovação", desc: "A Fincut instala-se nos novos escritórios da BrandSystem (700 m²) e integra plenamente o seu ecossistema: equipas, conhecimentos e ferramentas.", image: timelineReal1 },
-  { date: "JANEIRO DE 2026", title: "Nomeação", desc: "BrandSystem nomeia Hamdi Haben Diretor Artístico para redefinir a visão criativa e estratégica da Fincut.", image: timelineReal2 },
-  { date: "DEZEMBRO DE 2025", title: "Tecnologia", desc: "Criação da tecnologia têxtil Sizetech+. Abertura de uma unidade marítima em França dedicada à Europa.", image: timelineReal3 },
-  { date: "NOVEMBRO DE 2025", title: "Aquisição", desc: "A BrandSystem adquire a totalidade das participações da Fincut para uma visão de longo prazo.", image: timelineReal4 },
-  { date: "SETEMBRO DE 2025", title: "Escritórios", desc: "Abertura dos novos escritórios criativos dedicados ao desenvolvimento da marca e do produto.", image: timelineReal5 },
-  { date: "JULHO DE 2024", title: "Produto", desc: "Desenvolvimento do corte icónico — a t-shirt que se adapta a todas as morfologias.", image: timelineReal6 },
-  { date: "MARÇO DE 2024", title: "Produção", desc: "Nova linha de produção têxtil com tecidos premium e acabamentos de alta qualidade.", image: timelineReal7 },
-  { date: "JULHO DE 2023", title: "Lançamento", desc: "Lançamento oficial da marca Fincut — primeira versão do produto icónico.", image: timelineReal8 },
-  { date: "MAIO DE 2023", title: "Génese", desc: "Thomas e Alex fundam a Fincut com a ambição de reinventar a t-shirt masculina.", image: timelineReal9 },
-];
+{ date: "FEVEREIRO DE 2026", title: "Renovação", desc: "A Fincut instala-se nos novos escritórios da BrandSystem (700 m²) e integra plenamente o seu ecossistema: equipas, conhecimentos e ferramentas.", image: timelineReal1 },
+{ date: "JANEIRO DE 2026", title: "Nomeação", desc: "BrandSystem nomeia Hamdi Haben Diretor Artístico para redefinir a visão criativa e estratégica da Fincut.", image: timelineReal2 },
+{ date: "DEZEMBRO DE 2025", title: "Tecnologia", desc: "Criação da tecnologia têxtil Sizetech+. Abertura de uma unidade marítima em França dedicada à Europa.", image: timelineReal3 },
+{ date: "NOVEMBRO DE 2025", title: "Aquisição", desc: "A BrandSystem adquire a totalidade das participações da Fincut para uma visão de longo prazo.", image: timelineReal4 },
+{ date: "SETEMBRO DE 2025", title: "Escritórios", desc: "Abertura dos novos escritórios criativos dedicados ao desenvolvimento da marca e do produto.", image: timelineReal5 },
+{ date: "JULHO DE 2024", title: "Produto", desc: "Desenvolvimento do corte icónico — a t-shirt que se adapta a todas as morfologias.", image: timelineReal6 },
+{ date: "MARÇO DE 2024", title: "Produção", desc: "Nova linha de produção têxtil com tecidos premium e acabamentos de alta qualidade.", image: timelineReal7 },
+{ date: "JULHO DE 2023", title: "Lançamento", desc: "Lançamento oficial da marca Fincut — primeira versão do produto icónico.", image: timelineReal8 },
+{ date: "MAIO DE 2023", title: "Génese", desc: "Thomas e Alex fundam a Fincut com a ambição de reinventar a t-shirt masculina.", image: timelineReal9 }];
+
 
 const TimelineSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -30,9 +30,9 @@ const TimelineSection = () => {
   };
 
   return (
-    <section id="histoire" className="bg-background py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="histoire" className="bg-background px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto py-0">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground">A nossa história</h2>
+        <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground">​</h2>
         <div className="flex gap-2">
           <button onClick={() => scroll("left")} className="p-2 border border-border hover:border-foreground transition-colors duration-200">
             <ChevronLeft size={18} />
@@ -46,8 +46,8 @@ const TimelineSection = () => {
       {/* Date labels row */}
       <div ref={scrollRef} className="overflow-x-auto scrollbar-hide">
         <div className="flex gap-6 min-w-max pb-1">
-          {events.map((e, i) => (
-            <div key={i} className="w-[300px] sm:w-[360px] flex-shrink-0">
+          {events.map((e, i) =>
+          <div key={i} className="w-[300px] sm:w-[360px] flex-shrink-0">
               <div className="flex items-center gap-3 mb-4">
                 <span className="font-body text-[11px] tracking-wider text-muted-foreground whitespace-nowrap">
                   {e.date}
@@ -57,21 +57,21 @@ const TimelineSection = () => {
               <div className="group cursor-pointer">
                 <div className="overflow-hidden rounded-sm">
                   <img
-                    src={e.image}
-                    alt={e.title}
-                    className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                  />
+                  src={e.image}
+                  alt={e.title}
+                  className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy" />
+                
                 </div>
                 <h3 className="font-display text-lg font-bold text-foreground mt-4">{e.title}</h3>
                 <p className="font-body text-sm text-muted-foreground mt-2 leading-relaxed">{e.desc}</p>
               </div>
             </div>
-          ))}
+          )}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default TimelineSection;
