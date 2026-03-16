@@ -80,6 +80,64 @@ const bellyTypes = [
   },
 ];
 
+const analysisSteps = [
+  "Análise do seu corpo e medidas",
+  "Comparação com os nossos padrões",
+  "Ajustes de conforto",
+];
+
+const AnalysisStep = ({ onComplete }: { onComplete: () => void }) => {
+  const [completed, setCompleted] = useState<number[]>([]);
+
+  useEffect(() => {
+    const timers = analysisSteps.map((_, i) =>
+      setTimeout(() => setCompleted((prev) => [...prev, i]), (i + 1) * 800)
+    );
+    const final = setTimeout(onComplete, 3000);
+    return () => { timers.forEach(clearTimeout); clearTimeout(final); };
+  }, [onComplete]);
+
+  return (
+    <motion.div
+      key="step4"
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 20 }}
+      transition={{ duration: 0.2 }}
+      className="px-6 flex-1"
+    >
+      <h2 className="font-display text-xl font-bold text-fincut-black mb-2">
+        Processo de análise em curso...
+      </h2>
+      <p className="font-body text-sm text-muted-foreground mb-10">
+        Estamos a analisar as suas informações para encontrar o tamanho perfeito.
+      </p>
+
+      <div className="space-y-6">
+        {analysisSteps.map((label, i) => (
+          <div key={i} className="flex items-center gap-4">
+            <div
+              className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                completed.includes(i) ? "bg-fincut-black" : "bg-muted-foreground/30"
+              }`}
+            />
+            <span className="font-body text-sm text-fincut-black flex-1">{label}</span>
+            {completed.includes(i) && (
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                className="w-6 h-6 rounded-full bg-fincut-gold flex items-center justify-center"
+              >
+                <Check size={14} className="text-fincut-black" />
+              </motion.div>
+            )}
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
 const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
   const [step, setStep] = useState(1);
   const [height, setHeight] = useState(175);
