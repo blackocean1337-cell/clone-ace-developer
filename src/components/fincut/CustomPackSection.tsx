@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Plus } from "lucide-react";
 import SizeTechModal from "./SizeTechModal";
+import CartDrawer, { type CartItem } from "./CartDrawer";
 import tshirtWhite from "@/assets/tshirt-white.png";
 import tshirtNavy from "@/assets/tshirt-navy.png";
 import tshirtBlack from "@/assets/tshirt-black.png";
@@ -57,11 +58,12 @@ interface PackBuilderModalProps {
   open: boolean;
   onClose: () => void;
   onOpenSizeTech: () => void;
+  onAddToCart: (colors: string[], size: string) => void;
   initialStep?: number;
   preselectedSize?: string;
 }
 
-const PackBuilderModal = ({ open, onClose, onOpenSizeTech, initialStep = 1, preselectedSize }: PackBuilderModalProps) => {
+const PackBuilderModal = ({ open, onClose, onOpenSizeTech, onAddToCart, initialStep = 1, preselectedSize }: PackBuilderModalProps) => {
   const [step, setStep] = useState(initialStep);
   const [selectedSize, setSelectedSize] = useState(preselectedSize || "M");
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
@@ -321,7 +323,7 @@ const PackBuilderModal = ({ open, onClose, onOpenSizeTech, initialStep = 1, pres
                 </div>
               ) : (
                 <button
-                  onClick={onClose}
+                  onClick={() => onAddToCart(selectedColors, selectedSize)}
                   className="w-full h-14 bg-fincut-black text-white font-display text-sm font-bold tracking-widest uppercase hover:bg-fincut-black/90 transition-colors duration-200"
                 >
                   ADICIONAR AO CARRINHO — {selectedColors.length * pricePerArticle(selectedColors.length)} €
@@ -338,6 +340,8 @@ const PackBuilderModal = ({ open, onClose, onOpenSizeTech, initialStep = 1, pres
 const CustomPackSection = () => {
   const [packBuilderOpen, setPackBuilderOpen] = useState(false);
   const [sizeTechOpen, setSizeTechOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [packInitialStep, setPackInitialStep] = useState(1);
   const [packPreselectedSize, setPackPreselectedSize] = useState<string | undefined>();
 
@@ -354,6 +358,20 @@ const CustomPackSection = () => {
   const handleSizeTechValidate = (size: string) => {
     setSizeTechOpen(false);
     handleOpenPack(2, size);
+  };
+
+  const handleAddToCart = (colors: string[], size: string) => {
+    const price = pricePerArticle(colors.length);
+    setCartItems([{
+      name: "Pack personalizado de t-shirts col rond",
+      size,
+      colors,
+      unitPrice: price,
+      originalUnitPrice: 28,
+      quantity: 1,
+    }]);
+    setPackBuilderOpen(false);
+    setCartOpen(true);
   };
 
   return (
@@ -417,6 +435,7 @@ const CustomPackSection = () => {
         open={packBuilderOpen}
         onClose={() => setPackBuilderOpen(false)}
         onOpenSizeTech={() => { setPackBuilderOpen(false); setSizeTechOpen(true); }}
+        onAddToCart={handleAddToCart}
         initialStep={packInitialStep}
         preselectedSize={packPreselectedSize}
       />
@@ -424,6 +443,12 @@ const CustomPackSection = () => {
         open={sizeTechOpen}
         onClose={handleSizeTechClose}
         onValidate={handleSizeTechValidate}
+      />
+      <CartDrawer
+        open={cartOpen}
+        onClose={() => setCartOpen(false)}
+        items={cartItems}
+        onModifyPack={() => handleOpenPack(2)}
       />
     </>
   );
