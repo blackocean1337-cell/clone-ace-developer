@@ -24,15 +24,31 @@ const lifestyleItems = [
 
 const featureIcons = [Ruler, Droplets, Award];
 
+import reviewPhoto1 from "@/assets/review-photo-1.png";
+import reviewPhoto2 from "@/assets/review-photo-2.png";
+import reviewPhoto3 from "@/assets/review-photo-3.png";
+import reviewPhoto4 from "@/assets/review-photo-4.png";
+import reviewPhoto5 from "@/assets/review-photo-5.png";
+import reviewPhoto6 from "@/assets/review-photo-6.webp";
+import reviewPhoto7 from "@/assets/review-photo-7.png";
+
 const reviews = [
-  { author: "Hervé A.", title: "Produtos de grande qualidade", text: "Produtos de grande qualidade, consegui beneficiar de um desconto muito interessante. As t-shirts são impecáveis.", date: "15/03/2026" },
-  { author: "Fabrice", title: "T-shirt soberba", text: "T-shirt soberba, material muito agradável de vestir e muito bem cortada. Já comprei várias vezes.", date: "15/03/2026" },
-  { author: "R F", title: "Muito bom produto", text: "Muito bom produto. Entrega rápida.", date: "15/03/2026" },
-  { author: "Catherine R.", title: "Excelente produto que cumpre promessas!", text: "Excelente produto que cumpre promessas!", date: "15/03/2026" },
-  { author: "Daniel P.", title: "Mercadoria de muito boa qualidade", text: "Mercadoria de muito boa qualidade.", date: "14/03/2026" },
-  { author: "Renaud W.", title: "Tudo correu na perfeição", text: "Tudo correu na perfeição.", date: "14/03/2026" },
-  { author: "Milette", title: "No topo", text: "No topo, como sempre…", date: "14/03/2026" },
-  { author: "Eric", title: "T-shirt bem cortada", text: "T-shirt bem cortada, material agradável. Prazos de entrega corretos.", date: "13/03/2026" },
+  { author: "Kevin F.", title: "La coupe est incroyable", text: "A coupe é incrível, o meu primeiro pack comprado, já estou conquistado e penso comprar mais cores e polos. Os que hesitam, vão de olhos fechados.", date: "20/12/2025", stars: 5, image: reviewPhoto1, article: "Pack 4", verified: true },
+  { author: "Vincent R.", title: "Tee shirt simpática", text: "Tee shirt simpática. Infelizmente o XXXL é demasiado grande e o XXL é ligeiramente apertado para mim. De resto boa matéria, sente-se que é qualidade.", date: "07/12/2025", stars: 4, image: reviewPhoto2, article: "3XL", verified: true },
+  { author: "Raphael F.", title: "Muito agradável de usar", text: "Muito agradável de usar, valoriza bem.", date: "14/11/2025", stars: 5, image: reviewPhoto3, article: "M / Bordeaux", verified: true },
+  { author: "Dylan H.", title: "Perfeito", text: "Perfeito", date: "23/09/2025", stars: 5, image: reviewPhoto4, article: "M", verified: true },
+  { author: "Belhacene N.", title: "Perfeito", text: "Perfeito", date: "07/09/2025", stars: 5, image: reviewPhoto5, article: "XL", verified: true },
+  { author: "Frederic G.", title: "Corte impecável", text: "Corte impecável e matéria muito agradável de usar", date: "16/08/2025", stars: 5, image: reviewPhoto6, article: "M", verified: true },
+  { author: "Marco S.", title: "Qualidade top", text: "Qualidade top, entrega rápida. Recomendo vivamente a todos.", date: "02/08/2025", stars: 5, image: reviewPhoto7, article: "L", verified: true },
+  { author: "Hervé A.", title: "Produtos de grande qualidade", text: "Produtos de grande qualidade, consegui beneficiar de um desconto muito interessante. As t-shirts são impecáveis.", date: "15/03/2026", stars: 5, image: null, article: "Pack 6", verified: true },
+  { author: "Fabrice", title: "T-shirt soberba", text: "T-shirt soberba, material muito agradável de vestir e muito bem cortada. Já comprei várias vezes.", date: "15/03/2026", stars: 5, image: null, article: "M", verified: true },
+  { author: "Catherine R.", title: "Excelente produto!", text: "Excelente produto que cumpre promessas!", date: "15/03/2026", stars: 5, image: null, article: "S", verified: true },
+  { author: "Daniel P.", title: "Muito boa qualidade", text: "Mercadoria de muito boa qualidade.", date: "14/03/2026", stars: 5, image: null, article: "L", verified: true },
+  { author: "Renaud W.", title: "Tudo correu na perfeição", text: "Tudo correu na perfeição.", date: "14/03/2026", stars: 5, image: null, article: "XL", verified: true },
+  { author: "Milette", title: "No topo", text: "No topo, como sempre…", date: "14/03/2026", stars: 4, image: null, article: "M", verified: true },
+  { author: "Eric", title: "T-shirt bem cortada", text: "T-shirt bem cortada, material agradável. Prazos de entrega corretos.", date: "13/03/2026", stars: 5, image: null, article: "2XL", verified: true },
+  { author: "Antoine L.", title: "Muito satisfeito", text: "Muito satisfeito com a qualidade e o corte. Material premium que se sente na pele.", date: "10/03/2026", stars: 5, image: null, article: "M", verified: true },
+  { author: "Pierre M.", title: "Recomendo", text: "Comprei 3 packs diferentes, todas as cores são lindas. A qualidade mantém-se lavagem após lavagem.", date: "08/03/2026", stars: 5, image: null, article: "Pack 3", verified: true },
 ];
 
 const ProductPage = () => {
@@ -420,43 +436,81 @@ const ProductPage = () => {
       {/* Trustpilot Reviews */}
       <ReviewsSection />
 
+      {/* Big Reviews Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-8">
-          <p className="font-display text-lg font-bold text-foreground mb-1">
-            Alfaiate de todos os corpos para todos os momentos
-          </p>
-          <p className="font-body text-sm text-muted-foreground max-w-xl mx-auto">
-            Junte-se a milhares de homens que escolheram adotar a Fincut no dia a dia para um estilo cuidado e um conforto incomparável.
-          </p>
-        </div>
-
-        <div className="flex items-center justify-center gap-3 mb-8">
-          <span className="font-body text-sm font-semibold text-foreground">Trustpilot</span>
-          <span className="bg-[#00b67a] text-white px-2 py-0.5 text-xs font-bold rounded-sm">4.5</span>
-          <div className="flex gap-0.5">
-            {[1, 2, 3, 4].map(i => (
-              <Star key={i} size={16} fill="#00b67a" className="text-[#00b67a]" />
-            ))}
-            <Star size={16} fill="#00b67a" className="text-[#00b67a] opacity-50" />
+        {/* Header */}
+        <div className="text-center mb-10">
+          <h2 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">
+            +100.000 homens já carregam Fincut
+          </h2>
+          <div className="flex items-center justify-center gap-2">
+            <div className="flex gap-0.5">
+              {[1, 2, 3, 4, 5].map(i => (
+                <Star key={i} size={18} fill="#00b67a" className="text-[#00b67a]" />
+              ))}
+            </div>
+            <span className="font-body text-sm font-semibold text-foreground">4.5</span>
+            <span className="font-body text-xs text-muted-foreground">| EM 6709 NOTAR</span>
           </div>
-          <span className="font-body text-xs text-muted-foreground">Baseado em 6709 avaliações</span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Subheader */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-2">
+            <div className="flex gap-0.5">
+              {[1, 2, 3, 4].map(i => (
+                <Star key={i} size={20} fill="#00b67a" className="text-[#00b67a]" />
+              ))}
+              <Star size={20} fill="#00b67a" className="text-[#00b67a] opacity-40" />
+            </div>
+            <span className="font-body text-sm text-foreground font-medium">5,325 Avis</span>
+          </div>
+          <button className="border border-border px-4 py-2 font-body text-sm text-foreground hover:bg-muted transition-colors">
+            Escrever um aviso
+          </button>
+        </div>
+
+        {/* Reviews grid - masonry style */}
+        <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
           {reviews.map((review, i) => (
             <div
               key={i}
-              className="border border-border p-5 space-y-2 hover:border-muted-foreground transition-colors duration-200"
+              className="break-inside-avoid border border-border rounded-sm overflow-hidden hover:shadow-md transition-shadow duration-200"
             >
-              <div className="flex gap-0.5">
-                {[1, 2, 3, 4, 5].map(s => (
-                  <Star key={s} size={14} fill="#00b67a" className="text-[#00b67a]" />
-                ))}
+              {review.image && (
+                <img
+                  src={review.image}
+                  alt={review.author}
+                  className="w-full aspect-[4/5] object-cover"
+                  loading="lazy"
+                />
+              )}
+              <div className="p-4 space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="font-body text-sm font-semibold text-foreground">{review.author}</span>
+                  {review.verified && (
+                    <span className="flex items-center gap-0.5 text-[#00b67a] text-xs">
+                      <svg viewBox="0 0 20 20" className="w-3.5 h-3.5 fill-[#00b67a]">
+                        <path d="M10 0a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.3 7.7l-5 5a1 1 0 0 1-1.4 0l-2-2a1 1 0 1 1 1.4-1.4L8.6 11l4.3-4.3a1 1 0 0 1 1.4 1.4z" />
+                      </svg>
+                      Verificado
+                    </span>
+                  )}
+                </div>
+                <p className="font-body text-[11px] text-muted-foreground">{review.date}</p>
+                <div className="flex gap-0.5">
+                  {[...Array(5)].map((_, s) => (
+                    <Star key={s} size={14} fill={s < review.stars ? "#00b67a" : "#e5e7eb"} className={s < review.stars ? "text-[#00b67a]" : "text-border"} />
+                  ))}
+                </div>
+                <p className="font-body text-sm text-foreground leading-relaxed">{review.text}</p>
+                {review.article && (
+                  <div className="pt-2">
+                    <p className="font-body text-[10px] text-muted-foreground uppercase tracking-wider">Tipo de artigo:</p>
+                    <p className="font-body text-xs text-foreground font-medium">{review.article}</p>
+                  </div>
+                )}
               </div>
-              <p className="font-body text-[10px] text-muted-foreground">{review.date}</p>
-              <p className="font-body text-sm font-semibold text-foreground">{review.title}</p>
-              <p className="font-body text-xs text-muted-foreground line-clamp-3">{review.text}</p>
-              <p className="font-body text-xs font-medium text-foreground">{review.author}</p>
             </div>
           ))}
         </div>
