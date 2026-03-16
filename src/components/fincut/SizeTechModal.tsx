@@ -351,22 +351,59 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
                     ))}
                   </div>
                 </motion.div>
+              ) : step === 4 ? (
+                <AnalysisStep key="step4" onComplete={() => setStep(5)} />
+              ) : step === 5 ? (
+                <motion.div
+                  key="step5"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.2 }}
+                  className="px-6 flex-1 flex flex-col items-center justify-center text-center"
+                >
+                  <div className="w-16 h-16 rounded-full bg-fincut-gold/20 flex items-center justify-center mb-6">
+                    <Check size={32} className="text-fincut-gold" />
+                  </div>
+                  <h2 className="font-display text-xl font-bold text-fincut-black mb-2">
+                    O seu tamanho recomendado
+                  </h2>
+                  <p className="font-body text-sm text-muted-foreground mb-6">
+                    Com base nas suas informações, recomendamos:
+                  </p>
+                  <div className="w-24 h-24 rounded-full border-4 border-fincut-black flex items-center justify-center mb-4">
+                    <span className="font-display text-3xl font-bold text-fincut-black">M</span>
+                  </div>
+                  <p className="font-body text-xs text-muted-foreground">
+                    Tamanho ideal para o seu corpo
+                  </p>
+                </motion.div>
               ) : null}
             </AnimatePresence>
 
             {/* Footer button */}
-            <div className="px-6 pb-6 mt-auto pt-4">
-              <button
-                onClick={() => {
-                  if (step === 1) setStep(2);
-                  else if (step === 2) setStep(3);
-                  else handleClose();
-                }}
-                className="w-full h-14 bg-fincut-black text-white font-display text-sm font-bold tracking-widest uppercase hover:bg-fincut-black/90 transition-colors duration-200"
-              >
-                SEGUINTE
-              </button>
-            </div>
+            {step !== 4 && (
+              <div className="px-6 pb-6 mt-auto pt-4">
+                <button
+                  onClick={() => {
+                    if (step === 1) setStep(2);
+                    else if (step === 2) setStep(3);
+                    else if (step === 3) setStep(4);
+                    else handleClose();
+                  }}
+                  className="w-full h-14 bg-fincut-black text-white font-display text-sm font-bold tracking-widest uppercase hover:bg-fincut-black/90 transition-colors duration-200"
+                >
+                  {step === 5 ? "CONFIRMAR" : "SEGUINTE"}
+                </button>
+              </div>
+            )}
+            {step === 4 && (
+              <div className="px-6 pb-6 mt-auto pt-4">
+                <div className="w-full h-14 bg-muted flex items-center justify-center font-display text-sm font-bold tracking-widest uppercase text-muted-foreground">
+                  ANÁLISE EM CURSO
+                </div>
+              </div>
+            )}
           </motion.div>
         </motion.div>
       )}
