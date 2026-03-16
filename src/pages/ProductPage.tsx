@@ -389,48 +389,47 @@ const ProductPage = () => {
       {/* Custom Pack Section */}
       <CustomPackSection />
 
-        <section className="mt-20">
-          <div className="text-center mb-8">
-            <p className="font-display text-lg font-bold text-foreground mb-1">
-              Alfaiate de todos os corpos para todos os momentos
-            </p>
-            <p className="font-body text-sm text-muted-foreground max-w-xl mx-auto">
-              Junte-se a milhares de homens que escolheram adotar a Fincut no dia a dia para um estilo cuidado e um conforto incomparável.
-            </p>
-          </div>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="text-center mb-8">
+          <p className="font-display text-lg font-bold text-foreground mb-1">
+            Alfaiate de todos os corpos para todos os momentos
+          </p>
+          <p className="font-body text-sm text-muted-foreground max-w-xl mx-auto">
+            Junte-se a milhares de homens que escolheram adotar a Fincut no dia a dia para um estilo cuidado e um conforto incomparável.
+          </p>
+        </div>
 
-          <div className="flex items-center justify-center gap-3 mb-8">
-            <span className="font-body text-sm font-semibold text-foreground">Trustpilot</span>
-            <span className="bg-[#00b67a] text-white px-2 py-0.5 text-xs font-bold rounded-sm">4.5</span>
-            <div className="flex gap-0.5">
-              {[1, 2, 3, 4].map(i => (
-                <Star key={i} size={16} fill="#00b67a" className="text-[#00b67a]" />
-              ))}
-              <Star size={16} fill="#00b67a" className="text-[#00b67a] opacity-50" />
-            </div>
-            <span className="font-body text-xs text-muted-foreground">Baseado em 6709 avaliações</span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {reviews.map((review, i) => (
-              <div
-                key={i}
-                className="border border-border p-5 space-y-2 hover:border-muted-foreground transition-colors duration-200"
-              >
-                <div className="flex gap-0.5">
-                  {[1, 2, 3, 4, 5].map(s => (
-                    <Star key={s} size={14} fill="#00b67a" className="text-[#00b67a]" />
-                  ))}
-                </div>
-                <p className="font-body text-[10px] text-muted-foreground">{review.date}</p>
-                <p className="font-body text-sm font-semibold text-foreground">{review.title}</p>
-                <p className="font-body text-xs text-muted-foreground line-clamp-3">{review.text}</p>
-                <p className="font-body text-xs font-medium text-foreground">{review.author}</p>
-              </div>
+        <div className="flex items-center justify-center gap-3 mb-8">
+          <span className="font-body text-sm font-semibold text-foreground">Trustpilot</span>
+          <span className="bg-[#00b67a] text-white px-2 py-0.5 text-xs font-bold rounded-sm">4.5</span>
+          <div className="flex gap-0.5">
+            {[1, 2, 3, 4].map(i => (
+              <Star key={i} size={16} fill="#00b67a" className="text-[#00b67a]" />
             ))}
+            <Star size={16} fill="#00b67a" className="text-[#00b67a] opacity-50" />
           </div>
-        </section>
-      </main>
+          <span className="font-body text-xs text-muted-foreground">Baseado em 6709 avaliações</span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {reviews.map((review, i) => (
+            <div
+              key={i}
+              className="border border-border p-5 space-y-2 hover:border-muted-foreground transition-colors duration-200"
+            >
+              <div className="flex gap-0.5">
+                {[1, 2, 3, 4, 5].map(s => (
+                  <Star key={s} size={14} fill="#00b67a" className="text-[#00b67a]" />
+                ))}
+              </div>
+              <p className="font-body text-[10px] text-muted-foreground">{review.date}</p>
+              <p className="font-body text-sm font-semibold text-foreground">{review.title}</p>
+              <p className="font-body text-xs text-muted-foreground line-clamp-3">{review.text}</p>
+              <p className="font-body text-xs font-medium text-foreground">{review.author}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <SizeTechModal open={sizeTechOpen} onClose={() => setSizeTechOpen(false)} />
       <SiteFooter />
