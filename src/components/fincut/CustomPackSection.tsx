@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Plus } from "lucide-react";
 import SizeTechModal from "./SizeTechModal";
 import CartDrawer, { type CartItem } from "./CartDrawer";
