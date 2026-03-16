@@ -1,15 +1,12 @@
-import tshirtBlack from "@/assets/tshirt-black.png";
-import tshirtWhite from "@/assets/tshirt-white.png";
-import tshirtNavy from "@/assets/tshirt-navy.png";
-import tshirtKaki from "@/assets/tshirt-kaki.png";
+import { iconiqueProducts } from "@/data/products";
 import ProductCard from "./ProductCard";
 
-const products = [
-  { image: tshirtBlack, name: "Le t-shirt Iconique", color: "Noir", price: "18 €" },
-  { image: tshirtWhite, name: "Le t-shirt Iconique", color: "Blanc", price: "18 €" },
-  { image: tshirtNavy, name: "Le t-shirt Iconique", color: "Marine", price: "18 €" },
-  { image: tshirtKaki, name: "Le t-shirt Iconique", color: "Kaki", price: "18 €" },
-];
+const colorLabels: Record<string, string> = {
+  "t-shirt-tech": "Noir",
+  "t-shirt-blanc": "Blanc",
+  "t-shirt-navy": "Marine",
+  "t-shirt-kaki": "Kaki",
+};
 
 const IconiqueSection = () => {
   return (
@@ -18,13 +15,14 @@ const IconiqueSection = () => {
       <p className="font-body text-sm text-muted-foreground mt-1">Plus d'1 million de t-shirts vendus</p>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
-        {products.map((p, i) => (
+        {iconiqueProducts.map((p) => (
           <ProductCard
-            key={i}
-            image={p.image}
-            name={`${p.name} — ${p.color}`}
-            price={p.price}
-            darkBg={p.color === "Noir"}
+            key={p.slug}
+            image={p.cardImage}
+            name={`${p.name} — ${colorLabels[p.slug] || ""}`}
+            price={p.priceLabel}
+            darkBg={p.slug === "t-shirt-tech"}
+            slug={p.slug}
           />
         ))}
       </div>

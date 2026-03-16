@@ -1,46 +1,13 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
 import { ChevronRight, ChevronLeft, Truck, Star, Ruler, Droplets, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnnouncementBar from "@/components/fincut/AnnouncementBar";
 import SiteHeader from "@/components/fincut/SiteHeader";
 import SiteFooter from "@/components/fincut/SiteFooter";
+import { getProductBySlug } from "@/data/products";
 
-import productBlackFront from "@/assets/product-black-front.jpg";
-import productModel1 from "@/assets/product-model-1.jpg";
-import productWhiteBack from "@/assets/product-white-back.jpg";
-import productModel2 from "@/assets/product-model-2.jpg";
-import productBlackBack from "@/assets/product-black-back.jpg";
-import productNavy from "@/assets/product-navy.jpg";
-import productKaki from "@/assets/product-kaki.jpg";
-import productWhiteFront from "@/assets/product-white-front.png";
-
-const images = [
-  productBlackFront,
-  productModel1,
-  productWhiteBack,
-  productModel2,
-  productBlackBack,
-  productNavy,
-  productKaki,
-  productWhiteFront,
-];
-
-const colors = [
-  { name: "Noir", hex: "#1a1a1a" },
-  { name: "Blanc", hex: "#f5f5f0" },
-  { name: "Bleu marine", hex: "#2c3e6b" },
-  { name: "Kaki", hex: "#5c6b4e" },
-  { name: "Gris", hex: "#9b9b9b" },
-  { name: "Rouge", hex: "#c0392b" },
-  { name: "Bordeaux", hex: "#6b2d3e" },
-  { name: "Bleu ciel", hex: "#8fa8c8" },
-  { name: "Saumon", hex: "#d4816b" },
-  { name: "Moutarde", hex: "#d4a53c" },
-  { name: "Turquoise", hex: "#8fcac0" },
-];
-
-const sizes = ["S", "M", "L", "XL", "2XL", "3XL", "4XL"];
+const featureIcons = [Ruler, Droplets, Award];
 
 const reviews = [
   { author: "Hervé A.", title: "Produits de grande qualité", text: "Produits de grande qualité, j'ai pu bénéficier d'une ristourne très intéressante. Les t-shirts sont impeccables.", date: "15/03/2026" },
@@ -54,12 +21,24 @@ const reviews = [
 ];
 
 const ProductPage = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const product = getProductBySlug(slug || "");
+
   const [selectedImage, setSelectedImage] = useState(0);
-  const [selectedColor, setSelectedColor] = useState("Noir");
-  const [selectedSize, setSelectedSize] = useState("S");
+  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedSize, setSelectedSize] = useState("");
   const [selectedQuantity, setSelectedQuantity] = useState("unite");
   const [openAccordion, setOpenAccordion] = useState<string | null>("description");
   const [countdown, setCountdown] = useState({ hours: 13, minutes: 39 });
+
+  useEffect(() => {
+    if (product) {
+      setSelectedColor(product.colors[0]?.name || "");
+      setSelectedSize(product.sizes[0] || "");
+      setSelectedImage(0);
+      window.scrollTo(0, 0);
+    }
+  }, [slug, product]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -74,11 +53,13 @@ const ProductPage = () => {
     return () => clearInterval(timer);
   }, []);
 
+  if (!product) return <Navigate to="/" replace />;
+
   const quantityOptions = [
-    { id: "unite", label: "UNITÉ", price: "28 €", sublabel: null, badge: null },
-    { id: "pack2", label: "PACK DE 2", price: "28 €/unité", sublabel: "Livraison offerte", badge: null },
-    { id: "pack3", label: "PACK DE 3", price: "25 €/unité", sublabel: "Livraison offerte", badge: null },
-    { id: "pack4", label: "PACK DE 4", price: "22,25 €/unité", sublabel: "Livraison offerte", badge: "MEILLEURE VENTE" },
+    { id: "unite", label: "UNITÉ", price: `${product.price} €`, sublabel: null, badge: null },
+    { id: "pack2", label: "PACK DE 2", price: `${product.price} €/unité`, sublabel: "Livraison offerte", badge: null },
+    { id: "pack3", label: "PACK DE 3", price: `${Math.round(product.price * 0.89)} €/unité`, sublabel: "Livraison offerte", badge: null },
+    { id: "pack4", label: "PACK DE 4", price: `${(product.price * 0.79).toFixed(2).replace(".", ",")} €/unité`, sublabel: "Livraison offerte", badge: "MEILLEURE VENTE" },
     { id: "custom", label: "Composez votre pack", price: null, sublabel: "Jusqu'à 18 €/t-shirts", badge: null },
   ];
 
@@ -88,10 +69,9 @@ const ProductPage = () => {
       title: "Description",
       content: (
         <div className="space-y-3 font-body text-sm text-muted-foreground leading-relaxed">
-          <p className="font-semibold text-foreground">L'iconique, perfectionné.</p>
-          <p>Une <strong className="text-foreground">coupe ajustée</strong>, parfaitement maîtrisée. Il tombe juste, structure la silhouette et s'adapte naturellement à toutes les morphologies.</p>
-          <p>Il offre une <strong className="text-foreground">douceur remarquable</strong>, une tenue impeccable et une résistance durable. L'étiquette intérieure imprimée remplace les classiques, pour un <strong className="text-foreground">confort sans la moindre irritation</strong>.</p>
-          <p>Un essentiel absolu. Intemporel. Incontournable.</p>
+          {product.description.map((p, i) => (
+            <p key={i} className={i === 0 ? "font-semibold text-foreground" : ""}>{p}</p>
+          ))}
         </div>
       ),
     },
@@ -102,14 +82,10 @@ const ProductPage = () => {
         <div className="space-y-3 font-body text-sm text-muted-foreground leading-relaxed">
           <p className="font-semibold text-foreground">Matières & Fabrication :</p>
           <ul className="space-y-1">
-            <li>• 72% coton peigné, 28% Sorona®</li>
-            <li>• S'adapte à votre morphologie</li>
-            <li>• Tissu doux, résistant</li>
-            <li>• Étiquette imprimée</li>
+            {product.materials.map((m, i) => <li key={i}>• {m}</li>)}
           </ul>
           <p className="font-semibold text-foreground mt-4">Entretien :</p>
-          <p>Nous vous recommandons <strong className="text-foreground">un lavage à froid</strong> et un séchage à plat, ou à <strong className="text-foreground">basse température en machine.</strong></p>
-          <p>Un léger rétrécissement d'environ 5% peut survenir au séchage en machine.</p>
+          {product.care.map((c, i) => <p key={i}>{c}</p>)}
         </div>
       ),
     },
@@ -135,9 +111,9 @@ const ProductPage = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16">
         {/* Breadcrumb */}
         <nav className="mb-6 font-body text-xs tracking-wider text-muted-foreground uppercase">
-          <Link to="/" className="hover:text-foreground transition-colors">T-shirt</Link>
+          <Link to="/" className="hover:text-foreground transition-colors">{product.category}</Link>
           <span className="mx-1">/</span>
-          <span>Col rond</span>
+          <span>{product.collar}</span>
           <span className="mx-1">/</span>
           <span className="underline text-foreground">Unité</span>
         </nav>
@@ -147,12 +123,12 @@ const ProductPage = () => {
           {/* Left: Image Gallery */}
           <div className="flex gap-3">
             {/* Thumbnails */}
-            <div className="hidden md:flex flex-col gap-2 w-20 flex-shrink-0">
-              {images.map((img, i) => (
+            <div className="hidden md:flex flex-col gap-2 w-20 flex-shrink-0 max-h-[600px] overflow-y-auto scrollbar-hide">
+              {product.galleryImages.map((img, i) => (
                 <button
                   key={i}
                   onClick={() => setSelectedImage(i)}
-                  className={`w-20 h-20 border overflow-hidden transition-all duration-200 ${
+                  className={`w-20 h-20 border overflow-hidden transition-all duration-200 flex-shrink-0 ${
                     selectedImage === i
                       ? "border-foreground"
                       : "border-border hover:border-muted-foreground"
@@ -168,8 +144,8 @@ const ProductPage = () => {
               <AnimatePresence mode="wait">
                 <motion.img
                   key={selectedImage}
-                  src={images[selectedImage]}
-                  alt="T-shirt Iconique"
+                  src={product.galleryImages[selectedImage]}
+                  alt={product.name}
                   className="w-full h-full object-contain"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -178,7 +154,6 @@ const ProductPage = () => {
                 />
               </AnimatePresence>
 
-              {/* Mobile nav arrows */}
               <button
                 onClick={() => setSelectedImage(i => Math.max(0, i - 1))}
                 className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-background/80 flex items-center justify-center lg:hidden"
@@ -186,15 +161,14 @@ const ProductPage = () => {
                 <ChevronLeft size={16} />
               </button>
               <button
-                onClick={() => setSelectedImage(i => Math.min(images.length - 1, i + 1))}
+                onClick={() => setSelectedImage(i => Math.min(product.galleryImages.length - 1, i + 1))}
                 className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-background/80 flex items-center justify-center lg:hidden"
               >
                 <ChevronRight size={16} />
               </button>
 
-              {/* Mobile dots */}
               <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 lg:hidden">
-                {images.map((_, i) => (
+                {product.galleryImages.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setSelectedImage(i)}
@@ -209,19 +183,17 @@ const ProductPage = () => {
 
           {/* Right: Product Info */}
           <div className="space-y-6">
-            {/* Title + Price + Badge */}
             <div>
               <div className="flex items-start justify-between">
                 <h1 className="font-display text-2xl md:text-3xl font-bold text-foreground">
-                  Le t-shirt Iconique
+                  {product.name}
                 </h1>
                 <span className="font-display text-2xl md:text-3xl font-bold text-foreground">
-                  28 €
+                  {product.priceLabel}
                 </span>
               </div>
 
               <div className="flex items-center justify-between mt-3">
-                {/* Trustpilot */}
                 <div className="flex items-center gap-2">
                   <span className="bg-[#00b67a] text-white px-2 py-1 text-xs font-bold flex items-center gap-1 rounded-sm">
                     4.5 <Star size={12} fill="white" />
@@ -233,27 +205,23 @@ const ProductPage = () => {
                   </div>
                 </div>
 
-                {/* Badge */}
                 <span className="border border-foreground px-3 py-1 font-display text-xs font-bold tracking-wider uppercase">
-                  L'ICONIQUE
+                  {product.badge}
                 </span>
               </div>
             </div>
 
             {/* Features */}
             <div className="space-y-3 py-2">
-              <div className="flex items-center gap-3 font-body text-sm text-foreground">
-                <Ruler size={18} className="text-muted-foreground flex-shrink-0" />
-                S'adapte à votre morphologie
-              </div>
-              <div className="flex items-center gap-3 font-body text-sm text-foreground">
-                <Droplets size={18} className="text-muted-foreground flex-shrink-0" />
-                Doux et respirant pour un confort quotidien
-              </div>
-              <div className="flex items-center gap-3 font-body text-sm text-foreground">
-                <Award size={18} className="text-muted-foreground flex-shrink-0" />
-                Le T-shirt qui vous met en valeur
-              </div>
+              {product.features.map((f, i) => {
+                const Icon = featureIcons[i] || Award;
+                return (
+                  <div key={i} className="flex items-center gap-3 font-body text-sm text-foreground">
+                    <Icon size={18} className="text-muted-foreground flex-shrink-0" />
+                    {f}
+                  </div>
+                );
+              })}
             </div>
 
             {/* Quantity selector */}
@@ -270,7 +238,7 @@ const ProductPage = () => {
                       selectedQuantity === opt.id
                         ? "border-foreground bg-foreground text-background"
                         : "border-border hover:border-muted-foreground"
-                    } ${opt.id === "pack4" ? "col-span-1 sm:col-span-1" : ""}`}
+                    }`}
                   >
                     {opt.badge && (
                       <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-fincut-gold text-primary-foreground text-[9px] font-bold px-2 py-0.5 uppercase tracking-wider whitespace-nowrap">
@@ -305,7 +273,7 @@ const ProductPage = () => {
                 Choisissez votre couleur : <span className="font-normal">{selectedColor}</span>
               </h3>
               <div className="flex flex-wrap gap-2">
-                {colors.map(c => (
+                {product.colors.map(c => (
                   <button
                     key={c.name}
                     onClick={() => setSelectedColor(c.name)}
@@ -327,7 +295,7 @@ const ProductPage = () => {
                 Choisissez votre taille :
               </h3>
               <div className="grid grid-cols-5 gap-2">
-                {sizes.map(s => (
+                {product.sizes.map(s => (
                   <button
                     key={s}
                     onClick={() => setSelectedSize(s)}
@@ -353,7 +321,7 @@ const ProductPage = () => {
             <button className="w-full h-14 bg-foreground text-background font-display text-sm font-bold tracking-widest uppercase hover:bg-foreground/90 transition-colors duration-200 flex items-center justify-center gap-2">
               AJOUTER AU PANIER
               <span className="text-muted-foreground/60">|</span>
-              28 €
+              {product.priceLabel}
             </button>
 
             {/* Delivery info */}
@@ -370,7 +338,7 @@ const ProductPage = () => {
               </div>
             </div>
 
-            {/* Accordion sections */}
+            {/* Accordion */}
             <div className="border-t border-border">
               {accordionSections.map(section => (
                 <div key={section.id} className="border-b border-border">
@@ -407,7 +375,7 @@ const ProductPage = () => {
           </div>
         </div>
 
-        {/* Trustpilot Reviews Section */}
+        {/* Trustpilot Reviews */}
         <section className="mt-20">
           <div className="text-center mb-8">
             <p className="font-display text-lg font-bold text-foreground mb-1">

@@ -1,19 +1,7 @@
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import tshirtBlack from "@/assets/tshirt-black.png";
-import poloBlack from "@/assets/polo-black.png";
-import tshirtVneck from "@/assets/tshirt-vneck.png";
-import tshirtLongsleeve from "@/assets/tshirt-longsleeve.png";
-import pullBlack from "@/assets/pull-black.png";
+import { vestiaireProducts } from "@/data/products";
 import ProductCard from "./ProductCard";
-
-const products = [
-  { image: tshirtBlack, name: "Le t-shirt Iconique", price: "18 €" },
-  { image: poloBlack, name: "Le Polo", price: "25 €" },
-  { image: tshirtVneck, name: "Le t-shirt col V", price: "18 €" },
-  { image: tshirtLongsleeve, name: "Le t-shirt Manches Longues", price: "30 €" },
-  { image: pullBlack, name: "Le Pull", price: "55 €" },
-];
 
 const VestiaireSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -39,9 +27,9 @@ const VestiaireSection = () => {
       </div>
 
       <div ref={scrollRef} className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-hide pb-4">
-        {products.map((p, i) => (
-          <div key={i} className="min-w-[200px] sm:min-w-[240px] flex-shrink-0">
-            <ProductCard image={p.image} name={p.name} price={p.price} darkBg />
+        {vestiaireProducts.map((p) => (
+          <div key={p.slug} className="min-w-[200px] sm:min-w-[240px] flex-shrink-0">
+            <ProductCard image={p.cardImage} name={p.name} price={p.priceLabel} darkBg slug={p.slug} />
           </div>
         ))}
       </div>
