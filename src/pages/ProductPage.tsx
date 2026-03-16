@@ -345,92 +345,92 @@ const ProductPage = () => {
               </div>
             </div>
 
-            {/* FAQ Accordions - 2 column grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8">
-              {accordionSections.map(section => (
-                <div key={section.id} className="border-b border-border">
-                  <button
-                    onClick={() => setOpenAccordion(openAccordion === section.id ? null : section.id)}
-                    className="w-full flex items-center justify-between py-5 font-display text-base font-semibold text-foreground hover:text-muted-foreground transition-colors duration-200"
-                  >
-                    {section.title}
-                    <ChevronRight
-                      size={16}
-                      className={`transition-transform duration-200 ${
-                        openAccordion === section.id ? "-rotate-90" : "rotate-90"
-                      }`}
-                    />
-                  </button>
-                  <AnimatePresence>
-                    {openAccordion === section.id && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="pb-5">{section.content}</div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
-
-        {/* Before/After Section */}
-        <div className="mt-16 -mx-4 sm:-mx-6 lg:-mx-8">
-          <BeforeAfterSection />
-        </div>
-
-        {/* Custom Pack Section */}
-        <div className="mt-16 -mx-4 sm:-mx-6 lg:-mx-8">
-          <CustomPackSection />
-        </div>
-        <section className="mt-20">
-          <div className="text-center mb-8">
-            <p className="font-display text-lg font-bold text-foreground mb-1">
-              Alfaiate de todos os corpos para todos os momentos
-            </p>
-            <p className="font-body text-sm text-muted-foreground max-w-xl mx-auto">
-              Junte-se a milhares de homens que escolheram adotar a Fincut no dia a dia para um estilo cuidado e um conforto incomparável.
-            </p>
-          </div>
-
-          <div className="flex items-center justify-center gap-3 mb-8">
-            <span className="font-body text-sm font-semibold text-foreground">Trustpilot</span>
-            <span className="bg-[#00b67a] text-white px-2 py-0.5 text-xs font-bold rounded-sm">4.5</span>
-            <div className="flex gap-0.5">
-              {[1, 2, 3, 4].map(i => (
-                <Star key={i} size={16} fill="#00b67a" className="text-[#00b67a]" />
-              ))}
-              <Star size={16} fill="#00b67a" className="text-[#00b67a] opacity-50" />
-            </div>
-            <span className="font-body text-xs text-muted-foreground">Baseado em 6709 avaliações</span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {reviews.map((review, i) => (
-              <div
-                key={i}
-                className="border border-border p-5 space-y-2 hover:border-muted-foreground transition-colors duration-200"
-              >
-                <div className="flex gap-0.5">
-                  {[1, 2, 3, 4, 5].map(s => (
-                    <Star key={s} size={14} fill="#00b67a" className="text-[#00b67a]" />
-                  ))}
-                </div>
-                <p className="font-body text-[10px] text-muted-foreground">{review.date}</p>
-                <p className="font-body text-sm font-semibold text-foreground">{review.title}</p>
-                <p className="font-body text-xs text-muted-foreground line-clamp-3">{review.text}</p>
-                <p className="font-body text-xs font-medium text-foreground">{review.author}</p>
-              </div>
-            ))}
-          </div>
-        </section>
       </main>
+
+      {/* FAQ Accordions - full width */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+          {accordionSections.map(section => (
+            <div key={section.id} className="border-b border-border">
+              <button
+                onClick={() => setOpenAccordion(openAccordion === section.id ? null : section.id)}
+                className="w-full flex items-center justify-between py-5 font-display text-base font-semibold text-foreground hover:text-muted-foreground transition-colors duration-200"
+              >
+                {section.title}
+                <ChevronRight
+                  size={16}
+                  className={`transition-transform duration-200 ${
+                    openAccordion === section.id ? "-rotate-90" : "rotate-90"
+                  }`}
+                />
+              </button>
+              <AnimatePresence>
+                {openAccordion === section.id && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pb-5">{section.content}</div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Before/After Section */}
+      <BeforeAfterSection />
+
+      {/* Custom Pack Section */}
+      <CustomPackSection />
+
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="text-center mb-8">
+          <p className="font-display text-lg font-bold text-foreground mb-1">
+            Alfaiate de todos os corpos para todos os momentos
+          </p>
+          <p className="font-body text-sm text-muted-foreground max-w-xl mx-auto">
+            Junte-se a milhares de homens que escolheram adotar a Fincut no dia a dia para um estilo cuidado e um conforto incomparável.
+          </p>
+        </div>
+
+        <div className="flex items-center justify-center gap-3 mb-8">
+          <span className="font-body text-sm font-semibold text-foreground">Trustpilot</span>
+          <span className="bg-[#00b67a] text-white px-2 py-0.5 text-xs font-bold rounded-sm">4.5</span>
+          <div className="flex gap-0.5">
+            {[1, 2, 3, 4].map(i => (
+              <Star key={i} size={16} fill="#00b67a" className="text-[#00b67a]" />
+            ))}
+            <Star size={16} fill="#00b67a" className="text-[#00b67a] opacity-50" />
+          </div>
+          <span className="font-body text-xs text-muted-foreground">Baseado em 6709 avaliações</span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {reviews.map((review, i) => (
+            <div
+              key={i}
+              className="border border-border p-5 space-y-2 hover:border-muted-foreground transition-colors duration-200"
+            >
+              <div className="flex gap-0.5">
+                {[1, 2, 3, 4, 5].map(s => (
+                  <Star key={s} size={14} fill="#00b67a" className="text-[#00b67a]" />
+                ))}
+              </div>
+              <p className="font-body text-[10px] text-muted-foreground">{review.date}</p>
+              <p className="font-body text-sm font-semibold text-foreground">{review.title}</p>
+              <p className="font-body text-xs text-muted-foreground line-clamp-3">{review.text}</p>
+              <p className="font-body text-xs font-medium text-foreground">{review.author}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <SizeTechModal open={sizeTechOpen} onClose={() => setSizeTechOpen(false)} />
       <SiteFooter />
