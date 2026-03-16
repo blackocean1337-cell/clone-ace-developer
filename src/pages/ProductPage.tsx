@@ -276,7 +276,13 @@ const ProductPage = () => {
                 {quantityOptions.map(opt => (
                   <button
                     key={opt.id}
-                    onClick={() => setSelectedQuantity(opt.id)}
+                    onClick={() => {
+                      if (opt.id === "custom") {
+                        window.dispatchEvent(new Event("open-pack-builder"));
+                      } else {
+                        setSelectedQuantity(opt.id);
+                      }
+                    }}
                     className={`relative border px-3 py-3 text-center transition-all duration-200 ${
                       selectedQuantity === opt.id
                         ? "border-foreground bg-foreground text-background"
