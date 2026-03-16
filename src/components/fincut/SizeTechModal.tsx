@@ -87,6 +87,7 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
   const [heightUnit, setHeightUnit] = useState<"CM" | "IN">("CM");
   const [weightUnit, setWeightUnit] = useState<"KG" | "LBS">("KG");
   const [selectedBodyType, setSelectedBodyType] = useState("");
+  const [selectedBellyType, setSelectedBellyType] = useState("");
 
   const handleClose = () => {
     onClose();
