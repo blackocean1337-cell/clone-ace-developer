@@ -21,7 +21,7 @@ const IconiqueSection = () => {
             image={p.cardImage}
             name={`${p.name} — ${colorLabels[p.slug] || ""}`}
             price={p.priceLabel}
-            darkBg={p.slug === "t-shirt-tech"}
+            darkBg={true}
             slug={p.slug}
           />
         ))}
