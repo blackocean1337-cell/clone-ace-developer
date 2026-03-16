@@ -55,7 +55,7 @@ const ReviewsSection = () => {
     animationId = requestAnimationFrame(step);
 
     const pause = () => { speed = 0; };
-    const resume = () => { speed = 0.5; };
+    const resume = () => { speed = 1.2; };
     el.addEventListener("mouseenter", pause);
     el.addEventListener("mouseleave", resume);
 
