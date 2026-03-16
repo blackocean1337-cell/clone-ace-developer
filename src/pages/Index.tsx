@@ -16,6 +16,7 @@ const Index = () => {
       <SiteHeader />
       <HeroSection />
       <IconiqueSection />
+      <IconiqueSection />
       <VestiaireSection />
       <PackSection />
       <CustomerPhotos />
