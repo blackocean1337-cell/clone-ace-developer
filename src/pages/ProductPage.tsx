@@ -382,6 +382,7 @@ const ProductPage = () => {
             </div>
           ))}
         </div>
+      </main>
 
       {/* Before/After Section */}
       <BeforeAfterSection />
