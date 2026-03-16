@@ -382,6 +382,11 @@ const ProductPage = () => {
           </div>
         </div>
 
+        {/* Before/After Section */}
+        <div className="mt-16 -mx-4 sm:-mx-6 lg:-mx-8">
+          <BeforeAfterSection />
+        </div>
+
         {/* Trustpilot Reviews */}
         <section className="mt-20">
           <div className="text-center mb-8">
