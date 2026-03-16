@@ -32,13 +32,13 @@ const CustomerPhotos = () => {
         </div>
       </div>
 
-      <div ref={scrollRef} className="flex gap-4 overflow-x-auto scrollbar-hide pb-4">
+      <div ref={scrollRef} className="flex gap-5 overflow-x-auto scrollbar-hide pb-4">
         {photos.map((p, i) => (
-          <a key={i} href="#" className="group min-w-[200px] sm:min-w-[260px] flex-shrink-0 relative overflow-hidden">
-            <img src={p.image} alt={p.label} className="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform duration-200" loading="lazy" />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-fincut-black/80 to-transparent p-4">
-              <p className="font-body text-xs text-secondary-foreground">{p.label}</p>
-              <p className="font-body text-xs text-fincut-gold mt-1">Descobrir</p>
+          <a key={i} href="#" className="group min-w-[280px] sm:min-w-[320px] lg:min-w-[340px] flex-shrink-0 relative overflow-hidden rounded-sm">
+            <img src={p.image} alt={p.label} className="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-5 pt-16 flex items-end justify-between">
+              <p className="font-body text-sm text-white">{p.label}</p>
+              <p className="font-body text-sm text-fincut-gold underline underline-offset-2">Descobrir</p>
             </div>
           </a>
         ))}
