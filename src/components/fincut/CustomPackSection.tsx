@@ -189,7 +189,8 @@ const CustomPackSection = () => {
         </div>
       </section>
 
-      <PackBuilderModal open={packBuilderOpen} onClose={() => setPackBuilderOpen(false)} />
+      <PackBuilderModal open={packBuilderOpen} onClose={() => setPackBuilderOpen(false)} onOpenSizeTech={() => setSizeTechOpen(true)} />
+      <SizeTechModal open={sizeTechOpen} onClose={() => setSizeTechOpen(false)} />
     </>
   );
 };
