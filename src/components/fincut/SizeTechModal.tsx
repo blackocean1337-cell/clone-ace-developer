@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 interface SizeTechModalProps {
   open: boolean;
   onClose: () => void;
+  onValidate?: (size: string) => void;
 }
 
 const bodyTypes = [
@@ -180,7 +181,7 @@ const AnalysisStep = ({ onComplete }: { onComplete: () => void }) => {
   );
 };
 
-const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
+const SizeTechModal = ({ open, onClose, onValidate }: SizeTechModalProps) => {
   const [step, setStep] = useState(1);
   const [height, setHeight] = useState(175);
   const [weight, setWeight] = useState(70);
@@ -500,7 +501,14 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
                     if (step === 1) setStep(2);
                     else if (step === 2) setStep(3);
                     else if (step === 3) setStep(4);
-                    else handleClose();
+                    else if (step === 5) {
+                      const result = calculateSize(height, weight, heightUnit, weightUnit, selectedBodyType, selectedBellyType);
+                      if (onValidate) {
+                        onValidate(result.size);
+                      } else {
+                        handleClose();
+                      }
+                    } else handleClose();
                   }}
                   className="w-full h-14 bg-fincut-black text-white font-display text-sm font-bold tracking-widest uppercase hover:bg-fincut-black/90 transition-colors duration-200"
                 >
