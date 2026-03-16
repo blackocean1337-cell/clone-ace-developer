@@ -2,6 +2,7 @@ import SiteHeader from "@/components/fincut/SiteHeader";
 import AnnouncementBar from "@/components/fincut/AnnouncementBar";
 import SiteFooter from "@/components/fincut/SiteFooter";
 import TimelineSection from "@/components/fincut/TimelineSection";
+import BrandManifesto from "@/components/fincut/BrandManifesto";
 
 const HistoryPage = () => {
   return (
