@@ -140,7 +140,7 @@ const ProductPage = () => {
             </div>
 
             {/* Main Image */}
-            <div className="flex-1 relative bg-fincut-light overflow-hidden aspect-[3/4]">
+            <div className="flex-1 relative bg-fincut-light overflow-hidden aspect-square">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={selectedImage}
