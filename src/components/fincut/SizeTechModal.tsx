@@ -298,13 +298,69 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
                     ))}
                   </div>
                 </motion.div>
-              )}
+              ) : step === 3 ? (
+                <motion.div
+                  key="step3"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.2 }}
+                  className="px-6 flex-1"
+                >
+                  <h2 className="font-display text-xl font-bold text-fincut-black mb-6">
+                    Que barriga se parece com a sua?
+                  </h2>
+
+                  {/* Belly silhouette */}
+                  <div className="flex justify-center mb-8">
+                    <div className="w-56 h-44">
+                      <svg viewBox="0 0 200 140" className="w-full h-full">
+                        <defs>
+                          <radialGradient id="bellyGrad" cx="50%" cy="40%" r="60%">
+                            <stop offset="0%" stopColor="#e8e8e8" />
+                            <stop offset="100%" stopColor="#d0d0d0" />
+                          </radialGradient>
+                        </defs>
+                        <path d="M60 10 C60 5 75 0 100 0 C125 0 140 5 140 10 L145 100 C145 110 135 120 125 120 L75 120 C65 120 55 110 55 100 Z" fill="url(#bellyGrad)" />
+                        <path d="M60 10 L35 20 C28 24 25 30 25 38 L25 60" stroke="#d0d0d0" strokeWidth="8" fill="none" strokeLinecap="round" />
+                        <path d="M140 10 L165 20 C172 24 175 30 175 38 L175 60" stroke="#d0d0d0" strokeWidth="8" fill="none" strokeLinecap="round" />
+                        <ellipse cx="100" cy="70" rx="25" ry="4" fill="#d8d8d8" opacity="0.5" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Belly type options */}
+                  <div className="space-y-0">
+                    {bellyTypes.map((type) => (
+                      <button
+                        key={type.id}
+                        onClick={() => setSelectedBellyType(type.id)}
+                        className={`w-full flex items-center gap-4 py-4 border-b border-muted transition-colors ${
+                          selectedBellyType === type.id ? "bg-muted/30" : "hover:bg-muted/20"
+                        }`}
+                      >
+                        <div className="w-12 h-12 flex-shrink-0">
+                          {type.svg}
+                        </div>
+                        <span className="font-body text-sm font-medium text-fincut-black flex-1 text-left">
+                          {type.label}
+                        </span>
+                        <ChevronRight size={16} className="text-muted-foreground" />
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
+              ) : null}
             </AnimatePresence>
 
             {/* Footer button */}
             <div className="px-6 pb-6 mt-auto pt-4">
               <button
-                onClick={() => step === 1 ? setStep(2) : handleClose()}
+                onClick={() => {
+                  if (step === 1) setStep(2);
+                  else if (step === 2) setStep(3);
+                  else handleClose();
+                }}
                 className="w-full h-14 bg-fincut-black text-white font-display text-sm font-bold tracking-widest uppercase hover:bg-fincut-black/90 transition-colors duration-200"
               >
                 SEGUINTE
