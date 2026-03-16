@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface SizeTechModalProps {
@@ -7,12 +7,59 @@ interface SizeTechModalProps {
   onClose: () => void;
 }
 
+const bodyTypes = [
+  {
+    id: "slim",
+    label: "Mais estreito",
+    svg: (
+      <svg viewBox="0 0 80 100" className="w-full h-full text-muted-foreground/40">
+        <ellipse cx="40" cy="18" rx="12" ry="15" fill="currentColor" />
+        <path d="M28 36 C28 33 33 30 40 30 C47 30 52 33 52 36 L54 65 C54 67 52 68 50 68 L30 68 C28 68 26 67 26 65 Z" fill="currentColor" />
+        <rect x="30" y="68" width="10" height="28" rx="4" fill="currentColor" />
+        <rect x="42" y="68" width="10" height="28" rx="4" fill="currentColor" />
+      </svg>
+    ),
+  },
+  {
+    id: "normal",
+    label: "Normal",
+    svg: (
+      <svg viewBox="0 0 80 100" className="w-full h-full text-muted-foreground/40">
+        <ellipse cx="40" cy="18" rx="13" ry="15" fill="currentColor" />
+        <path d="M25 36 C25 33 31 30 40 30 C49 30 55 33 55 36 L57 65 C57 67 55 68 53 68 L27 68 C25 68 23 67 23 65 Z" fill="currentColor" />
+        <rect x="28" y="68" width="11" height="28" rx="4" fill="currentColor" />
+        <rect x="42" y="68" width="11" height="28" rx="4" fill="currentColor" />
+      </svg>
+    ),
+  },
+  {
+    id: "large",
+    label: "Mais largo",
+    svg: (
+      <svg viewBox="0 0 80 100" className="w-full h-full text-muted-foreground/40">
+        <ellipse cx="40" cy="18" rx="14" ry="15" fill="currentColor" />
+        <path d="M20 36 C20 33 28 30 40 30 C52 30 60 33 60 36 L62 65 C62 67 60 68 58 68 L22 68 C20 68 18 67 18 65 Z" fill="currentColor" />
+        <rect x="25" y="68" width="13" height="28" rx="5" fill="currentColor" />
+        <rect x="42" y="68" width="13" height="28" rx="5" fill="currentColor" />
+      </svg>
+    ),
+  },
+];
+
 const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
+  const [step, setStep] = useState(1);
   const [height, setHeight] = useState(175);
   const [weight, setWeight] = useState(70);
   const [age, setAge] = useState(18);
   const [heightUnit, setHeightUnit] = useState<"CM" | "IN">("CM");
   const [weightUnit, setWeightUnit] = useState<"KG" | "LBS">("KG");
+  const [selectedBodyType, setSelectedBodyType] = useState("");
+
+  const handleClose = () => {
+    onClose();
+    setStep(1);
+    setSelectedBodyType("");
+  };
 
   if (!open) return null;
 
