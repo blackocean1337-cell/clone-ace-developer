@@ -181,7 +181,7 @@ const AnalysisStep = ({ onComplete }: { onComplete: () => void }) => {
   );
 };
 
-const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
+const SizeTechModal = ({ open, onClose, onValidate }: SizeTechModalProps) => {
   const [step, setStep] = useState(1);
   const [height, setHeight] = useState(175);
   const [weight, setWeight] = useState(70);
