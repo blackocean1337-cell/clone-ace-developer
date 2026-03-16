@@ -102,7 +102,8 @@ const ProductPage = () => {
     { id: "unite", label: "UNIDADE", price: `${product.price} €`, sublabel: null, badge: null },
     { id: "pack2", label: "PACK DE 2", price: `${product.price} €/unidade`, sublabel: "Entrega grátis", badge: null },
     { id: "pack3", label: "PACK DE 3", price: `${Math.round(product.price * 0.89)} €/unidade`, sublabel: "Entrega grátis", badge: null },
-    { id: "pack4", label: "PACK DE 4", price: `${(product.price * 0.79).toFixed(2).replace(".", ",")} €/unidade`, sublabel: "Entrega grátis", badge: "MAIS VENDIDO" },
+    { id: "pack4", label: "LEVE 9 PAGUE 4", price: `${(product.price * 0.79).toFixed(2).replace(".", ",")} €/unidade`, sublabel: "Entrega grátis", badge: "MAIS VENDIDO" },
+    { id: "pack6", label: "LEVE 12 PAGUE 5", price: `${(product.price * 0.69).toFixed(2).replace(".", ",")} €/unidade`, sublabel: "Entrega grátis", badge: "MELHOR PREÇO" },
     { id: "custom", label: "Componha o seu pack", price: null, sublabel: "Até 18 €/t-shirts", badge: null },
   ];
 
