@@ -4,6 +4,7 @@ import HeroSection from "@/components/fincut/HeroSection";
 import IconiqueSection from "@/components/fincut/IconiqueSection";
 import VestiaireSection from "@/components/fincut/VestiaireSection";
 import PackSection from "@/components/fincut/PackSection";
+import CustomPackSection from "@/components/fincut/CustomPackSection";
 import CustomerPhotos from "@/components/fincut/CustomerPhotos";
 import ReviewsSection from "@/components/fincut/ReviewsSection";
 import TimelineSection from "@/components/fincut/TimelineSection";
@@ -17,6 +18,7 @@ const Index = () => {
       <HeroSection />
       <IconiqueSection />
       <IconiqueSection />
+      <CustomPackSection />
       <VestiaireSection />
       <PackSection />
       <CustomerPhotos />
