@@ -118,13 +118,15 @@ const SiteHeader = () => {
                     <br />
                     100% personalizado
                   </h3>
-                  <Link
-                    to="/#custom-pack"
-                    onClick={() => setProductsOpen(false)}
+                  <button
+                    onClick={() => {
+                      setProductsOpen(false);
+                      window.dispatchEvent(new Event("open-pack-builder"));
+                    }}
                     className="inline-block border-2 border-fincut-black px-6 py-3 font-display text-xs font-bold tracking-[0.15em] text-fincut-black uppercase hover:bg-fincut-black hover:text-white transition-colors duration-200"
                   >
                     CRIO O MEU PACK
-                  </Link>
+                  </button>
                 </div>
                 <div className="w-[280px] h-full flex-shrink-0">
                   <img src={packImage} alt="Pack personalizado" className="w-full h-full object-cover" />

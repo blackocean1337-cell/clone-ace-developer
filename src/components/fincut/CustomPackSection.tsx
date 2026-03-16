@@ -351,6 +351,12 @@ const CustomPackSection = () => {
     setPackBuilderOpen(true);
   };
 
+  useEffect(() => {
+    const handler = () => handleOpenPack(1);
+    window.addEventListener("open-pack-builder", handler);
+    return () => window.removeEventListener("open-pack-builder", handler);
+  }, []);
+
   const handleSizeTechClose = () => {
     setSizeTechOpen(false);
   };
