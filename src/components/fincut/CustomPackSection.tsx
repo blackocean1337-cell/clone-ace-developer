@@ -340,6 +340,8 @@ const PackBuilderModal = ({ open, onClose, onOpenSizeTech, onAddToCart, initialS
 const CustomPackSection = () => {
   const [packBuilderOpen, setPackBuilderOpen] = useState(false);
   const [sizeTechOpen, setSizeTechOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [packInitialStep, setPackInitialStep] = useState(1);
   const [packPreselectedSize, setPackPreselectedSize] = useState<string | undefined>();
 
@@ -356,6 +358,20 @@ const CustomPackSection = () => {
   const handleSizeTechValidate = (size: string) => {
     setSizeTechOpen(false);
     handleOpenPack(2, size);
+  };
+
+  const handleAddToCart = (colors: string[], size: string) => {
+    const price = pricePerArticle(colors.length);
+    setCartItems([{
+      name: "Pack personalizado de t-shirts col rond",
+      size,
+      colors,
+      unitPrice: price,
+      originalUnitPrice: 28,
+      quantity: 1,
+    }]);
+    setPackBuilderOpen(false);
+    setCartOpen(true);
   };
 
   return (
