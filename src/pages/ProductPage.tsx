@@ -414,11 +414,11 @@ const ProductPage = () => {
         </div>
       </section>
 
-      {/* Trustpilot Reviews */}
-      <ReviewsSection />
-
       {/* Custom Pack Section */}
       <CustomPackSection />
+
+      {/* Trustpilot Reviews */}
+      <ReviewsSection />
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-8">
