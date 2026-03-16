@@ -31,11 +31,11 @@ const ProductCard = ({ image, name, price, colors, darkBg = true, slug }: Produc
         <div className="mt-3 space-y-1">
           {colors && (
             <span className="font-body text-[10px] tracking-wider text-fincut-gray uppercase">
-              +{colors} coloris
+              +{colors} cores
             </span>
           )}
           <h3 className="font-body text-sm font-medium text-foreground">{name}</h3>
-          <p className="font-body text-sm text-muted-foreground">jusqu'à : {price}</p>
+          <p className="font-body text-sm text-muted-foreground">até: {price}</p>
         </div>
       </Wrapper>
     </motion.div>

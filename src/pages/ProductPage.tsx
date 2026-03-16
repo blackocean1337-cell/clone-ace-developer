@@ -10,14 +10,14 @@ import { getProductBySlug } from "@/data/products";
 const featureIcons = [Ruler, Droplets, Award];
 
 const reviews = [
-  { author: "Hervé A.", title: "Produits de grande qualité", text: "Produits de grande qualité, j'ai pu bénéficier d'une ristourne très intéressante. Les t-shirts sont impeccables.", date: "15/03/2026" },
-  { author: "Fabrice", title: "Superbe t-Shirt", text: "Superbe t-Shirt, matière très agréable à porter et très bien taillé. J'en ai racheté plusieurs fois.", date: "15/03/2026" },
-  { author: "R F", title: "Très bon produit", text: "Très bon produit. Livraison rapide.", date: "15/03/2026" },
-  { author: "Catherine R.", title: "Super produit qui tient ses promesses!", text: "Super produit qui tient ses promesses!", date: "15/03/2026" },
-  { author: "Daniel P.", title: "Marchandise de très bonne qualité", text: "Marchandise de très bonne qualité.", date: "14/03/2026" },
-  { author: "Renaud W.", title: "Tout s'est parfaitement déroulé", text: "Tout s'est parfaitement déroulé.", date: "14/03/2026" },
-  { author: "Milette", title: "Au top", text: "Au top, comme dab…", date: "14/03/2026" },
-  { author: "Eric", title: "Tee-shirt bien coupé", text: "Tee-shirt bien coupé, matière agréable. Délais de livraison correcte.", date: "13/03/2026" },
+  { author: "Hervé A.", title: "Produtos de grande qualidade", text: "Produtos de grande qualidade, consegui beneficiar de um desconto muito interessante. As t-shirts são impecáveis.", date: "15/03/2026" },
+  { author: "Fabrice", title: "T-shirt soberba", text: "T-shirt soberba, material muito agradável de vestir e muito bem cortada. Já comprei várias vezes.", date: "15/03/2026" },
+  { author: "R F", title: "Muito bom produto", text: "Muito bom produto. Entrega rápida.", date: "15/03/2026" },
+  { author: "Catherine R.", title: "Excelente produto que cumpre promessas!", text: "Excelente produto que cumpre promessas!", date: "15/03/2026" },
+  { author: "Daniel P.", title: "Mercadoria de muito boa qualidade", text: "Mercadoria de muito boa qualidade.", date: "14/03/2026" },
+  { author: "Renaud W.", title: "Tudo correu na perfeição", text: "Tudo correu na perfeição.", date: "14/03/2026" },
+  { author: "Milette", title: "No topo", text: "No topo, como sempre…", date: "14/03/2026" },
+  { author: "Eric", title: "T-shirt bem cortada", text: "T-shirt bem cortada, material agradável. Prazos de entrega corretos.", date: "13/03/2026" },
 ];
 
 const ProductPage = () => {
@@ -56,17 +56,17 @@ const ProductPage = () => {
   if (!product) return <Navigate to="/" replace />;
 
   const quantityOptions = [
-    { id: "unite", label: "UNITÉ", price: `${product.price} €`, sublabel: null, badge: null },
-    { id: "pack2", label: "PACK DE 2", price: `${product.price} €/unité`, sublabel: "Livraison offerte", badge: null },
-    { id: "pack3", label: "PACK DE 3", price: `${Math.round(product.price * 0.89)} €/unité`, sublabel: "Livraison offerte", badge: null },
-    { id: "pack4", label: "PACK DE 4", price: `${(product.price * 0.79).toFixed(2).replace(".", ",")} €/unité`, sublabel: "Livraison offerte", badge: "MEILLEURE VENTE" },
-    { id: "custom", label: "Composez votre pack", price: null, sublabel: "Jusqu'à 18 €/t-shirts", badge: null },
+    { id: "unite", label: "UNIDADE", price: `${product.price} €`, sublabel: null, badge: null },
+    { id: "pack2", label: "PACK DE 2", price: `${product.price} €/unidade`, sublabel: "Entrega grátis", badge: null },
+    { id: "pack3", label: "PACK DE 3", price: `${Math.round(product.price * 0.89)} €/unidade`, sublabel: "Entrega grátis", badge: null },
+    { id: "pack4", label: "PACK DE 4", price: `${(product.price * 0.79).toFixed(2).replace(".", ",")} €/unidade`, sublabel: "Entrega grátis", badge: "MAIS VENDIDO" },
+    { id: "custom", label: "Componha o seu pack", price: null, sublabel: "Até 18 €/t-shirts", badge: null },
   ];
 
   const accordionSections = [
     {
       id: "description",
-      title: "Description",
+      title: "Descrição",
       content: (
         <div className="space-y-3 font-body text-sm text-muted-foreground leading-relaxed">
           {product.description.map((p, i) => (
@@ -77,27 +77,27 @@ const ProductPage = () => {
     },
     {
       id: "materials",
-      title: "Matériaux & Entretien",
+      title: "Materiais e Cuidados",
       content: (
         <div className="space-y-3 font-body text-sm text-muted-foreground leading-relaxed">
-          <p className="font-semibold text-foreground">Matières & Fabrication :</p>
+          <p className="font-semibold text-foreground">Materiais e Fabricação:</p>
           <ul className="space-y-1">
             {product.materials.map((m, i) => <li key={i}>• {m}</li>)}
           </ul>
-          <p className="font-semibold text-foreground mt-4">Entretien :</p>
+          <p className="font-semibold text-foreground mt-4">Cuidados:</p>
           {product.care.map((c, i) => <p key={i}>{c}</p>)}
         </div>
       ),
     },
     {
       id: "shipping",
-      title: "Livraison & Retours",
+      title: "Entrega e Devoluções",
       content: (
         <div className="space-y-3 font-body text-sm text-muted-foreground leading-relaxed">
-          <p>Les délais de livraison standard à domicile sont de <strong className="text-foreground">2 à 3 jours ouvrés</strong>.</p>
-          <p>Pour les livraisons en <strong className="text-foreground">point relais</strong>, les délais sont de <strong className="text-foreground">3 à 5 jours ouvrés</strong>.</p>
-          <p>Vous disposez de <strong className="text-foreground">30 jours</strong> après réception pour effectuer un retour ou un échange.</p>
-          <p>Les frais de retour sont à la charge du client.</p>
+          <p>Os prazos de entrega padrão ao domicílio são de <strong className="text-foreground">2 a 3 dias úteis</strong>.</p>
+          <p>Para entregas em <strong className="text-foreground">ponto de recolha</strong>, os prazos são de <strong className="text-foreground">3 a 5 dias úteis</strong>.</p>
+          <p>Tem <strong className="text-foreground">30 dias</strong> após a receção para efetuar uma devolução ou troca.</p>
+          <p>Os custos de devolução ficam a cargo do cliente.</p>
         </div>
       ),
     },
@@ -115,7 +115,7 @@ const ProductPage = () => {
           <span className="mx-1">/</span>
           <span>{product.collar}</span>
           <span className="mx-1">/</span>
-          <span className="underline text-foreground">Unité</span>
+          <span className="underline text-foreground">Unidade</span>
         </nav>
 
         {/* Product Grid */}
@@ -134,7 +134,7 @@ const ProductPage = () => {
                       : "border-border hover:border-muted-foreground"
                   }`}
                 >
-                  <img src={img} alt={`Vue ${i + 1}`} className="w-full h-full object-cover" />
+                  <img src={img} alt={`Vista ${i + 1}`} className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
@@ -201,7 +201,7 @@ const ProductPage = () => {
                   <div className="font-body text-xs text-muted-foreground">
                     <span className="font-semibold text-foreground">TRUSTPILOT</span>
                     <br />
-                    BASÉ SUR 6709 AVIS
+                    BASEADO EM 6709 AVALIAÇÕES
                   </div>
                 </div>
 
@@ -227,7 +227,7 @@ const ProductPage = () => {
             {/* Quantity selector */}
             <div>
               <h3 className="font-display text-sm font-semibold text-foreground mb-3">
-                Sélectionnez votre quantité :
+                Selecione a sua quantidade:
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 {quantityOptions.map(opt => (
@@ -270,7 +270,7 @@ const ProductPage = () => {
             {/* Color selector */}
             <div>
               <h3 className="font-display text-sm font-semibold text-foreground mb-3">
-                Choisissez votre couleur : <span className="font-normal">{selectedColor}</span>
+                Escolha a sua cor: <span className="font-normal">{selectedColor}</span>
               </h3>
               <div className="flex flex-wrap gap-2">
                 {product.colors.map(c => (
@@ -292,7 +292,7 @@ const ProductPage = () => {
             {/* Size selector */}
             <div>
               <h3 className="font-display text-sm font-semibold text-foreground mb-3">
-                Choisissez votre taille :
+                Escolha o seu tamanho:
               </h3>
               <div className="grid grid-cols-5 gap-2">
                 {product.sizes.map(s => (
@@ -312,14 +312,14 @@ const ProductPage = () => {
                   <span className="absolute -top-2 right-1 bg-fincut-gold text-primary-foreground text-[8px] font-bold px-1.5 py-0.5 tracking-wider">
                     SIZETECH+
                   </span>
-                  Définir ma taille
+                  Definir tamanho
                 </button>
               </div>
             </div>
 
             {/* Add to cart */}
             <button className="w-full h-14 bg-foreground text-background font-display text-sm font-bold tracking-widest uppercase hover:bg-foreground/90 transition-colors duration-200 flex items-center justify-center gap-2">
-              AJOUTER AU PANIER
+              ADICIONAR AO CARRINHO
               <span className="text-muted-foreground/60">|</span>
               {product.priceLabel}
             </button>
@@ -328,9 +328,9 @@ const ProductPage = () => {
             <div className="flex items-start gap-3 py-3 border-t border-border">
               <Truck size={20} className="text-muted-foreground flex-shrink-0 mt-0.5" />
               <div className="font-body text-xs text-muted-foreground">
-                Livraison estimée le <strong className="text-foreground">JEUDI 19 MARS</strong>.
+                Entrega estimada <strong className="text-foreground">QUINTA-FEIRA 19 MARÇO</strong>.
                 <br />
-                Commandez dans les{" "}
+                Encomende nas próximas{" "}
                 <span className="text-fincut-gold font-semibold">
                   {countdown.hours}h{String(countdown.minutes).padStart(2, "0")}min
                 </span>
@@ -385,10 +385,10 @@ const ProductPage = () => {
         <section className="mt-20">
           <div className="text-center mb-8">
             <p className="font-display text-lg font-bold text-foreground mb-1">
-              Tailleur de tous les corps pour tous les moments
+              Alfaiate de todos os corpos para todos os momentos
             </p>
             <p className="font-body text-sm text-muted-foreground max-w-xl mx-auto">
-              Rejoignez des milliers d'hommes qui ont choisi d'adopter Fincut au quotidien pour un style soigné et un confort incomparable.
+              Junte-se a milhares de homens que escolheram adotar a Fincut no dia a dia para um estilo cuidado e um conforto incomparável.
             </p>
           </div>
 
@@ -401,7 +401,7 @@ const ProductPage = () => {
               ))}
               <Star size={16} fill="#00b67a" className="text-[#00b67a] opacity-50" />
             </div>
-            <span className="font-body text-xs text-muted-foreground">Basé sur 6709 avis</span>
+            <span className="font-body text-xs text-muted-foreground">Baseado em 6709 avaliações</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

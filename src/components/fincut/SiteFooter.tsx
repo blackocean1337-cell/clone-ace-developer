@@ -6,28 +6,28 @@ const SiteFooter = () => {
           <div>
             <h4 className="font-display text-xs font-bold text-secondary-foreground tracking-widest uppercase mb-4">Fincut</h4>
             <ul className="space-y-2 font-body text-xs text-fincut-gray">
-              <li><a href="#" className="hover:text-secondary-foreground transition-colors duration-200">Notre histoire</a></li>
-              <li><a href="#" className="hover:text-secondary-foreground transition-colors duration-200">Contact</a></li>
+              <li><a href="#" className="hover:text-secondary-foreground transition-colors duration-200">A nossa história</a></li>
+              <li><a href="#" className="hover:text-secondary-foreground transition-colors duration-200">Contacto</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-display text-xs font-bold text-secondary-foreground tracking-widest uppercase mb-4">Produits</h4>
+            <h4 className="font-display text-xs font-bold text-secondary-foreground tracking-widest uppercase mb-4">Produtos</h4>
             <ul className="space-y-2 font-body text-xs text-fincut-gray">
-              <li><a href="#" className="hover:text-secondary-foreground transition-colors duration-200">Le t-shirt Iconique</a></li>
-              <li><a href="#" className="hover:text-secondary-foreground transition-colors duration-200">Le Polo</a></li>
-              <li><a href="#" className="hover:text-secondary-foreground transition-colors duration-200">Le Pull</a></li>
+              <li><a href="#" className="hover:text-secondary-foreground transition-colors duration-200">A t-shirt Icónica</a></li>
+              <li><a href="#" className="hover:text-secondary-foreground transition-colors duration-200">O Polo</a></li>
+              <li><a href="#" className="hover:text-secondary-foreground transition-colors duration-200">A Camisola</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-display text-xs font-bold text-secondary-foreground tracking-widest uppercase mb-4">Aide</h4>
+            <h4 className="font-display text-xs font-bold text-secondary-foreground tracking-widest uppercase mb-4">Ajuda</h4>
             <ul className="space-y-2 font-body text-xs text-fincut-gray">
               <li><a href="#" className="hover:text-secondary-foreground transition-colors duration-200">FAQ</a></li>
-              <li><a href="#" className="hover:text-secondary-foreground transition-colors duration-200">Livraison</a></li>
-              <li><a href="#" className="hover:text-secondary-foreground transition-colors duration-200">Retours</a></li>
+              <li><a href="#" className="hover:text-secondary-foreground transition-colors duration-200">Entrega</a></li>
+              <li><a href="#" className="hover:text-secondary-foreground transition-colors duration-200">Devoluções</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-display text-xs font-bold text-secondary-foreground tracking-widest uppercase mb-4">Suivez-nous</h4>
+            <h4 className="font-display text-xs font-bold text-secondary-foreground tracking-widest uppercase mb-4">Siga-nos</h4>
             <ul className="space-y-2 font-body text-xs text-fincut-gray">
               <li><a href="#" className="hover:text-secondary-foreground transition-colors duration-200">Instagram</a></li>
               <li><a href="#" className="hover:text-secondary-foreground transition-colors duration-200">TikTok</a></li>
@@ -37,11 +37,11 @@ const SiteFooter = () => {
         </div>
 
         <div className="mt-10 pt-6 border-t border-fincut-slate/30 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-body text-[11px] text-fincut-gray">© 2026 Fincut. Tous droits réservés.</p>
+          <p className="font-body text-[11px] text-fincut-gray">© 2026 Fincut. Todos os direitos reservados.</p>
           <div className="flex gap-4 font-body text-[11px] text-fincut-gray">
             <a href="#" className="hover:text-secondary-foreground transition-colors duration-200">CGV</a>
-            <a href="#" className="hover:text-secondary-foreground transition-colors duration-200">Mentions légales</a>
-            <a href="#" className="hover:text-secondary-foreground transition-colors duration-200">Politique de confidentialité</a>
+            <a href="#" className="hover:text-secondary-foreground transition-colors duration-200">Avisos legais</a>
+            <a href="#" className="hover:text-secondary-foreground transition-colors duration-200">Política de privacidade</a>
           </div>
         </div>
       </div>
