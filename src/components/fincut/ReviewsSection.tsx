@@ -2,12 +2,12 @@ import { useRef } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 const reviews = [
-  { title: "Produits de grande qualité", text: "Produits de grande qualité, j'ai pu bénéficier d'une ristourne très intéressante sur 6 t-shirts.", author: "Hervé A.", date: "15/03/2026" },
-  { title: "Superbe t-Shirt", text: "Superbe t-Shirt, matière très agréable à porter et très bien taillé. J'en ai racheté plusieurs fois.", author: "Fabrice", date: "15/03/2026" },
-  { title: "Au top !", text: "Tee-shirt de très bonne qualité, expédition rapide et soignée. Le SAV est réactif et à l'écoute.", author: "Lasserre", date: "13/03/2026" },
-  { title: "Tee-shirt de dingue !!!", text: "J'ai commandé un pack de 4 tee-shirts noir et c'est encore mieux que ce que je pensais.", author: "Arthur R.", date: "11/03/2026" },
-  { title: "Excellente coupe", text: "Excellente coupe, matière ne bouge pas au lavage, j'en suis à ma deuxième commande.", author: "Anthony M.", date: "09/03/2026" },
-  { title: "Client régulier", text: "Comme d'habitude je suis enchanté par la coupe et la qualité. Fincut est mon t-shirt de référence.", author: "François G.", date: "06/03/2026" },
+  { title: "Produtos de grande qualidade", text: "Produtos de grande qualidade, consegui beneficiar de um desconto muito interessante em 6 t-shirts.", author: "Hervé A.", date: "15/03/2026" },
+  { title: "T-shirt soberba", text: "T-shirt soberba, material muito agradável de vestir e muito bem cortada. Já comprei várias vezes.", author: "Fabrice", date: "15/03/2026" },
+  { title: "Excelente!", text: "T-shirt de muito boa qualidade, envio rápido e cuidado. O apoio ao cliente é reativo e atento.", author: "Lasserre", date: "13/03/2026" },
+  { title: "T-shirt incrível!!!", text: "Encomendei um pack de 4 t-shirts pretas e é ainda melhor do que esperava.", author: "Arthur R.", date: "11/03/2026" },
+  { title: "Corte excelente", text: "Corte excelente, o material não deforma na lavagem, já vou na segunda encomenda.", author: "Anthony M.", date: "09/03/2026" },
+  { title: "Cliente habitual", text: "Como sempre estou encantado com o corte e a qualidade. A Fincut é a minha t-shirt de referência.", author: "François G.", date: "06/03/2026" },
 ];
 
 const Stars = () => (
@@ -27,17 +27,15 @@ const ReviewsSection = () => {
   return (
     <section className="bg-fincut-black py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Trustpilot header */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-8">
           <span className="font-display text-lg font-bold text-secondary-foreground">Trustpilot</span>
           <div className="flex items-center gap-2">
             <span className="font-display text-2xl font-bold text-secondary-foreground">4.5</span>
             <Stars />
           </div>
-          <span className="font-body text-xs text-fincut-gray">Basé sur 6709 avis</span>
+          <span className="font-body text-xs text-fincut-gray">Baseado em 6709 avaliações</span>
         </div>
 
-        {/* Carousel controls */}
         <div className="flex justify-end gap-2 mb-4">
           <button onClick={() => scroll("left")} className="p-2 border border-fincut-slate hover:border-secondary-foreground transition-colors duration-200">
             <ChevronLeft size={18} className="text-secondary-foreground" />

@@ -18,7 +18,7 @@ const HeroSection = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-secondary-foreground leading-tight max-w-lg"
         >
-          Le T-shirt qui s'adapte à votre morphologie
+          A T-shirt que se adapta à sua morfologia
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -26,7 +26,7 @@ const HeroSection = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="font-body text-sm sm:text-base text-fincut-gray mt-3"
         >
-          Enfin ! Le t-shirt qui vous va bien.
+          Finalmente! A t-shirt que lhe fica bem.
         </motion.p>
         <motion.a
           href="#iconique"
@@ -35,7 +35,7 @@ const HeroSection = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="inline-block mt-6 px-6 py-3 border border-fincut-gold text-fincut-gold font-display text-xs font-semibold tracking-widest uppercase hover:bg-fincut-gold hover:text-primary-foreground transition-all duration-200"
         >
-          Découvrez notre bestseller
+          Descubra o nosso bestseller
         </motion.a>
       </div>
     </section>

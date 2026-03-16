@@ -15,7 +15,7 @@ const VestiaireSection = () => {
   return (
     <section id="vestiaire" className="bg-background py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground">Votre vestiaire</h2>
+        <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground">O seu vestuário</h2>
         <div className="flex gap-2">
           <button onClick={() => scroll("left")} className="p-2 border border-border hover:border-foreground transition-colors duration-200">
             <ChevronLeft size={18} />
