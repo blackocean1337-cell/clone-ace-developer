@@ -8,6 +8,7 @@ import SiteHeader from "@/components/fincut/SiteHeader";
 import SiteFooter from "@/components/fincut/SiteFooter";
 import BeforeAfterSection from "@/components/fincut/BeforeAfterSection";
 import CustomPackSection from "@/components/fincut/CustomPackSection";
+import CartDrawer, { type CartItem } from "@/components/fincut/CartDrawer";
 import SizeTechModal from "@/components/fincut/SizeTechModal";
 import { getProductBySlug } from "@/data/products";
 import lifestyleOffice from "@/assets/lifestyle-office.jpg";
@@ -71,6 +72,8 @@ const ProductPage = () => {
   const [openAccordion, setOpenAccordion] = useState<string | null>("description");
   const [countdown, setCountdown] = useState({ hours: 13, minutes: 39 });
   const [sizeTechOpen, setSizeTechOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   useEffect(() => {
     if (product) {
@@ -362,7 +365,29 @@ const ProductPage = () => {
             </div>
 
             {/* Add to cart */}
-            <button className="w-full h-14 bg-foreground text-background font-display text-sm font-bold tracking-widest uppercase hover:bg-foreground/90 transition-colors duration-200 flex items-center justify-center gap-2">
+            <button
+              onClick={() => {
+                const existing = cartItems.findIndex(
+                  (item) => item.name === product.name && item.color === selectedColor && item.size === selectedSize
+                );
+                if (existing >= 0) {
+                  const updated = [...cartItems];
+                  updated[existing] = { ...updated[existing], quantity: updated[existing].quantity + 1 };
+                  setCartItems(updated);
+                } else {
+                  setCartItems([...cartItems, {
+                    name: product.name,
+                    size: selectedSize,
+                    color: selectedColor,
+                    unitPrice: product.price,
+                    quantity: 1,
+                    image: product.cardImage,
+                  }]);
+                }
+                setCartOpen(true);
+              }}
+              className="w-full h-14 bg-foreground text-background font-display text-sm font-bold tracking-widest uppercase hover:bg-foreground/90 transition-colors duration-200 flex items-center justify-center gap-2"
+            >
               ADICIONAR AO CARRINHO
               <span className="text-muted-foreground/60">|</span>
               {product.priceLabel}
@@ -526,6 +551,20 @@ const ProductPage = () => {
       </section>
 
       <SizeTechModal open={sizeTechOpen} onClose={() => setSizeTechOpen(false)} />
+      <CartDrawer
+        open={cartOpen}
+        onClose={() => setCartOpen(false)}
+        items={cartItems}
+        onUpdateQuantity={(idx, qty) => {
+          if (qty <= 0) {
+            setCartItems(cartItems.filter((_, i) => i !== idx));
+          } else {
+            const updated = [...cartItems];
+            updated[idx] = { ...updated[idx], quantity: qty };
+            setCartItems(updated);
+          }
+        }}
+      />
       <SiteFooter />
     </div>
   );
