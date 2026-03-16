@@ -540,20 +540,6 @@ const ProductPage = () => {
       </section>
 
       <SizeTechModal open={sizeTechOpen} onClose={() => setSizeTechOpen(false)} />
-      <CartDrawer
-        open={cartOpen}
-        onClose={() => setCartOpen(false)}
-        items={cartItems}
-        onUpdateQuantity={(idx, qty) => {
-          if (qty <= 0) {
-            setCartItems(cartItems.filter((_, i) => i !== idx));
-          } else {
-            const updated = [...cartItems];
-            updated[idx] = { ...updated[idx], quantity: qty };
-            setCartItems(updated);
-          }
-        }}
-      />
       <SiteFooter />
     </div>
   );
