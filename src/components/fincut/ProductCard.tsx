@@ -20,18 +20,18 @@ const ProductCard = ({ image, name, price, colors, darkBg = true }: ProductCardP
         <img
           src={image}
           alt={name}
-          className="w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-200"
+          className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-200"
           loading="lazy"
         />
       </div>
       <div className="mt-3 space-y-1">
         {colors && (
-          <span className={`font-body text-[10px] tracking-wider uppercase ${darkBg ? 'text-fincut-gold' : 'text-fincut-gray'}`}>
+          <span className="font-body text-[10px] tracking-wider text-fincut-gray uppercase">
             +{colors} coloris
           </span>
         )}
-        <h3 className={`font-body text-sm font-medium ${darkBg ? 'text-secondary-foreground' : 'text-foreground'}`}>{name}</h3>
-        <p className={`font-body text-sm ${darkBg ? 'text-fincut-gray' : 'text-muted-foreground'}`}>jusqu'à : {price}</p>
+        <h3 className="font-body text-sm font-medium text-foreground">{name}</h3>
+        <p className="font-body text-sm text-muted-foreground">jusqu'à : {price}</p>
       </div>
     </motion.a>
   );
