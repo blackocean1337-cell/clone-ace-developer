@@ -246,7 +246,7 @@ const SizeTechModal = ({ open, onClose }: SizeTechModalProps) => {
                     />
                   </div>
                 </motion.div>
-              ) : (
+              ) : step === 2 ? (
                 <motion.div
                   key="step2"
                   initial={{ opacity: 0, x: 20 }}
