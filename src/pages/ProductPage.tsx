@@ -31,24 +31,33 @@ import reviewPhoto4 from "@/assets/review-photo-4.png";
 import reviewPhoto5 from "@/assets/review-photo-5.png";
 import reviewPhoto6 from "@/assets/review-photo-6.webp";
 import reviewPhoto7 from "@/assets/review-photo-7.png";
+import reviewPhoto8 from "@/assets/review-photo-8.jpg";
+import reviewPhoto9 from "@/assets/review-photo-9.jpg";
+import reviewPhoto10 from "@/assets/review-photo-10.jpg";
+import reviewPhoto11 from "@/assets/review-photo-11.jpg";
+import reviewPhoto12 from "@/assets/review-photo-12.jpg";
+import reviewPhoto13 from "@/assets/review-photo-13.jpg";
+import reviewPhoto14 from "@/assets/review-photo-14.jpg";
+import reviewPhoto15 from "@/assets/review-photo-15.jpg";
+import reviewPhoto16 from "@/assets/review-photo-16.jpg";
 
 const reviews = [
-  { author: "Kevin F.", title: "La coupe est incroyable", text: "A coupe é incrível, o meu primeiro pack comprado, já estou conquistado e penso comprar mais cores e polos. Os que hesitam, vão de olhos fechados.", date: "20/12/2025", stars: 5, image: reviewPhoto1, article: "Pack 4", verified: true },
+  { author: "Kevin F.", title: "A coupe é incrível", text: "A coupe é incrível, o meu primeiro pack comprado, já estou conquistado e penso comprar mais cores e polos. Os que hesitam, vão de olhos fechados.", date: "20/12/2025", stars: 5, image: reviewPhoto1, article: "Pack 4", verified: true },
   { author: "Vincent R.", title: "Tee shirt simpática", text: "Tee shirt simpática. Infelizmente o XXXL é demasiado grande e o XXL é ligeiramente apertado para mim. De resto boa matéria, sente-se que é qualidade.", date: "07/12/2025", stars: 4, image: reviewPhoto2, article: "3XL", verified: true },
   { author: "Raphael F.", title: "Muito agradável de usar", text: "Muito agradável de usar, valoriza bem.", date: "14/11/2025", stars: 5, image: reviewPhoto3, article: "M / Bordeaux", verified: true },
   { author: "Dylan H.", title: "Perfeito", text: "Perfeito", date: "23/09/2025", stars: 5, image: reviewPhoto4, article: "M", verified: true },
   { author: "Belhacene N.", title: "Perfeito", text: "Perfeito", date: "07/09/2025", stars: 5, image: reviewPhoto5, article: "XL", verified: true },
   { author: "Frederic G.", title: "Corte impecável", text: "Corte impecável e matéria muito agradável de usar", date: "16/08/2025", stars: 5, image: reviewPhoto6, article: "M", verified: true },
   { author: "Marco S.", title: "Qualidade top", text: "Qualidade top, entrega rápida. Recomendo vivamente a todos.", date: "02/08/2025", stars: 5, image: reviewPhoto7, article: "L", verified: true },
-  { author: "Hervé A.", title: "Produtos de grande qualidade", text: "Produtos de grande qualidade, consegui beneficiar de um desconto muito interessante. As t-shirts são impecáveis.", date: "15/03/2026", stars: 5, image: null, article: "Pack 6", verified: true },
-  { author: "Fabrice", title: "T-shirt soberba", text: "T-shirt soberba, material muito agradável de vestir e muito bem cortada. Já comprei várias vezes.", date: "15/03/2026", stars: 5, image: null, article: "M", verified: true },
-  { author: "Catherine R.", title: "Excelente produto!", text: "Excelente produto que cumpre promessas!", date: "15/03/2026", stars: 5, image: null, article: "S", verified: true },
-  { author: "Daniel P.", title: "Muito boa qualidade", text: "Mercadoria de muito boa qualidade.", date: "14/03/2026", stars: 5, image: null, article: "L", verified: true },
-  { author: "Renaud W.", title: "Tudo correu na perfeição", text: "Tudo correu na perfeição.", date: "14/03/2026", stars: 5, image: null, article: "XL", verified: true },
-  { author: "Milette", title: "No topo", text: "No topo, como sempre…", date: "14/03/2026", stars: 4, image: null, article: "M", verified: true },
-  { author: "Eric", title: "T-shirt bem cortada", text: "T-shirt bem cortada, material agradável. Prazos de entrega corretos.", date: "13/03/2026", stars: 5, image: null, article: "2XL", verified: true },
-  { author: "Antoine L.", title: "Muito satisfeito", text: "Muito satisfeito com a qualidade e o corte. Material premium que se sente na pele.", date: "10/03/2026", stars: 5, image: null, article: "M", verified: true },
-  { author: "Pierre M.", title: "Recomendo", text: "Comprei 3 packs diferentes, todas as cores são lindas. A qualidade mantém-se lavagem após lavagem.", date: "08/03/2026", stars: 5, image: null, article: "Pack 3", verified: true },
+  { author: "Hervé A.", title: "Produtos de grande qualidade", text: "Produtos de grande qualidade, consegui beneficiar de um desconto muito interessante. As t-shirts são impecáveis.", date: "15/03/2026", stars: 5, image: reviewPhoto8, article: "Pack 6", verified: true },
+  { author: "Fabrice", title: "T-shirt soberba", text: "T-shirt soberba, material muito agradável de vestir e muito bem cortada. Já comprei várias vezes.", date: "15/03/2026", stars: 5, image: reviewPhoto9, article: "M", verified: true },
+  { author: "Catherine R.", title: "Excelente produto!", text: "Excelente produto que cumpre promessas!", date: "15/03/2026", stars: 5, image: reviewPhoto10, article: "S", verified: true },
+  { author: "Daniel P.", title: "Muito boa qualidade", text: "Mercadoria de muito boa qualidade.", date: "14/03/2026", stars: 5, image: reviewPhoto11, article: "L", verified: true },
+  { author: "Renaud W.", title: "Tudo correu na perfeição", text: "Tudo correu na perfeição.", date: "14/03/2026", stars: 5, image: reviewPhoto12, article: "XL", verified: true },
+  { author: "Milette", title: "No topo", text: "No topo, como sempre…", date: "14/03/2026", stars: 4, image: reviewPhoto13, article: "M", verified: true },
+  { author: "Eric", title: "T-shirt bem cortada", text: "T-shirt bem cortada, material agradável. Prazos de entrega corretos.", date: "13/03/2026", stars: 5, image: reviewPhoto14, article: "2XL", verified: true },
+  { author: "Antoine L.", title: "Muito satisfeito", text: "Muito satisfeito com a qualidade e o corte. Material premium que se sente na pele.", date: "10/03/2026", stars: 5, image: reviewPhoto15, article: "M", verified: true },
+  { author: "Pierre M.", title: "Recomendo", text: "Comprei 3 packs diferentes, todas as cores são lindas. A qualidade mantém-se lavagem após lavagem.", date: "08/03/2026", stars: 5, image: reviewPhoto16, article: "Pack 3", verified: true },
 ];
 
 const ProductPage = () => {
