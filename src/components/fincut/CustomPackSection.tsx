@@ -435,6 +435,7 @@ const CustomPackSection = () => {
         open={packBuilderOpen}
         onClose={() => setPackBuilderOpen(false)}
         onOpenSizeTech={() => { setPackBuilderOpen(false); setSizeTechOpen(true); }}
+        onAddToCart={handleAddToCart}
         initialStep={packInitialStep}
         preselectedSize={packPreselectedSize}
       />
@@ -442,6 +443,12 @@ const CustomPackSection = () => {
         open={sizeTechOpen}
         onClose={handleSizeTechClose}
         onValidate={handleSizeTechValidate}
+      />
+      <CartDrawer
+        open={cartOpen}
+        onClose={() => setCartOpen(false)}
+        items={cartItems}
+        onModifyPack={() => handleOpenPack(2)}
       />
     </>
   );
