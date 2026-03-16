@@ -15,6 +15,8 @@ import lifestyleOffice from "@/assets/lifestyle-office.jpg";
 import lifestyleGym from "@/assets/lifestyle-gym.jpg";
 import lifestyleHome from "@/assets/lifestyle-home.jpg";
 import lifestyleStreet from "@/assets/lifestyle-street.jpg";
+import tshirtBlack from "@/assets/tshirt-black.png";
+import tshirtWhite from "@/assets/tshirt-white.png";
 
 const lifestyleItems = [
   { image: lifestyleOffice, label: "No escritório" },
