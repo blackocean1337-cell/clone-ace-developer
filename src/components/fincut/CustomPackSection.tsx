@@ -130,6 +130,7 @@ const PackBuilderModal = ({ open, onClose, onOpenSizeTech }: { open: boolean; on
 
 const CustomPackSection = () => {
   const [packBuilderOpen, setPackBuilderOpen] = useState(false);
+  const [sizeTechOpen, setSizeTechOpen] = useState(false);
 
   return (
     <>
