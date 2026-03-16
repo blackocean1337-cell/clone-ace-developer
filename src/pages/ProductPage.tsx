@@ -6,6 +6,7 @@ import AnnouncementBar from "@/components/fincut/AnnouncementBar";
 import SiteHeader from "@/components/fincut/SiteHeader";
 import SiteFooter from "@/components/fincut/SiteFooter";
 import BeforeAfterSection from "@/components/fincut/BeforeAfterSection";
+import CustomPackSection from "@/components/fincut/CustomPackSection";
 import { getProductBySlug } from "@/data/products";
 
 const featureIcons = [Ruler, Droplets, Award];
