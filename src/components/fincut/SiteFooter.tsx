@@ -25,7 +25,7 @@ const SiteFooter = () => {
             <h4 className="font-display text-sm font-bold mb-5">Contacte-nos</h4>
             <p className="font-body text-sm text-fincut-gray leading-relaxed">
               Nossa equipe está disponível de segunda a sábado, das 9h às 22h.<br />
-              contact@fincutmen.com
+              contact@mrtuga.com
             </p>
           </div>
 
