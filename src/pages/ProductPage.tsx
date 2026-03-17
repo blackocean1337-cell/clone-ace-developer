@@ -363,7 +363,7 @@ const ProductPage = () => {
                   className="h-12 border border-border hover:border-muted-foreground font-body text-xs text-muted-foreground transition-all duration-200 relative col-span-2 sm:col-span-1">
                   
                   <span className="absolute -top-2 right-1 bg-fincut-gold text-primary-foreground text-[8px] font-bold px-1.5 py-0.5 tracking-wider">
-                    SIZETECH+
+                    MAIS TAMANHOS +  
                   </span>
                   Definir tamanho
                 </button>
