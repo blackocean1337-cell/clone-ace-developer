@@ -11,6 +11,9 @@ import CustomPackSection from "@/components/fincut/CustomPackSection";
 import { useCart } from "@/context/CartContext";
 import SizeTechModal from "@/components/fincut/SizeTechModal";
 import { getProductBySlug } from "@/data/products";
+import tshirtBlack from "@/assets/tshirt-black.png";
+import tshirtWhite from "@/assets/tshirt-white.png";
+
 const lifestyleItems = [
   { image: "/lovable-uploads/1ffcd4aa-dfd9-4653-80dd-f310a14d1838.png", label: "No escritório" },
   { image: "/lovable-uploads/e3db40a4-8ede-4d9e-afad-ecd433dc5306.png", label: "Para o ginásio" },
