@@ -219,7 +219,7 @@ const ProductPage = () => {
               </button>
 
               <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 lg:hidden">
-                {product.galleryImages.map((_, i) =>
+                {galleryImages.map((_, i) =>
                 <button
                   key={i}
                   onClick={() => setSelectedImage(i)}
