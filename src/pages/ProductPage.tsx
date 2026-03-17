@@ -63,6 +63,12 @@ const reviews = [
 const ProductPage = () => {
   const { slug } = useParams<{slug: string;}>();
   const product = getProductBySlug(slug || "");
+  const { data: dbImages } = useProductImages(slug || "");
+
+  // Merge: DB images first, then fallback to static gallery
+  const galleryImages = dbImages && dbImages.length > 0
+    ? dbImages.map((img) => img.image_url)
+    : product?.galleryImages || [];
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState("");
