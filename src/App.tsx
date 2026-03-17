@@ -14,6 +14,7 @@ import TrackOrderPage from "./pages/TrackOrderPage.tsx";
 import TermsPage from "./pages/TermsPage.tsx";
 import PrivacyPage from "./pages/PrivacyPage.tsx";
 import DeliveryPolicyPage from "./pages/DeliveryPolicyPage.tsx";
+import RefundPolicyPage from "./pages/RefundPolicyPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -45,6 +46,7 @@ const App = () => (
             <Route path="/termos" element={<TermsPage />} />
             <Route path="/privacidade" element={<PrivacyPage />} />
             <Route path="/politica-entrega" element={<DeliveryPolicyPage />} />
+            <Route path="/politica-reembolso" element={<RefundPolicyPage />} />
             <Route path="/products/:slug" element={<ProductPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
