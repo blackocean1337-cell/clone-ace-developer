@@ -67,6 +67,8 @@ const ProductPage = () => {
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedQuantity, setSelectedQuantity] = useState("unite");
+  const [selectedPack, setSelectedPack] = useState<number | null>(null);
+  const [packHighlight, setPackHighlight] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<string | null>("description");
   const [countdown, setCountdown] = useState({ hours: 13, minutes: 39 });
   const [sizeTechOpen, setSizeTechOpen] = useState(false);
