@@ -45,7 +45,7 @@ const sections = [
   },
   {
     title: "Nous contacter",
-    content: `Pour en savoir plus sur nos pratiques de confidentialité, si vous avez des questions ou si vous souhaitez déposer une réclamation, veuillez nous contacter :\n\nPar e-mail : contact@fincutmen.com\n\nPar courrier : 123 Kingsway, London, WC2B 6NH, United Kingdom`,
+    content: `Pour en savoir plus sur nos pratiques de confidentialité, si vous avez des questions ou si vous souhaitez déposer une réclamation, veuillez nous contacter :\n\nPar e-mail : contact@mrtuga.com\n\nPar courrier : 123 Kingsway, London, WC2B 6NH, United Kingdom`,
   },
 ];
 

@@ -98,7 +98,7 @@ const faqSections: FAQSection[] = [
       },
       {
         q: "Esqueci-me de usar o meu código promo, como fazer?",
-        a: "Não se preocupe! Se se esqueceu de usar o seu código promo durante a sua encomenda, basta contactar a nossa equipa SAV em contact@fincutmen.com.\nApós verificação, enviar-lhe-emos um vale para utilizar na sua próxima encomenda.",
+        a: "Não se preocupe! Se se esqueceu de usar o seu código promo durante a sua encomenda, basta contactar a nossa equipa SAV em contact@mrtuga.com.\nApós verificação, enviar-lhe-emos um vale para utilizar na sua próxima encomenda.",
       },
       {
         q: "O meu código promo não funciona, podem ajudar-me?",

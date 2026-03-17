@@ -21,7 +21,7 @@ const sections = [
   },
   {
     title: "Échanges",
-    content: `Nous ne remplaçons que les articles initialement défectueux ou endommagés. Si vous devez remplacer le vôtre par le même article, adressez-nous un e-mail à contact@fincutmen.com.`,
+    content: `Nous ne remplaçons que les articles initialement défectueux ou endommagés. Si vous devez remplacer le vôtre par le même article, adressez-nous un e-mail à contact@mrtuga.com.`,
   },
   {
     title: "Cadeaux",

@@ -14,7 +14,7 @@ const HistoryPage = () => {
           A nossa história
         </h1>
         <p className="font-body text-muted-foreground text-center max-w-2xl mx-auto text-lg leading-relaxed">
-          Da ideia à revolução têxtil — descubra o percurso da Fincut desde a sua génese até aos dias de hoje.
+          Da ideia à revolução têxtil — descubra o percurso da MRTUGA desde a sua génese até aos dias de hoje.
         </p>
       </div>
       <TimelineSection />
