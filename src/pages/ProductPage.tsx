@@ -11,18 +11,11 @@ import CustomPackSection from "@/components/fincut/CustomPackSection";
 import { useCart } from "@/context/CartContext";
 import SizeTechModal from "@/components/fincut/SizeTechModal";
 import { getProductBySlug } from "@/data/products";
-import lifestyleOffice from "@/assets/lifestyle-office.jpg";
-import lifestyleGym from "@/assets/lifestyle-gym.jpg";
-import lifestyleHome from "@/assets/lifestyle-home.jpg";
-import lifestyleStreet from "@/assets/lifestyle-street.jpg";
-import tshirtBlack from "@/assets/tshirt-black.png";
-import tshirtWhite from "@/assets/tshirt-white.png";
-
 const lifestyleItems = [
-  { image: lifestyleOffice, label: "No escritório" },
-  { image: lifestyleGym, label: "Para o quarto" },
-  { image: lifestyleHome, label: "Em casa" },
-  { image: lifestyleStreet, label: "Todos os dias" },
+  { image: "/lovable-uploads/1ffcd4aa-dfd9-4653-80dd-f310a14d1838.png", label: "No escritório" },
+  { image: "/lovable-uploads/e3db40a4-8ede-4d9e-afad-ecd433dc5306.png", label: "Para o ginásio" },
+  { image: "/lovable-uploads/bbe47c3f-9ffb-47bb-a445-c05c9ef9b46b.webp", label: "Em casa" },
+  { image: "/lovable-uploads/345acc21-43fe-423d-8274-9f9d0d7c43cd.png", label: "Todos os dias" },
 ];
 
 const featureIcons = [Ruler, Droplets, Award];
