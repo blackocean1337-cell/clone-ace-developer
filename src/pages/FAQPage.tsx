@@ -50,7 +50,7 @@ const faqSections: FAQSection[] = [
       },
       {
         q: "Encomendei dois produtos iguais e não são exatamente idênticos",
-        a: "Os nossos produtos são confecionados a partir de matérias têxteis que podem reagir de forma diferente segundo a cor, a tintura e as etapas de fabrico. Apesar de padrões de produção rigorosos, ligeiras diferenças de medida podem excecionalmente aparecer entre duas peças do mesmo modelo.\nNo entanto, se a diferença lhe parecer importante ou se o produto não lhe convém, convidamo-lo a contactar a nossa equipa para proceder a uma troca ou devolução: contact@fincutmen.com.",
+        a: "Os nossos produtos são confecionados a partir de matérias têxteis que podem reagir de forma diferente segundo a cor, a tintura e as etapas de fabrico. Apesar de padrões de produção rigorosos, ligeiras diferenças de medida podem excecionalmente aparecer entre duas peças do mesmo modelo.\nNo entanto, se a diferença lhe parecer importante ou se o produto não lhe convém, convidamo-lo a contactar a nossa equipa para proceder a uma troca ou devolução: contact@mrtuga.com.",
       },
     ],
   },
