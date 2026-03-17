@@ -5,7 +5,7 @@ import SiteFooter from "@/components/fincut/SiteFooter";
 const sections = [
   {
     title: null,
-    content: `La présente Politique de confidentialité décrit la façon dont vos informations personnelles sont recueillies, utilisées et partagées lorsque vous vous rendez sur fincut.fr (le « Site ») ou que vous y effectuez un achat.`,
+    content: `La présente Politique de confidentialité décrit la façon dont vos informations personnelles sont recueillies, utilisées et partagées lorsque vous vous rendez sur mrtuga.com (le « Site ») ou que vous y effectuez un achat.`,
   },
   {
     title: "Informations personnelles recueillies",
@@ -45,7 +45,7 @@ const sections = [
   },
   {
     title: "Nous contacter",
-    content: `Pour en savoir plus sur nos pratiques de confidentialité, si vous avez des questions ou si vous souhaitez déposer une réclamation, veuillez nous contacter :\n\nPar e-mail : contact@fincutmen.com\n\nPar courrier : 123 Kingsway, London, WC2B 6NH, United Kingdom`,
+    content: `Pour en savoir plus sur nos pratiques de confidentialité, si vous avez des questions ou si vous souhaitez déposer une réclamation, veuillez nous contacter :\n\nPar e-mail : contact@mrtuga.com\n\nPar courrier : 123 Kingsway, London, WC2B 6NH, United Kingdom`,
   },
 ];
 

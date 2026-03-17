@@ -13,7 +13,7 @@ const sections = [
   },
   {
     title: "Remboursements retardés ou manquants",
-    content: `Si vous n'avez pas encore reçu de remboursement :\n\n• Revérifiez d'abord votre compte bancaire\n• Contactez la société émettrice de votre carte de crédit, car il se peut que l'affichage officiel de votre remboursement prenne un peu de temps\n• Contactez votre banque. L'affichage d'un remboursement est souvent précédé d'un délai de traitement\n\nSi vous avez effectué toutes ces démarches et que vous n'avez toujours pas reçu votre remboursement, contactez-nous à contact@fincutmen.com.`,
+    content: `Si vous n'avez pas encore reçu de remboursement :\n\n• Revérifiez d'abord votre compte bancaire\n• Contactez la société émettrice de votre carte de crédit, car il se peut que l'affichage officiel de votre remboursement prenne un peu de temps\n• Contactez votre banque. L'affichage d'un remboursement est souvent précédé d'un délai de traitement\n\nSi vous avez effectué toutes ces démarches et que vous n'avez toujours pas reçu votre remboursement, contactez-nous à contact@mrtuga.com.`,
   },
   {
     title: "Articles soldés ou en promotion",
@@ -21,7 +21,7 @@ const sections = [
   },
   {
     title: "Échanges",
-    content: `Nous ne remplaçons que les articles initialement défectueux ou endommagés. Si vous devez remplacer le vôtre par le même article, adressez-nous un e-mail à contact@fincutmen.com.`,
+    content: `Nous ne remplaçons que les articles initialement défectueux ou endommagés. Si vous devez remplacer le vôtre par le même article, adressez-nous un e-mail à contact@mrtuga.com.`,
   },
   {
     title: "Cadeaux",

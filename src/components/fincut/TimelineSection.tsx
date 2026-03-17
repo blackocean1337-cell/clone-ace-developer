@@ -12,15 +12,15 @@ import timelineReal8 from "@/assets/timeline-real-8.webp";
 import timelineReal9 from "@/assets/timeline-real-9.webp";
 
 const events = [
-{ date: "FEVEREIRO DE 2026", title: "Renovação", desc: "A Fincut instala-se nos novos escritórios da BrandSystem (700 m²) e integra plenamente o seu ecossistema: equipas, conhecimentos e ferramentas.", image: timelineReal1 },
-{ date: "JANEIRO DE 2026", title: "Nomeação", desc: "BrandSystem nomeia Hamdi Haben Diretor Artístico para redefinir a visão criativa e estratégica da Fincut.", image: timelineReal2 },
+{ date: "FEVEREIRO DE 2026", title: "Renovação", desc: "A MRTUGA instala-se nos novos escritórios da BrandSystem (700 m²) e integra plenamente o seu ecossistema: equipas, conhecimentos e ferramentas.", image: timelineReal1 },
+{ date: "JANEIRO DE 2026", title: "Nomeação", desc: "BrandSystem nomeia Hamdi Haben Diretor Artístico para redefinir a visão criativa e estratégica da MRTUGA.", image: timelineReal2 },
 { date: "DEZEMBRO DE 2025", title: "Tecnologia", desc: "Criação da tecnologia têxtil Sizetech+. Abertura de uma unidade marítima em França dedicada à Europa.", image: timelineReal3 },
-{ date: "NOVEMBRO DE 2025", title: "Aquisição", desc: "A BrandSystem adquire a totalidade das participações da Fincut para uma visão de longo prazo.", image: timelineReal4 },
+{ date: "NOVEMBRO DE 2025", title: "Aquisição", desc: "A BrandSystem adquire a totalidade das participações da MRTUGA para uma visão de longo prazo.", image: timelineReal4 },
 { date: "SETEMBRO DE 2025", title: "Escritórios", desc: "Abertura dos novos escritórios criativos dedicados ao desenvolvimento da marca e do produto.", image: timelineReal5 },
 { date: "JULHO DE 2024", title: "Produto", desc: "Desenvolvimento do corte icónico — a t-shirt que se adapta a todas as morfologias.", image: timelineReal6 },
 { date: "MARÇO DE 2024", title: "Produção", desc: "Nova linha de produção têxtil com tecidos premium e acabamentos de alta qualidade.", image: timelineReal7 },
-{ date: "JULHO DE 2023", title: "Lançamento", desc: "Lançamento oficial da marca Fincut — primeira versão do produto icónico.", image: timelineReal8 },
-{ date: "MAIO DE 2023", title: "Génese", desc: "Thomas e Alex fundam a Fincut com a ambição de reinventar a t-shirt masculina.", image: timelineReal9 }];
+{ date: "JULHO DE 2023", title: "Lançamento", desc: "Lançamento oficial da marca MRTUGA — primeira versão do produto icónico.", image: timelineReal8 },
+{ date: "MAIO DE 2023", title: "Génese", desc: "Thomas e Alex fundam a MRTUGA com a ambição de reinventar a t-shirt masculina.", image: timelineReal9 }];
 
 
 const TimelineSection = () => {

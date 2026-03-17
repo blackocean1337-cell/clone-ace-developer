@@ -263,7 +263,7 @@ export const products: Product[] = [
     description: [
       "A camisola essencial.",
       "Uma malha fina e cerrada que traz calor e elegância sem volume desnecessário.",
-      "Corte ajustado fiel ao ADN Fincut, para uma silhueta estruturada.",
+      "Corte ajustado fiel ao ADN MRTUGA, para uma silhueta estruturada.",
       "Perfeita sozinha ou em camadas.",
     ],
     materials: [

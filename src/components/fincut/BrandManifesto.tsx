@@ -15,7 +15,7 @@ const BrandManifesto = () => {
           className="text-center mb-20">
           
           <p className="font-display text-2xl tracking-[0.3em] text-foreground mb-8">
-            FINCUT
+            MRTUGA
           </p>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-tight mb-6">
             Vista todos os homens, todos os tipos de corpo,
@@ -42,7 +42,7 @@ const BrandManifesto = () => {
             <div className="overflow-hidden rounded-sm mb-6">
               <img
                 src={historyColors}
-                alt="Gama de cores das t-shirts Fincut"
+                alt="Gama de cores das t-shirts MRTUGA"
                 className="w-full aspect-[4/3] object-cover" />
               
             </div>
@@ -64,7 +64,7 @@ const BrandManifesto = () => {
             <div className="overflow-hidden rounded-sm mb-6">
               <img
                 src={historyCraft}
-                alt="Detalhe da produção têxtil Fincut"
+                alt="Detalhe da produção têxtil MRTUGA"
                 className="w-full aspect-[4/3] object-cover" />
               
             </div>

@@ -85,7 +85,7 @@ const sections = [
   },
   {
     title: "Section 20 – Coordonnées",
-    content: `Les questions relatives aux Conditions d'utilisation doivent nous être envoyées à contact@fincutmen.com.`,
+    content: `Les questions relatives aux Conditions d'utilisation doivent nous être envoyées à contact@mrtuga.com.`,
   },
 ];
 

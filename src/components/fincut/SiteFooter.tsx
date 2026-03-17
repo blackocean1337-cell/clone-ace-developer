@@ -25,7 +25,7 @@ const SiteFooter = () => {
             <h4 className="font-display text-sm font-bold mb-5">Contacte-nos</h4>
             <p className="font-body text-sm text-fincut-gray leading-relaxed">
               Nossa equipe está disponível de segunda a sábado, das 9h às 22h.<br />
-              contact@fincutmen.com
+              contact@mrtuga.com
             </p>
           </div>
 
@@ -55,9 +55,9 @@ const SiteFooter = () => {
 
           {/* Junte-se ao FinClub */}
           <div>
-            <h4 className="font-display text-sm font-bold mb-5">Junte-se ao FinClub</h4>
+            <h4 className="font-display text-sm font-bold mb-5">Junte-se ao MRClub</h4>
             <p className="font-body text-sm text-fincut-gray leading-relaxed mb-4">
-              Ao ingressar no FinClub você tem acesso prévio aos nossos novos produtos, ofertas exclusivas e muito mais!
+              Ao ingressar no MRClub você tem acesso prévio aos nossos novos produtos, ofertas exclusivas e muito mais!
             </p>
             <div className="flex">
               <input
@@ -78,7 +78,7 @@ const SiteFooter = () => {
       {/* Giant FINCUT logo */}
       <div className="w-full overflow-hidden px-6 lg:px-8">
         <h2 className="font-display font-black text-secondary-foreground text-[18vw] leading-[0.85] tracking-tighter select-none text-center">
-          FINCUT
+          MRTUGA
         </h2>
       </div>
 
