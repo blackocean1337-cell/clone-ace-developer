@@ -13,7 +13,7 @@ const SiteFooter = () => {
           <div>
             <h4 className="font-display text-sm font-bold mb-5">Contato</h4>
             <ul className="space-y-3 font-body text-sm text-fincut-gray">
-              <li><a href="#" className="hover:text-secondary-foreground transition-colors underline">Acompanhe meu pedido</a></li>
+              <li><a href="/acompanhar-encomenda" className="hover:text-secondary-foreground transition-colors underline">Acompanhe meu pedido</a></li>
               <li><a href="#" className="hover:text-secondary-foreground transition-colors underline">Contacte-nos</a></li>
               
               <li><a href="/faq" className="hover:text-secondary-foreground transition-colors underline">Perguntas frequentes</a></li>
