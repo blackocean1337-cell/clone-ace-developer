@@ -12,8 +12,8 @@ const BrandManifesto = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-20"
-        >
+          className="text-center mb-20">
+          
           <p className="font-display text-2xl tracking-[0.3em] text-foreground mb-8">
             FINCUT
           </p>
@@ -37,14 +37,14 @@ const BrandManifesto = () => {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+            transition={{ duration: 0.6 }}>
+            
             <div className="overflow-hidden rounded-sm mb-6">
               <img
                 src={historyColors}
                 alt="Gama de cores das t-shirts Fincut"
-                className="w-full aspect-[4/3] object-cover"
-              />
+                className="w-full aspect-[4/3] object-cover" />
+              
             </div>
             <p className="font-body text-foreground text-base leading-relaxed mb-4">
               Um corte projetado para todos os homens. Conforto, qualidade, tecnologia, sem concessões.
@@ -59,14 +59,14 @@ const BrandManifesto = () => {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-          >
+            transition={{ duration: 0.6, delay: 0.15 }}>
+            
             <div className="overflow-hidden rounded-sm mb-6">
               <img
                 src={historyCraft}
                 alt="Detalhe da produção têxtil Fincut"
-                className="w-full aspect-[4/3] object-cover"
-              />
+                className="w-full aspect-[4/3] object-cover" />
+              
             </div>
             <p className="font-body text-foreground text-base leading-relaxed mb-4">
               Por trás dessa simplicidade, meses de pesquisa para testar, testar novamente, eliminar, até encontrar a fórmula certa.
@@ -83,12 +83,12 @@ const BrandManifesto = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mt-20"
-        >
+          className="mt-20">
+          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
-            <p className="font-body text-muted-foreground text-sm leading-relaxed">
-              Para lhe oferecer itens básicos atemporais, projetados para seu guarda-roupa e oferecidos pelo preço certo. Para isso, reduzimos intermediários, abandonamos coleções efémeras e optamos por produzir apenas quando há demanda.
-            </p>
+            
+
+            
             <p className="font-body text-muted-foreground text-sm leading-relaxed lg:text-right">
               Um essencial. Projetado para você. Por muito tempo.
             </p>
@@ -98,15 +98,15 @@ const BrandManifesto = () => {
               className="w-full aspect-video object-cover"
               controls
               preload="metadata"
-              poster=""
-            >
+              poster="">
+              
               <source src="/videos/brand-video.mp4" type="video/mp4" />
             </video>
           </div>
         </motion.div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default BrandManifesto;
