@@ -29,7 +29,7 @@ const HeroSection = () => {
           Finalmente! A t-shirt que lhe fica bem.
         </motion.p>
         <motion.a
-          href="#iconique"
+          href="/products/tshirt-iconic-black"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
