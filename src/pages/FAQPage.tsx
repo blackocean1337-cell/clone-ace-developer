@@ -84,7 +84,7 @@ const faqSections: FAQSection[] = [
         a: "Para preservar o corte, a suavidade e a resistência das suas peças, recomendamos seguir estes conselhos de cuidado:\n• Lavagem à máquina a frio\n• Lavar com cores semelhantes\n• Secagem a plano ou a baixa temperatura (um ligeiro encolhimento pode ocorrer na máquina de secar)\nPode também pendurar a sua roupa para secar, mas isso pode causar um ligeiro estiramento do tecido.\nAo respeitar estas recomendações, os seus artigos conservarão a sua aparência e qualidade ao longo do tempo.",
       },
       {
-        q: "Posso serigrafar os meus artigos Fincut?",
+        q: "Posso serigrafar os meus artigos MRTUGA?",
         a: "Sim, as nossas t-shirts podem ser utilizadas para serigrafia ou qualquer outra forma de personalização.\nTenha em atenção que qualquer impressão ou modificação aplicada ao produto anula a sua autenticidade original e torna o artigo inelegível para a nossa política de garantia.",
       },
     ],
