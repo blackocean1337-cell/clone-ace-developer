@@ -33,8 +33,8 @@ const SiteHeader = () => {
   return (
     <header className="sticky top-0 z-50 bg-fincut-black border-b border-fincut-slate/30" ref={dropdownRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
-        <Link to="/" className="font-display text-xl font-extrabold tracking-[0.25em] text-secondary-foreground uppercase">
-          FINCUT
+        <Link to="/" className="flex items-center">
+          <img src={mrtugaLogo} alt="MRTUGA" className="h-8" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
