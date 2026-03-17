@@ -195,7 +195,7 @@ const ProductPage = () => {
               <AnimatePresence mode="wait">
                 <motion.img
                   key={selectedImage}
-                  src={product.galleryImages[selectedImage]}
+                  src={galleryImages[selectedImage]}
                   alt={product.name}
                   className="w-full h-full object-contain"
                   initial={{ opacity: 0 }}
