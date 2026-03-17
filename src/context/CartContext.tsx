@@ -34,7 +34,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const updateItems = (updater: (prev: CartItem[]) => CartItem[]) => {
     setItems((prev) => {
       const next = updater(prev);
-      localStorage.setItem("fincut-cart", JSON.stringify(next));
+      localStorage.setItem("mrtuga-cart", JSON.stringify(next));
       return next;
     });
   };

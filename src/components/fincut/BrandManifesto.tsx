@@ -64,7 +64,7 @@ const BrandManifesto = () => {
             <div className="overflow-hidden rounded-sm mb-6">
               <img
                 src={historyCraft}
-                alt="Detalhe da produção têxtil Fincut"
+                alt="Detalhe da produção têxtil MRTUGA"
                 className="w-full aspect-[4/3] object-cover" />
               
             </div>

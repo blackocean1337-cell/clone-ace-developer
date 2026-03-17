@@ -6,7 +6,7 @@ const HeroSection = () => {
     <section className="relative h-[85vh] min-h-[500px] flex items-end overflow-hidden">
       <img
         src={heroBg}
-        alt="T-shirt Fincut"
+        alt="T-shirt MRTUGA"
         className="absolute inset-0 w-full h-full object-cover"
         loading="eager"
       />

@@ -78,7 +78,7 @@ const SiteFooter = () => {
       {/* Giant FINCUT logo */}
       <div className="w-full overflow-hidden px-6 lg:px-8">
         <h2 className="font-display font-black text-secondary-foreground text-[18vw] leading-[0.85] tracking-tighter select-none text-center">
-          FINCUT
+          MRTUGA
         </h2>
       </div>
 

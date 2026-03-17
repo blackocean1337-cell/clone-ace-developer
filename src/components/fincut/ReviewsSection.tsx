@@ -8,7 +8,7 @@ const reviews = [
   { title: "Excelente!", text: "Excelente quando se faz o pedido.", author: "Anthony", date: "03/09/2026" },
   { title: "Sempre satisfeito", text: "Sempre satisfeito com os produtos MRTUGA: os cortes destacam o corpo!", author: "Xavier", date: "12/03/2026" },
   { title: "NÍQUEL!", text: "Ras, tudo correu bem e seus compromissos foram cumpridos. Mal posso esperar para levar minhas compras.", author: "Carbono", date: "12/03/2026" },
-  { title: "Para mim a marca Fincut é a melhor...", text: "Para mim a marca Fincut é a melhor camiseta", author: "Thierry", date: "12/03/2026" },
+  { title: "Para mim a marca MRTUGA é a melhor...", text: "Para mim a marca MRTUGA é a melhor camiseta", author: "Thierry", date: "12/03/2026" },
 ];
 
 const TrustpilotStars = () => (

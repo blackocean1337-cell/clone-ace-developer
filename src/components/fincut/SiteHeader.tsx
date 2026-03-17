@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useCart } from "@/context/CartContext";
 import { AnimatePresence, motion } from "framer-motion";
 import packImage from "@/assets/pack-image.jpg";
+import mrtugaLogo from "@/assets/mrtuga-logo.png";
 
 const productLinks = [
   { label: "A t-shirt Icónica", slug: "t-shirt-tech" },
