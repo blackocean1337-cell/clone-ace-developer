@@ -1,0 +1,176 @@
+import { useState } from "react";
+import { products } from "@/data/products";
+import { useProductImages, useUploadProductImage, useDeleteProductImage } from "@/hooks/useProductImages";
+import { Trash2, Upload, ImagePlus, ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
+import { toast } from "sonner";
+
+const AdminProductImages = () => {
+  const [selectedSlug, setSelectedSlug] = useState(products[0]?.slug || "");
+  const { data: images, isLoading } = useProductImages(selectedSlug);
+  const uploadMutation = useUploadProductImage();
+  const deleteMutation = useDeleteProductImage();
+
+  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files) return;
+
+    const currentCount = images?.length || 0;
+
+    for (let i = 0; i < files.length; i++) {
+      try {
+        await uploadMutation.mutateAsync({
+          file: files[i],
+          productSlug: selectedSlug,
+          sortOrder: currentCount + i,
+        });
+        toast.success(`Imagem "${files[i].name}" carregada com sucesso`);
+      } catch {
+        toast.error(`Erro ao carregar "${files[i].name}"`);
+      }
+    }
+    e.target.value = "";
+  };
+
+  const handleDelete = async (id: string, imageUrl: string) => {
+    try {
+      await deleteMutation.mutateAsync({ id, imageUrl, productSlug: selectedSlug });
+      toast.success("Imagem eliminada");
+    } catch {
+      toast.error("Erro ao eliminar imagem");
+    }
+  };
+
+  const selectedProduct = products.find((p) => p.slug === selectedSlug);
+
+  return (
+    <div className="min-h-screen bg-background">
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="flex items-center gap-4 mb-8">
+          <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">
+            <ArrowLeft size={20} />
+          </Link>
+          <h1 className="font-display text-2xl font-bold text-foreground">
+            Gestão de Imagens de Produtos
+          </h1>
+        </div>
+
+        {/* Product selector */}
+        <div className="mb-8">
+          <label className="font-display text-sm font-semibold text-foreground mb-2 block">
+            Selecione o produto:
+          </label>
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
+            {products.map((p) => (
+              <button
+                key={p.slug}
+                onClick={() => setSelectedSlug(p.slug)}
+                className={`border p-3 text-center transition-all duration-200 ${
+                  selectedSlug === p.slug
+                    ? "border-foreground bg-foreground text-background"
+                    : "border-border hover:border-muted-foreground"
+                }`}
+              >
+                <img
+                  src={p.cardImage}
+                  alt={p.name}
+                  className="w-full aspect-square object-contain mb-2"
+                />
+                <span className="font-body text-xs font-medium block truncate">{p.name}</span>
+                <span className="font-body text-[10px] text-muted-foreground">{p.slug}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Selected product info */}
+        {selectedProduct && (
+          <div className="border border-border p-6 mb-8">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h2 className="font-display text-lg font-bold text-foreground">
+                  {selectedProduct.name}
+                </h2>
+                <p className="font-body text-sm text-muted-foreground">
+                  {images?.length || 0} imagens carregadas • Slug: {selectedSlug}
+                </p>
+              </div>
+
+              <label className="cursor-pointer bg-foreground text-background px-4 py-2 font-display text-sm font-bold tracking-wider uppercase hover:bg-foreground/90 transition-colors flex items-center gap-2">
+                <ImagePlus size={16} />
+                Adicionar imagens
+                <input
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  onChange={handleUpload}
+                  className="hidden"
+                />
+              </label>
+            </div>
+
+            {/* Images grid */}
+            {isLoading ? (
+              <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
+                {[...Array(4)].map((_, i) => (
+                  <div key={i} className="aspect-square bg-muted animate-pulse" />
+                ))}
+              </div>
+            ) : images && images.length > 0 ? (
+              <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
+                {images.map((img) => (
+                  <div key={img.id} className="relative group border border-border overflow-hidden">
+                    <img
+                      src={img.image_url}
+                      alt={`Produto ${selectedSlug}`}
+                      className="w-full aspect-square object-cover"
+                    />
+                    <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/40 transition-colors flex items-center justify-center">
+                      <button
+                        onClick={() => handleDelete(img.id, img.image_url)}
+                        disabled={deleteMutation.isPending}
+                        className="opacity-0 group-hover:opacity-100 bg-destructive text-destructive-foreground p-2 rounded-full transition-opacity"
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    </div>
+                    <span className="absolute bottom-1 left-1 bg-foreground/80 text-background text-[10px] px-1.5 py-0.5 font-body">
+                      #{img.sort_order}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="border-2 border-dashed border-border py-16 flex flex-col items-center justify-center text-center">
+                <Upload size={40} className="text-muted-foreground mb-4" />
+                <p className="font-body text-sm text-muted-foreground mb-2">
+                  Nenhuma imagem carregada para este produto
+                </p>
+                <label className="cursor-pointer text-fincut-gold hover:underline font-body text-sm font-medium">
+                  Clique para adicionar
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleUpload}
+                    className="hidden"
+                  />
+                </label>
+              </div>
+            )}
+
+            {uploadMutation.isPending && (
+              <div className="mt-4 flex items-center gap-2 font-body text-sm text-muted-foreground">
+                <div className="w-4 h-4 border-2 border-fincut-gold border-t-transparent rounded-full animate-spin" />
+                A carregar imagem...
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default AdminProductImages;
