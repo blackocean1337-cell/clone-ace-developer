@@ -62,7 +62,7 @@ const SiteFooter = () => {
             <div className="flex">
               <input
                 type="email"
-                placeholder="Seu e-mail"
+                placeholder="Seu melhor e-mail"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 min-w-0 bg-transparent border border-fincut-gray/40 px-4 py-3 text-sm font-body text-secondary-foreground placeholder:text-fincut-gray focus:outline-none focus:border-primary" />
