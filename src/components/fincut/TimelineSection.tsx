@@ -2,14 +2,12 @@ import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import timelineReal1 from "@/assets/timeline-real-1.png";
-import timelineReal2 from "@/assets/timeline-real-2.webp";
 import timelineReal3 from "@/assets/timeline-real-3.webp";
 import timelineReal4 from "@/assets/timeline-real-4.webp";
 import timelineReal5 from "@/assets/timeline-real-5.webp";
 import timelineReal6 from "@/assets/timeline-real-6.webp";
 import timelineReal7 from "@/assets/timeline-real-7.webp";
 import timelineReal8 from "@/assets/timeline-real-8.webp";
-import timelineReal9 from "@/assets/timeline-real-9.webp";
 
 const events = [
   { date: "FEVEREIRO DE 2026", title: "Renovação", desc: "A MRTUGA instala-se nos novos escritórios da BrandSystem (700 m²) e integra plenamente o seu ecossistema: equipas, conhecimentos e ferramentas.", image: timelineReal1 },
