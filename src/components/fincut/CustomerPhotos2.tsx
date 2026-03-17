@@ -25,46 +25,7 @@ const CustomerPhotos2 = () => {
     scrollRef.current?.scrollBy({ left: dir === "left" ? -320 : 320, behavior: "smooth" });
   };
 
-  return;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  return null;
 };
 
 export default CustomerPhotos2;
