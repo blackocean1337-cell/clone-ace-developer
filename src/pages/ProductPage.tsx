@@ -382,14 +382,23 @@ const ProductPage = () => {
             </div>
 
             {/* Pack selector visual */}
-            <div>
+            <div id="pack-selector">
               <h3 className="font-display text-sm font-semibold text-foreground mb-3">
                 Escolha o seu pacote : <span className="font-normal text-muted-foreground">{selectedColor} (x1) – Branco (x1)</span>
               </h3>
-              <div className="grid grid-cols-4 gap-3">
+              <div className={`grid grid-cols-4 gap-3 p-2 rounded-lg transition-all duration-300 ${
+                packHighlight && selectedPack === null
+                  ? "ring-2 ring-fincut-gold bg-fincut-gold/5"
+                  : ""
+              }`}>
                 {/* Pack 1: Black + White */}
                 <button
-                  className="rounded-lg border border-border hover:border-muted-foreground overflow-hidden bg-muted/30 transition-all duration-200 aspect-square flex items-center justify-center p-2">
+                  onClick={() => { setSelectedPack(0); setPackHighlight(false); }}
+                  className={`rounded-lg border-2 overflow-hidden transition-all duration-200 aspect-square flex items-center justify-center p-2 ${
+                    selectedPack === 0
+                      ? "border-foreground bg-muted/50 shadow-md"
+                      : "border-border hover:border-muted-foreground bg-muted/30"
+                  }`}>
                   
                   <div className="relative w-full h-full flex items-center justify-center">
                     <img src={tshirtBlack} alt="Preto" className="absolute w-3/5 h-3/5 object-contain left-1/4 top-1/2 -translate-y-1/2 -translate-x-1/4" />
@@ -398,7 +407,12 @@ const ProductPage = () => {
                 </button>
                 {/* Pack 2: 2x Black */}
                 <button
-                  className="rounded-lg border border-border hover:border-muted-foreground overflow-hidden bg-muted/30 transition-all duration-200 aspect-square flex items-center justify-center p-2">
+                  onClick={() => { setSelectedPack(1); setPackHighlight(false); }}
+                  className={`rounded-lg border-2 overflow-hidden transition-all duration-200 aspect-square flex items-center justify-center p-2 ${
+                    selectedPack === 1
+                      ? "border-foreground bg-muted/50 shadow-md"
+                      : "border-border hover:border-muted-foreground bg-muted/30"
+                  }`}>
                   
                   <div className="relative w-full h-full flex items-center justify-center">
                     <img src={tshirtBlack} alt="Preto" className="absolute w-3/5 h-3/5 object-contain left-1/4 top-1/2 -translate-y-1/2 -translate-x-1/4" />
@@ -407,7 +421,12 @@ const ProductPage = () => {
                 </button>
                 {/* Pack 3: 2x White */}
                 <button
-                  className="rounded-lg border border-border hover:border-muted-foreground overflow-hidden bg-muted/30 transition-all duration-200 aspect-square flex items-center justify-center p-2">
+                  onClick={() => { setSelectedPack(2); setPackHighlight(false); }}
+                  className={`rounded-lg border-2 overflow-hidden transition-all duration-200 aspect-square flex items-center justify-center p-2 ${
+                    selectedPack === 2
+                      ? "border-foreground bg-muted/50 shadow-md"
+                      : "border-border hover:border-muted-foreground bg-muted/30"
+                  }`}>
                   
                   <div className="relative w-full h-full flex items-center justify-center">
                     <img src={tshirtWhite} alt="Branco" className="absolute w-3/5 h-3/5 object-contain left-1/4 top-1/2 -translate-y-1/2 -translate-x-1/4" />
@@ -424,6 +443,11 @@ const ProductPage = () => {
                   </span>
                 </button>
               </div>
+              {packHighlight && selectedPack === null && (
+                <p className="font-body text-xs text-fincut-gold mt-2 animate-pulse">
+                  ⬆ Selecione um pacote para continuar
+                </p>
+              )}
             </div>
 
             {/* Add to cart */}
