@@ -46,7 +46,7 @@ const SiteFooter = () => {
             <h4 className="font-display text-sm font-bold mb-5">Informação</h4>
             <ul className="space-y-3 font-body text-sm text-fincut-gray">
               <li><a href="/termos" className="hover:text-secondary-foreground transition-colors underline">Condições gerais de venda e utilização</a></li>
-              <li><a href="#" className="hover:text-secondary-foreground transition-colors underline">Política de Privacidade</a></li>
+              <li><a href="/privacidade" className="hover:text-secondary-foreground transition-colors underline">Política de Privacidade</a></li>
               <li><a href="#" className="hover:text-secondary-foreground transition-colors underline">Política de entrega</a></li>
               <li><a href="#" className="hover:text-secondary-foreground transition-colors underline">Política de reembolso</a></li>
               <li><a href="#" className="hover:text-secondary-foreground transition-colors underline">Aviso Legal</a></li>
