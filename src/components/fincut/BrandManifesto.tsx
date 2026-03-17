@@ -42,7 +42,7 @@ const BrandManifesto = () => {
             <div className="overflow-hidden rounded-sm mb-6">
               <img
                 src={historyColors}
-                alt="Gama de cores das t-shirts Fincut"
+                alt="Gama de cores das t-shirts MRTUGA"
                 className="w-full aspect-[4/3] object-cover" />
               
             </div>
