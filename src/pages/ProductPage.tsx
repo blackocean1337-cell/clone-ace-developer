@@ -492,7 +492,7 @@ const ProductPage = () => {
 
       {/* Lifestyle Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h2 className="font-display text-xl font-medium text-foreground mb-6">Ele acompanha você</h2>
+        <h2 className="font-display text-xl font-bold text-foreground mb-6 uppercase tracking-tight">A T-SHIRT QUE TE ACOMPANHA!</h2>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {lifestyleItems.map((item, i) => (
             <div key={i} className="relative group overflow-hidden rounded-sm">
