@@ -40,6 +40,7 @@ const App = () => (
             <Route path="/historia" element={<HistoryPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/acompanhar-encomenda" element={<TrackOrderPage />} />
+            <Route path="/termos" element={<TermsPage />} />
             <Route path="/products/:slug" element={<ProductPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
