@@ -7,15 +7,7 @@ const SiteFooter = () => {
     <footer className="bg-fincut-black text-secondary-foreground">
       {/* Top links section */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-12">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-6">
-          {/* Siga-nos */}
-          <div>
-            <h4 className="font-display text-sm font-bold mb-5">Siga-nos</h4>
-            <ul className="space-y-3 font-body text-sm text-fincut-gray">
-              <li><a href="#" className="hover:text-secondary-foreground transition-colors">Facebook</a></li>
-              <li><a href="#" className="hover:text-secondary-foreground transition-colors">Instagram</a></li>
-            </ul>
-          </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-6">
 
           {/* Contato */}
           <div>
