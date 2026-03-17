@@ -84,16 +84,6 @@ const SiteFooter = () => {
 
       {/* Bottom bar */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
-        <div className="text-center mb-3">
-          <p className="font-display text-xs font-bold text-secondary-foreground mb-3">Nós aceitamos</p>
-          <div className="flex items-center justify-center gap-2 flex-wrap">
-            {["American Express", "Apple Pay", "CB", "Mastercard", "PayPal", "Shop Pay", "Visa", "Klarna"].map((name) =>
-            <div key={name} className="w-10 h-6 bg-secondary-foreground rounded-sm flex items-center justify-center">
-                <span className="text-[6px] font-bold text-fincut-black">{name.slice(0, 4)}</span>
-              </div>
-            )}
-          </div>
-        </div>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-4">
           <p className="font-body text-[11px] text-fincut-gray">2026© Todos os direitos reservados</p>
           <p className="font-body text-[11px] text-fincut-gray">Feito com Brandsystem</p>
