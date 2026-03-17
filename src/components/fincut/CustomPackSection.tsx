@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight, Plus } from "lucide-react";
 import SizeTechModal from "./SizeTechModal";
 import CartDrawer, { type CartItem } from "./CartDrawer";
 const tshirtWhite = "/lovable-uploads/e49adb7b-5a69-4ca3-8159-1d3f4e70974b.png";
-const tshirtNavy = "/lovable-uploads/9413afb2-cf9a-4d5c-b32e-503e81cc05d5.png";
+const tshirtNavy = "/lovable-uploads/eead22c9-62c0-42ee-9771-29643ce81759.png";
 const tshirtBlack = "/lovable-uploads/dd6d21cb-9655-4120-bc20-560351fcf99d.png";
 import tshirtKaki from "@/assets/tshirt-kaki.png";
 import pullBlack from "@/assets/pull-black.png";
