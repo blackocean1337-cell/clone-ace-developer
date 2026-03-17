@@ -4,7 +4,7 @@ import SizeTechModal from "./SizeTechModal";
 import CartDrawer, { type CartItem } from "./CartDrawer";
 import tshirtWhite from "@/assets/tshirt-white.png";
 import tshirtNavy from "@/assets/tshirt-navy.png";
-import tshirtBlack from "@/assets/tshirt-black.png";
+const tshirtBlack = "/lovable-uploads/dd6d21cb-9655-4120-bc20-560351fcf99d.png";
 import tshirtKaki from "@/assets/tshirt-kaki.png";
 import pullBlack from "@/assets/pull-black.png";
 import { motion, AnimatePresence } from "framer-motion";
