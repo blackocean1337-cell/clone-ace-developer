@@ -95,7 +95,7 @@ export const products: Product[] = [
     category: "T-shirt",
     collar: "Gola redonda",
     badge: "ICÓNICA",
-    cardImage: tshirtBlack,
+    cardImage: "/lovable-uploads/dd6d21cb-9655-4120-bc20-560351fcf99d.png",
     galleryImages: defaultGallery,
     colors: defaultColors,
     sizes: defaultSizes,
