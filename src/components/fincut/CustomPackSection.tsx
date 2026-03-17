@@ -5,7 +5,7 @@ import CartDrawer, { type CartItem } from "./CartDrawer";
 const tshirtWhite = "/lovable-uploads/e49adb7b-5a69-4ca3-8159-1d3f4e70974b.png";
 const tshirtNavy = "/lovable-uploads/eead22c9-62c0-42ee-9771-29643ce81759.png";
 const tshirtBlack = "/lovable-uploads/dd6d21cb-9655-4120-bc20-560351fcf99d.png";
-const tshirtKaki = "/lovable-uploads/5d200fde-8181-467a-9ea3-0ae3ed7d0d50.png";
+const tshirtKaki = "/lovable-uploads/55cd436d-3d1d-450c-bccd-a22ec73d3c83.png";
 import pullBlack from "@/assets/pull-black.png";
 import { motion, AnimatePresence } from "framer-motion";
 
