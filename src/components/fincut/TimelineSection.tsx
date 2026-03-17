@@ -19,7 +19,7 @@ const events = [
 { date: "SETEMBRO DE 2025", title: "Escritórios", desc: "Abertura dos novos escritórios criativos dedicados ao desenvolvimento da marca e do produto.", image: timelineReal5 },
 { date: "JULHO DE 2024", title: "Produto", desc: "Desenvolvimento do corte icónico — a t-shirt que se adapta a todas as morfologias.", image: timelineReal6 },
 { date: "MARÇO DE 2024", title: "Produção", desc: "Nova linha de produção têxtil com tecidos premium e acabamentos de alta qualidade.", image: timelineReal7 },
-{ date: "JULHO DE 2023", title: "Lançamento", desc: "Lançamento oficial da marca MRTUGA — primeira versão do produto icónico.", image: timelineReal8 },
+{ date: "JULHO DE 2023", title: "Lançamento", desc: "Lançamento oficial da marca MRTUGA — primeira versão do produto icónico.", image: "/lovable-uploads/66f36dae-2a71-4910-b57e-f113158fca39.png" },
 { date: "MAIO DE 2023", title: "Génese", desc: "Thomas e Alex fundam a MRTUGA com a ambição de reinventar a t-shirt masculina.", image: timelineReal9 }];
 
 
