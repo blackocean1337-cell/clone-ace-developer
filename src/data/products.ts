@@ -188,8 +188,8 @@ export const products: Product[] = [
   {
     slug: "t-shirt-col-v",
     name: "A t-shirt gola V",
-    price: 28,
-    priceLabel: "28 €",
+    price: 18,
+    priceLabel: "18 €",
     category: "T-shirt",
     collar: "Gola V",
     badge: "ESSENCIAL",
