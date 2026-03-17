@@ -68,7 +68,7 @@ const faqSections: FAQSection[] = [
     items: [
       {
         q: "Como pedir uma troca?",
-        a: "Se deseja pedir uma troca, basta contactar a nossa equipa SAV em contact@fincutmen.com indicando o seu número de encomenda e o motivo do seu pedido.\nA nossa equipa responderá em 24 a 48 horas com as primeiras instruções.\nSerá depois convidado a seguir os passos da nossa plataforma de devolução para finalizar o seu pedido de troca.",
+        a: "Se deseja pedir uma troca, basta contactar a nossa equipa SAV em contact@mrtuga.com indicando o seu número de encomenda e o motivo do seu pedido.\nA nossa equipa responderá em 24 a 48 horas com as primeiras instruções.\nSerá depois convidado a seguir os passos da nossa plataforma de devolução para finalizar o seu pedido de troca.",
       },
       {
         q: "Como pedir um reembolso?",
