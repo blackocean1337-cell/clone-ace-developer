@@ -11,8 +11,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const packCards = [
   { image: tshirtNavy, label: "T-shirt Col rond", color: "Azul", size: "S", rotation: "-6deg", top: "10%", left: "38%", zIndex: 1 },
-  { image: tshirtBlack, label: "Produit à choisir", color: "AU CHOIX", size: "AU CHOIX", rotation: "3deg", top: "5%", left: "52%", zIndex: 2 },
-  { image: tshirtBlack, label: "Produit à choisir", color: "AU CHOIX", size: "AU CHOIX", rotation: "8deg", top: "0%", left: "60%", zIndex: 0 },
+  { image: tshirtBlack, label: "O TEU PACK!", color: "PRETO", size: "M", rotation: "3deg", top: "5%", left: "52%", zIndex: 2 },
+  { image: tshirtBlack, label: "O TEU PACK!", color: "PRETO", size: "M", rotation: "8deg", top: "0%", left: "60%", zIndex: 0 },
   { image: pullBlack, label: "Pull", color: "noir", size: "S", rotation: "12deg", top: "8%", left: "68%", zIndex: 1 },
 ];
 
