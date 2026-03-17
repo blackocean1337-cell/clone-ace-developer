@@ -6,7 +6,7 @@ const reviews = [
   { title: "Produto perfeito", text: "Produto perfeito. Preço muito atraente, especialmente na promoção. Obrigado por melhorar os prazos de entrega.", author: "Alioss", date: "03/09/2026" },
   { title: "Tudo é ótimo", text: "Está tudo ótimo! O corte, a promoção aplicada, a qualidade do produto e o prazo de entrega. Comunicação fácil também", author: "Stephane Crozier", date: "03/09/2026" },
   { title: "Excelente!", text: "Excelente quando se faz o pedido.", author: "Anthony", date: "03/09/2026" },
-  { title: "Sempre satisfeito", text: "Sempre satisfeito com os produtos Fincut: os cortes destacam o corpo!", author: "Xavier", date: "12/03/2026" },
+  { title: "Sempre satisfeito", text: "Sempre satisfeito com os produtos MRTUGA: os cortes destacam o corpo!", author: "Xavier", date: "12/03/2026" },
   { title: "NÍQUEL!", text: "Ras, tudo correu bem e seus compromissos foram cumpridos. Mal posso esperar para levar minhas compras.", author: "Carbono", date: "12/03/2026" },
   { title: "Para mim a marca Fincut é a melhor...", text: "Para mim a marca Fincut é a melhor camiseta", author: "Thierry", date: "12/03/2026" },
 ];
