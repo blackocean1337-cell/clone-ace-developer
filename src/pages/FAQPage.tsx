@@ -24,7 +24,7 @@ const faqSections: FAQSection[] = [
         a: "As encomendas são preparadas e expedidas em 24h (dias úteis).\n\nOs prazos de entrega estimados:\nPortugal:\n• CTT Expresso (entrega ao domicílio): 1 a 3 dias\n• Ponto de recolha: 3 a 5 dias\n\nBrasil:\n• Entrega ao domicílio: 5 a 10 dias\n\nPara entregas internacionais, os prazos e custos podem variar consoante o país de destino. Uma estimativa precisa ser-lhe-á proposta durante o checkout.",
       },
       {
-        q: "A Fincut oferece entrega gratuita?",
+        q: "A MRTUGA oferece entrega gratuita?",
         a: "Sim, a entrega é gratuita automaticamente em ponto de recolha a partir de 55€ de compra. A entrega ao domicílio está disponível como opção paga, para entrega em 72h.",
       },
       {
