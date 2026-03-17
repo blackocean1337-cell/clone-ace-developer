@@ -59,7 +59,7 @@ const faqSections: FAQSection[] = [
     items: [
       {
         q: "Posso modificar ou cancelar a minha encomenda?",
-        a: "Sim, é possível se nos contactar rapidamente em contact@fincutmen.com.\nAs nossas equipas preparam e expedem as encomendas com a maior brevidade.\nUma vez a encomenda expedida, é infelizmente tarde demais para a modificar ou cancelar.",
+        a: "Sim, é possível se nos contactar rapidamente em contact@mrtuga.com.\nAs nossas equipas preparam e expedem as encomendas com a maior brevidade.\nUma vez a encomenda expedida, é infelizmente tarde demais para a modificar ou cancelar.",
       },
     ],
   },
