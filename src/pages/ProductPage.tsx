@@ -282,6 +282,15 @@ const ProductPage = () => {
                       window.dispatchEvent(new Event("open-pack-builder"));
                     } else {
                       setSelectedQuantity(opt.id);
+                      if (opt.id !== "unite") {
+                        setSelectedPack(null);
+                        setPackHighlight(true);
+                        setTimeout(() => {
+                          document.getElementById("pack-selector")?.scrollIntoView({ behavior: "smooth", block: "center" });
+                        }, 100);
+                      } else {
+                        setPackHighlight(false);
+                      }
                     }
                   }}
                   className={`relative border px-3 py-3 text-center transition-all duration-200 ${
