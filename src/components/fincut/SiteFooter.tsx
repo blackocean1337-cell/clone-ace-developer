@@ -57,7 +57,7 @@ const SiteFooter = () => {
           <div>
             <h4 className="font-display text-sm font-bold mb-5">Junte-se ao MRClub</h4>
             <p className="font-body text-sm text-fincut-gray leading-relaxed mb-4">
-              Ao ingressar no FinClub você tem acesso prévio aos nossos novos produtos, ofertas exclusivas e muito mais!
+              Ao ingressar no MRClub você tem acesso prévio aos nossos novos produtos, ofertas exclusivas e muito mais!
             </p>
             <div className="flex">
               <input
