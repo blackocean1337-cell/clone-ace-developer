@@ -94,7 +94,7 @@ export const products: Product[] = [
     priceLabel: "28 €",
     category: "T-shirt",
     collar: "Gola redonda",
-    badge: "O ICÓNICO",
+    badge: "ICÓNICA",
     cardImage: tshirtBlack,
     galleryImages: defaultGallery,
     colors: defaultColors,
