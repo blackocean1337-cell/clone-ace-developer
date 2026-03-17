@@ -176,7 +176,7 @@ const FAQPage = () => {
             A nossa equipa está aqui para o ajudar. Contacte-nos e responderemos com a maior brevidade.
           </p>
           <a
-            href="mailto:contact@fincutmen.com"
+            href="mailto:contact@mrtuga.com"
             className="inline-block border-2 border-foreground px-8 py-3 font-display text-xs font-bold tracking-[0.15em] text-foreground uppercase hover:bg-foreground hover:text-background transition-colors duration-200"
           >
             CONTACTAR-NOS
