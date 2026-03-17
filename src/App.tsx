@@ -44,6 +44,7 @@ const App = () => (
             <Route path="/acompanhar-encomenda" element={<TrackOrderPage />} />
             <Route path="/termos" element={<TermsPage />} />
             <Route path="/privacidade" element={<PrivacyPage />} />
+            <Route path="/politica-entrega" element={<DeliveryPolicyPage />} />
             <Route path="/products/:slug" element={<ProductPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
