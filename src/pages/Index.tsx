@@ -7,6 +7,7 @@ import VestiaireSection from "@/components/fincut/VestiaireSection";
 import PackSection from "@/components/fincut/PackSection";
 import CustomPackSection from "@/components/fincut/CustomPackSection";
 import CustomerPhotos from "@/components/fincut/CustomerPhotos";
+import CustomerPhotos2 from "@/components/fincut/CustomerPhotos2";
 import ReviewsSection from "@/components/fincut/ReviewsSection";
 import TimelineSection from "@/components/fincut/TimelineSection";
 import SiteFooter from "@/components/fincut/SiteFooter";
@@ -23,7 +24,7 @@ const Index = () => {
       <CustomerPhotos />
       <VestiaireSection />
       <PackSection />
-      <CustomerPhotos />
+      <CustomerPhotos2 />
       <ReviewsSection />
       <TimelineSection />
       <SiteFooter />
