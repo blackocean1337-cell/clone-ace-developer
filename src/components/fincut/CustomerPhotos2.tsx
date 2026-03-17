@@ -10,13 +10,14 @@ import reviewPhoto6 from "@/assets/review-photo-6.webp";
 import reviewPhoto7 from "@/assets/review-photo-7.png";
 
 const photos = [
-{ image: reviewPhoto1, label: "A camiseta icónica" },
-{ image: reviewPhoto2, label: "A camiseta icónica" },
-{ image: reviewPhoto3, label: "A camiseta icónica" },
-{ image: reviewPhoto4, label: "A camiseta icónica" },
-{ image: reviewPhoto5, label: "A camiseta icónica" },
-{ image: reviewPhoto6, label: "A camiseta icónica" },
-{ image: reviewPhoto7, label: "A camiseta icónica" }];
+  { image: reviewPhoto1, label: "A T-SHIRT ICÓNICA" },
+  { image: reviewPhoto2, label: "A T-SHIRT ICÓNICA" },
+  { image: reviewPhoto3, label: "A T-SHIRT ICÓNICA" },
+  { image: reviewPhoto4, label: "A T-SHIRT ICÓNICA" },
+  { image: reviewPhoto5, label: "A T-SHIRT ICÓNICA" },
+  { image: reviewPhoto6, label: "A T-SHIRT ICÓNICA" },
+  { image: reviewPhoto7, label: "A T-SHIRT ICÓNICA" },
+];
 
 
 const CustomerPhotos2 = () => {
