@@ -1,5 +1,5 @@
 const tshirtBlack = "/lovable-uploads/dd6d21cb-9655-4120-bc20-560351fcf99d.png";
-import tshirtWhite from "@/assets/tshirt-white.png";
+const tshirtWhite = "/lovable-uploads/e49adb7b-5a69-4ca3-8159-1d3f4e70974b.png";
 import tshirtNavy from "@/assets/tshirt-navy.png";
 import tshirtKaki from "@/assets/tshirt-kaki.png";
 import poloBlack from "@/assets/polo-black.png";
