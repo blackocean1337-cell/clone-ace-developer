@@ -22,7 +22,7 @@ export const useCart = () => {
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [items, setItems] = useState<CartItem[]>(() => {
     try {
-      const stored = localStorage.getItem("fincut-cart");
+      const stored = localStorage.getItem("mrtuga-cart");
       return stored ? JSON.parse(stored) : [];
     } catch {
       return [];
