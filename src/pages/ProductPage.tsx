@@ -11,7 +11,7 @@ import CustomPackSection from "@/components/fincut/CustomPackSection";
 import { useCart } from "@/context/CartContext";
 import SizeTechModal from "@/components/fincut/SizeTechModal";
 import { getProductBySlug } from "@/data/products";
-import tshirtBlack from "@/assets/tshirt-black.png";
+const tshirtBlack = "/lovable-uploads/dd6d21cb-9655-4120-bc20-560351fcf99d.png";
 import tshirtWhite from "@/assets/tshirt-white.png";
 
 const lifestyleItems = [
