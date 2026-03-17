@@ -46,7 +46,7 @@ const faqSections: FAQSection[] = [
       },
       {
         q: "O meu produto apresenta um defeito:",
-        a: "Apesar de todos os controlos efetuados, um defeito pode excecionalmente aparecer em certos produtos.\nSe for esse o caso, não se preocupe: contacte o nosso serviço pós-venda em contact@fincutmen.com indicando o seu número de encomenda e, se possível, uma foto do defeito.\nA nossa equipa fará o necessário para lhe oferecer uma solução rápida.",
+        a: "Apesar de todos os controlos efetuados, um defeito pode excecionalmente aparecer em certos produtos.\nSe for esse o caso, não se preocupe: contacte o nosso serviço pós-venda em contact@mrtuga.com indicando o seu número de encomenda e, se possível, uma foto do defeito.\nA nossa equipa fará o necessário para lhe oferecer uma solução rápida.",
       },
       {
         q: "Encomendei dois produtos iguais e não são exatamente idênticos",
