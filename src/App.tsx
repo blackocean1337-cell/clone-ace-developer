@@ -13,6 +13,7 @@ import FAQPage from "./pages/FAQPage.tsx";
 import TrackOrderPage from "./pages/TrackOrderPage.tsx";
 import TermsPage from "./pages/TermsPage.tsx";
 import PrivacyPage from "./pages/PrivacyPage.tsx";
+import DeliveryPolicyPage from "./pages/DeliveryPolicyPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
