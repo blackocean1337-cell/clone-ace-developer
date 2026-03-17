@@ -5,7 +5,7 @@ import SiteFooter from "@/components/fincut/SiteFooter";
 const sections = [
   {
     title: null,
-    content: `La présente Politique de confidentialité décrit la façon dont vos informations personnelles sont recueillies, utilisées et partagées lorsque vous vous rendez sur fincut.fr (le « Site ») ou que vous y effectuez un achat.`,
+    content: `La présente Politique de confidentialité décrit la façon dont vos informations personnelles sont recueillies, utilisées et partagées lorsque vous vous rendez sur mrtuga.com (le « Site ») ou que vous y effectuez un achat.`,
   },
   {
     title: "Informations personnelles recueillies",
