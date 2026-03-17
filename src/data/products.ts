@@ -89,7 +89,7 @@ const defaultGallery = [
 export const products: Product[] = [
   {
     slug: "t-shirt-tech",
-    name: "A t-shirt Icónica",
+    name: "A t-shirt Icónica.",
     price: 28,
     priceLabel: "28 €",
     category: "T-shirt",
@@ -106,7 +106,7 @@ export const products: Product[] = [
   },
   {
     slug: "t-shirt-blanc",
-    name: "A t-shirt Icónica",
+    name: "A t-shirt Icónica.",
     price: 28,
     priceLabel: "28 €",
     category: "T-shirt",
@@ -123,7 +123,7 @@ export const products: Product[] = [
   },
   {
     slug: "t-shirt-navy",
-    name: "A t-shirt Icónica",
+    name: "A t-shirt Icónica.",
     price: 28,
     priceLabel: "28 €",
     category: "T-shirt",
@@ -140,7 +140,7 @@ export const products: Product[] = [
   },
   {
     slug: "t-shirt-kaki",
-    name: "A t-shirt Icónica",
+    name: "A t-shirt Icónica.",
     price: 28,
     priceLabel: "28 €",
     category: "T-shirt",
