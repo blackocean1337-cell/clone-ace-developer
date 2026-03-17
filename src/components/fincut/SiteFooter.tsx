@@ -15,7 +15,7 @@ const SiteFooter = () => {
             <ul className="space-y-3 font-body text-sm text-fincut-gray">
               <li><a href="#" className="hover:text-secondary-foreground transition-colors underline">Acompanhe meu pedido</a></li>
               <li><a href="#" className="hover:text-secondary-foreground transition-colors underline">Contacte-nos</a></li>
-              <li><a href="#" className="hover:text-secondary-foreground transition-colors underline">Avaliações de clientes</a></li>
+              
               <li><a href="/faq" className="hover:text-secondary-foreground transition-colors underline">Perguntas frequentes</a></li>
             </ul>
           </div>
