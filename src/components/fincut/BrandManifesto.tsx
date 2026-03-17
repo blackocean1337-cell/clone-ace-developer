@@ -15,7 +15,7 @@ const BrandManifesto = () => {
           className="text-center mb-20">
           
           <p className="font-display text-2xl tracking-[0.3em] text-foreground mb-8">
-            FINCUT
+            MRTUGA
           </p>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-tight mb-6">
             Vista todos os homens, todos os tipos de corpo,
