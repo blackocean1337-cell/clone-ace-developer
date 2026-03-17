@@ -102,7 +102,7 @@ const faqSections: FAQSection[] = [
       },
       {
         q: "O meu código promo não funciona, podem ajudar-me?",
-        a: "Convidamo-lo primeiro a atualizar a página e a tentar novamente aplicar o seu código de redução.\nSe o problema persistir, por favor contacte a nossa equipa em contact@fincutmen.com para que possamos ajudá-lo.",
+        a: "Convidamo-lo primeiro a atualizar a página e a tentar novamente aplicar o seu código de redução.\nSe o problema persistir, por favor contacte a nossa equipa em contact@mrtuga.com para que possamos ajudá-lo.",
       },
     ],
   },
