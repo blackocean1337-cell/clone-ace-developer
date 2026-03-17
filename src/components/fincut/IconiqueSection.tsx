@@ -1,13 +1,6 @@
 import { iconiqueProducts } from "@/data/products";
 import ProductCard from "./ProductCard";
 
-const colorLabels: Record<string, string> = {
-  "t-shirt-tech": "Preto",
-  "t-shirt-blanc": "Branco",
-  "t-shirt-navy": "Azul Marinho",
-  "t-shirt-kaki": "Caqui"
-};
-
 const IconiqueSection = () => {
   return (
     <section id="iconique" className="bg-background py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -19,7 +12,7 @@ const IconiqueSection = () => {
         <ProductCard
           key={p.slug}
           image={p.cardImage}
-          name={`${p.name} — ${colorLabels[p.slug] || ""}`}
+          name={p.name}
           price={p.priceLabel}
           darkBg={false}
           slug={p.slug} />
