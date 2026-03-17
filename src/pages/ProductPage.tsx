@@ -515,8 +515,8 @@ const ProductPage = () => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header */}
         <div className="text-center mb-10">
-          <h2 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">
-            +100.000 homens já carregam Fincut
+          <h2 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">+8.000 homens já vestem MRTUGA!
+
           </h2>
           <div className="flex items-center justify-center gap-2">
             <div className="flex gap-0.5">
@@ -525,7 +525,7 @@ const ProductPage = () => {
               )}
             </div>
             <span className="font-body text-sm font-semibold text-foreground">4.5</span>
-            <span className="font-body text-xs text-muted-foreground">| EM 6709 NOTAR</span>
+            <span className="font-body text-xs text-muted-foreground">| EM 6709 AVALIAÇÕES NO TRUSPILOT   </span>
           </div>
         </div>
 
@@ -540,9 +540,9 @@ const ProductPage = () => {
             </div>
             <span className="font-body text-sm text-foreground font-medium">5,325 avaliações</span>
           </div>
-          <button className="border border-border px-4 py-2 font-body text-sm text-foreground hover:bg-muted transition-colors">
-            Escrever um aviso
-          </button>
+          
+
+          
         </div>
 
         {/* Reviews grid - masonry style */}
