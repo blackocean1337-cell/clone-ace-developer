@@ -17,24 +17,40 @@ const tshirtWhite = "/lovable-uploads/e49adb7b-5a69-4ca3-8159-1d3f4e70974b.png";
 const tshirtNavy = "/lovable-uploads/eead22c9-62c0-42ee-9771-29643ce81759.png";
 const tshirtKaki = "/lovable-uploads/55cd436d-3d1d-450c-bccd-a22ec73d3c83.png";
 
-const packTshirts = [tshirtBlack, tshirtWhite, tshirtNavy, tshirtKaki];
-
-const getPackCount = (quantityId: string): number => {
-  switch (quantityId) {
-    case "pack2": return 3;
-    case "pack3": return 6;
-    case "pack4": return 9;
-    case "pack6": return 12;
-    default: return 0;
-  }
-};
-
-const buildPackGrid = (count: number): string[] => {
-  const items: string[] = [];
-  for (let i = 0; i < count; i++) {
-    items.push(packTshirts[i % packTshirts.length]);
-  }
-  return items;
+// Pack combinations per quantity tier
+const packOptions: Record<string, string[][]> = {
+  pack2: [
+    [tshirtBlack, tshirtBlack, tshirtBlack],
+    [tshirtBlack, tshirtWhite, tshirtNavy],
+    [tshirtWhite, tshirtWhite, tshirtWhite],
+    [tshirtBlack, tshirtBlack, tshirtWhite],
+    [tshirtNavy, tshirtNavy, tshirtNavy],
+    [tshirtKaki, tshirtKaki, tshirtKaki],
+  ],
+  pack3: [
+    [tshirtBlack, tshirtBlack, tshirtWhite, tshirtWhite, tshirtNavy, tshirtKaki],
+    [tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack],
+    [tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite],
+    [tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy],
+    [tshirtBlack, tshirtBlack, tshirtBlack, tshirtWhite, tshirtWhite, tshirtWhite],
+    [tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki],
+  ],
+  pack4: [
+    [tshirtBlack, tshirtBlack, tshirtBlack, tshirtWhite, tshirtWhite, tshirtWhite, tshirtNavy, tshirtNavy, tshirtKaki],
+    [tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack],
+    [tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite],
+    [tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy],
+    [tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite],
+    [tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki],
+  ],
+  pack6: [
+    [tshirtBlack, tshirtBlack, tshirtBlack, tshirtWhite, tshirtWhite, tshirtWhite, tshirtNavy, tshirtNavy, tshirtNavy, tshirtKaki, tshirtKaki, tshirtKaki],
+    [tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack],
+    [tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite],
+    [tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy],
+    [tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite],
+    [tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki],
+  ],
 };
 
 const lifestyleItems = [
