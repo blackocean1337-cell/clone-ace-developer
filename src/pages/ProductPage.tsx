@@ -355,7 +355,13 @@ const ProductPage = () => {
                 {product.colors.map((c) =>
                 <button
                   key={c.name}
-                  onClick={() => setSelectedColor(c.name)}
+                  onClick={() => {
+                    if (c.slug && c.slug !== slug) {
+                      navigate(`/products/${c.slug}`);
+                    } else {
+                      setSelectedColor(c.name);
+                    }
+                  }}
                   title={c.name}
                   className={`w-9 h-9 rounded-full border-2 transition-all duration-200 ${
                   selectedColor === c.name ?
