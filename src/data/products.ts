@@ -277,7 +277,7 @@ export const getProductBySlug = (slug: string): Product | undefined => {
 };
 
 export const iconiqueProducts = products.filter((p) =>
-  ["t-shirt-tech", "t-shirt-blanc", "t-shirt-navy", "t-shirt-kaki"].includes(p.slug)
+  ["t-shirt-tech", "t-shirt-blanc", "t-shirt-navy", "t-shirt-kaki", "polo"].includes(p.slug)
 );
 
 export const vestiaireProducts = products.filter((p) =>
