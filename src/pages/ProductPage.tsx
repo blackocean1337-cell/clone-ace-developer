@@ -612,7 +612,7 @@ const ProductPage = () => {
         <div className="grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-4">
           {lifestyleItems.map((item, i) =>
           <div key={i} className="relative group overflow-hidden rounded-sm">
-              <img src={item.image} alt={item.label} className="w-full aspect-[3/2] object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+              <img src={item.image} alt={item.label} className="w-full aspect-[3/4] sm:aspect-[3/2] object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 pt-8">
                 <p className="font-body text-sm text-white">{item.label}</p>
               </div>
