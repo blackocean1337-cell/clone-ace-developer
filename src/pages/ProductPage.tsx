@@ -34,7 +34,7 @@ import reviewPhoto7 from "@/assets/review-photo-7.png";
 import reviewPhoto8 from "@/assets/review-photo-8.jpg";
 import reviewPhoto9 from "@/assets/review-photo-9.jpg";
 import reviewPhoto10 from "@/assets/review-photo-10.jpg";
-import reviewPhoto11 from "@/assets/review-photo-11.jpg";
+const reviewPhoto11 = "/lovable-uploads/57c703cf-5107-413d-bd6f-a094d2078aa2.png";
 import reviewPhoto12 from "@/assets/review-photo-12.jpg";
 import reviewPhoto13 from "@/assets/review-photo-13.jpg";
 import reviewPhoto14 from "@/assets/review-photo-14.jpg";
