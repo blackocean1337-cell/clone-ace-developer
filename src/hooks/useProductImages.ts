@@ -31,7 +31,7 @@ export const useUploadProductImage = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async ({ file, productSlug, sortOrder }: { file: File; productSlug: string; sortOrder: number }) => {
+    mutationFn: async ({ file, productSlug, sortOrder, imageType = "gallery" }: { file: File; productSlug: string; sortOrder: number; imageType?: string }) => {
       const ext = file.name.split(".").pop();
       const fileName = `${productSlug}/${Date.now()}.${ext}`;
 
