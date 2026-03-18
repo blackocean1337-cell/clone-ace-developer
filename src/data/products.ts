@@ -26,7 +26,7 @@ export interface Product {
   badge: string;
   cardImage: string;
   galleryImages: string[];
-  colors: { name: string; hex: string }[];
+  colors: { name: string; hex: string; slug?: string }[];
   sizes: string[];
   features: string[];
   description: string[];
