@@ -194,7 +194,7 @@ const ProductPage = () => {
                 "border-border hover:border-muted-foreground"}`
                 }>
                 
-                  <img src={img} alt={`Vista ${i + 1}`} className="w-full h-full object-cover" />
+                  <img src={img} alt={`Vista ${i + 1}`} className="w-full h-full object-contain bg-background" />
                 </button>
               )}
             </div>
@@ -206,7 +206,7 @@ const ProductPage = () => {
                   key={selectedImage}
                   src={activeImages[selectedImage]}
                   alt={product.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain bg-background"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}

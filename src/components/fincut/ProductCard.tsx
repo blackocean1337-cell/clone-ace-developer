@@ -24,7 +24,7 @@ const ProductCard = ({ image, name, price, colors, darkBg = true, slug }: Produc
           <img
             src={image}
             alt={name}
-            className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-200 bg-secondary-foreground"
+            className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-200 bg-background"
             loading="lazy" />
           
         </div>
