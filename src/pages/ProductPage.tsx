@@ -194,7 +194,7 @@ const ProductPage = () => {
                 "border-border hover:border-muted-foreground"}`
                 }>
                 
-                  <img src={img} alt={`Vista ${i + 1}`} className="w-full h-full object-cover" />
+                  <img src={img} alt={`Vista ${i + 1}`} className="w-full h-full object-contain bg-background" />
                 </button>
               )}
             </div>
