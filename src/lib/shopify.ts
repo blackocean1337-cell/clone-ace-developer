@@ -53,13 +53,19 @@ export function buildCartAttributes(items: CartItem[]): Array<{ key: string; val
 }
 
 /**
- * Builds a human-readable note for the cart (visible in checkout).
+ * Builds line item properties that appear under the product name in checkout.
  */
-export function buildCartNote(items: CartItem[]): string {
-  const lines = items.map((item, i) =>
-    `${item.quantity}x ${item.name} - Cor: ${item.color}, Tamanho: ${item.size}`
-  );
-  return lines.join('\n');
+export function buildLineItemProperties(items: CartItem[]): Array<{ key: string; value: string }> {
+  const properties: Array<{ key: string; value: string }> = [];
+
+  items.forEach((item, i) => {
+    properties.push({
+      key: `Artigo ${i + 1}`,
+      value: `${item.quantity}x ${item.color} (${item.size})`
+    });
+  });
+
+  return properties;
 }
 
 async function storefrontApiRequest(query: string, variables: Record<string, unknown> = {}) {
@@ -117,13 +123,16 @@ export async function createCheckout(items: CartItem[]): Promise<string> {
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const { variantId } = getTierVariant(totalItems);
   const attributes = buildCartAttributes(items);
-  const note = buildCartNote(items);
+  const lineProperties = buildLineItemProperties(items);
 
   const data = await storefrontApiRequest(CART_CREATE_MUTATION, {
     input: {
-      lines: [{ quantity: 1, merchandiseId: variantId }],
+      lines: [{
+        quantity: 1,
+        merchandiseId: variantId,
+        attributes: lineProperties,
+      }],
       attributes,
-      note,
     },
   });
 
