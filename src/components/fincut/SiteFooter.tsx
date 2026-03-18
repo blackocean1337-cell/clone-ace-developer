@@ -25,7 +25,7 @@ const SiteFooter = () => {
             <h4 className="font-display text-sm font-bold mb-5">Contacte-nos</h4>
             <p className="font-body text-sm text-fincut-gray leading-relaxed">
               Nossa equipe está disponível de segunda a sábado, das 9h às 22h.<br />
-              contact@mrtuga.com
+              info@mrtuga.com
             </p>
           </div>
 
@@ -86,7 +86,6 @@ const SiteFooter = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-4">
           <p className="font-body text-[11px] text-fincut-gray">2026© Todos os direitos reservados</p>
-          <p className="font-body text-[11px] text-fincut-gray">Feito com Brandsystem</p>
         </div>
       </div>
     </footer>);
