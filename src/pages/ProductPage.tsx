@@ -17,7 +17,25 @@ const tshirtWhite = "/lovable-uploads/e49adb7b-5a69-4ca3-8159-1d3f4e70974b.png";
 const tshirtNavy = "/lovable-uploads/eead22c9-62c0-42ee-9771-29643ce81759.png";
 const tshirtKaki = "/lovable-uploads/55cd436d-3d1d-450c-bccd-a22ec73d3c83.png";
 
-// Pack combinations per quantity tier
+const tshirtColorMap: Record<string, string> = {
+  [tshirtBlack]: "Preta",
+  [tshirtWhite]: "Branca",
+  [tshirtNavy]: "Azul Marinho",
+  [tshirtKaki]: "Verde Caqui",
+};
+
+const getPackLabel = (tshirts: string[]): string => {
+  const counts: Record<string, number> = {};
+  tshirts.forEach((img) => {
+    const color = tshirtColorMap[img] || "";
+    counts[color] = (counts[color] || 0) + 1;
+  });
+  const entries = Object.entries(counts);
+  if (entries.length === 1) return "";
+  return entries.map(([color, count]) => `${count}x ${color}`).join(" · ");
+};
+
+
 const packOptions: Record<string, string[][]> = {
   pack2: [
     [tshirtBlack, tshirtBlack, tshirtBlack],
@@ -474,32 +492,39 @@ const ProductPage = () => {
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {(packOptions[selectedQuantity] || []).map((tshirts, i) => {
                   const cols = tshirts.length <= 3 ? 3 : tshirts.length <= 6 ? 3 : tshirts.length <= 9 ? 3 : 4;
+                  const label = getPackLabel(tshirts);
                   return (
-                    <button
-                      key={i}
-                      onClick={() => { setSelectedPack(i); setPackHighlight(false); }}
-                      className={`relative rounded-lg border-2 overflow-hidden transition-all duration-200 p-2 ${
-                        selectedPack === i
-                          ? "border-foreground bg-muted/50 shadow-md"
-                          : packHighlight && selectedPack === null
-                            ? "border-fincut-gold/50 hover:border-fincut-gold"
-                            : "border-border hover:border-muted-foreground bg-muted/30"
-                      }`}>
-                      <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}>
-                        {tshirts.map((img, j) => (
-                          <div key={j} className="aspect-square bg-background rounded overflow-hidden p-0.5">
-                            <img src={img} alt={`T-shirt ${j + 1}`} className="w-full h-full object-contain" />
-                          </div>
-                        ))}
-                      </div>
-                      {selectedPack === i && (
-                        <div className="absolute inset-0 bg-foreground/10 flex items-end justify-center pb-2">
-                          <span className="bg-foreground text-background text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                            Selecionado ✓
-                          </span>
+                    <div key={i} className="flex flex-col">
+                      <button
+                        onClick={() => { setSelectedPack(i); setPackHighlight(false); }}
+                        className={`relative rounded-lg border-2 overflow-hidden transition-all duration-200 p-2 flex-1 ${
+                          selectedPack === i
+                            ? "border-foreground bg-muted/50 shadow-md"
+                            : packHighlight && selectedPack === null
+                              ? "border-fincut-gold/50 hover:border-fincut-gold"
+                              : "border-border hover:border-muted-foreground bg-muted/30"
+                        }`}>
+                        <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}>
+                          {tshirts.map((img, j) => (
+                            <div key={j} className="aspect-square bg-background rounded overflow-hidden p-0.5">
+                              <img src={img} alt={`T-shirt ${j + 1}`} className="w-full h-full object-contain" />
+                            </div>
+                          ))}
                         </div>
+                        {selectedPack === i && (
+                          <div className="absolute inset-0 bg-foreground/10 flex items-end justify-center pb-2">
+                            <span className="bg-foreground text-background text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                              Selecionado ✓
+                            </span>
+                          </div>
+                        )}
+                      </button>
+                      {label && (
+                        <p className="font-body text-[10px] text-muted-foreground mt-1 text-center leading-tight">
+                          {label}
+                        </p>
                       )}
-                    </button>
+                    </div>
                   );
                 })}
               </div>
