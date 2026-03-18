@@ -9,7 +9,7 @@ import mrtugaLogo from "@/assets/mrtuga-logo.png";
 const productLinks = [
   { label: "A t-shirt Icónica", slug: "t-shirt-tech" },
   { label: "A t-shirt gola V", slug: "t-shirt-col-v" },
-  { label: "O Polo", slug: "polo" },
+  { label: "A t-shirt Icónica em V.", slug: "polo" },
   { label: "A t-shirt Manga Comprida", slug: "t-shirt-manches-longues" },
   { label: "A Camisola", slug: "pull" },
 ];

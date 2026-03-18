@@ -150,7 +150,7 @@ export const products: Product[] = [
   },
   {
     slug: "polo",
-    name: "O Polo",
+    name: "A t-shirt Icónica em V.",
     price: 35,
     priceLabel: "35 €",
     category: "Polo",
