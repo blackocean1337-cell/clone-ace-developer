@@ -89,6 +89,7 @@ const ProductPage = () => {
   const activeImages = galleryImages;
   const [sizeTechOpen, setSizeTechOpen] = useState(false);
   const { addItem } = useCart();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (product) {
