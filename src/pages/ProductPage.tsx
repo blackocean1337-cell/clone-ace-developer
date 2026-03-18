@@ -221,7 +221,7 @@ const ProductPage = () => {
                 <ChevronLeft size={16} />
               </button>
               <button
-                onClick={() => setSelectedImage((i) => Math.min(galleryImages.length - 1, i + 1))}
+                onClick={() => setSelectedImage((i) => Math.min(activeImages.length - 1, i + 1))}
                 className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-background/80 flex items-center justify-center lg:hidden">
                 
                 <ChevronRight size={16} />
