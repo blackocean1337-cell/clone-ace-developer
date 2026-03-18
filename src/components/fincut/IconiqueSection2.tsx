@@ -7,7 +7,7 @@ const IconiqueSection2 = () => {
       <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground">O Icónico</h2>
       <p className="font-body text-sm text-muted-foreground mt-1">Mais de 1 milhão de t-shirts vendidas</p>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 mt-8">
         {iconiqueProducts.map((p) => (
           <ProductCard
             key={p.slug}
