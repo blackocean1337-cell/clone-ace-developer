@@ -26,6 +26,8 @@ const FREE_SHIPPING_THRESHOLD = 55;
 const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps) => {
   const [promoOpen, setPromoOpen] = useState(false);
   const [promoCode, setPromoCode] = useState("");
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
   if (!open) return null;
 
