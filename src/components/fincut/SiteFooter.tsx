@@ -33,11 +33,11 @@ const SiteFooter = () => {
           <div>
             <h4 className="font-display text-sm font-bold mb-5">Categorias</h4>
             <ul className="space-y-3 font-body text-sm text-fincut-gray">
-              <li><a href="#" className="hover:text-secondary-foreground transition-colors underline">A T-SHIRT ICÓNICA</a></li>
-              <li><a href="#" className="hover:text-secondary-foreground transition-colors underline">A T-SHIRT COM DECOTE EM V</a></li>
-              <li><a href="#" className="hover:text-secondary-foreground transition-colors underline">Polo</a></li>
-              <li><a href="#" className="hover:text-secondary-foreground transition-colors underline">A T-SHIRT DE MANGA COMPRIDA</a></li>
-              <li><a href="#" className="hover:text-secondary-foreground transition-colors underline">O suéter</a></li>
+              <li><a href="/products/t-shirt-tech" className="hover:text-secondary-foreground transition-colors underline">A T-SHIRT ICÓNICA - PRETA</a></li>
+              <li><a href="/products/t-shirt-blanc" className="hover:text-secondary-foreground transition-colors underline">A T-SHIRT ICÓNICA - BRANCA</a></li>
+              <li><a href="/products/t-shirt-navy" className="hover:text-secondary-foreground transition-colors underline">A T-SHIRT ICÓNICA - AZUL MARINHO</a></li>
+              <li><a href="/products/t-shirt-kaki" className="hover:text-secondary-foreground transition-colors underline">A T-SHIRT ICÓNICA - VERDE CÁQUI</a></li>
+              <li><a href="/products/polo" className="hover:text-secondary-foreground transition-colors underline">A T-SHIRT ICÓNICA EM V</a></li>
             </ul>
           </div>
 
