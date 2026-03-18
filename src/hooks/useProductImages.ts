@@ -5,18 +5,20 @@ export interface ProductImage {
   id: string;
   product_slug: string;
   image_url: string;
+  image_type: string;
   sort_order: number;
   created_at: string;
 }
 
-export const useProductImages = (productSlug: string) => {
+export const useProductImages = (productSlug: string, imageType: string = "gallery") => {
   return useQuery({
-    queryKey: ["product-images", productSlug],
+    queryKey: ["product-images", productSlug, imageType],
     queryFn: async () => {
       const { data, error } = await supabase
         .from("product_images")
         .select("*")
         .eq("product_slug", productSlug)
+        .eq("image_type", imageType)
         .order("sort_order", { ascending: true });
       if (error) throw error;
       return data as ProductImage[];
