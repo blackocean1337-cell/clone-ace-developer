@@ -52,6 +52,16 @@ export function buildCartAttributes(items: CartItem[]): Array<{ key: string; val
   return attributes;
 }
 
+/**
+ * Builds a human-readable note for the cart (visible in checkout).
+ */
+export function buildCartNote(items: CartItem[]): string {
+  const lines = items.map((item, i) =>
+    `${item.quantity}x ${item.name} - Cor: ${item.color}, Tamanho: ${item.size}`
+  );
+  return lines.join('\n');
+}
+
 async function storefrontApiRequest(query: string, variables: Record<string, unknown> = {}) {
   const response = await fetch(SHOPIFY_STOREFRONT_URL, {
     method: 'POST',
@@ -107,11 +117,13 @@ export async function createCheckout(items: CartItem[]): Promise<string> {
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const { variantId } = getTierVariant(totalItems);
   const attributes = buildCartAttributes(items);
+  const note = buildCartNote(items);
 
   const data = await storefrontApiRequest(CART_CREATE_MUTATION, {
     input: {
       lines: [{ quantity: 1, merchandiseId: variantId }],
       attributes,
+      note,
     },
   });
 
