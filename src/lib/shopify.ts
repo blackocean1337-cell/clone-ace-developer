@@ -59,10 +59,11 @@ export function buildLineItemProperties(items: CartItem[]): Array<{ key: string;
   const properties: Array<{ key: string; value: string }> = [];
 
   items.forEach((item, i) => {
-    properties.push({
-      key: `Artigo ${i + 1}`,
-      value: `${item.quantity}x ${item.color} (${item.size})`
-    });
+    const prefix = items.length > 1 ? `Artigo ${i + 1} - ` : '';
+    properties.push({ key: `${prefix}Modelo`, value: item.name });
+    properties.push({ key: `${prefix}Cor`, value: item.color });
+    properties.push({ key: `${prefix}Tamanho`, value: item.size });
+    properties.push({ key: `${prefix}Quantidade`, value: String(item.quantity) });
   });
 
   return properties;
