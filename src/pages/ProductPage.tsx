@@ -75,11 +75,6 @@ const ProductPage = () => {
     ? dbPackImages.map((img) => img.image_url)
     : [];
 
-  // Show pack images when a pack is selected and pack images exist
-  const isPackSelected = selectedQuantity !== "unite" && selectedQuantity !== "custom";
-  const activeImages = isPackSelected && packImages.length > 0 ? packImages : galleryImages;
-
-
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
@@ -88,6 +83,10 @@ const ProductPage = () => {
   const [packHighlight, setPackHighlight] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<string | null>("description");
   const [countdown, setCountdown] = useState({ hours: 13, minutes: 39 });
+
+  // Show pack images when a pack is selected and pack images exist
+  const isPackSelected = selectedQuantity !== "unite" && selectedQuantity !== "custom";
+  const activeImages = isPackSelected && packImages.length > 0 ? packImages : galleryImages;
   const [sizeTechOpen, setSizeTechOpen] = useState(false);
   const { addItem } = useCart();
 
