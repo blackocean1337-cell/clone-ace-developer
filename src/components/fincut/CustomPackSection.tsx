@@ -393,12 +393,14 @@ const CustomPackSection = () => {
               <br />
               para a semana.
             </h2>
-            <button
+            <motion.button
               onClick={() => handleOpenPack(1)}
-              className="bg-fincut-gold text-fincut-black font-display text-sm font-bold tracking-widest uppercase px-8 py-4 hover:bg-fincut-gold/90 transition-colors duration-200 animate-[pulse_10s_cubic-bezier(0.4,0,0.6,1)_infinite]">
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="bg-fincut-gold text-fincut-black font-display text-sm font-bold tracking-widest uppercase px-8 py-4 hover:bg-fincut-gold/90 transition-colors duration-200">
               
               ​CRIA O TEU PACK, AQUI!   
-            </button>
+            </motion.button>
           </div>
 
           <div className="hidden md:block absolute right-8 lg:right-16 top-1/2 -translate-y-1/2 w-[500px] h-[280px]">
