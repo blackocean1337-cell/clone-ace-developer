@@ -161,7 +161,6 @@ export const products: Product[] = [
     colors: [
       { name: "Preto", hex: "#1a1a1a" },
       { name: "Branco", hex: "#f5f5f0" },
-      { name: "Azul marinho", hex: "#2c3e6b" },
     ],
     sizes: defaultSizes,
     features: [
