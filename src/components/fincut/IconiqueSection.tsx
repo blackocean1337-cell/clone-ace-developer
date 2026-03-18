@@ -1,26 +1,5 @@
-import { iconiqueProducts } from "@/data/products";
-import ProductCard from "./ProductCard";
-
 const IconiqueSection = () => {
-  return;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  return null;
 };
 
 export default IconiqueSection;
