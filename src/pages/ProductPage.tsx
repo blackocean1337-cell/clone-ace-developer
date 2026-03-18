@@ -226,9 +226,9 @@ const ProductPage = () => {
       <AnnouncementBar />
       <SiteHeader />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 pb-10 sm:pb-16">
         {/* Breadcrumb */}
-        <nav className="mb-6 font-body text-xs tracking-wider text-muted-foreground uppercase">
+        <nav className="mb-4 sm:mb-6 font-body text-[10px] sm:text-xs tracking-wider text-muted-foreground uppercase overflow-x-auto whitespace-nowrap">
           <Link to="/" className="hover:text-foreground transition-colors">{product.category}</Link>
           <span className="mx-1">/</span>
           <span>{product.collar}</span>
