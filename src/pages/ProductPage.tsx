@@ -239,7 +239,7 @@ const ProductPage = () => {
         {/* Product Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 lg:gap-12">
           {/* Left: Image Gallery */}
-          <div className="flex gap-3">
+          <div className="flex gap-2 sm:gap-3">
             {/* Thumbnails */}
             <div className="hidden md:flex flex-col gap-2 w-20 flex-shrink-0 max-h-[600px] overflow-y-auto scrollbar-hide">
               {activeImages.map((img, i) =>
