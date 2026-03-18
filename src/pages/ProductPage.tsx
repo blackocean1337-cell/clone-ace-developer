@@ -36,7 +36,7 @@ import reviewPhoto9 from "@/assets/review-photo-9.jpg";
 import reviewPhoto10 from "@/assets/review-photo-10.jpg";
 const reviewPhoto11 = "/lovable-uploads/57c703cf-5107-413d-bd6f-a094d2078aa2.png";
 const reviewPhoto12 = "/lovable-uploads/54d80b5a-980a-4d2d-b723-4c4c9d28fc44.png";
-import reviewPhoto13 from "@/assets/review-photo-13.jpg";
+const reviewPhoto13 = "/lovable-uploads/15aa56b9-7f4c-4d4f-bea1-e04f2c633959.png";
 import reviewPhoto14 from "@/assets/review-photo-14.jpg";
 import reviewPhoto15 from "@/assets/review-photo-15.jpg";
 import reviewPhoto16 from "@/assets/review-photo-16.jpg";
