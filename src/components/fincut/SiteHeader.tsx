@@ -7,11 +7,11 @@ import packImage from "@/assets/pack-image.jpg";
 import mrtugaLogo from "@/assets/mrtuga-logo.png";
 
 const productLinks = [
-  { label: "A t-shirt Icónica", slug: "t-shirt-tech" },
-  { label: "A t-shirt gola V", slug: "t-shirt-col-v" },
-  { label: "A t-shirt Icónica em V.", slug: "polo" },
-  { label: "A t-shirt Manga Comprida", slug: "t-shirt-manches-longues" },
-  { label: "A Camisola", slug: "pull" },
+  { label: "A t-shirt Icónica - Preta", slug: "t-shirt-tech" },
+  { label: "A t-shirt Icónica - Branca", slug: "t-shirt-col-v" },
+  { label: "A t-shirt Icónica - Azul Marinho", slug: "polo" },
+  { label: "A t-shirt Icónica - Verde Cáqui", slug: "t-shirt-manches-longues" },
+  { label: "A t-shirt Icónica em V.", slug: "pull" },
 ];
 
 const SiteHeader = () => {
