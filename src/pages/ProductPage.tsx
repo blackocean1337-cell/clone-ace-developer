@@ -63,12 +63,17 @@ const reviews = [
 const ProductPage = () => {
   const { slug } = useParams<{slug: string;}>();
   const product = getProductBySlug(slug || "");
-  const { data: dbImages } = useProductImages(slug || "");
+  const { data: dbImages } = useProductImages(slug || "", "gallery");
+  const { data: dbPackImages } = useProductImages(slug || "", "pack");
 
   // Merge: DB images first, then fallback to static gallery
   const galleryImages = dbImages && dbImages.length > 0
     ? dbImages.map((img) => img.image_url)
     : product?.galleryImages || [];
+
+  const packImages = dbPackImages && dbPackImages.length > 0
+    ? dbPackImages.map((img) => img.image_url)
+    : [];
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState("");
