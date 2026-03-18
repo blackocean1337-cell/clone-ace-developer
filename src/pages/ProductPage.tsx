@@ -84,9 +84,9 @@ const ProductPage = () => {
   const [openAccordion, setOpenAccordion] = useState<string | null>("description");
   const [countdown, setCountdown] = useState({ hours: 13, minutes: 39 });
 
-  // Show pack images when a pack is selected and pack images exist
+  // Pack images now show in the pack selector, not in the main gallery
   const isPackSelected = selectedQuantity !== "unite" && selectedQuantity !== "custom";
-  const activeImages = isPackSelected && packImages.length > 0 ? packImages : galleryImages;
+  const activeImages = galleryImages;
   const [sizeTechOpen, setSizeTechOpen] = useState(false);
   const { addItem } = useCart();
 
