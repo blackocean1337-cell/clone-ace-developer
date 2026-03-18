@@ -206,7 +206,7 @@ const ProductPage = () => {
                   key={selectedImage}
                   src={activeImages[selectedImage]}
                   alt={product.name}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
