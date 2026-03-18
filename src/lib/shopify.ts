@@ -53,13 +53,19 @@ export function buildCartAttributes(items: CartItem[]): Array<{ key: string; val
 }
 
 /**
- * Builds a human-readable note for the cart (visible in checkout).
+ * Builds line item properties that appear under the product name in checkout.
  */
-export function buildCartNote(items: CartItem[]): string {
-  const lines = items.map((item, i) =>
-    `${item.quantity}x ${item.name} - Cor: ${item.color}, Tamanho: ${item.size}`
-  );
-  return lines.join('\n');
+export function buildLineItemProperties(items: CartItem[]): Array<{ key: string; value: string }> {
+  const properties: Array<{ key: string; value: string }> = [];
+
+  items.forEach((item, i) => {
+    properties.push({
+      key: `Artigo ${i + 1}`,
+      value: `${item.quantity}x ${item.color} (${item.size})`
+    });
+  });
+
+  return properties;
 }
 
 async function storefrontApiRequest(query: string, variables: Record<string, unknown> = {}) {
