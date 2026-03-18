@@ -226,9 +226,9 @@ const ProductPage = () => {
       <AnnouncementBar />
       <SiteHeader />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 pb-10 sm:pb-16">
         {/* Breadcrumb */}
-        <nav className="mb-6 font-body text-xs tracking-wider text-muted-foreground uppercase">
+        <nav className="mb-4 sm:mb-6 font-body text-[10px] sm:text-xs tracking-wider text-muted-foreground uppercase overflow-x-auto whitespace-nowrap">
           <Link to="/" className="hover:text-foreground transition-colors">{product.category}</Link>
           <span className="mx-1">/</span>
           <span>{product.collar}</span>
@@ -237,9 +237,9 @@ const ProductPage = () => {
         </nav>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 lg:gap-12">
           {/* Left: Image Gallery */}
-          <div className="flex gap-3">
+          <div className="flex gap-2 sm:gap-3">
             {/* Thumbnails */}
             <div className="hidden md:flex flex-col gap-2 w-20 flex-shrink-0 max-h-[600px] overflow-y-auto scrollbar-hide">
               {activeImages.map((img, i) =>
@@ -258,7 +258,7 @@ const ProductPage = () => {
             </div>
 
             {/* Main Image */}
-            <div className="flex-1 relative bg-background overflow-hidden aspect-square max-h-[600px]">
+            <div className="flex-1 relative bg-background overflow-hidden aspect-square max-h-[400px] sm:max-h-[600px]">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={selectedImage}
@@ -300,18 +300,18 @@ const ProductPage = () => {
           </div>
 
           {/* Right: Product Info */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <div>
               <div className="flex items-start justify-between">
-                <h1 className="font-display text-2xl md:text-3xl font-bold text-foreground">
+                <h1 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-foreground">
                   {product.name}
                 </h1>
-                <span className="font-display text-2xl md:text-3xl font-bold text-foreground">
+                <span className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-foreground whitespace-nowrap">
                   {product.priceLabel}
                 </span>
               </div>
 
-              <div className="flex items-center justify-between mt-3">
+              <div className="flex items-center justify-between mt-2 sm:mt-3 flex-wrap gap-2">
                 <div className="flex items-center gap-2">
                   <span className="bg-[#00b67a] text-white px-2 py-1 text-xs font-bold flex items-center gap-1 rounded-sm">
                     4.5 <Star size={12} fill="white" />
@@ -330,7 +330,7 @@ const ProductPage = () => {
             </div>
 
             {/* Features */}
-            <div className="space-y-3 py-2">
+            <div className="space-y-2 sm:space-y-3 py-2">
               {product.features.map((f, i) => {
                 const Icon = featureIcons[i] || Award;
                 return (
@@ -347,7 +347,7 @@ const ProductPage = () => {
               <h3 className="font-display text-sm font-semibold text-foreground mb-3">
                 Selecione a sua quantidade:
               </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 gap-2">
                 {quantityOptions.map((opt) =>
                 <button
                   key={opt.id}
@@ -368,7 +368,7 @@ const ProductPage = () => {
                       }
                     }
                   }}
-                  className={`relative border px-3 py-3 text-center transition-all duration-200 ${
+                  className={`relative border px-2 sm:px-3 py-2.5 sm:py-3 text-center transition-all duration-200 ${
                   opt.id === "custom" ?
                   "border-foreground bg-foreground text-background" :
                   selectedQuantity === opt.id ?
@@ -381,7 +381,7 @@ const ProductPage = () => {
                         {opt.badge}
                       </span>
                   }
-                    <span className="font-display text-xs font-bold tracking-wider block">
+                    <span className="font-display text-[10px] sm:text-xs font-bold tracking-wider block">
                       {opt.label}
                     </span>
                     {opt.sublabel &&
@@ -436,7 +436,7 @@ const ProductPage = () => {
               <h3 className="font-display text-sm font-semibold text-foreground mb-3">
                 Escolha o seu tamanho:
               </h3>
-              <div className="grid grid-cols-5 gap-2">
+              <div className="grid grid-cols-4 sm:grid-cols-5 gap-2">
                 {product.sizes.map((s) =>
                 <button
                   key={s}
@@ -489,7 +489,7 @@ const ProductPage = () => {
                 </p>
               )}
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3">
                 {(packOptions[selectedQuantity] || []).map((tshirts, i) => {
                   const cols = tshirts.length <= 3 ? 3 : tshirts.length <= 6 ? 3 : tshirts.length <= 9 ? 3 : 4;
                   const label = getPackLabel(tshirts);
@@ -543,7 +543,7 @@ const ProductPage = () => {
                   image: product.cardImage
                 });
               }}
-              className="w-full h-14 bg-foreground text-background font-display text-sm font-bold tracking-widest uppercase hover:bg-foreground/90 transition-colors duration-200 flex items-center justify-center gap-2">
+              className="w-full h-12 sm:h-14 bg-foreground text-background font-display text-xs sm:text-sm font-bold tracking-widest uppercase hover:bg-foreground/90 transition-colors duration-200 flex items-center justify-center gap-2">
               
               ADICIONAR AO CARRINHO
               <span className="text-muted-foreground/60">|</span>
@@ -569,8 +569,8 @@ const ProductPage = () => {
       </main>
 
       {/* FAQ Accordions - full width */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 sm:gap-x-12">
           {accordionSections.map((section, idx) =>
           <div key={section.id} className={`border-b border-border ${accordionSections.length % 2 !== 0 && idx === accordionSections.length - 1 ? "md:col-span-2 md:max-w-[50%] md:mx-auto" : ""}`}>
               <button
@@ -607,12 +607,12 @@ const ProductPage = () => {
       <BeforeAfterSection />
 
       {/* Lifestyle Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h2 className="font-display text-xl font-bold text-foreground mb-6 uppercase tracking-tight">A T-SHIRT QUE TE ACOMPANHA!</h2>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <h2 className="font-display text-lg sm:text-xl font-bold text-foreground mb-4 sm:mb-6 uppercase tracking-tight">A T-SHIRT QUE TE ACOMPANHA!</h2>
+        <div className="grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-4">
           {lifestyleItems.map((item, i) =>
           <div key={i} className="relative group overflow-hidden rounded-sm">
-              <img src={item.image} alt={item.label} className="w-full aspect-[3/2] object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+              <img src={item.image} alt={item.label} className="w-full aspect-[3/4] sm:aspect-[3/2] object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 pt-8">
                 <p className="font-body text-sm text-white">{item.label}</p>
               </div>
@@ -628,10 +628,10 @@ const ProductPage = () => {
       <ReviewsSection />
 
       {/* Big Reviews Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
         {/* Header */}
-        <div className="text-center mb-10">
-          <h2 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">+8.000 homens já vestem MRTUGA!
+        <div className="text-center mb-8 sm:mb-10">
+          <h2 className="font-display text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-2">+8.000 homens já vestem MRTUGA!
 
           </h2>
           <div className="flex items-center justify-center gap-2">
@@ -662,7 +662,7 @@ const ProductPage = () => {
         </div>
 
         {/* Reviews grid - masonry style */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
+        <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-3 sm:gap-4 space-y-3 sm:space-y-4">
           {reviews.map((review, i) =>
           <div
             key={i}
