@@ -46,7 +46,7 @@ export const useUploadProductImage = () => {
 
       const { error: insertError } = await supabase
         .from("product_images")
-        .insert({ product_slug: productSlug, image_url: urlData.publicUrl, sort_order: sortOrder });
+        .insert({ product_slug: productSlug, image_url: urlData.publicUrl, sort_order: sortOrder, image_type: imageType });
       if (insertError) throw insertError;
 
       return urlData.publicUrl;
