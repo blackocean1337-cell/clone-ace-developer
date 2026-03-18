@@ -1,13 +1,19 @@
 import { useState } from "react";
 import { products } from "@/data/products";
 import { useProductImages, useUploadProductImage, useDeleteProductImage } from "@/hooks/useProductImages";
-import { Trash2, Upload, ImagePlus, ArrowLeft } from "lucide-react";
+import { Trash2, Upload, ImagePlus, ArrowLeft, Package, Image } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 
+const IMAGE_TABS = [
+  { id: "gallery", label: "Imagens principais", icon: Image },
+  { id: "pack", label: "Imagens de pacotes", icon: Package },
+] as const;
+
 const AdminProductImages = () => {
   const [selectedSlug, setSelectedSlug] = useState(products[0]?.slug || "");
-  const { data: images, isLoading } = useProductImages(selectedSlug);
+  const [activeTab, setActiveTab] = useState<"gallery" | "pack">("gallery");
+  const { data: images, isLoading } = useProductImages(selectedSlug, activeTab);
   const uploadMutation = useUploadProductImage();
   const deleteMutation = useDeleteProductImage();
 
@@ -23,6 +29,7 @@ const AdminProductImages = () => {
           file: files[i],
           productSlug: selectedSlug,
           sortOrder: currentCount + i,
+          imageType: activeTab,
         });
         toast.success(`Imagem "${files[i].name}" carregada com sucesso`);
       } catch {
@@ -87,16 +94,42 @@ const AdminProductImages = () => {
         {/* Selected product info */}
         {selectedProduct && (
           <div className="border border-border p-6 mb-8">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-4">
               <div>
                 <h2 className="font-display text-lg font-bold text-foreground">
                   {selectedProduct.name}
                 </h2>
                 <p className="font-body text-sm text-muted-foreground">
-                  {images?.length || 0} imagens carregadas • Slug: {selectedSlug}
+                  Slug: {selectedSlug}
                 </p>
               </div>
+            </div>
 
+            {/* Tabs for gallery vs pack */}
+            <div className="flex gap-2 mb-6">
+              {IMAGE_TABS.map((tab) => {
+                const Icon = tab.icon;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex items-center gap-2 px-4 py-2 font-display text-sm font-bold tracking-wider uppercase transition-all duration-200 border ${
+                      activeTab === tab.id
+                        ? "border-foreground bg-foreground text-background"
+                        : "border-border text-muted-foreground hover:border-muted-foreground"
+                    }`}
+                  >
+                    <Icon size={16} />
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="flex items-center justify-between mb-6">
+              <p className="font-body text-sm text-muted-foreground">
+                {images?.length || 0} imagens de {activeTab === "gallery" ? "galeria" : "pacotes"} carregadas
+              </p>
               <label className="cursor-pointer bg-foreground text-background px-4 py-2 font-display text-sm font-bold tracking-wider uppercase hover:bg-foreground/90 transition-colors flex items-center gap-2">
                 <ImagePlus size={16} />
                 Adicionar imagens
@@ -145,7 +178,7 @@ const AdminProductImages = () => {
               <div className="border-2 border-dashed border-border py-16 flex flex-col items-center justify-center text-center">
                 <Upload size={40} className="text-muted-foreground mb-4" />
                 <p className="font-body text-sm text-muted-foreground mb-2">
-                  Nenhuma imagem carregada para este produto
+                  Nenhuma imagem de {activeTab === "gallery" ? "galeria" : "pacotes"} carregada para este produto
                 </p>
                 <label className="cursor-pointer text-fincut-gold hover:underline font-body text-sm font-medium">
                   Clique para adicionar
