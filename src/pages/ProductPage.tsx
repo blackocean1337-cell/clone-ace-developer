@@ -428,7 +428,8 @@ const ProductPage = () => {
               </div>
             </div>
 
-            {/* Pack selector visual */}
+            {/* Pack selector visual - only for pack quantities */}
+            {selectedQuantity !== "unite" && selectedQuantity !== "custom" && (
             <div id="pack-selector" className={`transition-all duration-300 rounded-xl ${
               packHighlight && selectedPack === null
                 ? "ring-2 ring-fincut-gold shadow-[0_0_20px_rgba(212,175,55,0.25)] bg-fincut-gold/5 p-4 -mx-2"
@@ -454,97 +455,42 @@ const ProductPage = () => {
                 </p>
               )}
 
-              <div className={`grid gap-3 ${
-                packImages.length > 0 ? "grid-cols-2 sm:grid-cols-3" : "grid-cols-4"
-              }`}>
-                {/* DB pack images as options */}
-                {packImages.length > 0 ? (
-                  <>
-                    {packImages.map((img, i) => (
-                      <button
-                        key={i}
-                        onClick={() => { setSelectedPack(i); setPackHighlight(false); }}
-                        className={`relative rounded-lg border-2 overflow-hidden transition-all duration-200 aspect-square ${
-                          selectedPack === i
-                            ? "border-foreground shadow-lg scale-[1.02]"
-                            : packHighlight && selectedPack === null
-                              ? "border-fincut-gold/50 hover:border-fincut-gold hover:shadow-md"
-                              : "border-border hover:border-muted-foreground"
-                        }`}>
-                        <img src={img} alt={`Pack ${i + 1}`} className="w-full h-full object-cover" />
-                        {selectedPack === i && (
-                          <div className="absolute inset-0 bg-foreground/10 flex items-end justify-center pb-2">
-                            <span className="bg-foreground text-background text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                              Selecionado ✓
-                            </span>
-                          </div>
-                        )}
-                      </button>
-                    ))}
-                    <button
-                      onClick={() => window.dispatchEvent(new Event("open-pack-builder"))}
-                      className="rounded-lg border-2 border-dashed border-muted-foreground/40 hover:border-muted-foreground transition-all duration-200 aspect-square flex items-center justify-center p-2">
-                      <span className="font-body text-sm italic text-muted-foreground text-center leading-tight">
-                        Criar<br />seu<br />pack
-                      </span>
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    {/* Fallback: hardcoded packs */}
-                    <button
-                      onClick={() => { setSelectedPack(0); setPackHighlight(false); }}
-                      className={`rounded-lg border-2 overflow-hidden transition-all duration-200 aspect-square flex items-center justify-center p-2 ${
-                        selectedPack === 0
-                          ? "border-foreground bg-muted/50 shadow-md"
-                          : packHighlight && selectedPack === null
-                            ? "border-fincut-gold/50 hover:border-fincut-gold"
-                            : "border-border hover:border-muted-foreground bg-muted/30"
-                      }`}>
-                      <div className="relative w-full h-full flex items-center justify-center">
-                        <img src={tshirtBlack} alt="Preto" className="absolute w-3/5 h-3/5 object-contain left-1/4 top-1/2 -translate-y-1/2 -translate-x-1/4" />
-                        <img src={tshirtWhite} alt="Branco" className="absolute w-3/5 h-3/5 object-contain right-1/4 top-1/2 -translate-y-1/2 translate-x-1/4" />
+              {(() => {
+                const count = getPackCount(selectedQuantity);
+                const tshirts = buildPackGrid(count);
+                const cols = count <= 3 ? 3 : count <= 6 ? 3 : 4;
+                return (
+                  <button
+                    onClick={() => { setSelectedPack(0); setPackHighlight(false); }}
+                    className={`relative rounded-lg border-2 overflow-hidden transition-all duration-200 p-3 w-full ${
+                      selectedPack === 0
+                        ? "border-foreground bg-muted/50 shadow-md"
+                        : packHighlight && selectedPack === null
+                          ? "border-fincut-gold/50 hover:border-fincut-gold"
+                          : "border-border hover:border-muted-foreground bg-muted/30"
+                    }`}>
+                    <div className={`grid gap-2`} style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}>
+                      {tshirts.map((img, i) => (
+                        <div key={i} className="aspect-square bg-background rounded-md overflow-hidden p-1">
+                          <img src={img} alt={`T-shirt ${i + 1}`} className="w-full h-full object-contain" />
+                        </div>
+                      ))}
+                    </div>
+                    <p className="font-body text-xs text-muted-foreground mt-2 text-center">
+                      {count} t-shirts
+                    </p>
+                    {selectedPack === 0 && (
+                      <div className="absolute inset-0 bg-foreground/10 flex items-end justify-center pb-3">
+                        <span className="bg-foreground text-background text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                          Selecionado ✓
+                        </span>
                       </div>
-                    </button>
-                    <button
-                      onClick={() => { setSelectedPack(1); setPackHighlight(false); }}
-                      className={`rounded-lg border-2 overflow-hidden transition-all duration-200 aspect-square flex items-center justify-center p-2 ${
-                        selectedPack === 1
-                          ? "border-foreground bg-muted/50 shadow-md"
-                          : packHighlight && selectedPack === null
-                            ? "border-fincut-gold/50 hover:border-fincut-gold"
-                            : "border-border hover:border-muted-foreground bg-muted/30"
-                      }`}>
-                      <div className="relative w-full h-full flex items-center justify-center">
-                        <img src={tshirtBlack} alt="Preto" className="absolute w-3/5 h-3/5 object-contain left-1/4 top-1/2 -translate-y-1/2 -translate-x-1/4" />
-                        <img src={tshirtBlack} alt="Preto" className="absolute w-3/5 h-3/5 object-contain right-1/4 top-1/2 -translate-y-1/2 translate-x-1/4" />
-                      </div>
-                    </button>
-                    <button
-                      onClick={() => { setSelectedPack(2); setPackHighlight(false); }}
-                      className={`rounded-lg border-2 overflow-hidden transition-all duration-200 aspect-square flex items-center justify-center p-2 ${
-                        selectedPack === 2
-                          ? "border-foreground bg-muted/50 shadow-md"
-                          : packHighlight && selectedPack === null
-                            ? "border-fincut-gold/50 hover:border-fincut-gold"
-                            : "border-border hover:border-muted-foreground bg-muted/30"
-                      }`}>
-                      <div className="relative w-full h-full flex items-center justify-center">
-                        <img src={tshirtWhite} alt="Branco" className="absolute w-3/5 h-3/5 object-contain left-1/4 top-1/2 -translate-y-1/2 -translate-x-1/4" />
-                        <img src={tshirtWhite} alt="Branco" className="absolute w-3/5 h-3/5 object-contain right-1/4 top-1/2 -translate-y-1/2 translate-x-1/4" />
-                      </div>
-                    </button>
-                    <button
-                      onClick={() => window.dispatchEvent(new Event("open-pack-builder"))}
-                      className="rounded-lg border-2 border-dashed border-muted-foreground/40 hover:border-muted-foreground transition-all duration-200 aspect-square flex items-center justify-center p-2">
-                      <span className="font-body text-base italic text-muted-foreground text-center leading-tight">
-                        Criar<br />seu<br />paleta
-                      </span>
-                    </button>
-                  </>
-                )}
-              </div>
+                    )}
+                  </button>
+                );
+              })()}
             </div>
+            )}
 
             {/* Add to cart */}
             <button
