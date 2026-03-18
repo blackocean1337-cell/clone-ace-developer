@@ -5,24 +5,40 @@ const SHOPIFY_STORE_PERMANENT_DOMAIN = 'wkxepy-d0.myshopify.com';
 const SHOPIFY_STOREFRONT_URL = `https://${SHOPIFY_STORE_PERMANENT_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
 const SHOPIFY_STOREFRONT_TOKEN = '48c61d7d7ea2626b53978a4ca02aab60';
 
-// Tier variant mapping (Shopify variant IDs)
-const TIER_VARIANTS: Record<string, string> = {
-  individual: 'gid://shopify/ProductVariant/53926079791444',
-  'leva-3-paga-2': 'gid://shopify/ProductVariant/53926945784148',
-  'leva-6-paga-3': 'gid://shopify/ProductVariant/53926948372820',
-  'leva-9-paga-4': 'gid://shopify/ProductVariant/53926951682388',
-  'leva-12-paga-5': 'gid://shopify/ProductVariant/53926955352404',
+// Mapping: site product slug/color → Shopify variant ID
+// Each product has a single "Default Title" variant
+const PRODUCT_VARIANT_MAP: Record<string, string> = {
+  // A t-shirt Icónica - Branca
+  'branco': 'gid://shopify/ProductVariant/53961029288276',
+  // A t-shirt Icónica - Preta
+  'preto': 'gid://shopify/ProductVariant/53961178644820',
+  // A t-shirt Icónica - Azul Marinho
+  'azul marinho': 'gid://shopify/ProductVariant/53961191817556',
+  // A t-shirt Icónica - Verde Cáqui
+  'caqui': 'gid://shopify/ProductVariant/53961304605012',
+  // A t-shirt Icónica em V (polo)
+  'polo': 'gid://shopify/ProductVariant/53961441575252',
 };
 
 /**
- * Determines which Shopify tier variant to use based on total items in cart.
+ * Resolves the Shopify variant ID for a given cart item.
  */
-export function getTierVariant(totalItems: number): { variantId: string; tierName: string } {
-  if (totalItems >= 12) return { variantId: TIER_VARIANTS['leva-12-paga-5'], tierName: 'LEVA 12 PAGA 5' };
-  if (totalItems >= 9) return { variantId: TIER_VARIANTS['leva-9-paga-4'], tierName: 'LEVA 9 PAGA 4' };
-  if (totalItems >= 6) return { variantId: TIER_VARIANTS['leva-6-paga-3'], tierName: 'LEVA 6 PAGA 3' };
-  if (totalItems >= 3) return { variantId: TIER_VARIANTS['leva-3-paga-2'], tierName: 'LEVA 3 PAGA 2' };
-  return { variantId: TIER_VARIANTS['individual'], tierName: 'Individual' };
+function getVariantForItem(item: CartItem): string {
+  // For polo / t-shirt em V, use the polo variant regardless of color
+  const nameLower = item.name.toLowerCase();
+  if (nameLower.includes('em v') || nameLower.includes('polo')) {
+    return PRODUCT_VARIANT_MAP['polo'];
+  }
+
+  // Match by color name
+  const colorLower = item.color.toLowerCase();
+  if (colorLower.includes('branc')) return PRODUCT_VARIANT_MAP['branco'];
+  if (colorLower.includes('pret')) return PRODUCT_VARIANT_MAP['preto'];
+  if (colorLower.includes('azul') || colorLower.includes('marin')) return PRODUCT_VARIANT_MAP['azul marinho'];
+  if (colorLower.includes('caqui') || colorLower.includes('kaki') || colorLower.includes('verde')) return PRODUCT_VARIANT_MAP['caqui'];
+
+  // Fallback to black
+  return PRODUCT_VARIANT_MAP['preto'];
 }
 
 /**
@@ -31,13 +47,11 @@ export function getTierVariant(totalItems: number): { variantId: string; tierNam
 export function buildCartAttributes(items: CartItem[]): Array<{ key: string; value: string }> {
   const attributes: Array<{ key: string; value: string }> = [];
 
-  // Summary attribute
-  const summary = items.map((item, i) =>
+  const summary = items.map((item) =>
     `${item.quantity}x ${item.name} - ${item.color} (${item.size})`
   ).join(' | ');
   attributes.push({ key: 'Resumo do pedido', value: summary });
 
-  // Individual item details
   items.forEach((item, i) => {
     attributes.push({
       key: `Item ${i + 1}`,
@@ -45,21 +59,10 @@ export function buildCartAttributes(items: CartItem[]): Array<{ key: string; val
     });
   });
 
-  // Total items count
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   attributes.push({ key: 'Total de artigos', value: String(totalItems) });
 
   return attributes;
-}
-
-/**
- * Builds line item properties that appear under the product name in checkout.
- */
-export function buildLineItemProperties(items: CartItem[]): Array<{ key: string; value: string }> {
-  return items.map((item, i) => ({
-    key: items.length > 1 ? `Artigo ${i + 1}` : 'Detalhes',
-    value: `${item.quantity}x ${item.name} — ${item.color} (${item.size})`,
-  }));
 }
 
 async function storefrontApiRequest(query: string, variables: Record<string, unknown> = {}) {
@@ -110,22 +113,24 @@ function formatCheckoutUrl(checkoutUrl: string): string {
 }
 
 /**
- * Creates a Shopify cart with the correct tier variant and cart attributes,
+ * Creates a Shopify cart with individual product lines for each cart item,
  * then returns the checkout URL.
  */
 export async function createCheckout(items: CartItem[]): Promise<string> {
-  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-  const { variantId } = getTierVariant(totalItems);
   const attributes = buildCartAttributes(items);
-  const lineProperties = buildLineItemProperties(items);
+
+  // Build one line per cart item, each mapped to its Shopify product variant
+  const lines = items.map((item) => ({
+    quantity: item.quantity,
+    merchandiseId: getVariantForItem(item),
+    attributes: [
+      { key: 'Detalhes', value: `${item.quantity}x ${item.name} — ${item.color} (${item.size})` },
+    ],
+  }));
 
   const data = await storefrontApiRequest(CART_CREATE_MUTATION, {
     input: {
-      lines: [{
-        quantity: 1,
-        merchandiseId: variantId,
-        attributes: lineProperties,
-      }],
+      lines,
       attributes,
     },
   });
