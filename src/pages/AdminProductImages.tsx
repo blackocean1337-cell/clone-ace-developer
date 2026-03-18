@@ -174,21 +174,31 @@ const AdminProductImages = () => {
             }
               </> :
 
-          <div className="border-2 border-dashed border-border py-16 flex flex-col items-center justify-center text-center">
+          <div
+                onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-foreground", "bg-muted"); }}
+                onDragLeave={(e) => { e.currentTarget.classList.remove("border-foreground", "bg-muted"); }}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  e.currentTarget.classList.remove("border-foreground", "bg-muted");
+                  const files = e.dataTransfer.files;
+                  if (files.length) {
+                    const fakeEvent = { target: { files, value: "" } } as unknown as React.ChangeEvent<HTMLInputElement>;
+                    handleUpload(fakeEvent);
+                  }
+                }}
+                className="border-2 border-dashed border-border py-16 flex flex-col items-center justify-center text-center transition-colors"
+              >
                 <Upload size={40} className="text-muted-foreground mb-4" />
                 <p className="font-body text-sm text-muted-foreground mb-2">
                   Nenhuma imagem de {activeTab === "gallery" ? "galeria" : "pacotes"} carregada para este produto
                 </p>
-                <label className="cursor-pointer text-fincut-gold hover:underline font-body text-sm font-medium">
-                  Clique para adicionar
-                  <input
-                type="file"
-                accept="image/*"
-                multiple
-                onChange={handleUpload}
-                className="hidden" />
-              
-                </label>
+                <p className="font-body text-sm text-muted-foreground">
+                  Arraste imagens para aqui ou{" "}
+                  <label className="cursor-pointer text-fincut-gold hover:underline font-medium">
+                    clique para adicionar
+                    <input type="file" accept="image/*" multiple onChange={handleUpload} className="hidden" />
+                  </label>
+                </p>
               </div>
           }
 
