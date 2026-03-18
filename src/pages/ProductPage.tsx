@@ -607,9 +607,9 @@ const ProductPage = () => {
       <BeforeAfterSection />
 
       {/* Lifestyle Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h2 className="font-display text-xl font-bold text-foreground mb-6 uppercase tracking-tight">A T-SHIRT QUE TE ACOMPANHA!</h2>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <h2 className="font-display text-lg sm:text-xl font-bold text-foreground mb-4 sm:mb-6 uppercase tracking-tight">A T-SHIRT QUE TE ACOMPANHA!</h2>
+        <div className="grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-4">
           {lifestyleItems.map((item, i) =>
           <div key={i} className="relative group overflow-hidden rounded-sm">
               <img src={item.image} alt={item.label} className="w-full aspect-[3/2] object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
