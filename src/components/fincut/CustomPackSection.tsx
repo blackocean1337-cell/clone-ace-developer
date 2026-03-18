@@ -397,7 +397,7 @@ const CustomPackSection = () => {
               onClick={() => handleOpenPack(1)}
               className="bg-fincut-gold text-fincut-black font-display text-sm font-bold tracking-widest uppercase px-8 py-4 hover:bg-fincut-gold/90 transition-colors duration-200">
               
-              CRIO O MEU PACK
+              ​CRIA O TEU PACK, AQUI!   
             </button>
           </div>
 
