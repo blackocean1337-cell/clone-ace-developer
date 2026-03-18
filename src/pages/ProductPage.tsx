@@ -330,7 +330,7 @@ const ProductPage = () => {
             </div>
 
             {/* Features */}
-            <div className="space-y-3 py-2">
+            <div className="space-y-2 sm:space-y-3 py-2">
               {product.features.map((f, i) => {
                 const Icon = featureIcons[i] || Award;
                 return (
