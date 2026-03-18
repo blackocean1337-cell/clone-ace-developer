@@ -4,9 +4,9 @@ import SizeTechModal from "./SizeTechModal";
 import CartDrawer, { type CartItem } from "./CartDrawer";
 const tshirtWhite = "/lovable-uploads/e49adb7b-5a69-4ca3-8159-1d3f4e70974b.png";
 const tshirtNavy = "/lovable-uploads/eead22c9-62c0-42ee-9771-29643ce81759.png";
-const tshirtBlack = "/lovable-uploads/dd6d21cb-9655-4120-bc20-560351fcf99d.png";
+const tshirtBlack = "/lovable-uploads/32553b57-a7a2-4fe9-bf8a-e4107c83a779.png";
 const tshirtKaki = "/lovable-uploads/55cd436d-3d1d-450c-bccd-a22ec73d3c83.png";
-import pullBlack from "@/assets/pull-black.png";
+const pullBlack = "/lovable-uploads/30cdab2b-249e-410e-8a18-3df90590801d.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 const packCards = [
