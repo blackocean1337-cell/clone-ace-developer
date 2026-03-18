@@ -177,42 +177,42 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
                     
 
                 
-                    <div className="bg-[#fff9c4] p-3 flex gap-3 items-center rounded-sm">
-                      <div className="w-14 h-14 bg-fincut-light flex-shrink-0 flex items-center justify-center rounded-sm">
-                        <svg viewBox="0 0 40 50" className="w-8 h-8 text-fincut-black">
-                          <rect x="5" y="5" width="30" height="40" rx="2" fill="currentColor" opacity="0.8" />
-                          <rect x="10" y="15" width="8" height="20" rx="1" fill="white" opacity="0.3" />
-                          <rect x="22" y="15" width="8" height="20" rx="1" fill="white" opacity="0.3" />
-                        </svg>
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex justify-between items-start">
-                          <p className="font-body text-sm font-semibold text-fincut-black">
-                            Pack de 3 pares
-                            <br />
-                            <span className="font-normal">Meias</span>
-                          </p>
-                          <div className="text-right flex-shrink-0 ml-2">
-                            <span className="font-body text-sm font-semibold text-fincut-black">14 €</span>
-                            <span className="font-body text-xs text-muted-foreground line-through ml-2">18 €</span>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-2 mt-2">
-                          <select className="font-body text-xs border border-muted px-2 py-1 bg-white text-fincut-black appearance-none pr-5 cursor-pointer">
-                            <option>Preto</option>
-                            <option>Branco</option>
-                            <option>Cinza</option>
-                          </select>
-                          <select className="font-body text-xs border border-muted px-2 py-1 bg-white text-fincut-black appearance-none pr-5 cursor-pointer">
-                            <option>39-42</option>
-                            <option>43-46</option>
-                          </select>
-                          <button className="w-7 h-7 border border-muted flex items-center justify-center hover:border-fincut-black transition-colors ml-auto">
-                            <Plus size={12} />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
                   </div>
 
                   {/* Promo code */}
