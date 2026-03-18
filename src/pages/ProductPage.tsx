@@ -303,10 +303,10 @@ const ProductPage = () => {
           <div className="space-y-4 sm:space-y-6">
             <div>
               <div className="flex items-start justify-between">
-                <h1 className="font-display text-2xl md:text-3xl font-bold text-foreground">
+                <h1 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-foreground">
                   {product.name}
                 </h1>
-                <span className="font-display text-2xl md:text-3xl font-bold text-foreground">
+                <span className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-foreground whitespace-nowrap">
                   {product.priceLabel}
                 </span>
               </div>
