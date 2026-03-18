@@ -71,12 +71,14 @@ const ProductPage = () => {
     ? dbImages.map((img) => img.image_url)
     : product?.galleryImages || [];
 
+  const packImages = dbPackImages && dbPackImages.length > 0
+    ? dbPackImages.map((img) => img.image_url)
+    : [];
+
   // Show pack images when a pack is selected and pack images exist
   const isPackSelected = selectedQuantity !== "unite" && selectedQuantity !== "custom";
   const activeImages = isPackSelected && packImages.length > 0 ? packImages : galleryImages;
 
-    ? dbPackImages.map((img) => img.image_url)
-    : [];
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState("");
