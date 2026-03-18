@@ -180,11 +180,10 @@ const AdminProductImages = () => {
                 );
               }}
               isDeleting={deleteMutation.isPending} />
-            
                 {reorderMutation.isPending &&
             <p className="mt-2 font-body text-xs text-muted-foreground">A guardar ordem...</p>
             }
-              </> :
+              </div> :
 
           <div
                 onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-foreground", "bg-muted"); }}
