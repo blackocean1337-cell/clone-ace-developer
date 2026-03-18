@@ -300,7 +300,7 @@ const ProductPage = () => {
           </div>
 
           {/* Right: Product Info */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <div>
               <div className="flex items-start justify-between">
                 <h1 className="font-display text-2xl md:text-3xl font-bold text-foreground">
