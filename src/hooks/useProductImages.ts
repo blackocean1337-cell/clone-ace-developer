@@ -62,14 +62,30 @@ export const useDeleteProductImage = () => {
 
   return useMutation({
     mutationFn: async ({ id, imageUrl, productSlug }: { id: string; imageUrl: string; productSlug: string }) => {
-      // Delete from storage
       const path = imageUrl.split("/product-images/").pop();
       if (path) {
         await supabase.storage.from("product-images").remove([path]);
       }
-
       const { error } = await supabase.from("product_images").delete().eq("id", id);
       if (error) throw error;
+    },
+    onSuccess: (_, variables) => {
+      queryClient.invalidateQueries({ queryKey: ["product-images", variables.productSlug] });
+    },
+  });
+};
+
+export const useReorderProductImages = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({ images, productSlug }: { images: { id: string; sort_order: number }[]; productSlug: string }) => {
+      const updates = images.map((img) =>
+        supabase.from("product_images").update({ sort_order: img.sort_order }).eq("id", img.id)
+      );
+      const results = await Promise.all(updates);
+      const failed = results.find((r) => r.error);
+      if (failed?.error) throw failed.error;
     },
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: ["product-images", variables.productSlug] });
