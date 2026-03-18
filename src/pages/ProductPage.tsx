@@ -93,7 +93,8 @@ const ProductPage = () => {
 
   useEffect(() => {
     if (product) {
-      setSelectedColor(product.colors[0]?.name || "");
+      const currentColor = product.colors.find(c => c.slug === slug);
+      setSelectedColor(currentColor?.name || product.colors[0]?.name || "");
       setSelectedSize(product.sizes[0] || "");
       setSelectedImage(0);
       window.scrollTo(0, 0);
