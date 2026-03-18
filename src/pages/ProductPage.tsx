@@ -532,23 +532,62 @@ const ProductPage = () => {
             )}
 
             {/* Add to cart */}
-            <button
-              onClick={() => {
-                addItem({
-                  name: product.name,
-                  size: selectedSize,
-                  color: selectedColor,
-                  unitPrice: product.price,
-                  quantity: 1,
-                  image: product.cardImage
-                });
-              }}
-              className="w-full h-12 sm:h-14 bg-foreground text-background font-display text-xs sm:text-sm font-bold tracking-widest uppercase hover:bg-foreground/90 transition-colors duration-200 flex items-center justify-center gap-2">
-              
-              ADICIONAR AO CARRINHO
-              <span className="text-muted-foreground/60">|</span>
-              {product.priceLabel}
-            </button>
+            {(() => {
+              const isPackMode = selectedQuantity !== "unite" && selectedQuantity !== "custom";
+              const currentPackTshirts = isPackMode && selectedPack !== null
+                ? (packOptions[selectedQuantity] || [])[selectedPack] || []
+                : [];
+              const packPriceMultiplier = selectedQuantity === "pack2" ? 1 : selectedQuantity === "pack3" ? 0.89 : selectedQuantity === "pack4" ? 0.79 : selectedQuantity === "pack6" ? 0.69 : 1;
+              const unitPrice = isPackMode ? Math.round(product.price * packPriceMultiplier) : product.price;
+              const totalPackPrice = isPackMode ? unitPrice * currentPackTshirts.length : product.price;
+
+              const reverseColorMap: Record<string, string> = {};
+              Object.entries(colorImageMap).forEach(([name, img]) => { reverseColorMap[img] = name; });
+
+              const handleAddToCart = () => {
+                if (isPackMode) {
+                  if (selectedPack === null) {
+                    setPackHighlight(true);
+                    document.getElementById("pack-selector")?.scrollIntoView({ behavior: "smooth", block: "center" });
+                    return;
+                  }
+                  currentPackTshirts.forEach((img) => {
+                    const color = reverseColorMap[img] || selectedColor;
+                    addItem({
+                      name: product.name,
+                      size: selectedSize,
+                      color,
+                      unitPrice,
+                      quantity: 1,
+                      image: img
+                    });
+                  });
+                } else {
+                  addItem({
+                    name: product.name,
+                    size: selectedSize,
+                    color: selectedColor,
+                    unitPrice: product.price,
+                    quantity: 1,
+                    image: product.cardImage
+                  });
+                }
+              };
+
+              return (
+                <button
+                  onClick={handleAddToCart}
+                  className={`w-full h-12 sm:h-14 font-display text-xs sm:text-sm font-bold tracking-widest uppercase transition-colors duration-200 flex items-center justify-center gap-2 ${
+                    isPackMode && selectedPack === null
+                      ? "bg-muted text-muted-foreground cursor-not-allowed"
+                      : "bg-foreground text-background hover:bg-foreground/90"
+                  }`}>
+                  ADICIONAR AO CARRINHO
+                  <span className="opacity-60">|</span>
+                  {isPackMode ? `${totalPackPrice} €` : product.priceLabel}
+                </button>
+              );
+            })()}
 
             {/* Delivery info */}
             <div className="flex items-start gap-3 py-3 border-t border-border">
