@@ -19,6 +19,7 @@ const AdminProductImages = () => {
   const { data: images, isLoading } = useProductImages(selectedSlug, activeTab);
   const uploadMutation = useUploadProductImage();
   const deleteMutation = useDeleteProductImage();
+  const reorderMutation = useReorderProductImages();
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
