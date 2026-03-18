@@ -471,40 +471,38 @@ const ProductPage = () => {
                 </p>
               )}
 
-              {(() => {
-                const count = getPackCount(selectedQuantity);
-                const tshirts = buildPackGrid(count);
-                const cols = count <= 3 ? 3 : count <= 6 ? 3 : 4;
-                return (
-                  <button
-                    onClick={() => { setSelectedPack(0); setPackHighlight(false); }}
-                    className={`relative rounded-lg border-2 overflow-hidden transition-all duration-200 p-3 w-full ${
-                      selectedPack === 0
-                        ? "border-foreground bg-muted/50 shadow-md"
-                        : packHighlight && selectedPack === null
-                          ? "border-fincut-gold/50 hover:border-fincut-gold"
-                          : "border-border hover:border-muted-foreground bg-muted/30"
-                    }`}>
-                    <div className={`grid gap-2`} style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}>
-                      {tshirts.map((img, i) => (
-                        <div key={i} className="aspect-square bg-background rounded-md overflow-hidden p-1">
-                          <img src={img} alt={`T-shirt ${i + 1}`} className="w-full h-full object-contain" />
-                        </div>
-                      ))}
-                    </div>
-                    <p className="font-body text-xs text-muted-foreground mt-2 text-center">
-                      {count} t-shirts
-                    </p>
-                    {selectedPack === 0 && (
-                      <div className="absolute inset-0 bg-foreground/10 flex items-end justify-center pb-3">
-                        <span className="bg-foreground text-background text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                          Selecionado ✓
-                        </span>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {(packOptions[selectedQuantity] || []).map((tshirts, i) => {
+                  const cols = tshirts.length <= 3 ? 3 : tshirts.length <= 6 ? 3 : tshirts.length <= 9 ? 3 : 4;
+                  return (
+                    <button
+                      key={i}
+                      onClick={() => { setSelectedPack(i); setPackHighlight(false); }}
+                      className={`relative rounded-lg border-2 overflow-hidden transition-all duration-200 p-2 ${
+                        selectedPack === i
+                          ? "border-foreground bg-muted/50 shadow-md"
+                          : packHighlight && selectedPack === null
+                            ? "border-fincut-gold/50 hover:border-fincut-gold"
+                            : "border-border hover:border-muted-foreground bg-muted/30"
+                      }`}>
+                      <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}>
+                        {tshirts.map((img, j) => (
+                          <div key={j} className="aspect-square bg-background rounded overflow-hidden p-0.5">
+                            <img src={img} alt={`T-shirt ${j + 1}`} className="w-full h-full object-contain" />
+                          </div>
+                        ))}
                       </div>
-                    )}
-                  </button>
-                );
-              })()}
+                      {selectedPack === i && (
+                        <div className="absolute inset-0 bg-foreground/10 flex items-end justify-center pb-2">
+                          <span className="bg-foreground text-background text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                            Selecionado ✓
+                          </span>
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
             )}
 
