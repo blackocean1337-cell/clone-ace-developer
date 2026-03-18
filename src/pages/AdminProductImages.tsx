@@ -5,8 +5,6 @@ import { Trash2, Upload, ImagePlus, ArrowLeft, Package, Image } from "lucide-rea
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import SortableImageGrid from "@/components/admin/SortableImageGrid";
-import { Link } from "react-router-dom";
-import { toast } from "sonner";
 
 const IMAGE_TABS = [
   { id: "gallery", label: "Imagens principais", icon: Image },
