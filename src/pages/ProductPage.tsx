@@ -646,7 +646,7 @@ const ProductPage = () => {
         </div>
 
         {/* Subheader */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="hidden sm:flex items-center justify-between mb-6">
           <div className="flex items-center gap-2">
             <div className="flex gap-0.5">
               {[1, 2, 3, 4].map((i) =>
