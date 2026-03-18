@@ -395,7 +395,7 @@ const CustomPackSection = () => {
             </h2>
             <button
               onClick={() => handleOpenPack(1)}
-              className="bg-fincut-gold text-fincut-black font-display text-sm font-bold tracking-widest uppercase px-8 py-4 hover:bg-fincut-gold/90 transition-colors duration-200 animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]">
+              className="bg-fincut-gold text-fincut-black font-display text-sm font-bold tracking-widest uppercase px-8 py-4 hover:bg-fincut-gold/90 transition-colors duration-200 animate-[pulse_4s_cubic-bezier(0.4,0,0.6,1)_infinite]">
               
               ​CRIA O TEU PACK, AQUI!   
             </button>
