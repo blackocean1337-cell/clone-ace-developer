@@ -163,6 +163,10 @@ const ProductPage = () => {
 
   if (!product) return <Navigate to="/" replace />;
 
+  const productColorNames = product.colors.map(c => c.name);
+  const packOptions = generatePackOptions(productColorNames);
+
+
   const quantityOptions = [
   { id: "unite", label: "UMA UNIDADE", price: `${product.price} €`, sublabel: null, badge: null },
   { id: "pack2", label: "LEVE 3 PAGUE 2", price: `${product.price} €/unidade`, sublabel: "Entrega grátis", badge: null },
