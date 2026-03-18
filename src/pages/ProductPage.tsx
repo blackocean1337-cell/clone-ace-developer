@@ -298,6 +298,7 @@ const ProductPage = () => {
                       window.dispatchEvent(new Event("open-pack-builder"));
                     } else {
                       setSelectedQuantity(opt.id);
+                      setSelectedImage(0);
                       if (opt.id !== "unite") {
                         setSelectedPack(null);
                         setPackHighlight(true);
