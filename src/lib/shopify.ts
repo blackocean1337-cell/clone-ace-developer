@@ -56,17 +56,10 @@ export function buildCartAttributes(items: CartItem[]): Array<{ key: string; val
  * Builds line item properties that appear under the product name in checkout.
  */
 export function buildLineItemProperties(items: CartItem[]): Array<{ key: string; value: string }> {
-  const properties: Array<{ key: string; value: string }> = [];
-
-  items.forEach((item, i) => {
-    const prefix = items.length > 1 ? `Artigo ${i + 1} - ` : '';
-    properties.push({ key: `${prefix}Modelo`, value: item.name });
-    properties.push({ key: `${prefix}Cor`, value: item.color });
-    properties.push({ key: `${prefix}Tamanho`, value: item.size });
-    properties.push({ key: `${prefix}Quantidade`, value: String(item.quantity) });
-  });
-
-  return properties;
+  return items.map((item, i) => ({
+    key: items.length > 1 ? `Artigo ${i + 1}` : 'Detalhes',
+    value: `${item.quantity}x ${item.name} — ${item.color} (${item.size})`,
+  }));
 }
 
 async function storefrontApiRequest(query: string, variables: Record<string, unknown> = {}) {
