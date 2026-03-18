@@ -347,7 +347,7 @@ const ProductPage = () => {
               <h3 className="font-display text-sm font-semibold text-foreground mb-3">
                 Selecione a sua quantidade:
               </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 gap-2">
                 {quantityOptions.map((opt) =>
                 <button
                   key={opt.id}
