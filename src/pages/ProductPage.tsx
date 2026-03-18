@@ -489,7 +489,7 @@ const ProductPage = () => {
                 </p>
               )}
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3">
                 {(packOptions[selectedQuantity] || []).map((tshirts, i) => {
                   const cols = tshirts.length <= 3 ? 3 : tshirts.length <= 6 ? 3 : tshirts.length <= 9 ? 3 : 4;
                   const label = getPackLabel(tshirts);
