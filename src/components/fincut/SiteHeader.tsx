@@ -39,9 +39,9 @@ const SiteHeader = () => {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#iconique" className="font-body text-sm text-secondary-foreground hover:text-fincut-gold transition-colors duration-200">
+          <Link to="/products/tshirt-iconic-black" className="font-body text-sm text-secondary-foreground hover:text-fincut-gold transition-colors duration-200">
             O Icónico
-          </a>
+          </Link>
           <button
             onClick={() => setProductsOpen(!productsOpen)}
             className="font-body text-sm text-secondary-foreground hover:text-fincut-gold transition-colors duration-200 flex items-center gap-1"
