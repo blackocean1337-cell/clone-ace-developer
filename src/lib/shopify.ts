@@ -7,11 +7,11 @@ const SHOPIFY_STOREFRONT_TOKEN = '48c61d7d7ea2626b53978a4ca02aab60';
 
 // Tier variant mapping (Shopify variant IDs)
 const TIER_VARIANTS: Record<string, string> = {
-  individual: 'gid://shopify/ProductVariant/15018686120276',
-  'leva-3-paga-2': 'gid://shopify/ProductVariant/15018686021972',
-  'leva-6-paga-3': 'gid://shopify/ProductVariant/15018685923668',
-  'leva-9-paga-4': 'gid://shopify/ProductVariant/15018685858132',
-  'leva-12-paga-5': 'gid://shopify/ProductVariant/15019059872084',
+  individual: 'gid://shopify/ProductVariant/53926079791444',
+  'leva-3-paga-2': 'gid://shopify/ProductVariant/53926945784148',
+  'leva-6-paga-3': 'gid://shopify/ProductVariant/53926948372820',
+  'leva-9-paga-4': 'gid://shopify/ProductVariant/53926951682388',
+  'leva-12-paga-5': 'gid://shopify/ProductVariant/53926955352404',
 };
 
 /**
