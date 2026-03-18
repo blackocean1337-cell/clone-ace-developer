@@ -237,7 +237,7 @@ const ProductPage = () => {
         </nav>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 lg:gap-12">
           {/* Left: Image Gallery */}
           <div className="flex gap-3">
             {/* Thumbnails */}
