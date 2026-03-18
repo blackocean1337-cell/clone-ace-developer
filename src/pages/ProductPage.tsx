@@ -184,7 +184,7 @@ const ProductPage = () => {
           <div className="flex gap-3">
             {/* Thumbnails */}
             <div className="hidden md:flex flex-col gap-2 w-20 flex-shrink-0 max-h-[600px] overflow-y-auto scrollbar-hide">
-              {galleryImages.map((img, i) =>
+              {activeImages.map((img, i) =>
               <button
                 key={i}
                 onClick={() => setSelectedImage(i)}
