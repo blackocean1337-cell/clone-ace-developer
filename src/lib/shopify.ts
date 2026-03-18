@@ -123,13 +123,16 @@ export async function createCheckout(items: CartItem[]): Promise<string> {
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const { variantId } = getTierVariant(totalItems);
   const attributes = buildCartAttributes(items);
-  const note = buildCartNote(items);
+  const lineProperties = buildLineItemProperties(items);
 
   const data = await storefrontApiRequest(CART_CREATE_MUTATION, {
     input: {
-      lines: [{ quantity: 1, merchandiseId: variantId }],
+      lines: [{
+        quantity: 1,
+        merchandiseId: variantId,
+        attributes: lineProperties,
+      }],
       attributes,
-      note,
     },
   });
 
