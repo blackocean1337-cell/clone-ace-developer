@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useParams, Navigate } from "react-router-dom";
+import { Link, useParams, Navigate, useNavigate } from "react-router-dom";
 import { ChevronRight, ChevronLeft, Truck, Star, Ruler, Droplets, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnnouncementBar from "@/components/fincut/AnnouncementBar";
@@ -89,10 +89,12 @@ const ProductPage = () => {
   const activeImages = galleryImages;
   const [sizeTechOpen, setSizeTechOpen] = useState(false);
   const { addItem } = useCart();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (product) {
-      setSelectedColor(product.colors[0]?.name || "");
+      const currentColor = product.colors.find(c => c.slug === slug);
+      setSelectedColor(currentColor?.name || product.colors[0]?.name || "");
       setSelectedSize(product.sizes[0] || "");
       setSelectedImage(0);
       window.scrollTo(0, 0);
@@ -354,7 +356,13 @@ const ProductPage = () => {
                 {product.colors.map((c) =>
                 <button
                   key={c.name}
-                  onClick={() => setSelectedColor(c.name)}
+                  onClick={() => {
+                    if (c.slug && c.slug !== slug) {
+                      navigate(`/products/${c.slug}`);
+                    } else {
+                      setSelectedColor(c.name);
+                    }
+                  }}
                   title={c.name}
                   className={`w-9 h-9 rounded-full border-2 transition-all duration-200 ${
                   selectedColor === c.name ?

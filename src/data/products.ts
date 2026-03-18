@@ -26,7 +26,7 @@ export interface Product {
   badge: string;
   cardImage: string;
   galleryImages: string[];
-  colors: { name: string; hex: string }[];
+  colors: { name: string; hex: string; slug?: string }[];
   sizes: string[];
   features: string[];
   description: string[];
@@ -35,17 +35,10 @@ export interface Product {
 }
 
 const defaultColors = [
-  { name: "Preto", hex: "#1a1a1a" },
-  { name: "Branco", hex: "#f5f5f0" },
-  { name: "Azul marinho", hex: "#2c3e6b" },
-  { name: "Caqui", hex: "#5c6b4e" },
-  { name: "Cinzento", hex: "#9b9b9b" },
-  { name: "Vermelho", hex: "#c0392b" },
-  { name: "Bordô", hex: "#6b2d3e" },
-  { name: "Azul claro", hex: "#8fa8c8" },
-  { name: "Salmão", hex: "#d4816b" },
-  { name: "Mostarda", hex: "#d4a53c" },
-  { name: "Turquesa", hex: "#8fcac0" },
+  { name: "Preto", hex: "#1a1a1a", slug: "t-shirt-tech" },
+  { name: "Branco", hex: "#f5f5f0", slug: "t-shirt-blanc" },
+  { name: "Caqui", hex: "#5c6b4e", slug: "t-shirt-kaki" },
+  { name: "Azul marinho", hex: "#2c3e6b", slug: "t-shirt-navy" },
 ];
 
 const defaultSizes = ["S", "M", "L", "XL", "2XL", "3XL", "4XL"];
