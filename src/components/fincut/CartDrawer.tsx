@@ -36,22 +36,22 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
 
   return (
     <AnimatePresence>
-      {open && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-stretch justify-end bg-black/60"
-          onClick={onClose}
-        >
+      {open &&
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-50 flex items-stretch justify-end bg-black/60"
+        onClick={onClose}>
+        
           <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="h-full w-full max-w-md bg-white flex flex-col"
-            onClick={(e) => e.stopPropagation()}
-          >
+          initial={{ x: "100%" }}
+          animate={{ x: 0 }}
+          exit={{ x: "100%" }}
+          transition={{ type: "spring", damping: 30, stiffness: 300 }}
+          className="h-full w-full max-w-md bg-white flex flex-col"
+          onClick={(e) => e.stopPropagation()}>
+          
             {/* Header */}
             <div className="flex items-center justify-between px-6 pt-6 pb-4">
               <button onClick={onClose} className="hover:opacity-70 transition-opacity">
@@ -63,8 +63,8 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
             </div>
 
             {items.length === 0 ? (
-              /* Empty State */
-              <div className="flex-1 flex flex-col items-center justify-center px-6 gap-4">
+          /* Empty State */
+          <div className="flex-1 flex flex-col items-center justify-center px-6 gap-4">
                 <ShoppingCart size={40} className="text-muted-foreground/40" />
                 <h3 className="font-display text-xl font-bold text-fincut-black tracking-wide">
                   O seu carrinho está vazio
@@ -73,15 +73,15 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
                   Descubra as nossas coleções e encontre as peças que lhe correspondem
                 </p>
                 <Link
-                  to="/"
-                  onClick={onClose}
-                  className="mt-2 bg-fincut-black text-white px-8 py-3.5 font-display text-xs font-bold tracking-[0.2em] uppercase hover:bg-fincut-black/90 transition-colors"
-                >
+              to="/"
+              onClick={onClose}
+              className="mt-2 bg-fincut-black text-white px-8 py-3.5 font-display text-xs font-bold tracking-[0.2em] uppercase hover:bg-fincut-black/90 transition-colors">
+              
                   DESCOBRIR AS COLEÇÕES
                 </Link>
-              </div>
-            ) : (
-              <>
+              </div>) :
+
+          <>
                 {/* Delivery info */}
                 <div className="px-6 pb-4">
                   <div className="flex items-start gap-3 mb-3">
@@ -99,40 +99,40 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
                   <div className="relative mb-2">
                     <div className="h-2.5 bg-muted rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-[#c8e600] rounded-full transition-all duration-500"
-                        style={{ width: `${shippingProgress * 100}%` }}
-                      />
+                    className="h-full bg-[#c8e600] rounded-full transition-all duration-500"
+                    style={{ width: `${shippingProgress * 100}%` }} />
+                  
                     </div>
                     <div className="absolute -top-0.5 right-0">
                       <Truck size={14} className="text-muted-foreground" />
                     </div>
                   </div>
-                  {hasFreeShipping ? (
-                    <p className="font-body text-[10px] text-fincut-gold text-right font-semibold tracking-wider uppercase">
+                  {hasFreeShipping ?
+              <p className="font-body text-[10px] text-fincut-gold text-right font-semibold tracking-wider uppercase">
                       ENTREGA GRÁTIS
-                    </p>
-                  ) : (
-                    <p className="font-body text-[10px] text-muted-foreground text-right tracking-wider uppercase">
+                    </p> :
+
+              <p className="font-body text-[10px] text-muted-foreground text-right tracking-wider uppercase">
                       MAIS QUE{" "}
                       <span className="font-semibold text-fincut-black">{remainingForFreeShipping} €</span>
                       <br />
                       PARA ENTREGA GRÁTIS
                     </p>
-                  )}
+              }
                 </div>
 
                 <div className="border-t border-muted mx-6" />
 
                 {/* Cart items */}
                 <div className="px-6 py-4 flex-1 overflow-y-auto">
-                  {items.map((item, idx) => (
-                    <div key={idx} className="flex gap-4 mb-6">
+                  {items.map((item, idx) =>
+              <div key={idx} className="flex gap-4 mb-6">
                       <div className="w-[72px] h-[72px] bg-fincut-light flex-shrink-0 flex items-center justify-center">
                         <img
-                          src={item.image || tshirtBlack}
-                          alt={item.name}
-                          className="w-14 h-14 object-contain"
-                        />
+                    src={item.image || tshirtBlack}
+                    alt={item.name}
+                    className="w-14 h-14 object-contain" />
+                  
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex justify-between items-start mb-1">
@@ -152,31 +152,31 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
                         <div className="flex items-center justify-end mt-3">
                           <div className="flex items-center gap-3">
                             <button
-                              onClick={() => onUpdateQuantity?.(idx, Math.max(0, item.quantity - 1))}
-                              className="w-7 h-7 border border-muted flex items-center justify-center hover:border-fincut-black transition-colors"
-                            >
+                        onClick={() => onUpdateQuantity?.(idx, Math.max(0, item.quantity - 1))}
+                        className="w-7 h-7 border border-muted flex items-center justify-center hover:border-fincut-black transition-colors">
+                        
                               <Minus size={12} />
                             </button>
                             <span className="font-body text-sm text-fincut-black w-4 text-center">
                               {item.quantity}
                             </span>
                             <button
-                              onClick={() => onUpdateQuantity?.(idx, item.quantity + 1)}
-                              className="w-7 h-7 border border-muted flex items-center justify-center hover:border-fincut-black transition-colors"
-                            >
+                        onClick={() => onUpdateQuantity?.(idx, item.quantity + 1)}
+                        className="w-7 h-7 border border-muted flex items-center justify-center hover:border-fincut-black transition-colors">
+                        
                               <Plus size={12} />
                             </button>
                           </div>
                         </div>
                       </div>
                     </div>
-                  ))}
+              )}
 
                   {/* Upsell */}
                   <div className="mb-6">
-                    <p className="font-body text-sm text-fincut-black mb-3 font-medium">
-                      Eles também compraram :
-                    </p>
+                    
+
+                
                     <div className="bg-[#fff9c4] p-3 flex gap-3 items-center rounded-sm">
                       <div className="w-14 h-14 bg-fincut-light flex-shrink-0 flex items-center justify-center rounded-sm">
                         <svg viewBox="0 0 40 50" className="w-8 h-8 text-fincut-black">
@@ -217,29 +217,29 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
 
                   {/* Promo code */}
                   <button
-                    onClick={() => setPromoOpen(!promoOpen)}
-                    className="w-full flex items-center justify-between py-3 font-display text-sm font-bold tracking-[0.15em] text-fincut-black uppercase"
-                  >
+                onClick={() => setPromoOpen(!promoOpen)}
+                className="w-full flex items-center justify-between py-3 font-display text-sm font-bold tracking-[0.15em] text-fincut-black uppercase">
+                
                     CÓDIGO PROMO
                     <ChevronDown
-                      size={16}
-                      className={`transition-transform duration-200 ${promoOpen ? "rotate-180" : ""}`}
-                    />
+                  size={16}
+                  className={`transition-transform duration-200 ${promoOpen ? "rotate-180" : ""}`} />
+                
                   </button>
-                  {promoOpen && (
-                    <div className="flex gap-2 mb-4">
+                  {promoOpen &&
+              <div className="flex gap-2 mb-4">
                       <input
-                        type="text"
-                        value={promoCode}
-                        onChange={(e) => setPromoCode(e.target.value)}
-                        placeholder="Introduza o código"
-                        className="flex-1 border border-muted px-3 py-2 font-body text-sm text-fincut-black placeholder:text-muted-foreground focus:outline-none focus:border-fincut-black"
-                      />
+                  type="text"
+                  value={promoCode}
+                  onChange={(e) => setPromoCode(e.target.value)}
+                  placeholder="Introduza o código"
+                  className="flex-1 border border-muted px-3 py-2 font-body text-sm text-fincut-black placeholder:text-muted-foreground focus:outline-none focus:border-fincut-black" />
+                
                       <button className="bg-fincut-black text-white px-4 py-2 font-display text-xs font-bold tracking-widest">
                         APLICAR
                       </button>
                     </div>
-                  )}
+              }
                 </div>
 
                 {/* Footer CTA */}
@@ -249,12 +249,12 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
                   </button>
                 </div>
               </>
-            )}
+          }
           </motion.div>
         </motion.div>
-      )}
-    </AnimatePresence>
-  );
+      }
+    </AnimatePresence>);
+
 };
 
 export default CartDrawer;
