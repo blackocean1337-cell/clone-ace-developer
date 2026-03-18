@@ -588,7 +588,6 @@ const ProductPage = () => {
                 </button>
               );
             })()}
-            </button>
 
             {/* Delivery info */}
             <div className="flex items-start gap-3 py-3 border-t border-border">
