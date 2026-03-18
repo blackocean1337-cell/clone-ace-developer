@@ -33,12 +33,12 @@ import reviewPhoto6 from "@/assets/review-photo-6.webp";
 import reviewPhoto7 from "@/assets/review-photo-7.png";
 import reviewPhoto8 from "@/assets/review-photo-8.jpg";
 import reviewPhoto9 from "@/assets/review-photo-9.jpg";
-import reviewPhoto10 from "@/assets/review-photo-10.jpg";
+const reviewPhoto10 = "/lovable-uploads/9d57274f-0ef2-4860-8fb5-3177c2636590.png";
 const reviewPhoto11 = "/lovable-uploads/57c703cf-5107-413d-bd6f-a094d2078aa2.png";
 const reviewPhoto12 = "/lovable-uploads/54d80b5a-980a-4d2d-b723-4c4c9d28fc44.png";
 const reviewPhoto13 = "/lovable-uploads/15aa56b9-7f4c-4d4f-bea1-e04f2c633959.png";
-import reviewPhoto14 from "@/assets/review-photo-14.jpg";
-import reviewPhoto15 from "@/assets/review-photo-15.jpg";
+const reviewPhoto14 = "/lovable-uploads/5905fbc1-798b-4fb8-9b82-1a2ce289b087.png";
+const reviewPhoto15 = "/lovable-uploads/7cea34e2-3759-48ef-ac27-a29a495deea0.png";
 import reviewPhoto16 from "@/assets/review-photo-16.jpg";
 
 const reviews = [
