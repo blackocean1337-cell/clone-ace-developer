@@ -258,7 +258,7 @@ const ProductPage = () => {
             </div>
 
             {/* Main Image */}
-            <div className="flex-1 relative bg-background overflow-hidden aspect-square max-h-[600px]">
+            <div className="flex-1 relative bg-background overflow-hidden aspect-square max-h-[400px] sm:max-h-[600px]">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={selectedImage}
