@@ -543,7 +543,7 @@ const ProductPage = () => {
                   image: product.cardImage
                 });
               }}
-              className="w-full h-14 bg-foreground text-background font-display text-sm font-bold tracking-widest uppercase hover:bg-foreground/90 transition-colors duration-200 flex items-center justify-center gap-2">
+              className="w-full h-12 sm:h-14 bg-foreground text-background font-display text-xs sm:text-sm font-bold tracking-widest uppercase hover:bg-foreground/90 transition-colors duration-200 flex items-center justify-center gap-2">
               
               ADICIONAR AO CARRINHO
               <span className="text-muted-foreground/60">|</span>
