@@ -17,7 +17,25 @@ const tshirtWhite = "/lovable-uploads/e49adb7b-5a69-4ca3-8159-1d3f4e70974b.png";
 const tshirtNavy = "/lovable-uploads/eead22c9-62c0-42ee-9771-29643ce81759.png";
 const tshirtKaki = "/lovable-uploads/55cd436d-3d1d-450c-bccd-a22ec73d3c83.png";
 
-// Pack combinations per quantity tier
+const tshirtColorMap: Record<string, string> = {
+  [tshirtBlack]: "Preta",
+  [tshirtWhite]: "Branca",
+  [tshirtNavy]: "Azul Marinho",
+  [tshirtKaki]: "Verde Caqui",
+};
+
+const getPackLabel = (tshirts: string[]): string => {
+  const counts: Record<string, number> = {};
+  tshirts.forEach((img) => {
+    const color = tshirtColorMap[img] || "";
+    counts[color] = (counts[color] || 0) + 1;
+  });
+  const entries = Object.entries(counts);
+  if (entries.length === 1) return "";
+  return entries.map(([color, count]) => `${count}x ${color}`).join(" · ");
+};
+
+
 const packOptions: Record<string, string[][]> = {
   pack2: [
     [tshirtBlack, tshirtBlack, tshirtBlack],
