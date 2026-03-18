@@ -7,9 +7,9 @@ import { toast } from "sonner";
 import SortableImageGrid from "@/components/admin/SortableImageGrid";
 
 const IMAGE_TABS = [
-  { id: "gallery", label: "Imagens principais", icon: Image },
-  { id: "pack", label: "Imagens de pacotes", icon: Package },
-] as const;
+{ id: "gallery", label: "Imagens principais", icon: Image },
+{ id: "pack", label: "Imagens de pacotes", icon: Package }] as
+const;
 
 const AdminProductImages = () => {
   const [selectedSlug, setSelectedSlug] = useState(products[0]?.slug || "");
@@ -31,7 +31,7 @@ const AdminProductImages = () => {
           file: files[i],
           productSlug: selectedSlug,
           sortOrder: currentCount + i,
-          imageType: activeTab,
+          imageType: activeTab
         });
         toast.success(`Imagem "${files[i].name}" carregada com sucesso`);
       } catch {
@@ -71,31 +71,31 @@ const AdminProductImages = () => {
             Selecione o produto:
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
-            {products.map((p) => (
-              <button
-                key={p.slug}
-                onClick={() => setSelectedSlug(p.slug)}
-                className={`border p-3 text-center transition-all duration-200 ${
-                  selectedSlug === p.slug
-                    ? "border-foreground bg-foreground text-background"
-                    : "border-border hover:border-muted-foreground"
-                }`}
-              >
+            {products.map((p) =>
+            <button
+              key={p.slug}
+              onClick={() => setSelectedSlug(p.slug)}
+              className={`border p-3 text-center transition-all duration-200 ${
+              selectedSlug === p.slug ?
+              "border-foreground bg-foreground text-background" :
+              "border-border hover:border-muted-foreground"}`
+              }>
+              
                 <img
-                  src={p.cardImage}
-                  alt={p.name}
-                  className="w-full aspect-square object-contain mb-2"
-                />
+                src={p.cardImage}
+                alt={p.name}
+                className="w-full aspect-square object-contain mb-2 bg-secondary-foreground" />
+              
                 <span className="font-body text-xs font-medium block truncate">{p.name}</span>
                 <span className="font-body text-[10px] text-muted-foreground">{p.slug}</span>
               </button>
-            ))}
+            )}
           </div>
         </div>
 
         {/* Selected product info */}
-        {selectedProduct && (
-          <div className="border border-border p-6 mb-8">
+        {selectedProduct &&
+        <div className="border border-border p-6 mb-8">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h2 className="font-display text-lg font-bold text-foreground">
@@ -110,22 +110,22 @@ const AdminProductImages = () => {
             {/* Tabs for gallery vs pack */}
             <div className="flex gap-2 mb-6">
               {IMAGE_TABS.map((tab) => {
-                const Icon = tab.icon;
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`flex items-center gap-2 px-4 py-2 font-display text-sm font-bold tracking-wider uppercase transition-all duration-200 border ${
-                      activeTab === tab.id
-                        ? "border-foreground bg-foreground text-background"
-                        : "border-border text-muted-foreground hover:border-muted-foreground"
-                    }`}
-                  >
+              const Icon = tab.icon;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center gap-2 px-4 py-2 font-display text-sm font-bold tracking-wider uppercase transition-all duration-200 border ${
+                  activeTab === tab.id ?
+                  "border-foreground bg-foreground text-background" :
+                  "border-border text-muted-foreground hover:border-muted-foreground"}`
+                  }>
+                  
                     <Icon size={16} />
                     {tab.label}
-                  </button>
-                );
-              })}
+                  </button>);
+
+            })}
             </div>
 
             <div className="flex items-center justify-between mb-6">
@@ -136,45 +136,45 @@ const AdminProductImages = () => {
                 <ImagePlus size={16} />
                 Adicionar imagens
                 <input
-                  type="file"
-                  accept="image/*"
-                  multiple
-                  onChange={handleUpload}
-                  className="hidden"
-                />
+                type="file"
+                accept="image/*"
+                multiple
+                onChange={handleUpload}
+                className="hidden" />
+              
               </label>
             </div>
 
             {/* Images grid */}
-            {isLoading ? (
-              <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
-                {[...Array(4)].map((_, i) => (
-                  <div key={i} className="aspect-square bg-muted animate-pulse" />
-                ))}
-              </div>
-            ) : images && images.length > 0 ? (
-              <>
+            {isLoading ?
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
+                {[...Array(4)].map((_, i) =>
+            <div key={i} className="aspect-square bg-muted animate-pulse" />
+            )}
+              </div> :
+          images && images.length > 0 ?
+          <>
                 <SortableImageGrid
-                  images={images}
-                  productSlug={selectedSlug}
-                  onDelete={handleDelete}
-                  onReorder={(reordered) => {
-                    reorderMutation.mutate(
-                      { images: reordered, productSlug: selectedSlug },
-                      {
-                        onSuccess: () => toast.success("Ordem atualizada"),
-                        onError: () => toast.error("Erro ao reordenar"),
-                      }
-                    );
-                  }}
-                  isDeleting={deleteMutation.isPending}
-                />
-                {reorderMutation.isPending && (
-                  <p className="mt-2 font-body text-xs text-muted-foreground">A guardar ordem...</p>
-                )}
-              </>
-            ) : (
-              <div className="border-2 border-dashed border-border py-16 flex flex-col items-center justify-center text-center">
+              images={images}
+              productSlug={selectedSlug}
+              onDelete={handleDelete}
+              onReorder={(reordered) => {
+                reorderMutation.mutate(
+                  { images: reordered, productSlug: selectedSlug },
+                  {
+                    onSuccess: () => toast.success("Ordem atualizada"),
+                    onError: () => toast.error("Erro ao reordenar")
+                  }
+                );
+              }}
+              isDeleting={deleteMutation.isPending} />
+            
+                {reorderMutation.isPending &&
+            <p className="mt-2 font-body text-xs text-muted-foreground">A guardar ordem...</p>
+            }
+              </> :
+
+          <div className="border-2 border-dashed border-border py-16 flex flex-col items-center justify-center text-center">
                 <Upload size={40} className="text-muted-foreground mb-4" />
                 <p className="font-body text-sm text-muted-foreground mb-2">
                   Nenhuma imagem de {activeTab === "gallery" ? "galeria" : "pacotes"} carregada para este produto
@@ -182,27 +182,27 @@ const AdminProductImages = () => {
                 <label className="cursor-pointer text-fincut-gold hover:underline font-body text-sm font-medium">
                   Clique para adicionar
                   <input
-                    type="file"
-                    accept="image/*"
-                    multiple
-                    onChange={handleUpload}
-                    className="hidden"
-                  />
+                type="file"
+                accept="image/*"
+                multiple
+                onChange={handleUpload}
+                className="hidden" />
+              
                 </label>
               </div>
-            )}
+          }
 
-            {uploadMutation.isPending && (
-              <div className="mt-4 flex items-center gap-2 font-body text-sm text-muted-foreground">
+            {uploadMutation.isPending &&
+          <div className="mt-4 flex items-center gap-2 font-body text-sm text-muted-foreground">
                 <div className="w-4 h-4 border-2 border-fincut-gold border-t-transparent rounded-full animate-spin" />
                 A carregar imagem...
               </div>
-            )}
+          }
           </div>
-        )}
+        }
       </div>
-    </div>
-  );
+    </div>);
+
 };
 
 export default AdminProductImages;
