@@ -368,7 +368,7 @@ const ProductPage = () => {
                       }
                     }
                   }}
-                  className={`relative border px-3 py-3 text-center transition-all duration-200 ${
+                  className={`relative border px-2 sm:px-3 py-2.5 sm:py-3 text-center transition-all duration-200 ${
                   opt.id === "custom" ?
                   "border-foreground bg-foreground text-background" :
                   selectedQuantity === opt.id ?
