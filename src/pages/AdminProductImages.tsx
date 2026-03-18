@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { products } from "@/data/products";
-import { useProductImages, useUploadProductImage, useDeleteProductImage } from "@/hooks/useProductImages";
+import { useProductImages, useUploadProductImage, useDeleteProductImage, useReorderProductImages } from "@/hooks/useProductImages";
 import { Trash2, Upload, ImagePlus, ArrowLeft, Package, Image } from "lucide-react";
+import { Link } from "react-router-dom";
+import { toast } from "sonner";
+import SortableImageGrid from "@/components/admin/SortableImageGrid";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 
