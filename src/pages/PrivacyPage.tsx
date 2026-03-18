@@ -5,47 +5,47 @@ import SiteFooter from "@/components/fincut/SiteFooter";
 const sections = [
   {
     title: null,
-    content: `La présente Politique de confidentialité décrit la façon dont vos informations personnelles sont recueillies, utilisées et partagées lorsque vous vous rendez sur mrtuga.com (le « Site ») ou que vous y effectuez un achat.`,
+    content: `A presente Política de Privacidade descreve a forma como as suas informações pessoais são recolhidas, utilizadas e partilhadas quando visita mrtuga.com (o "Site") ou quando efetua uma compra no mesmo.`,
   },
   {
-    title: "Informations personnelles recueillies",
-    content: `Lorsque vous vous rendez sur le Site, nous recueillons automatiquement certaines informations concernant votre appareil, notamment des informations sur votre navigateur web, votre adresse IP, votre fuseau horaire et certains des cookies qui sont installés sur votre appareil.\n\nEn outre, lorsque vous parcourez le Site, nous recueillons des informations sur les pages web ou produits individuels que vous consultez, les sites web ou les termes de recherche qui vous ont permis d'arriver sur le Site, ainsi que des informations sur la manière dont vous interagissez avec le Site.\n\nPar ailleurs, lorsque vous effectuez ou tentez d'effectuer un achat par le biais du Site, nous recueillons certaines informations vous concernant, notamment votre nom, votre adresse de facturation, votre adresse d'expédition, vos informations de paiement, votre adresse e-mail et votre numéro de téléphone.`,
+    title: "Informações pessoais recolhidas",
+    content: `Quando visita o Site, recolhemos automaticamente determinadas informações sobre o seu dispositivo, incluindo informações sobre o seu navegador web, o seu endereço IP, o seu fuso horário e alguns dos cookies instalados no seu dispositivo.\n\nAlém disso, quando navega no Site, recolhemos informações sobre as páginas web ou produtos individuais que consulta, os websites ou os termos de pesquisa que o trouxeram ao Site, bem como informações sobre a forma como interage com o Site.\n\nQuando efetua ou tenta efetuar uma compra através do Site, recolhemos determinadas informações sobre si, incluindo o seu nome, morada de faturação, morada de envio, informações de pagamento, endereço de e-mail e número de telefone.`,
   },
   {
-    title: "Fichiers témoins (Cookies)",
-    content: `Voici une liste de fichiers témoins que nous utilisons :\n\n• _session_id : identificateur unique de session, permet à Shopify de stocker les informations relatives à votre session.\n• _shopify_visit : aucune donnée retenue, persiste pendant 30 minutes depuis la dernière visite.\n• _shopify_uniq : aucune donnée retenue, expire à minuit le jour suivant.\n• cart : identificateur unique, persiste pendant 2 semaines, stocke l'information relative à votre panier d'achat.\n• _secure_session_id : identificateur unique de session.\n• storefront_digest : identificateur unique, utilisé pour savoir si le visiteur actuel a accès.`,
+    title: "Ficheiros de testemunho (Cookies)",
+    content: `Segue-se uma lista de ficheiros de testemunho que utilizamos:\n\n• _session_id: identificador único de sessão, permite armazenar as informações relativas à sua sessão.\n• _shopify_visit: nenhum dado retido, persiste durante 30 minutos desde a última visita.\n• _shopify_uniq: nenhum dado retido, expira à meia-noite do dia seguinte.\n• cart: identificador único, persiste durante 2 semanas, armazena a informação relativa ao seu carrinho de compras.\n• _secure_session_id: identificador único de sessão.\n• storefront_digest: identificador único, utilizado para saber se o visitante atual tem acesso.`,
   },
   {
-    title: "Comment utilisons-nous vos informations personnelles ?",
-    content: `En règle générale, nous utilisons les Informations sur la commande que nous recueillons pour traiter toute commande passée par le biais du Site (y compris pour traiter vos informations de paiement, organiser l'expédition de votre commande et vous fournir des factures et/ou des confirmations de commande).\n\nEn outre, nous utilisons ces Informations sur la commande pour :\n\n• Communiquer avec vous\n• Évaluer les fraudes ou risques potentiels\n• Vous fournir des informations ou des publicités concernant nos produits ou services\n\nNous utilisons les Informations sur l'appareil pour évaluer les fraudes ou risques potentiels et, de manière plus générale, pour améliorer et optimiser notre Site.`,
+    title: "Como utilizamos as suas informações pessoais?",
+    content: `Regra geral, utilizamos as Informações sobre a encomenda que recolhemos para processar qualquer encomenda efetuada através do Site (incluindo o processamento das suas informações de pagamento, a organização do envio da sua encomenda e o fornecimento de faturas e/ou confirmações de encomenda).\n\nAlém disso, utilizamos estas Informações sobre a encomenda para:\n\n• Comunicar consigo\n• Avaliar fraudes ou riscos potenciais\n• Fornecer-lhe informações ou publicidade sobre os nossos produtos ou serviços\n\nUtilizamos as Informações sobre o dispositivo para avaliar fraudes ou riscos potenciais e, de forma mais geral, para melhorar e otimizar o nosso Site.`,
   },
   {
-    title: "Partage de vos informations personnelles",
-    content: `Nous partageons vos Informations personnelles avec des tiers qui nous aident à les utiliser aux fins décrites précédemment. Par exemple, nous utilisons Shopify pour héberger notre boutique en ligne. Nous utilisons également Google Analytics pour mieux comprendre comment nos clients utilisent le Site.\n\nIl se peut que nous partagions aussi vos Informations personnelles pour respecter les lois et règlementations applicables, répondre à une assignation, à un mandat de perquisition ou à toute autre demande légale de renseignements que nous recevons, ou pour protéger nos droits.`,
+    title: "Partilha das suas informações pessoais",
+    content: `Partilhamos as suas Informações pessoais com terceiros que nos ajudam a utilizá-las para os fins descritos anteriormente. Por exemplo, utilizamos a Shopify para alojar a nossa loja online. Também utilizamos o Google Analytics para melhor compreender como os nossos clientes utilizam o Site.\n\nPoderemos igualmente partilhar as suas Informações pessoais para cumprir as leis e regulamentações aplicáveis, responder a uma intimação, a um mandado de busca ou a qualquer outro pedido legal de informações que recebamos, ou para proteger os nossos direitos.`,
   },
   {
-    title: "Publicité comportementale",
-    content: `Nous utilisons vos Informations personnelles pour vous proposer des publicités ciblées ou des messages de marketing qui, selon nous, pourraient vous intéresser.\n\nVous pouvez refuser la publicité ciblée ici :\n\n• Facebook : https://www.facebook.com/settings/?tab=ads\n• Google : https://www.google.com/settings/ads/anonymous\n• Bing : https://about.ads.microsoft.com/fr-fr/ressources/politiques/annonces-personnalisees`,
+    title: "Publicidade comportamental",
+    content: `Utilizamos as suas Informações pessoais para lhe propor publicidade direcionada ou mensagens de marketing que, segundo acreditamos, poderão ser do seu interesse.\n\nPode recusar a publicidade direcionada aqui:\n\n• Facebook: https://www.facebook.com/settings/?tab=ads\n• Google: https://www.google.com/settings/ads/anonymous\n• Bing: https://about.ads.microsoft.com/pt-pt/recursos/politicas/anuncios-personalizados`,
   },
   {
-    title: "Ne pas suivre",
-    content: `Veuillez noter que nous ne modifions pas la collecte de données de notre Site et nos pratiques d'utilisation lorsque nous détectons un signal « Ne pas suivre » sur votre navigateur.`,
+    title: "Não rastrear",
+    content: `Tenha em atenção que não alteramos a recolha de dados do nosso Site nem as nossas práticas de utilização quando detetamos um sinal "Não rastrear" no seu navegador.`,
   },
   {
-    title: "Vos droits",
-    content: `Si vous êtes résident(e) européen(ne), vous disposez d'un droit d'accès aux informations personnelles que nous détenons à votre sujet et vous pouvez demander à ce qu'elles soient corrigées, mises à jour ou supprimées.\n\nSi vous souhaitez exercer ce droit, veuillez nous contacter au moyen des coordonnées précisées ci-dessous.\n\nVeuillez également noter que vos informations seront transférées hors de l'Europe, y compris au Canada et aux États-Unis.`,
+    title: "Os seus direitos",
+    content: `Se é residente europeu(eia), tem o direito de acesso às informações pessoais que detemos sobre si e pode solicitar que as mesmas sejam corrigidas, atualizadas ou eliminadas.\n\nSe desejar exercer este direito, por favor contacte-nos através das coordenadas indicadas abaixo.\n\nTenha igualmente em atenção que as suas informações poderão ser transferidas para fora da Europa, incluindo para o Canadá e para os Estados Unidos.`,
   },
   {
-    title: "Rétention des données",
-    content: `Lorsque vous passez une commande par l'intermédiaire du Site, nous conservons les Informations sur votre commande dans nos dossiers, sauf si et jusqu'à ce que vous nous demandiez de les supprimer.`,
+    title: "Retenção de dados",
+    content: `Quando efetua uma encomenda através do Site, conservamos as Informações sobre a sua encomenda nos nossos registos, salvo e até que nos solicite a sua eliminação.`,
   },
   {
-    title: "Changements",
-    content: `Nous pouvons être amenés à modifier la présente politique de confidentialité de temps à autre afin d'y refléter, par exemple, les changements apportés à nos pratiques ou pour d'autres motifs opérationnels, juridiques ou réglementaires.`,
+    title: "Alterações",
+    content: `Poderemos alterar a presente política de privacidade periodicamente, de forma a refletir, por exemplo, as alterações às nossas práticas ou por outros motivos operacionais, jurídicos ou regulamentares.`,
   },
   {
-    title: "Nous contacter",
-    content: `Pour en savoir plus sur nos pratiques de confidentialité, si vous avez des questions ou si vous souhaitez déposer une réclamation, veuillez nous contacter :\n\nPar e-mail : contact@mrtuga.com\n\nPar courrier : 123 Kingsway, London, WC2B 6NH, United Kingdom`,
+    title: "Contacte-nos",
+    content: `Para saber mais sobre as nossas práticas de privacidade, se tiver questões ou se desejar apresentar uma reclamação, por favor contacte-nos:\n\nPor e-mail: contact@mrtuga.com\n\nPor correio: Lisboa, Portugal`,
   },
 ];
 
@@ -57,7 +57,7 @@ const PrivacyPage = () => {
 
       <main className="max-w-3xl mx-auto px-6 lg:px-8 pt-16 pb-24">
         <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-12">
-          Politique de confidentialité
+          Política de Privacidade
         </h1>
 
         <div className="space-y-10">

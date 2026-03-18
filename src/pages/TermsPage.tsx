@@ -4,88 +4,88 @@ import SiteFooter from "@/components/fincut/SiteFooter";
 
 const sections = [
   {
-    title: "Aperçu",
-    content: `Ce site web est exploité par FT LTD. Partout sur le site, nous employons les termes « nous », « notre » et « nos » en référence à FT LTD. Ce site web, y compris l'ensemble des informations, outils et services auquel il donne accès, est offert par FT LTD à l'utilisateur que vous êtes, à condition que vous acceptiez la totalité des modalités, conditions, politiques et avis stipulés ici.\n\nEn visitant notre site et/ou en achetant quelque chose auprès de notre entreprise, vous prenez part à notre « Service » et acceptez d'être lié(e) par les modalités et conditions suivantes (« Conditions générales », « Conditions d'utilisation »), y compris par les modalités, conditions et politiques mentionnées aux présentes et/ou accessibles en hyperlien.\n\nVeuillez lire attentivement les présentes Conditions d'utilisation avant d'accéder à notre site web et de l'utiliser. En accédant à une quelconque partie du Site ou en l'utilisant, vous acceptez d'être lié(e) par les présentes Conditions d'utilisation.\n\nNotre boutique est hébergée sur Shopify Inc. Cette société nous fournit la plateforme e-commerce en ligne qui nous permet de vous vendre nos produits et services.`,
+    title: "Visão geral",
+    content: `Este website é operado pela MRTUGA. Em todo o site, utilizamos os termos "nós", "nosso" e "nos" em referência à MRTUGA. Este website, incluindo todas as informações, ferramentas e serviços disponíveis, é oferecido pela MRTUGA ao utilizador, desde que aceite a totalidade das modalidades, condições, políticas e avisos aqui estipulados.\n\nAo visitar o nosso site e/ou ao comprar algo da nossa empresa, participa no nosso "Serviço" e aceita ficar vinculado(a) às seguintes modalidades e condições ("Condições Gerais", "Condições de Utilização"), incluindo as modalidades, condições e políticas mencionadas neste documento e/ou acessíveis por hiperligação.\n\nPor favor, leia atentamente as presentes Condições de Utilização antes de aceder e utilizar o nosso website. Ao aceder a qualquer parte do Site ou ao utilizá-lo, aceita ficar vinculado(a) pelas presentes Condições de Utilização.\n\nA nossa loja está alojada na Shopify Inc. Esta empresa fornece-nos a plataforma de e-commerce online que nos permite vender-lhe os nossos produtos e serviços.`,
   },
   {
-    title: "Section 1 – Conditions d'utilisation de la boutique en ligne",
-    content: `En acceptant les présentes Conditions d'utilisation, vous déclarez avoir atteint ou dépassé l'âge de la majorité dans votre région, province ou État et nous avoir donné l'autorisation de permettre à toute personne mineure à votre charge d'utiliser ce site.\n\nVous ne devez en aucune façon utiliser nos produits à des fins illégales ou non autorisées, ni violer des lois de votre juridiction lorsque vous utilisez le Service.\n\nVous ne devez pas transmettre de vers informatique, de virus ou tout code de nature destructrice.\n\nUne infraction ou une violation de n'importe laquelle des Conditions entraînera la résiliation immédiate de vos Services.`,
+    title: "Secção 1 – Condições de utilização da loja online",
+    content: `Ao aceitar as presentes Condições de Utilização, declara ter atingido ou ultrapassado a maioridade legal na sua região, província ou estado e ter-nos dado autorização para permitir que qualquer pessoa menor a seu cargo utilize este site.\n\nNão deve, de forma alguma, utilizar os nossos produtos para fins ilegais ou não autorizados, nem violar quaisquer leis da sua jurisdição ao utilizar o Serviço.\n\nNão deve transmitir worms informáticos, vírus ou qualquer código de natureza destrutiva.\n\nUma infração ou violação de qualquer uma das Condições resultará na cessação imediata dos seus Serviços.`,
   },
   {
-    title: "Section 2 – Conditions générales",
-    content: `Nous nous réservons le droit de refuser de servir quelqu'un à tout moment et pour quelque raison que ce soit.\n\nVous comprenez que votre contenu (à l'exception des informations relatives à votre carte de crédit) peut être transféré sans chiffrement. Les informations de votre carte de crédit sont toujours chiffrées lors de leur transfert sur les réseaux.\n\nVous acceptez de ne pas reproduire, dupliquer, copier, vendre, revendre ou exploiter toute partie du Service sans notre autorisation écrite expresse.`,
+    title: "Secção 2 – Condições gerais",
+    content: `Reservamo-nos o direito de recusar servir alguém a qualquer momento e por qualquer motivo.\n\nCompreende que o seu conteúdo (exceto informações relativas ao seu cartão de crédito) pode ser transferido sem encriptação. As informações do seu cartão de crédito são sempre encriptadas durante a transferência nas redes.\n\nAceita não reproduzir, duplicar, copiar, vender, revender ou explorar qualquer parte do Serviço sem a nossa autorização escrita expressa.`,
   },
   {
-    title: "Section 3 – Exactitude, exhaustivité et actualité des informations",
-    content: `Nous ne saurions être tenus responsables si les informations proposées sur ce site sont inexactes, incomplètes ou caduques. Le contenu de ce site est fourni à titre d'information générale uniquement.\n\nCe site peut contenir certaines données historiques. Par définition, les données historiques ne sont pas actuelles et sont fournies uniquement à titre de référence.`,
+    title: "Secção 3 – Exatidão, exaustividade e atualidade das informações",
+    content: `Não poderemos ser responsabilizados se as informações disponibilizadas neste site forem inexatas, incompletas ou desatualizadas. O conteúdo deste site é fornecido apenas para informação geral.\n\nEste site pode conter determinados dados históricos. Por definição, os dados históricos não são atuais e são fornecidos apenas a título de referência.`,
   },
   {
-    title: "Section 4 – Modifications du service et des prix",
-    content: `Les prix de nos produits sont modifiables sans préavis.\n\nNous nous réservons le droit de modifier ou de mettre fin au Service (ou à une quelconque partie de celui-ci) à tout moment et sans préavis.`,
+    title: "Secção 4 – Modificações do serviço e dos preços",
+    content: `Os preços dos nossos produtos podem ser alterados sem aviso prévio.\n\nReservamo-nos o direito de modificar ou encerrar o Serviço (ou qualquer parte do mesmo) a qualquer momento e sem aviso prévio.`,
   },
   {
-    title: "Section 5 – Produits ou services",
-    content: `Il est possible que certains produits ou services ne soient disponibles qu'en ligne à travers le site web. Il se peut que les quantités de ces produits ou services soient limitées.\n\nNous nous sommes efforcés de présenter aussi précisément que possible les couleurs et images des produits figurant sur la boutique. Nous ne pouvons cependant pas garantir la précision d'affichage des couleurs sur l'écran de votre ordinateur.`,
+    title: "Secção 5 – Produtos ou serviços",
+    content: `É possível que determinados produtos ou serviços estejam disponíveis apenas online através do website. As quantidades destes produtos ou serviços podem ser limitadas.\n\nEsforçámo-nos por apresentar com a maior precisão possível as cores e imagens dos produtos apresentados na loja. No entanto, não podemos garantir a precisão da apresentação das cores no ecrã do seu computador.`,
   },
   {
-    title: "Section 6 – Exactitude de la facturation",
-    content: `Nous nous réservons le droit de refuser toute commande que vous passez auprès de nous. Nous pouvons, à notre seule discrétion, limiter ou annuler les quantités achetées par personne, par foyer ou par commande.\n\nVous acceptez de fournir des informations d'achat et de compte actuelles, complètes et exactes pour tous les achats effectués dans notre boutique.`,
+    title: "Secção 6 – Exatidão da faturação",
+    content: `Reservamo-nos o direito de recusar qualquer encomenda que faça junto de nós. Podemos, a nosso exclusivo critério, limitar ou anular as quantidades compradas por pessoa, por agregado familiar ou por encomenda.\n\nAceita fornecer informações de compra e de conta atuais, completas e exatas para todas as compras efetuadas na nossa loja.`,
   },
   {
-    title: "Section 7 – Outils facultatifs",
-    content: `Nous sommes susceptibles de vous fournir l'accès à des outils tiers que nous ne surveillons, ne contrôlons et ne gérons pas. Vous reconnaissez et acceptez que nous vous fournissons l'accès à ces outils « tels quels » et « sous réserve de disponibilité ».`,
+    title: "Secção 7 – Ferramentas facultativas",
+    content: `Podemos fornecer-lhe acesso a ferramentas de terceiros que não monitorizamos, controlamos nem gerimos. Reconhece e aceita que lhe fornecemos acesso a essas ferramentas "tal como estão" e "mediante disponibilidade".`,
   },
   {
-    title: "Section 8 – Liens de tiers",
-    content: `Certains contenus, produits et services accessibles via notre Service peuvent inclure des éléments provenant de tiers. Les liens de tiers sur ce site peuvent vous rediriger vers des sites web de tiers qui ne sont pas affiliés à nous.`,
+    title: "Secção 8 – Ligações de terceiros",
+    content: `Determinados conteúdos, produtos e serviços acessíveis através do nosso Serviço podem incluir elementos provenientes de terceiros. As ligações de terceiros neste site podem redirecioná-lo para websites de terceiros que não são afiliados a nós.`,
   },
   {
-    title: "Section 9 – Commentaires et soumissions",
-    content: `Si vous soumettez des contenus spécifiques, vous nous accordez le droit de modifier, copier, publier, distribuer, traduire et utiliser dans quelque média que ce soit tous les commentaires que vous nous transmettez.`,
+    title: "Secção 9 – Comentários e submissões",
+    content: `Se submeter conteúdos específicos, concede-nos o direito de modificar, copiar, publicar, distribuir, traduzir e utilizar em qualquer meio de comunicação todos os comentários que nos transmitir.`,
   },
   {
-    title: "Section 10 – Informations personnelles",
-    content: `La transmission de vos informations personnelles sur notre boutique est régie par notre Politique de confidentialité.`,
+    title: "Secção 10 – Informações pessoais",
+    content: `A transmissão das suas informações pessoais na nossa loja é regida pela nossa Política de Privacidade.`,
   },
   {
-    title: "Section 11 – Erreurs, inexactitudes et omissions",
-    content: `Il se peut qu'il y ait parfois, sur notre site ou dans le Service, des informations contenant des erreurs typographiques, des inexactitudes ou des omissions. Nous nous réservons le droit de corriger toute erreur à tout moment et sans préavis.`,
+    title: "Secção 11 – Erros, inexatidões e omissões",
+    content: `Poderá haver, por vezes, no nosso site ou no Serviço, informações contendo erros tipográficos, inexatidões ou omissões. Reservamo-nos o direito de corrigir qualquer erro a qualquer momento e sem aviso prévio.`,
   },
   {
-    title: "Section 12 – Utilisations interdites",
-    content: `Il vous est interdit d'utiliser le site ou son contenu :\n\n• À des fins illégales\n• Pour inciter des tiers à réaliser des actes illégaux\n• Pour enfreindre toute réglementation ou loi\n• Pour transgresser nos droits de propriété intellectuelle\n• Pour harceler, maltraiter ou discriminer quiconque\n• Pour soumettre des renseignements faux ou trompeurs\n• Pour transmettre des virus ou tout code malveillant`,
+    title: "Secção 12 – Utilizações proibidas",
+    content: `É proibido utilizar o site ou o seu conteúdo:\n\n• Para fins ilegais\n• Para incitar terceiros a realizar atos ilegais\n• Para infringir qualquer regulamentação ou lei\n• Para transgredir os nossos direitos de propriedade intelectual\n• Para assediar, maltratar ou discriminar qualquer pessoa\n• Para submeter informações falsas ou enganosas\n• Para transmitir vírus ou qualquer código malicioso`,
   },
   {
-    title: "Section 13 – Exclusion de garanties",
-    content: `Nous ne garantissons pas que votre utilisation de notre Service sera ininterrompue, sécurisée, sans délai ou sans erreur. Le Service est fourni « tel quel » et « sous réserve de disponibilité ».`,
+    title: "Secção 13 – Exclusão de garantias",
+    content: `Não garantimos que a sua utilização do nosso Serviço será ininterrupta, segura, sem atrasos ou sem erros. O Serviço é fornecido "tal como está" e "mediante disponibilidade".`,
   },
   {
-    title: "Section 14 – Indemnisation",
-    content: `Vous acceptez d'indemniser et de tenir FT LTD quittes de toute réclamation émise par un quelconque tiers consécutivement à votre violation des présentes Conditions d'utilisation.`,
+    title: "Secção 14 – Indemnização",
+    content: `Aceita indemnizar e isentar a MRTUGA de qualquer reclamação emitida por terceiros decorrente da sua violação das presentes Condições de Utilização.`,
   },
   {
-    title: "Section 15 – Dissociabilité",
-    content: `Dans le cas où une disposition des présentes Conditions d'utilisation est jugée illégale ou inapplicable, cette disposition sera néanmoins applicable dans la pleine mesure permise par la loi.`,
+    title: "Secção 15 – Dissociabilidade",
+    content: `No caso de uma disposição das presentes Condições de Utilização ser considerada ilegal ou inaplicável, essa disposição será, ainda assim, aplicável na máxima medida permitida pela lei.`,
   },
   {
-    title: "Section 16 – Résiliation",
-    content: `Les présentes Conditions d'utilisation resteront en vigueur jusqu'à ce qu'elles soient résiliées par vous ou par nous. Vous pouvez résilier ces Conditions d'utilisation à tout moment en cessant d'utiliser notre site.`,
+    title: "Secção 16 – Rescisão",
+    content: `As presentes Condições de Utilização permanecerão em vigor até serem rescindidas por si ou por nós. Pode rescindir estas Condições de Utilização a qualquer momento, deixando de utilizar o nosso site.`,
   },
   {
-    title: "Section 17 – Intégralité de l'accord",
-    content: `Les présentes Conditions d'utilisation constituent l'intégralité de l'entente et de l'accord entre vous et nous, et régissent votre utilisation du Service.`,
+    title: "Secção 17 – Integralidade do acordo",
+    content: `As presentes Condições de Utilização constituem a totalidade do entendimento e acordo entre si e nós, e regem a sua utilização do Serviço.`,
   },
   {
-    title: "Section 18 – Loi applicable",
-    content: `Les présentes Conditions d'utilisation sont régies et interprétées en vertu des lois de 71-75 Shelton Street, Covent Garden, London, United Kingdom, WC2H 9JQ.`,
+    title: "Secção 18 – Lei aplicável",
+    content: `As presentes Condições de Utilização são regidas e interpretadas ao abrigo das leis de Portugal.`,
   },
   {
-    title: "Section 19 – Modifications",
-    content: `Nous nous réservons le droit de mettre à jour, modifier ou remplacer toute partie des présentes Conditions d'utilisation en publiant lesdites mises à jour sur notre site web.`,
+    title: "Secção 19 – Alterações",
+    content: `Reservamo-nos o direito de atualizar, modificar ou substituir qualquer parte das presentes Condições de Utilização, publicando as referidas atualizações no nosso website.`,
   },
   {
-    title: "Section 20 – Coordonnées",
-    content: `Les questions relatives aux Conditions d'utilisation doivent nous être envoyées à contact@mrtuga.com.`,
+    title: "Secção 20 – Contactos",
+    content: `As questões relativas às Condições de Utilização devem ser enviadas para contact@mrtuga.com.`,
   },
 ];
 
@@ -97,7 +97,7 @@ const TermsPage = () => {
 
       <main className="max-w-3xl mx-auto px-6 lg:px-8 pt-16 pb-24">
         <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-12">
-          Conditions Générales de Vente et d'Utilisation
+          Condições Gerais de Venda e Utilização
         </h1>
 
         <div className="space-y-10">
