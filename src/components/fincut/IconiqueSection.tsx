@@ -2,24 +2,24 @@ import { iconiqueProducts } from "@/data/products";
 import ProductCard from "./ProductCard";
 
 const IconiqueSection = () => {
-  return (
-    <section id="iconique" className="bg-background py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground">O seu vestuário  </h2>
-      
+  return;
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
-        {iconiqueProducts.map((p) =>
-        <ProductCard
-          key={p.slug}
-          image={p.cardImage}
-          name={p.name}
-          price={p.priceLabel}
-          darkBg={false}
-          slug={p.slug} />
 
-        )}
-      </div>
-    </section>);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 };
 
