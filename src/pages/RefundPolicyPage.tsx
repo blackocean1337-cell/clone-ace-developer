@@ -4,32 +4,32 @@ import SiteFooter from "@/components/fincut/SiteFooter";
 
 const sections = [
   {
-    title: "Retours",
-    content: `Notre politique dure 30 jours. Si plus de 30 jours se sont écoulés depuis la réception de votre article, nous ne pouvons malheureusement offrir ni remboursement ni échange.\n\nPour pouvoir être retourné, votre article doit être inutilisé et dans l'état où vous l'avez reçu. Il doit aussi être dans son emballage d'origine.\n\nPour compléter votre retour, nous exigeons un reçu ou une preuve d'achat. Ne retournez pas votre achat au fabricant.`,
+    title: "Devoluções",
+    content: `A nossa política tem a duração de 30 dias. Se passaram mais de 30 dias desde a receção do seu artigo, infelizmente não podemos oferecer reembolso nem troca.\n\nPara poder ser devolvido, o seu artigo deve estar por utilizar e no estado em que o recebeu. Deve também estar na sua embalagem original.\n\nPara concluir a sua devolução, exigimos um recibo ou comprovativo de compra. Não devolva a sua compra ao fabricante.`,
   },
   {
-    title: "Remboursements",
-    content: `Une fois votre retour reçu et inspecté, nous vous adresserons un e-mail pour vous indiquer que nous avons reçu l'article retourné. Nous vous préciserons également si votre remboursement est approuvé ou refusé.\n\nS'il est approuvé, votre remboursement est alors traité et votre carte de crédit ou moyen de paiement initial se voit crédité(e) automatiquement dans un délai de quelques jours.`,
+    title: "Reembolsos",
+    content: `Assim que a sua devolução for recebida e inspecionada, enviar-lhe-emos um e-mail para informá-lo de que recebemos o artigo devolvido. Informá-lo-emos igualmente se o seu reembolso foi aprovado ou recusado.\n\nSe for aprovado, o seu reembolso será então processado e o seu cartão de crédito ou meio de pagamento original será creditado automaticamente num prazo de alguns dias.`,
   },
   {
-    title: "Remboursements retardés ou manquants",
-    content: `Si vous n'avez pas encore reçu de remboursement :\n\n• Revérifiez d'abord votre compte bancaire\n• Contactez la société émettrice de votre carte de crédit, car il se peut que l'affichage officiel de votre remboursement prenne un peu de temps\n• Contactez votre banque. L'affichage d'un remboursement est souvent précédé d'un délai de traitement\n\nSi vous avez effectué toutes ces démarches et que vous n'avez toujours pas reçu votre remboursement, contactez-nous à contact@mrtuga.com.`,
+    title: "Reembolsos atrasados ou em falta",
+    content: `Se ainda não recebeu o seu reembolso:\n\n• Verifique novamente a sua conta bancária\n• Contacte a entidade emissora do seu cartão de crédito, pois pode demorar algum tempo até que o reembolso seja oficialmente apresentado\n• Contacte o seu banco. A apresentação de um reembolso é frequentemente precedida de um prazo de processamento\n\nSe efetuou todas estas diligências e ainda não recebeu o seu reembolso, contacte-nos em contact@mrtuga.com.`,
   },
   {
-    title: "Articles soldés ou en promotion",
-    content: `Seuls les articles à prix normal sont remboursables. Malheureusement, les articles soldés ou en promotion ne le sont pas.`,
+    title: "Artigos em saldo ou em promoção",
+    content: `Apenas os artigos a preço normal são reembolsáveis. Infelizmente, os artigos em saldo ou em promoção não são reembolsáveis.`,
   },
   {
-    title: "Échanges",
-    content: `Nous ne remplaçons que les articles initialement défectueux ou endommagés. Si vous devez remplacer le vôtre par le même article, adressez-nous un e-mail à contact@mrtuga.com.`,
+    title: "Trocas",
+    content: `Apenas substituímos artigos que apresentem defeito de origem ou que estejam danificados. Se precisar de substituir o seu artigo pelo mesmo, envie-nos um e-mail para contact@mrtuga.com.`,
   },
   {
-    title: "Cadeaux",
-    content: `Si l'article a été marqué comme cadeau au moment de l'achat et s'il vous a été expédié directement, vous recevrez un crédit cadeau d'une valeur équivalente à celle de l'article retourné. Une fois l'article retourné reçu, un bon cadeau vous sera envoyé par voie postale.\n\nSi l'article n'a pas été marqué comme cadeau au moment de l'achat, ou si la personne à l'origine du cadeau s'est fait envoyer la commande dans le but de vous la remettre plus tard, c'est à elle que nous adresserons le remboursement.`,
+    title: "Presentes",
+    content: `Se o artigo foi marcado como presente no momento da compra e lhe foi enviado diretamente, receberá um crédito presente de valor equivalente ao do artigo devolvido. Assim que o artigo devolvido for recebido, ser-lhe-á enviado um vale presente.\n\nSe o artigo não foi marcado como presente no momento da compra, ou se a pessoa que ofereceu o presente fez enviar a encomenda para si própria com o intuito de lha entregar posteriormente, é a essa pessoa que enviaremos o reembolso.`,
   },
   {
-    title: "Expédition des retours",
-    content: `Les coûts d'expédition liés au retour de votre article sont à votre charge. Ils ne sont pas remboursables. Si vous recevez un remboursement, le coût d'expédition du retour en sera déduit.\n\nSelon l'endroit où vous vivez, le délai de réception de votre produit échangé peut varier.\n\nSi vous expédiez un article d'une valeur supérieure à 75 €, nous vous recommandons d'utiliser un service de suivi d'expédition ou de faire assurer votre envoi. Nous ne garantissons pas que nous recevrons l'article retourné.`,
+    title: "Envio das devoluções",
+    content: `Os custos de envio associados à devolução do seu artigo ficam a seu cargo. Não são reembolsáveis. Se receber um reembolso, o custo de envio da devolução será deduzido do mesmo.\n\nConsoante o local onde reside, o prazo de receção do seu produto trocado pode variar.\n\nSe enviar um artigo de valor superior a 75 €, recomendamos que utilize um serviço de rastreamento de envio ou que faça um seguro do seu envio. Não garantimos que receberemos o artigo devolvido.`,
   },
 ];
 
@@ -41,7 +41,7 @@ const RefundPolicyPage = () => {
 
       <main className="max-w-3xl mx-auto px-6 lg:px-8 pt-16 pb-24">
         <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-12">
-          Politique de remboursement
+          Política de Reembolso
         </h1>
 
         <div className="space-y-10">
