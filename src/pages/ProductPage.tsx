@@ -63,12 +63,17 @@ const reviews = [
 const ProductPage = () => {
   const { slug } = useParams<{slug: string;}>();
   const product = getProductBySlug(slug || "");
-  const { data: dbImages } = useProductImages(slug || "");
+  const { data: dbImages } = useProductImages(slug || "", "gallery");
+  const { data: dbPackImages } = useProductImages(slug || "", "pack");
 
   // Merge: DB images first, then fallback to static gallery
   const galleryImages = dbImages && dbImages.length > 0
     ? dbImages.map((img) => img.image_url)
     : product?.galleryImages || [];
+
+  const packImages = dbPackImages && dbPackImages.length > 0
+    ? dbPackImages.map((img) => img.image_url)
+    : [];
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState("");
@@ -78,6 +83,10 @@ const ProductPage = () => {
   const [packHighlight, setPackHighlight] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<string | null>("description");
   const [countdown, setCountdown] = useState({ hours: 13, minutes: 39 });
+
+  // Show pack images when a pack is selected and pack images exist
+  const isPackSelected = selectedQuantity !== "unite" && selectedQuantity !== "custom";
+  const activeImages = isPackSelected && packImages.length > 0 ? packImages : galleryImages;
   const [sizeTechOpen, setSizeTechOpen] = useState(false);
   const { addItem } = useCart();
 
@@ -175,7 +184,7 @@ const ProductPage = () => {
           <div className="flex gap-3">
             {/* Thumbnails */}
             <div className="hidden md:flex flex-col gap-2 w-20 flex-shrink-0 max-h-[600px] overflow-y-auto scrollbar-hide">
-              {galleryImages.map((img, i) =>
+              {activeImages.map((img, i) =>
               <button
                 key={i}
                 onClick={() => setSelectedImage(i)}
@@ -195,7 +204,7 @@ const ProductPage = () => {
               <AnimatePresence mode="wait">
                 <motion.img
                   key={selectedImage}
-                  src={galleryImages[selectedImage]}
+                  src={activeImages[selectedImage]}
                   alt={product.name}
                   className="w-full h-full object-contain"
                   initial={{ opacity: 0 }}
@@ -212,14 +221,14 @@ const ProductPage = () => {
                 <ChevronLeft size={16} />
               </button>
               <button
-                onClick={() => setSelectedImage((i) => Math.min(galleryImages.length - 1, i + 1))}
+                onClick={() => setSelectedImage((i) => Math.min(activeImages.length - 1, i + 1))}
                 className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-background/80 flex items-center justify-center lg:hidden">
                 
                 <ChevronRight size={16} />
               </button>
 
               <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 lg:hidden">
-                {galleryImages.map((_, i) =>
+                {activeImages.map((_, i) =>
                 <button
                   key={i}
                   onClick={() => setSelectedImage(i)}
@@ -289,6 +298,7 @@ const ProductPage = () => {
                       window.dispatchEvent(new Event("open-pack-builder"));
                     } else {
                       setSelectedQuantity(opt.id);
+                      setSelectedImage(0);
                       if (opt.id !== "unite") {
                         setSelectedPack(null);
                         setPackHighlight(true);
