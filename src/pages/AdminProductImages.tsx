@@ -153,7 +153,19 @@ const AdminProductImages = () => {
             )}
               </div> :
           images && images.length > 0 ?
-          <>
+          <div
+                onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("ring-2", "ring-foreground"); }}
+                onDragLeave={(e) => { e.currentTarget.classList.remove("ring-2", "ring-foreground"); }}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  e.currentTarget.classList.remove("ring-2", "ring-foreground");
+                  const files = e.dataTransfer.files;
+                  if (files.length) {
+                    const fakeEvent = { target: { files, value: "" } } as unknown as React.ChangeEvent<HTMLInputElement>;
+                    handleUpload(fakeEvent);
+                  }
+                }}
+              >
                 <SortableImageGrid
               images={images}
               productSlug={selectedSlug}
