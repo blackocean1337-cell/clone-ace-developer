@@ -311,7 +311,7 @@ const ProductPage = () => {
                 </span>
               </div>
 
-              <div className="flex items-center justify-between mt-3">
+              <div className="flex items-center justify-between mt-2 sm:mt-3 flex-wrap gap-2">
                 <div className="flex items-center gap-2">
                   <span className="bg-[#00b67a] text-white px-2 py-1 text-xs font-bold flex items-center gap-1 rounded-sm">
                     4.5 <Star size={12} fill="white" />
