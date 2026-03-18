@@ -436,7 +436,7 @@ const ProductPage = () => {
               <h3 className="font-display text-sm font-semibold text-foreground mb-3">
                 Escolha o seu tamanho:
               </h3>
-              <div className="grid grid-cols-5 gap-2">
+              <div className="grid grid-cols-4 sm:grid-cols-5 gap-2">
                 {product.sizes.map((s) =>
                 <button
                   key={s}
