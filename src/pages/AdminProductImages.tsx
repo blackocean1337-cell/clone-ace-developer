@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { products } from "@/data/products";
-import { useProductImages, useUploadProductImage, useDeleteProductImage } from "@/hooks/useProductImages";
+import { useProductImages, useUploadProductImage, useDeleteProductImage, useReorderProductImages } from "@/hooks/useProductImages";
 import { Trash2, Upload, ImagePlus, ArrowLeft, Package, Image } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
+import SortableImageGrid from "@/components/admin/SortableImageGrid";
 
 const IMAGE_TABS = [
   { id: "gallery", label: "Imagens principais", icon: Image },
@@ -16,6 +17,7 @@ const AdminProductImages = () => {
   const { data: images, isLoading } = useProductImages(selectedSlug, activeTab);
   const uploadMutation = useUploadProductImage();
   const deleteMutation = useDeleteProductImage();
+  const reorderMutation = useReorderProductImages();
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -151,29 +153,26 @@ const AdminProductImages = () => {
                 ))}
               </div>
             ) : images && images.length > 0 ? (
-              <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
-                {images.map((img) => (
-                  <div key={img.id} className="relative group border border-border overflow-hidden">
-                    <img
-                      src={img.image_url}
-                      alt={`Produto ${selectedSlug}`}
-                      className="w-full aspect-square object-cover"
-                    />
-                    <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/40 transition-colors flex items-center justify-center">
-                      <button
-                        onClick={() => handleDelete(img.id, img.image_url)}
-                        disabled={deleteMutation.isPending}
-                        className="opacity-0 group-hover:opacity-100 bg-destructive text-destructive-foreground p-2 rounded-full transition-opacity"
-                      >
-                        <Trash2 size={16} />
-                      </button>
-                    </div>
-                    <span className="absolute bottom-1 left-1 bg-foreground/80 text-background text-[10px] px-1.5 py-0.5 font-body">
-                      #{img.sort_order}
-                    </span>
-                  </div>
-                ))}
-              </div>
+              <>
+                <SortableImageGrid
+                  images={images}
+                  productSlug={selectedSlug}
+                  onDelete={handleDelete}
+                  onReorder={(reordered) => {
+                    reorderMutation.mutate(
+                      { images: reordered, productSlug: selectedSlug },
+                      {
+                        onSuccess: () => toast.success("Ordem atualizada"),
+                        onError: () => toast.error("Erro ao reordenar"),
+                      }
+                    );
+                  }}
+                  isDeleting={deleteMutation.isPending}
+                />
+                {reorderMutation.isPending && (
+                  <p className="mt-2 font-body text-xs text-muted-foreground">A guardar ordem...</p>
+                )}
+              </>
             ) : (
               <div className="border-2 border-dashed border-border py-16 flex flex-col items-center justify-center text-center">
                 <Upload size={40} className="text-muted-foreground mb-4" />
