@@ -85,7 +85,7 @@ const sections = [
   },
   {
     title: "Secção 20 – Contactos",
-    content: `As questões relativas às Condições de Utilização devem ser enviadas para contact@mrtuga.com.`,
+    content: `As questões relativas às Condições de Utilização devem ser enviadas para info@mrtuga.com.`,
   },
 ];
 
