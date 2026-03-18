@@ -31,7 +31,6 @@ const getPackLabel = (tshirts: string[]): string => {
     counts[color] = (counts[color] || 0) + 1;
   });
   const entries = Object.entries(counts);
-  if (entries.length === 1) return "";
   return entries.map(([color, count]) => `${count}x ${color}`).join(" · ");
 };
 
