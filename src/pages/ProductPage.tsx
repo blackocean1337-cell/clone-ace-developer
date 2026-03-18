@@ -662,7 +662,7 @@ const ProductPage = () => {
         </div>
 
         {/* Reviews grid - masonry style */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
+        <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-3 sm:gap-4 space-y-3 sm:space-y-4">
           {reviews.map((review, i) =>
           <div
             key={i}
