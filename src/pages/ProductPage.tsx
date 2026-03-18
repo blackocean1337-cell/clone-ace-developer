@@ -381,7 +381,7 @@ const ProductPage = () => {
                         {opt.badge}
                       </span>
                   }
-                    <span className="font-display text-xs font-bold tracking-wider block">
+                    <span className="font-display text-[10px] sm:text-xs font-bold tracking-wider block">
                       {opt.label}
                     </span>
                     {opt.sublabel &&
