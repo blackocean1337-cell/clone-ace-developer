@@ -35,39 +35,31 @@ const getPackLabel = (tshirts: string[]): string => {
 };
 
 
-const packOptions: Record<string, string[][]> = {
-  pack2: [
-    [tshirtBlack, tshirtBlack, tshirtBlack],
-    [tshirtBlack, tshirtWhite, tshirtNavy],
-    [tshirtWhite, tshirtWhite, tshirtWhite],
-    [tshirtBlack, tshirtBlack, tshirtWhite],
-    [tshirtNavy, tshirtNavy, tshirtNavy],
-    [tshirtKaki, tshirtKaki, tshirtKaki],
-  ],
-  pack3: [
-    [tshirtBlack, tshirtBlack, tshirtWhite, tshirtWhite, tshirtNavy, tshirtKaki],
-    [tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack],
-    [tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite],
-    [tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy],
-    [tshirtBlack, tshirtBlack, tshirtBlack, tshirtWhite, tshirtWhite, tshirtWhite],
-    [tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki],
-  ],
-  pack4: [
-    [tshirtBlack, tshirtBlack, tshirtBlack, tshirtWhite, tshirtWhite, tshirtWhite, tshirtNavy, tshirtNavy, tshirtKaki],
-    [tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack],
-    [tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite],
-    [tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy],
-    [tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite],
-    [tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki],
-  ],
-  pack6: [
-    [tshirtBlack, tshirtBlack, tshirtBlack, tshirtWhite, tshirtWhite, tshirtWhite, tshirtNavy, tshirtNavy, tshirtNavy, tshirtKaki, tshirtKaki, tshirtKaki],
-    [tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack],
-    [tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite],
-    [tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy, tshirtNavy],
-    [tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtBlack, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite, tshirtWhite],
-    [tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki, tshirtKaki],
-  ],
+const allColorImages = [tshirtBlack, tshirtWhite, tshirtNavy, tshirtKaki];
+
+const generatePackOptions = (availableColors: string[]): Record<string, string[][]> => {
+  const imgs = allColorImages.filter(img => availableColors.some(c => tshirtColorMap[img]?.toLowerCase().includes(c.toLowerCase().split(" ")[0])));
+  if (imgs.length === 0) return {};
+
+  const makeMonoPacks = (count: number) => imgs.map(img => Array(count).fill(img));
+  const makeMixedPack = (count: number) => {
+    if (imgs.length < 2) return [];
+    const result: string[] = [];
+    for (let i = 0; i < count; i++) result.push(imgs[i % imgs.length]);
+    return [result];
+  };
+  const makeHalfPack = (count: number) => {
+    if (imgs.length < 2) return [];
+    const half = Math.ceil(count / 2);
+    return [Array(half).fill(imgs[0]).concat(Array(count - half).fill(imgs[1]))];
+  };
+
+  return {
+    pack2: [...makeMixedPack(3), ...makeMonoPacks(3), ...makeHalfPack(3)].filter(p => p.length > 0),
+    pack3: [...makeMixedPack(6), ...makeMonoPacks(6), ...makeHalfPack(6)].filter(p => p.length > 0),
+    pack4: [...makeMixedPack(9), ...makeMonoPacks(9), ...makeHalfPack(9)].filter(p => p.length > 0),
+    pack6: [...makeMixedPack(12), ...makeMonoPacks(12), ...makeHalfPack(12)].filter(p => p.length > 0),
+  };
 };
 
 const lifestyleItems = [
