@@ -35,10 +35,15 @@ const getPackLabel = (tshirts: string[]): string => {
 };
 
 
-const allColorImages = [tshirtBlack, tshirtWhite, tshirtNavy, tshirtKaki];
+const colorImageMap: Record<string, string> = {
+  "Preto": tshirtBlack,
+  "Branco": tshirtWhite,
+  "Azul marinho": tshirtNavy,
+  "Caqui": tshirtKaki,
+};
 
 const generatePackOptions = (availableColors: string[]): Record<string, string[][]> => {
-  const imgs = allColorImages.filter(img => availableColors.some(c => tshirtColorMap[img]?.toLowerCase().includes(c.toLowerCase().split(" ")[0])));
+  const imgs = availableColors.map(c => colorImageMap[c]).filter(Boolean) as string[];
   if (imgs.length === 0) return {};
 
   const makeMonoPacks = (count: number) => imgs.map(img => Array(count).fill(img));
