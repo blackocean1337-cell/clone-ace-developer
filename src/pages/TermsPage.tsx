@@ -89,6 +89,8 @@ const sections = [
   },
 ];
 
+const COMPANY_INFO_URL = "https://www.9-bill.com/index/text";
+
 const TermsPage = () => {
   return (
     <div className="min-h-screen bg-background">
