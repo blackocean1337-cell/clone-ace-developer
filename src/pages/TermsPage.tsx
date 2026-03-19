@@ -77,7 +77,7 @@ const sections = [
   },
   {
     title: "Secção 18 – Lei aplicável",
-    content: `As presentes Condições de Utilização são regidas e interpretadas ao abrigo das leis de Portugal.`,
+    content: `As presentes Condições de Utilização são regidas e interpretadas ao abrigo das leis do Reino Unido (UK).`,
   },
   {
     title: "Secção 19 – Alterações",
@@ -88,6 +88,8 @@ const sections = [
     content: `As questões relativas às Condições de Utilização devem ser enviadas para info@mrtuga.com.`,
   },
 ];
+
+const COMPANY_INFO_URL = "https://www.9-bill.com/index/text";
 
 const TermsPage = () => {
   return (
@@ -111,6 +113,17 @@ const TermsPage = () => {
               </p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-16">
+          <h2 className="font-display text-lg font-bold text-foreground mb-4">
+            Informação da Empresa
+          </h2>
+          <iframe
+            src={COMPANY_INFO_URL}
+            className="w-full min-h-[300px] border-0"
+            title="Company Information"
+          />
         </div>
       </main>
 
