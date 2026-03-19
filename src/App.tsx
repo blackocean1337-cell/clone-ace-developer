@@ -15,6 +15,7 @@ import TermsPage from "./pages/TermsPage.tsx";
 import PrivacyPage from "./pages/PrivacyPage.tsx";
 import DeliveryPolicyPage from "./pages/DeliveryPolicyPage.tsx";
 import RefundPolicyPage from "./pages/RefundPolicyPage.tsx";
+import IntellectualPropertyPage from "./pages/IntellectualPropertyPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import AdminProductImages from "./pages/AdminProductImages.tsx";
 
@@ -48,6 +49,7 @@ const App = () => (
             <Route path="/privacidade" element={<PrivacyPage />} />
             <Route path="/politica-entrega" element={<DeliveryPolicyPage />} />
             <Route path="/politica-reembolso" element={<RefundPolicyPage />} />
+            <Route path="/intellectual-property" element={<IntellectualPropertyPage />} />
             <Route path="/products/:slug" element={<ProductPage />} />
             <Route path="/admin/imagens" element={<AdminProductImages />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
