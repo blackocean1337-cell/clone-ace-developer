@@ -49,7 +49,7 @@ const SiteFooter = () => {
               <li><a href="/privacidade" className="hover:text-secondary-foreground transition-colors underline">Política de Privacidade</a></li>
               <li><a href="/politica-entrega" className="hover:text-secondary-foreground transition-colors underline">Política de entrega</a></li>
               <li><a href="/politica-reembolso" className="hover:text-secondary-foreground transition-colors underline">Política de reembolso</a></li>
-              
+              <li><a href="/intellectual-property" className="hover:text-secondary-foreground transition-colors underline">Intellectual Property Rights</a></li>
             </ul>
           </div>
 
