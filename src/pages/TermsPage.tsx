@@ -77,7 +77,7 @@ const sections = [
   },
   {
     title: "Secção 18 – Lei aplicável",
-    content: `As presentes Condições de Utilização são regidas e interpretadas ao abrigo das leis de Portugal.`,
+    content: `As presentes Condições de Utilização são regidas e interpretadas ao abrigo das leis do Reino Unido (UK).`,
   },
   {
     title: "Secção 19 – Alterações",
