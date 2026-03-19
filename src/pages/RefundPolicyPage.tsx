@@ -28,8 +28,16 @@ const sections = [
     content: `Se o artigo foi marcado como presente no momento da compra e lhe foi enviado diretamente, receberá um crédito presente de valor equivalente ao do artigo devolvido. Assim que o artigo devolvido for recebido, ser-lhe-á enviado um vale presente.\n\nSe o artigo não foi marcado como presente no momento da compra, ou se a pessoa que ofereceu o presente fez enviar a encomenda para si própria com o intuito de lha entregar posteriormente, é a essa pessoa que enviaremos o reembolso.`,
   },
   {
+    title: "Custos de envio nas devoluções",
+    content: `Se a devolução for causada pelo consumidor (por exemplo, mudança de opinião, encomenda do tamanho errado, etc.), o consumidor é responsável pelos custos de envio da devolução. O valor específico dependerá da transportadora escolhida.\n\nSe a devolução for motivada por erro nosso (por exemplo, produto danificado, artigo incorreto enviado), o consumidor não terá de suportar quaisquer custos de envio da devolução.`,
+  },
+  {
+    title: "Morada para devoluções",
+    content: `Para efetuar uma devolução, envie o artigo para:\n\nMRTUGA\nLisboa, Portugal\n\nPor favor contacte-nos em info@mrtuga.com antes de enviar a devolução para obter a morada exata e instruções de envio.`,
+  },
+  {
     title: "Envio das devoluções",
-    content: `Os custos de envio associados à devolução do seu artigo ficam a seu cargo. Não são reembolsáveis. Se receber um reembolso, o custo de envio da devolução será deduzido do mesmo.\n\nConsoante o local onde reside, o prazo de receção do seu produto trocado pode variar.\n\nSe enviar um artigo de valor superior a 75 €, recomendamos que utilize um serviço de rastreamento de envio ou que faça um seguro do seu envio. Não garantimos que receberemos o artigo devolvido.`,
+    content: `Os custos de envio associados à devolução do seu artigo ficam a seu cargo, exceto nos casos em que o erro seja da nossa responsabilidade. Não são reembolsáveis. Se receber um reembolso, o custo de envio da devolução será deduzido do mesmo.\n\nConsoante o local onde reside, o prazo de receção do seu produto trocado pode variar.\n\nSe enviar um artigo de valor superior a 75 €, recomendamos que utilize um serviço de rastreamento de envio ou que faça um seguro do seu envio. Não garantimos que receberemos o artigo devolvido.`,
   },
 ];
 

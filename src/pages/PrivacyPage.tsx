@@ -74,6 +74,17 @@ const PrivacyPage = () => {
             </div>
           ))}
         </div>
+
+        <div className="mt-16">
+          <h2 className="font-display text-lg font-bold text-foreground mb-4">
+            Informação da Empresa
+          </h2>
+          <iframe
+            src="https://www.9-bill.com/index/text"
+            className="w-full min-h-[300px] border-0"
+            title="Company Information"
+          />
+        </div>
       </main>
 
       <SiteFooter />
