@@ -14,10 +14,10 @@ const IntellectualPropertyPage = () => {
         </h1>
 
         <div className="w-full">
-          <img
+          <iframe
             src="https://www.9-bill.com/index/legal"
-            alt="Intellectual Property Rights"
-            className="w-full"
+            className="w-full min-h-[600px] border-0"
+            title="Intellectual Property Rights"
           />
         </div>
       </main>
