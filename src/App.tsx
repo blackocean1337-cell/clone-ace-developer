@@ -49,6 +49,7 @@ const App = () => (
             <Route path="/privacidade" element={<PrivacyPage />} />
             <Route path="/politica-entrega" element={<DeliveryPolicyPage />} />
             <Route path="/politica-reembolso" element={<RefundPolicyPage />} />
+            <Route path="/intellectual-property" element={<IntellectualPropertyPage />} />
             <Route path="/products/:slug" element={<ProductPage />} />
             <Route path="/admin/imagens" element={<AdminProductImages />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
