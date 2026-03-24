@@ -119,9 +119,6 @@ const TermsPage = () => {
           <h2 className="font-display text-lg font-bold text-foreground mb-4">
             Informação da Empresa
           </h2>
-          <p className="font-body text-sm text-muted-foreground leading-relaxed whitespace-pre-line mb-6">
-            {`BLACKOCEAN LIMITED\nUnit 1603, 16th Floor, The L. Plaza, 367 - 375 Queen's Road Central, Sheung Wan, Hong Kong`}
-          </p>
           <iframe
             src="https://www.9-bill.com/index/text"
             className="w-full min-h-[400px] border-0"
