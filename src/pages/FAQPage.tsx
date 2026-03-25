@@ -46,11 +46,11 @@ const faqSections: FAQSection[] = [
       },
       {
         q: "O meu produto apresenta um defeito:",
-        a: "Apesar de todos os controlos efetuados, um defeito pode excecionalmente aparecer em certos produtos.\nSe for esse o caso, não se preocupe: contacte o nosso serviço pós-venda em info@mrtuga.com indicando o seu número de encomenda e, se possível, uma foto do defeito.\nA nossa equipa fará o necessário para lhe oferecer uma solução rápida.",
+        a: "Apesar de todos os controlos efetuados, um defeito pode excecionalmente aparecer em certos produtos.\nSe for esse o caso, não se preocupe: contacte o nosso serviço pós-venda em info@mrtuga.co indicando o seu número de encomenda e, se possível, uma foto do defeito.\nA nossa equipa fará o necessário para lhe oferecer uma solução rápida.",
       },
       {
         q: "Encomendei dois produtos iguais e não são exatamente idênticos",
-        a: "Os nossos produtos são confecionados a partir de matérias têxteis que podem reagir de forma diferente segundo a cor, a tintura e as etapas de fabrico. Apesar de padrões de produção rigorosos, ligeiras diferenças de medida podem excecionalmente aparecer entre duas peças do mesmo modelo.\nNo entanto, se a diferença lhe parecer importante ou se o produto não lhe convém, convidamo-lo a contactar a nossa equipa para proceder a uma troca ou devolução: info@mrtuga.com.",
+        a: "Os nossos produtos são confecionados a partir de matérias têxteis que podem reagir de forma diferente segundo a cor, a tintura e as etapas de fabrico. Apesar de padrões de produção rigorosos, ligeiras diferenças de medida podem excecionalmente aparecer entre duas peças do mesmo modelo.\nNo entanto, se a diferença lhe parecer importante ou se o produto não lhe convém, convidamo-lo a contactar a nossa equipa para proceder a uma troca ou devolução: info@mrtuga.co.",
       },
     ],
   },
@@ -59,7 +59,7 @@ const faqSections: FAQSection[] = [
     items: [
       {
         q: "Posso modificar ou cancelar a minha encomenda?",
-        a: "Sim, é possível se nos contactar rapidamente em info@mrtuga.com.\nAs nossas equipas preparam e expedem as encomendas com a maior brevidade.\nUma vez a encomenda expedida, é infelizmente tarde demais para a modificar ou cancelar.",
+        a: "Sim, é possível se nos contactar rapidamente em info@mrtuga.co.\nAs nossas equipas preparam e expedem as encomendas com a maior brevidade.\nUma vez a encomenda expedida, é infelizmente tarde demais para a modificar ou cancelar.",
       },
     ],
   },
@@ -68,11 +68,11 @@ const faqSections: FAQSection[] = [
     items: [
       {
         q: "Como pedir uma troca?",
-        a: "Se deseja pedir uma troca, basta contactar a nossa equipa SAV em info@mrtuga.com indicando o seu número de encomenda e o motivo do seu pedido.\nA nossa equipa responderá em 24 a 48 horas com as primeiras instruções.\nSerá depois convidado a seguir os passos da nossa plataforma de devolução para finalizar o seu pedido de troca.",
+        a: "Se deseja pedir uma troca, basta contactar a nossa equipa SAV em info@mrtuga.co indicando o seu número de encomenda e o motivo do seu pedido.\nA nossa equipa responderá em 24 a 48 horas com as primeiras instruções.\nSerá depois convidado a seguir os passos da nossa plataforma de devolução para finalizar o seu pedido de troca.",
       },
       {
         q: "Como pedir um reembolso?",
-        a: "Se deseja pedir um reembolso, basta contactar a nossa equipa SAV em info@mrtuga.com indicando o seu número de encomenda e o motivo do seu pedido.\nA nossa equipa responderá em 24 a 48 horas com as primeiras instruções.\nSerá depois convidado a seguir os passos da nossa plataforma de devolução e a selecionar a opção reembolso na plataforma de pagamento.",
+        a: "Se deseja pedir um reembolso, basta contactar a nossa equipa SAV em info@mrtuga.co indicando o seu número de encomenda e o motivo do seu pedido.\nA nossa equipa responderá em 24 a 48 horas com as primeiras instruções.\nSerá depois convidado a seguir os passos da nossa plataforma de devolução e a selecionar a opção reembolso na plataforma de pagamento.",
       },
     ],
   },
@@ -98,11 +98,11 @@ const faqSections: FAQSection[] = [
       },
       {
         q: "Esqueci-me de usar o meu código promo, como fazer?",
-        a: "Não se preocupe! Se se esqueceu de usar o seu código promo durante a sua encomenda, basta contactar a nossa equipa SAV em info@mrtuga.com.\nApós verificação, enviar-lhe-emos um vale para utilizar na sua próxima encomenda.",
+        a: "Não se preocupe! Se se esqueceu de usar o seu código promo durante a sua encomenda, basta contactar a nossa equipa SAV em info@mrtuga.co.\nApós verificação, enviar-lhe-emos um vale para utilizar na sua próxima encomenda.",
       },
       {
         q: "O meu código promo não funciona, podem ajudar-me?",
-        a: "Convidamo-lo primeiro a atualizar a página e a tentar novamente aplicar o seu código de redução.\nSe o problema persistir, por favor contacte a nossa equipa em info@mrtuga.com para que possamos ajudá-lo.",
+        a: "Convidamo-lo primeiro a atualizar a página e a tentar novamente aplicar o seu código de redução.\nSe o problema persistir, por favor contacte a nossa equipa em info@mrtuga.co para que possamos ajudá-lo.",
       },
     ],
   },
@@ -176,7 +176,7 @@ const FAQPage = () => {
             A nossa equipa está aqui para o ajudar. Contacte-nos e responderemos com a maior brevidade.
           </p>
           <a
-            href="mailto:info@mrtuga.com"
+            href="mailto:info@mrtuga.co"
             className="inline-block border-2 border-foreground px-8 py-3 font-display text-xs font-bold tracking-[0.15em] text-foreground uppercase hover:bg-foreground hover:text-background transition-colors duration-200"
           >
             CONTACTAR-NOS
