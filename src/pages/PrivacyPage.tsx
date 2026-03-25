@@ -45,7 +45,7 @@ const sections = [
   },
   {
     title: "Contacte-nos",
-    content: `Para saber mais sobre as nossas práticas de privacidade, se tiver questões ou se desejar apresentar uma reclamação, por favor contacte-nos:\n\nPor e-mail: info@mrtuga.com\n\nPor correio: Lisboa, Portugal`,
+    content: `Para saber mais sobre as nossas práticas de privacidade, se tiver questões ou se desejar apresentar uma reclamação, por favor contacte-nos:\n\nPor e-mail: content: `Para saber mais sobre as nossas práticas de privacidade, se tiver questões ou se desejar apresentar uma reclamação, por favor contacte-nos:\n\nPor e-mail: info@mrtuga.co\n\nPor correio: Lisboa, Portugal`,: Lisboa, Portugal`,
   },
 ];
 
