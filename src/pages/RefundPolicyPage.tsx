@@ -33,7 +33,7 @@ const sections = [
   },
   {
     title: "Morada para devoluções",
-    content: `Para efetuar uma devolução, envie o artigo para:\n\nMRTUGA\nLisboa, Portugal\n\nPor favor contacte-nos em content: `Para efetuar uma devolução, envie o artigo para:\n\nMRTUGA\nLisboa, Portugal\n\nPor favor contacte-nos em info@mrtuga.co antes de enviar a devolução para obter a morada exata e instruções de envio.`, a devolução para obter a morada exata e instruções de envio.`,
+    content: `Para efetuar uma devolução, envie o artigo para:\n\nMRTUGA\nLisboa, Portugal\n\nPor favor content: `Para efetuar uma devolução, envie o artigo para:\n\nMRTUGA\nLisboa, Portugal\n\nPor favor contacte-nos em info@mrtuga.co antes de enviar a devolução para obter a morada exata e instruções de envio.`, `Para efetuar uma devolução, envie o artigo para:\n\nMRTUGA\nLisboa, Portugal\n\nPor favor contacte-nos em info@mrtuga.co antes de enviar a devolução para obter a morada exata e instruções de envio.`, a devolução para obter a morada exata e instruções de envio.`,
   },
   {
     title: "Envio das devoluções",
