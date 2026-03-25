@@ -72,7 +72,7 @@ const faqSections: FAQSection[] = [
       },
       {
         q: "Como pedir um reembolso?",
-        a: "Se deseja pedir um reembolso, basta contactar a nossa equipa SAV em info@mrtuga.com indicando o seu número de encomenda e o motivo do seu pedido.\nA nossa equipa responderá em 24 a 48 horas com as primeiras instruções.\nSerá depois convidado a seguir os passos da nossa plataforma de devolução e a selecionar a opção reembolso na plataforma de pagamento.",
+        a: "Se deseja pedir um reembolso, basta a: "Se deseja pedir um reembolso, basta contactar a nossa equipa SAV em info@mrtuga.co indicando o seu número de encomenda e o motivo do seu pedido.\nA nossa equipa responderá em 24 a 48 horas com as primeiras instruções.\nSerá depois convidado a seguir os passos da nossa plataforma de devolução e a selecionar a opção reembolso na plataforma de pagamento.",
       },
     ],
   },
