@@ -13,7 +13,7 @@ const sections = [
   },
   {
     title: "Reembolsos atrasados ou em falta",
-    content: `Se ainda não recebeu o seu reembolso:\n\n• Verifique novamente a sua conta bancária\n• Contacte a entidade emissora do seu cartão de crédito, pois pode demorar algum tempo até que o reembolso seja oficialmente apresentado\n• Contacte o seu banco. A apresentação de um reembolso é frequentemente precedida de um prazo de processamento\n\nSe efetuou todas estas diligências e ainda não recebeu o seu reembolso, content: `Se ainda não recebeu o seu reembolso:\n\n• Verifique novamente a sua conta bancária\n• Contacte a entidade emissora do seu cartão de crédito, pois pode demorar algum tempo até que o reembolso seja oficialmente apresentado\n• Contacte o seu banco. A apresentação de um reembolso é frequentemente precedida de um prazo de processamento\n\nSe efetuou todas estas diligências e ainda não recebeu o seu reembolso, contacte-nos em info@mrtuga.co.`,.`,
+    content: `Se ainda não recebeu o seu reembolso:\n\n• Verifique novamente a sua conta bancária\n• Contacte a entidade emissora do seu cartão de crédito, pois pode demorar algum tempo até que o reembolso seja oficialmente apresentado\n• Contacte o seu banco. A apresentação de um reembolso é frequentemente precedida de um prazo de processamento\n\nSe efetuou todas estas diligências e ainda não recebeu o seu reembolso, contacte-nos em info@mrtuga.co.`,
   },
   {
     title: "Artigos em saldo ou em promoção",
@@ -21,7 +21,7 @@ const sections = [
   },
   {
     title: "Trocas",
-    content: `Apenas substituímos artigos que apresentem defeito de origem ou que estejam danificados. Se precisar de substituir o seu artigo pelo mesmo, envie-nos um e-mail para content: `Apenas substituímos artigos que apresentem defeito de origem ou que estejam danificados. Se precisar de substituir o seu artigo pelo mesmo, envie-nos um e-mail para info@mrtuga.co.`,.`,
+    content: `Apenas substituímos artigos que apresentem defeito de origem ou que estejam danificados. Se precisar de substituir o seu artigo pelo mesmo, envie-nos um e-mail para info@mrtuga.co.`,
   },
   {
     title: "Presentes",
@@ -33,7 +33,7 @@ const sections = [
   },
   {
     title: "Morada para devoluções",
-    content: `Para efetuar uma devolução, envie o artigo para:\n\nMRTUGA\nLisboa, Portugal\n\nPor favor content: `Para efetuar uma devolução, envie o artigo para:\n\nMRTUGA\nLisboa, Portugal\n\nPor favor contacte-nos em info@mrtuga.co antes de enviar a devolução para obter a morada exata e instruções de envio.`, `Para efetuar uma devolução, envie o artigo para:\n\nMRTUGA\nLisboa, Portugal\n\nPor favor contacte-nos em info@mrtuga.co antes de enviar a devolução para obter a morada exata e instruções de envio.`, a devolução para obter a morada exata e instruções de envio.`,
+    content: `Para efetuar uma devolução, envie o artigo para:\n\nMRTUGA\nLisboa, Portugal\n\nPor favor contacte-nos em info@mrtuga.co antes de enviar a devolução para obter a morada exata e instruções de envio.`,
   },
   {
     title: "Envio das devoluções",
