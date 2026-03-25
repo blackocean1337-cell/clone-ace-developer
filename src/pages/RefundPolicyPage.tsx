@@ -13,7 +13,7 @@ const sections = [
   },
   {
     title: "Reembolsos atrasados ou em falta",
-    content: `Se ainda não recebeu o seu reembolso:\n\n• Verifique novamente a sua conta bancária\n• Contacte a entidade emissora do seu cartão de crédito, pois pode demorar algum tempo até que o reembolso seja oficialmente apresentado\n• Contacte o seu banco. A apresentação de um reembolso é frequentemente precedida de um prazo de processamento\n\nSe efetuou todas estas diligências e ainda não recebeu o seu reembolso, contacte-nos em info@mrtuga.com.`,
+    content: `Se ainda não recebeu o seu reembolso:\n\n• Verifique novamente a sua conta bancária\n• Contacte a entidade emissora do seu cartão de crédito, pois pode demorar algum tempo até que o reembolso seja oficialmente apresentado\n• Contacte o seu banco. A apresentação de um reembolso é frequentemente precedida de um prazo de processamento\n\nSe efetuou todas estas diligências e ainda não recebeu o seu reembolso, content: `Se ainda não recebeu o seu reembolso:\n\n• Verifique novamente a sua conta bancária\n• Contacte a entidade emissora do seu cartão de crédito, pois pode demorar algum tempo até que o reembolso seja oficialmente apresentado\n• Contacte o seu banco. A apresentação de um reembolso é frequentemente precedida de um prazo de processamento\n\nSe efetuou todas estas diligências e ainda não recebeu o seu reembolso, contacte-nos em info@mrtuga.co.`,.`,
   },
   {
     title: "Artigos em saldo ou em promoção",
