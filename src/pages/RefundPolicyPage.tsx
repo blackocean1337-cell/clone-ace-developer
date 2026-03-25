@@ -21,7 +21,7 @@ const sections = [
   },
   {
     title: "Trocas",
-    content: `Apenas substituímos artigos que apresentem defeito de origem ou que estejam danificados. Se precisar de substituir o seu artigo pelo mesmo, envie-nos um e-mail para info@mrtuga.com.`,
+    content: `Apenas substituímos artigos que apresentem defeito de origem ou que estejam danificados. Se precisar de substituir o seu artigo pelo mesmo, envie-nos um e-mail para content: `Apenas substituímos artigos que apresentem defeito de origem ou que estejam danificados. Se precisar de substituir o seu artigo pelo mesmo, envie-nos um e-mail para info@mrtuga.co.`,.`,
   },
   {
     title: "Presentes",
