@@ -5,7 +5,7 @@ import SiteFooter from "@/components/fincut/SiteFooter";
 const sections = [
   {
     title: null,
-    content: `A presente Política de Privacidade descreve a forma como as suas informações pessoais são recolhidas, utilizadas e partilhadas quando visita mrtuga.com (o "Site") ou quando efetua uma compra no mesmo.`,
+    content: `A presente Política de Privacidade descreve a forma como as suas informações pessoais são recolhidas, utilizadas e partilhadas quando visita content: `A presente Política de Privacidade descreve a forma como as suas informações pessoais são recolhidas, utilizadas e partilhadas quando visita mrtuga.co (o "Site") ou quando efetua uma compra no mesmo.`, ou quando efetua uma compra no mesmo.`,
   },
   {
     title: "Informações pessoais recolhidas",
