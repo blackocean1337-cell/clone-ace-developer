@@ -558,10 +558,11 @@ const CheckoutPage = () => {
 
         {/* ─── SECTION 12: BOTTOM TRUST BAR ─── */}
         <section className="mt-8 pb-8 border-t pt-6">
-          <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-muted-foreground mb-3">
-            {["Visa", "Mastercard", "MB Way", "Multibanco", "CTT Expresso"].map((logo) => (
-              <span key={logo} className="bg-[#fafafa] px-3 py-1.5 rounded border">{logo}</span>
-            ))}
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-3">
+            <img src={cardLogo} alt="Visa / Mastercard" className="h-8 object-contain" />
+            <img src={mbwayLogo} alt="MB Way" className="h-6 object-contain" />
+            <span className="bg-[#fafafa] px-3 py-1.5 rounded border text-xs font-semibold text-muted-foreground">Multibanco</span>
+            <span className="bg-[#fafafa] px-3 py-1.5 rounded border text-xs font-semibold text-muted-foreground">CTT Expresso</span>
           </div>
           <p className="text-xs text-center text-muted-foreground">
             Entrega via CTT e DPD — Tracking em tempo real 🇵🇹
