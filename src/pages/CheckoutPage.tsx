@@ -127,6 +127,7 @@ const CheckoutPage = () => {
   const [mbwayPhone, setMbwayPhone] = useState("");
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [orderExpanded, setOrderExpanded] = useState(false);
 
   // Personalization upsell
