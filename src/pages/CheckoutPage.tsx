@@ -218,23 +218,19 @@ const CheckoutPage = () => {
 
       <div className="max-w-3xl mx-auto px-4 pb-40 md:pb-24">
 
-        {/* ─── SECTION 1: URGENCY HEADER ─── */}
-        <div className="bg-checkout-urgency text-white py-3 px-4 -mx-4 mt-0">
-          <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-sm font-checkout-body">
-            <span className="flex items-center gap-2">
-              ⏰ <span>Stock limitado! Apenas <strong>{stockLeft} unidades</strong> disponíveis no teu tamanho</span>
-            </span>
-            <span className="flex items-center gap-1 font-bold">
-              Reservamos o teu artigo por:{" "}
-              <motion.span
-                key={timer.secs}
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 0.3 }}
-                className="tabular-nums"
-              >
-                {String(timer.mins).padStart(2, "0")}:{String(timer.secs).padStart(2, "0")}
-              </motion.span>
-            </span>
+        {/* ─── SECTION 1: URGENCY STRIP ─── */}
+        <div className="bg-checkout-urgency text-white py-2 px-4 -mx-4 mt-0">
+          <div className="max-w-3xl mx-auto flex items-center justify-center gap-3 text-xs font-checkout-body">
+            <span>⚡ Apenas <strong>{stockLeft}</strong> no teu tamanho</span>
+            <span className="text-white/40">|</span>
+            <motion.span
+              key={timer.secs}
+              animate={{ opacity: [1, 0.5, 1] }}
+              transition={{ duration: 1, repeat: Infinity }}
+              className="font-bold tabular-nums tracking-wider"
+            >
+              ⏱ {String(timer.mins).padStart(2, "0")}:{String(timer.secs).padStart(2, "0")}
+            </motion.span>
           </div>
         </div>
 
