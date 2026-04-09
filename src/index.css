@@ -51,8 +51,8 @@
     --font-checkout-body: 'Nunito', sans-serif;
 
     /* Checkout tokens */
-    --checkout-cta: 30 100% 50%;
-    --checkout-cta-hover: 30 100% 45%;
+    --checkout-cta: 48 96% 53%;
+    --checkout-cta-hover: 48 96% 45%;
     --checkout-trust: 120 100% 20%;
     --checkout-urgency: 0 80% 40%;
 
