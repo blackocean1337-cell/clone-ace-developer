@@ -8,6 +8,7 @@ import {
   ArrowRight, RotateCcw, Phone, CreditCard, X
 } from "lucide-react";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+import mbwayLogo from "@/assets/mbway-logo.png";
 
 /* ─── CONSTANTS ─── */
 const FREE_SHIPPING_THRESHOLD = 50;
@@ -403,7 +404,7 @@ const CheckoutPage = () => {
           <div className="grid grid-cols-3 gap-2">
             {([
               { id: "card" as const, logo: "https://cdn-icons-png.flaticon.com/512/349/349221.png", label: "Cartão" },
-              { id: "mbway" as const, logo: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Logo_MB_WAY.png", label: "MB Way", highlight: true },
+              { id: "mbway" as const, logo: mbwayLogo, label: "MB Way", highlight: true },
               { id: "multibanco" as const, logo: "https://upload.wikimedia.org/wikipedia/commons/4/46/Multibanco.svg", label: "Multibanco" },
             ] as const).map((m) => (
               <button
