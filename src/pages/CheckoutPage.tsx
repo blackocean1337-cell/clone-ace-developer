@@ -210,9 +210,9 @@ const CheckoutPage = () => {
           <div className="flex items-center justify-between text-xs font-checkout-heading font-semibold uppercase tracking-wider">
             <span className="text-muted-foreground">Carrinho</span>
             <div className="flex-1 mx-3 h-0.5 bg-muted relative">
-              <div className="absolute inset-y-0 left-0 w-1/2 bg-checkout-cta" />
+              <div className="absolute inset-y-0 left-0 w-1/2 bg-foreground" />
             </div>
-            <span className="text-checkout-cta">Pagamento</span>
+            <span className="text-foreground font-bold">Pagamento</span>
             <div className="flex-1 mx-3 h-0.5 bg-muted" />
             <span className="text-muted-foreground">Confirmação</span>
           </div>
@@ -331,16 +331,16 @@ const CheckoutPage = () => {
           </div>
 
           {remainingForFreeShipping > 0 && (
-            <div className="mt-3 bg-orange-50 border border-checkout-cta/30 rounded-lg p-4">
+            <div className="mt-3 bg-muted border border-foreground/20 rounded-lg p-4">
               <p className="text-sm font-semibold mb-2">
                 🚚 Faltam <strong className="text-checkout-urgency">{remainingForFreeShipping.toFixed(2)}€</strong> para envio grátis!
               </p>
               <div className="h-2 bg-muted rounded-full overflow-hidden mb-3">
-                <motion.div className="h-full bg-checkout-cta rounded-full" initial={{ width: 0 }} animate={{ width: `${shippingProgress * 100}%` }} transition={{ duration: 0.6 }} />
+                <motion.div className="h-full bg-foreground rounded-full" initial={{ width: 0 }} animate={{ width: `${shippingProgress * 100}%` }} transition={{ duration: 0.6 }} />
               </div>
               <button
                 onClick={() => navigate("/")}
-                className="w-full text-sm font-bold text-checkout-cta underline underline-offset-2 hover:text-checkout-cta-hover transition-colors"
+                className="w-full text-sm font-bold text-foreground underline underline-offset-2 hover:text-foreground/70 transition-colors"
               >
                 ← Voltar à loja e adicionar mais artigos
               </button>
@@ -351,7 +351,7 @@ const CheckoutPage = () => {
         {/* ─── SECTION 4: PERSONALIZATION UPSELL ─── */}
         {!persAccepted && (
           <section className="mt-8">
-            <div className="border-2 border-dashed border-checkout-cta bg-orange-50 rounded-lg p-5">
+            <div className="border-2 border-dashed border-foreground bg-muted rounded-lg p-5">
               <p className="font-checkout-heading text-lg font-bold mb-1">⚽ Queres personalizar a camisola?</p>
               <p className="text-sm text-muted-foreground mb-3">Adiciona nome e número por apenas <strong className="text-[#111]">+9,99€</strong></p>
               <div className="flex gap-3">
@@ -365,7 +365,7 @@ const CheckoutPage = () => {
         )}
 
         {persAccepted && showPersonalization && (
-          <section className="mt-4 bg-orange-50 border border-checkout-cta/30 rounded-lg p-5">
+          <section className="mt-4 bg-muted border border-foreground/20 rounded-lg p-5">
             <h3 className="font-checkout-heading font-bold text-lg mb-3">Personalização</h3>
             <div className="grid grid-cols-2 gap-3">
               <div>
@@ -412,8 +412,8 @@ const CheckoutPage = () => {
                 key={m.id}
                 onClick={() => setPayment(m.id)}
                 className={`relative flex flex-col items-center gap-1.5 p-3 rounded-lg border-2 transition-all ${
-                  payment === m.id ? "border-checkout-cta bg-orange-50" : "border-muted hover:border-muted-foreground/30"
-                } ${"highlight" in m && m.highlight ? "ring-2 ring-checkout-cta/40" : ""}`}
+                  payment === m.id ? "border-foreground bg-muted" : "border-muted hover:border-muted-foreground/30"
+                } ${"highlight" in m && m.highlight ? "ring-2 ring-foreground/30" : ""}`}
               >
                 {"highlight" in m && m.highlight && <span className="absolute -top-2 right-1 bg-checkout-cta text-black text-[9px] font-bold px-1.5 py-0.5 rounded">POPULAR</span>}
                 <img src={m.logo} alt={m.label} className="h-6 w-auto object-contain" />
@@ -490,7 +490,7 @@ const CheckoutPage = () => {
         {/* ─── SECTION 10: SOCIAL PROOF ─── */}
         <section className="mt-8">
           <div className="flex items-center gap-2 mb-4">
-            {[...Array(5)].map((_, i) => <Star key={i} size={18} className="fill-checkout-cta text-checkout-cta" />)}
+            {[...Array(5)].map((_, i) => <Star key={i} size={18} className="fill-foreground text-foreground" />)}
             <span className="font-bold text-sm">4.9/5 — Mais de 2.300 avaliações verificadas</span>
           </div>
           <div className="space-y-3">
@@ -501,12 +501,12 @@ const CheckoutPage = () => {
             ].map((r) => (
               <div key={r.name} className="bg-[#fafafa] p-4 rounded-lg">
                 <div className="flex items-center gap-2 mb-1">
-                  <div className="w-8 h-8 bg-checkout-cta/20 rounded-full flex items-center justify-center font-bold text-sm">{r.name[0]}</div>
+                  <div className="w-8 h-8 bg-foreground/10 rounded-full flex items-center justify-center font-bold text-sm">{r.name[0]}</div>
                   <div>
                     <p className="text-sm font-semibold">{r.name}</p>
                     <p className="text-xs text-muted-foreground">{r.city}</p>
                   </div>
-                  <div className="ml-auto flex">{[...Array(5)].map((_, i) => <Star key={i} size={12} className="fill-checkout-cta text-checkout-cta" />)}</div>
+                  <div className="ml-auto flex">{[...Array(5)].map((_, i) => <Star key={i} size={12} className="fill-foreground text-foreground" />)}</div>
                 </div>
                 <p className="text-sm italic text-muted-foreground">"{r.text}"</p>
               </div>
@@ -601,7 +601,7 @@ const FormField = ({
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
       inputMode={inputMode}
-      className={`w-full border rounded-lg px-4 py-3 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-checkout-cta ${error ? "border-checkout-urgency" : "border-muted"}`}
+      className={`w-full border rounded-lg px-4 py-3 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-foreground ${error ? "border-checkout-urgency" : "border-muted"}`}
     />
     {hint && !error && <p className="text-xs text-muted-foreground mt-1">{hint}</p>}
     {error && <p className="text-xs text-checkout-urgency mt-1 font-semibold">{error}</p>}
