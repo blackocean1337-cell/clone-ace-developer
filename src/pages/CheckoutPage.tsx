@@ -237,72 +237,79 @@ const CheckoutPage = () => {
           </div>
         </div>
 
-        {/* ─── SECTION 2: ORDER SUMMARY ─── */}
+        {/* ─── SECTION 2: COMPACT ORDER SUMMARY ─── */}
         <section className="mt-6">
-          <h2 className="font-checkout-heading text-2xl font-bold mb-4">Resumo da Encomenda</h2>
-          <div className="space-y-4">
-            {items.map((item, idx) => (
-              <div key={idx} className="flex gap-4 bg-[#fafafa] p-4 rounded-lg">
-                <div className="w-20 h-20 bg-white rounded flex items-center justify-center flex-shrink-0 border">
-                  <img src={item.image || "/lovable-uploads/dd6d21cb-9655-4120-bc20-560351fcf99d.png"} alt={item.name} className="w-16 h-16 object-contain" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="font-checkout-heading font-bold text-sm leading-tight">{item.name}</p>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="bg-[#111] text-white text-xs px-2 py-0.5 rounded font-bold">{item.size}</span>
-                    <span className="text-xs text-muted-foreground">{item.color}</span>
-                    <button onClick={() => setShowSizeGuide(true)} className="text-xs text-checkout-cta underline ml-auto">Errei o tamanho?</button>
-                  </div>
-                  <div className="flex items-center justify-between mt-2">
-                    <div className="flex items-center gap-2">
-                      <button onClick={() => updateQuantity(idx, item.quantity - 1)} className="w-7 h-7 border rounded flex items-center justify-center hover:bg-muted transition-colors"><Minus size={12} /></button>
-                      <span className="text-sm font-bold w-5 text-center">{item.quantity}</span>
-                      <button onClick={() => updateQuantity(idx, item.quantity + 1)} className="w-7 h-7 border rounded flex items-center justify-center hover:bg-muted transition-colors"><Plus size={12} /></button>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-sm line-through text-muted-foreground mr-2">{(item.unitPrice * 1.3).toFixed(0)}€</span>
-                      <span className="bg-checkout-cta text-black text-sm font-bold px-2 py-0.5 rounded">{item.unitPrice * item.quantity}€</span>
-                    </div>
-                  </div>
-                </div>
+          <div className="bg-[#fafafa] rounded-lg p-4">
+            <button
+              onClick={() => setOrderExpanded(!orderExpanded)}
+              className="w-full flex items-center justify-between"
+            >
+              <div className="flex items-center gap-3">
+                <ShoppingBag size={18} className="text-muted-foreground" />
+                <span className="font-checkout-heading font-bold text-sm">
+                  {items.length} {items.length === 1 ? "artigo" : "artigos"}
+                </span>
+                {orderExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
               </div>
-            ))}
-          </div>
+              <span className="font-checkout-heading text-lg font-bold">{total.toFixed(2)}€</span>
+            </button>
 
-          {/* Subtotal block */}
-          <div className="mt-4 space-y-2 bg-[#fafafa] p-4 rounded-lg">
-            <div className="flex justify-between text-sm"><span>Subtotal</span><span className="font-semibold">{subtotal.toFixed(2)}€</span></div>
-            <div className="flex justify-between text-sm">
-              <span>Envio</span>
-              {shippingCost === 0 ? (
-                <span className="text-checkout-trust font-bold">GRÁTIS</span>
-              ) : (
-                <span>{shippingCost.toFixed(2)}€</span>
+            <AnimatePresence>
+              {orderExpanded && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-3 mt-3 border-t space-y-2">
+                    {items.map((item, idx) => (
+                      <div key={idx} className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-white rounded border flex items-center justify-center flex-shrink-0">
+                          <img src={item.image || "/lovable-uploads/dd6d21cb-9655-4120-bc20-560351fcf99d.png"} alt={item.name} className="w-10 h-10 object-contain" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-semibold truncate">{item.name}</p>
+                          <div className="flex items-center gap-1.5">
+                            <span className="bg-[#111] text-white text-[10px] px-1.5 py-0.5 rounded font-bold">{item.size}</span>
+                            <span className="text-[10px] text-muted-foreground">×{item.quantity}</span>
+                          </div>
+                        </div>
+                        <span className="text-sm font-bold">{(item.unitPrice * item.quantity).toFixed(2)}€</span>
+                      </div>
+                    ))}
+                    <div className="pt-2 border-t text-xs space-y-1">
+                      <div className="flex justify-between"><span>Subtotal</span><span>{subtotal.toFixed(2)}€</span></div>
+                      <div className="flex justify-between">
+                        <span>Envio</span>
+                        {shippingCost === 0 ? <span className="text-checkout-trust font-bold">GRÁTIS</span> : <span>{shippingCost.toFixed(2)}€</span>}
+                      </div>
+                      {persAccepted && <div className="flex justify-between"><span>Personalização</span><span>{personalizationCost.toFixed(2)}€</span></div>}
+                    </div>
+                  </div>
+                </motion.div>
               )}
-            </div>
-            {persAccepted && (
-              <div className="flex justify-between text-sm"><span>Personalização</span><span>{personalizationCost.toFixed(2)}€</span></div>
-            )}
+            </AnimatePresence>
 
             {/* Free shipping progress */}
             {remainingForFreeShipping > 0 && (
-              <div className="mt-2">
-                <p className="text-xs text-muted-foreground mb-1">Adiciona {remainingForFreeShipping.toFixed(2)}€ para <strong>envio grátis</strong></p>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <motion.div
-                    className="h-full bg-checkout-trust rounded-full"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${shippingProgress * 100}%` }}
-                    transition={{ duration: 0.6 }}
-                  />
+              <div className="mt-3 pt-3 border-t">
+                <p className="text-xs text-muted-foreground mb-1">Faltam <strong>{remainingForFreeShipping.toFixed(2)}€</strong> para envio grátis</p>
+                <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+                  <motion.div className="h-full bg-checkout-trust rounded-full" initial={{ width: 0 }} animate={{ width: `${shippingProgress * 100}%` }} transition={{ duration: 0.6 }} />
                 </div>
               </div>
             )}
+          </div>
+        </section>
 
-            <div className="border-t pt-2 mt-2 flex justify-between">
-              <span className="font-checkout-heading text-xl font-bold">Total</span>
-              <span className="font-checkout-heading text-xl font-bold">{total.toFixed(2)}€</span>
-            </div>
+        {/* ─── EMAIL FIRST (capture lead ASAP) ─── */}
+        <section className="mt-6">
+          <h2 className="font-checkout-heading text-xl font-bold mb-3">Para onde enviamos?</h2>
+          <div className="space-y-3">
+            <FormField label="Email" type="email" value={email} onChange={setEmail} error={errors.email} placeholder="joao@email.com" hint="Recebes confirmação e tracking neste email" />
+            <FormField label="Nome completo" value={name} onChange={setName} error={errors.name} placeholder="João Silva" />
+            <FormField label="Telemóvel" type="tel" value={phone} onChange={setPhone} error={errors.phone} placeholder="+351 912 345 678" inputMode="tel" />
           </div>
         </section>
 
