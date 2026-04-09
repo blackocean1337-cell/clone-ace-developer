@@ -556,7 +556,7 @@ const CheckoutPage = () => {
             <img src={mbwayLogo} alt="MB Way" className="h-6 object-contain" />
           </div>
           <p className="text-xs text-center text-muted-foreground">
-            Entrega via CTT e DPD — Tracking em tempo real 🇵🇹
+            Envio com tracking em tempo real 🇵🇹
           </p>
         </section>
       </div>
