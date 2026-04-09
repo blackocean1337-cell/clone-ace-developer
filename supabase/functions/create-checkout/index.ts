@@ -68,8 +68,8 @@ serve(async (req) => {
     const session = await stripe.checkout.sessions.create({
       line_items,
       mode: "payment",
-      success_url: successUrl || `${req.headers.get("origin")}/`,
-      cancel_url: cancelUrl || `${req.headers.get("origin")}/`,
+      success_url: successUrl || `${origin}/`,
+      cancel_url: cancelUrl || `${origin}/`,
       metadata: {
         order_summary: orderSummary,
       },
