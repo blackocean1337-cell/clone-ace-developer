@@ -255,7 +255,7 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
                       setIsCheckingOut(true);
                       setCheckoutError(null);
                       try {
-                        const checkoutUrl = await createCheckout(items);
+                        const checkoutUrl = await createStripeCheckout(items);
                         window.open(checkoutUrl, '_blank');
                         onClose();
                       } catch (err) {
