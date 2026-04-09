@@ -16,6 +16,8 @@ export default {
       fontFamily: {
         display: ["Montserrat", "sans-serif"],
         body: ["Inter", "sans-serif"],
+        "checkout-heading": ["Barlow Condensed", "sans-serif"],
+        "checkout-body": ["Nunito", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -59,6 +61,12 @@ export default {
           slate: "hsl(var(--fincut-slate))",
           gray: "hsl(var(--fincut-gray))",
           light: "hsl(var(--fincut-light))",
+        },
+        checkout: {
+          cta: "hsl(var(--checkout-cta))",
+          "cta-hover": "hsl(var(--checkout-cta-hover))",
+          trust: "hsl(var(--checkout-trust))",
+          urgency: "hsl(var(--checkout-urgency))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
