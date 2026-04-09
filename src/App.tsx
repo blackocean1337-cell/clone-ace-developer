@@ -8,6 +8,7 @@ import CartDrawer from "@/components/fincut/CartDrawer";
 import { useCart } from "@/context/CartContext";
 import Index from "./pages/Index.tsx";
 import ProductPage from "./pages/ProductPage.tsx";
+import CheckoutPage from "./pages/CheckoutPage.tsx";
 import HistoryPage from "./pages/HistoryPage.tsx";
 import FAQPage from "./pages/FAQPage.tsx";
 import TrackOrderPage from "./pages/TrackOrderPage.tsx";
@@ -50,6 +51,7 @@ const App = () => (
             <Route path="/politica-entrega" element={<DeliveryPolicyPage />} />
             <Route path="/politica-reembolso" element={<RefundPolicyPage />} />
             <Route path="/intellectual-property" element={<IntellectualPropertyPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/products/:slug" element={<ProductPage />} />
             <Route path="/admin/imagens" element={<AdminProductImages />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

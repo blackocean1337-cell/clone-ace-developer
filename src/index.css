@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Nunito:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -47,6 +47,14 @@
 
     --font-display: 'Montserrat', sans-serif;
     --font-body: 'Inter', sans-serif;
+    --font-checkout-heading: 'Barlow Condensed', sans-serif;
+    --font-checkout-body: 'Nunito', sans-serif;
+
+    /* Checkout tokens */
+    --checkout-cta: 30 100% 50%;
+    --checkout-cta-hover: 30 100% 45%;
+    --checkout-trust: 120 100% 20%;
+    --checkout-urgency: 0 80% 40%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;

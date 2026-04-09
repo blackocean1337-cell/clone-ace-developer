@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { X, Minus, Plus, ChevronDown, Truck, ShoppingCart, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { createStripeCheckout } from "@/lib/stripe-checkout";
+import { useNavigate } from "react-router-dom";
 const tshirtBlack = "/lovable-uploads/dd6d21cb-9655-4120-bc20-560351fcf99d.png";
 import { Link } from "react-router-dom";
 
@@ -26,8 +26,7 @@ const FREE_SHIPPING_THRESHOLD = 55;
 const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps) => {
   const [promoOpen, setPromoOpen] = useState(false);
   const [promoCode, setPromoCode] = useState("");
-  const [isCheckingOut, setIsCheckingOut] = useState(false);
-  const [checkoutError, setCheckoutError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   if (!open) return null;
 
@@ -247,31 +246,13 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
 
                 {/* Footer CTA */}
                 <div className="px-6 pb-6 mt-auto pt-4 border-t border-muted">
-                {checkoutError && (
-                  <p className="font-body text-xs text-red-500 mb-2 text-center">{checkoutError}</p>
-                )}
                   <button 
-                    onClick={async () => {
-                      setIsCheckingOut(true);
-                      setCheckoutError(null);
-                      try {
-                        const checkoutUrl = await createStripeCheckout(items);
-                        window.open(checkoutUrl, '_blank');
-                        onClose();
-                      } catch (err) {
-                        console.error('Checkout error:', err);
-                        setCheckoutError('Erro ao processar o pagamento. Tente novamente.');
-                      } finally {
-                        setIsCheckingOut(false);
-                      }
+                    onClick={() => {
+                      onClose();
+                      navigate("/checkout");
                     }}
-                    disabled={isCheckingOut}
-                    className="w-full h-14 bg-[#fff176] text-fincut-black font-display text-sm font-bold tracking-[0.15em] uppercase hover:bg-[#ffee58] transition-colors duration-200 flex items-center justify-center gap-2 disabled:opacity-60">
-                    {isCheckingOut ? (
-                      <Loader2 size={18} className="animate-spin" />
-                    ) : (
-                      <>PASSAR AO PAGAMENTO | {totalPrice} €</>
-                    )}
+                    className="w-full h-14 bg-[#fff176] text-fincut-black font-display text-sm font-bold tracking-[0.15em] uppercase hover:bg-[#ffee58] transition-colors duration-200 flex items-center justify-center gap-2">
+                    PASSAR AO PAGAMENTO | {totalPrice} €
                   </button>
                 </div>
               </>
