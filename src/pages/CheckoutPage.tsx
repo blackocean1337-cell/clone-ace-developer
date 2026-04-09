@@ -401,8 +401,8 @@ const CheckoutPage = () => {
           <h2 className="font-checkout-heading text-xl font-bold mb-3">Método de Pagamento</h2>
           <div className="grid grid-cols-2 gap-2">
             {([
-              { id: "card" as const, logo: cardLogo, label: "Cartão" },
               { id: "mbway" as const, logo: mbwayLogo, label: "MB Way", highlight: true },
+              { id: "card" as const, logo: cardLogo, label: "Cartão" },
             ] as const).map((m) => (
               <button
                 key={m.id}
