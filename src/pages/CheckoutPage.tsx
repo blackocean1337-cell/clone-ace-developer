@@ -411,7 +411,7 @@ const CheckoutPage = () => {
                   payment === m.id ? "border-foreground bg-muted" : "border-muted hover:border-muted-foreground/30"
                 } ${"highlight" in m && m.highlight ? "ring-2 ring-foreground/30" : ""}`}
               >
-                {"highlight" in m && m.highlight && <span className="absolute -top-2 right-1 bg-foreground text-white text-[9px] font-bold px-1.5 py-0.5 rounded">POPULAR</span>}
+                {"highlight" in m && m.highlight && <span className="absolute -top-2 right-1 bg-foreground text-white text-[9px] font-bold px-1.5 py-0.5 rounded">🔥 MAIS RÁPIDO</span>}
                 <img src={m.logo} alt={m.label} className="h-6 w-auto object-contain" />
                 <span className="text-[11px] font-semibold">{m.label}</span>
               </button>
