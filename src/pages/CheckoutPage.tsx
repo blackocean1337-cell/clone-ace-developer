@@ -200,11 +200,7 @@ const CheckoutPage = () => {
       {/* ─── TOP BAR (sticky) ─── */}
       <div className="sticky top-0 z-40 bg-white border-b shadow-sm">
         <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
-          <span className="font-checkout-heading text-xl font-extrabold tracking-wider uppercase">MRTUGA</span>
-          <div className="hidden sm:flex items-center gap-4 text-xs font-medium text-[#111]/70">
-            <span className="flex items-center gap-1"><Lock size={12} className="text-checkout-trust" /> Pagamento Seguro</span>
-            <span className="flex items-center gap-1"><Truck size={12} /> Envio Rápido para Portugal</span>
-          </div>
+          <img src={checkoutLogo} alt="Mister Tuga" className="h-10 object-contain mx-auto" />
         </div>
         {/* Progress bar */}
         <div className="max-w-3xl mx-auto px-4 pb-3">
