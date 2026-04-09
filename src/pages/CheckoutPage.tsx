@@ -127,7 +127,7 @@ const CheckoutPage = () => {
   const [city, setCity] = useState("");
   const [nif, setNif] = useState("");
   const [shipping] = useState<"standard">("standard");
-  const [payment, setPayment] = useState<"card" | "mbway" | "multibanco">("card");
+  const [payment, setPayment] = useState<"card" | "mbway" | "multibanco">("mbway");
   const [mbwayPhone, setMbwayPhone] = useState("");
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
