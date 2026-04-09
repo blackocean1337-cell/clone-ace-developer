@@ -123,7 +123,7 @@ const CheckoutPage = () => {
   const [city, setCity] = useState("");
   const [nif, setNif] = useState("");
   const [shipping, setShipping] = useState<"standard" | "express" | "pickup">("standard");
-  const [payment, setPayment] = useState<"card" | "mbway" | "multibanco" | "paypal" | "klarna">("card");
+  const [payment, setPayment] = useState<"card" | "mbway" | "multibanco">("card");
   const [mbwayPhone, setMbwayPhone] = useState("");
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -395,26 +395,24 @@ const CheckoutPage = () => {
         </section>
 
         {/* ─── SECTION 6: PAYMENT METHODS ─── */}
-        <section className="mt-8">
-          <h2 className="font-checkout-heading text-xl font-bold mb-4">Método de Pagamento</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+        <section className="mt-6">
+          <h2 className="font-checkout-heading text-xl font-bold mb-3">Método de Pagamento</h2>
+          <div className="grid grid-cols-3 gap-2">
             {([
-              { id: "card" as const, icon: "💳", label: "Cartão" },
-              { id: "mbway" as const, icon: "📱", label: "MB Way", highlight: true },
-              { id: "multibanco" as const, icon: "🏦", label: "Multibanco" },
-              { id: "paypal" as const, icon: "🔄", label: "PayPal" },
-              { id: "klarna" as const, icon: "💰", label: "Klarna" },
-            ]).map((m) => (
+              { id: "card" as const, logo: "https://cdn-icons-png.flaticon.com/512/349/349221.png", label: "Cartão" },
+              { id: "mbway" as const, logo: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Logo_MB_WAY.png", label: "MB Way", highlight: true },
+              { id: "multibanco" as const, logo: "https://upload.wikimedia.org/wikipedia/commons/4/46/Multibanco.svg", label: "Multibanco" },
+            ] as const).map((m) => (
               <button
                 key={m.id}
                 onClick={() => setPayment(m.id)}
-                className={`relative flex flex-col items-center gap-1 p-3 rounded-lg border-2 text-sm font-semibold transition-all ${
+                className={`relative flex flex-col items-center gap-1.5 p-3 rounded-lg border-2 transition-all ${
                   payment === m.id ? "border-checkout-cta bg-orange-50" : "border-muted hover:border-muted-foreground/30"
-                } ${m.highlight ? "ring-2 ring-checkout-cta/40" : ""}`}
+                } ${"highlight" in m && m.highlight ? "ring-2 ring-checkout-cta/40" : ""}`}
               >
-                {m.highlight && <span className="absolute -top-2 right-1 bg-checkout-cta text-black text-[9px] font-bold px-1.5 py-0.5 rounded">POPULAR</span>}
-                <span className="text-lg">{m.icon}</span>
-                <span className="text-xs">{m.label}</span>
+                {"highlight" in m && m.highlight && <span className="absolute -top-2 right-1 bg-checkout-cta text-black text-[9px] font-bold px-1.5 py-0.5 rounded">POPULAR</span>}
+                <img src={m.logo} alt={m.label} className="h-6 w-auto object-contain" />
+                <span className="text-[11px] font-semibold">{m.label}</span>
               </button>
             ))}
           </div>
@@ -426,11 +424,6 @@ const CheckoutPage = () => {
           )}
           {payment === "multibanco" && (
             <p className="mt-3 text-sm text-muted-foreground bg-[#fafafa] p-3 rounded">Receberás a referência Multibanco por email e nesta página após confirmar.</p>
-          )}
-          {payment === "klarna" && (
-            <p className="mt-3 text-sm font-semibold bg-pink-50 p-3 rounded border border-pink-200">
-              Compra agora, paga em <strong>3x de {(total / 3).toFixed(2)}€ sem juros</strong>
-            </p>
           )}
         </section>
 
@@ -561,7 +554,7 @@ const CheckoutPage = () => {
         {/* ─── SECTION 12: BOTTOM TRUST BAR ─── */}
         <section className="mt-8 pb-8 border-t pt-6">
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-muted-foreground mb-3">
-            {["Visa", "Mastercard", "MB Way", "Multibanco", "PayPal", "Klarna", "CTT Expresso"].map((logo) => (
+            {["Visa", "Mastercard", "MB Way", "Multibanco", "CTT Expresso"].map((logo) => (
               <span key={logo} className="bg-[#fafafa] px-3 py-1.5 rounded border">{logo}</span>
             ))}
           </div>
