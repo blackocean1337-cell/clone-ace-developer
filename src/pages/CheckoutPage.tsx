@@ -125,7 +125,7 @@ const CheckoutPage = () => {
   const [address, setAddress] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [city, setCity] = useState("");
-  const [nif, setNif] = useState("");
+  
   const [shipping] = useState<"standard">("standard");
   const [payment, setPayment] = useState<"card" | "mbway" | "multibanco">("mbway");
   const [mbwayPhone, setMbwayPhone] = useState("");
@@ -392,7 +392,7 @@ const CheckoutPage = () => {
               <FormField label="Código Postal" value={postalCode} onChange={setPostalCode} error={errors.postalCode} placeholder="1000-001" inputMode="numeric" />
               <FormField label="Cidade" value={city} onChange={setCity} error={errors.city} placeholder="Lisboa" />
             </div>
-            <FormField label="NIF (opcional)" value={nif} onChange={setNif} placeholder="123456789" hint="Para fatura com NIF" inputMode="numeric" />
+            
           </div>
         </section>
 
@@ -543,7 +543,7 @@ const CheckoutPage = () => {
               ["Posso trocar o tamanho?", "Sim! Trocas gratuitas nos primeiros 30 dias."],
               ["A personalização pode ser removida?", "Não, a personalização é permanente. Confirma bem o nome e número antes de finalizar."],
               ["Posso pagar com MB Way?", "Sim! MB Way é uma das formas mais rápidas e populares de pagamento."],
-              ["Emitem fatura?", "Sim, basta indicares o NIF no campo opcional durante o checkout."],
+              
             ].map(([q, a], i) => (
               <AccordionItem key={i} value={`faq-${i}`}>
                 <AccordionTrigger className="font-checkout-body text-sm font-semibold text-left">{q}</AccordionTrigger>
