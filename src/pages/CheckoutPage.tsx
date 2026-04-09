@@ -127,7 +127,7 @@ const CheckoutPage = () => {
   const [city, setCity] = useState("");
   
   const [shipping] = useState<"standard">("standard");
-  const [payment, setPayment] = useState<"card" | "mbway" | "multibanco">("mbway");
+  const [payment, setPayment] = useState<"card" | "mbway">("mbway");
   const [mbwayPhone, setMbwayPhone] = useState("");
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -399,11 +399,10 @@ const CheckoutPage = () => {
         {/* ─── SECTION 6: PAYMENT METHODS ─── */}
         <section className="mt-6">
           <h2 className="font-checkout-heading text-xl font-bold mb-3">Método de Pagamento</h2>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 gap-2">
             {([
               { id: "card" as const, logo: cardLogo, label: "Cartão" },
               { id: "mbway" as const, logo: mbwayLogo, label: "MB Way", highlight: true },
-              { id: "multibanco" as const, logo: "https://upload.wikimedia.org/wikipedia/commons/4/46/Multibanco.svg", label: "Multibanco" },
             ] as const).map((m) => (
               <button
                 key={m.id}
@@ -423,9 +422,6 @@ const CheckoutPage = () => {
             <div className="mt-3">
               <FormField label="Número MB Way" type="tel" value={mbwayPhone} onChange={setMbwayPhone} error={errors.mbwayPhone} placeholder="+351 912 345 678" inputMode="tel" />
             </div>
-          )}
-          {payment === "multibanco" && (
-            <p className="mt-3 text-sm text-muted-foreground bg-[#fafafa] p-3 rounded">Receberás a referência Multibanco por email e nesta página após confirmar.</p>
           )}
         </section>
 
@@ -555,14 +551,12 @@ const CheckoutPage = () => {
 
         {/* ─── SECTION 12: BOTTOM TRUST BAR ─── */}
         <section className="mt-8 pb-8 border-t pt-6">
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-3">
+          <div className="flex flex-wrap items-center justify-center gap-6 mb-3">
             <img src={cardLogo} alt="Visa / Mastercard" className="h-8 object-contain" />
             <img src={mbwayLogo} alt="MB Way" className="h-6 object-contain" />
-            <span className="bg-[#fafafa] px-3 py-1.5 rounded border text-xs font-semibold text-muted-foreground">Multibanco</span>
-            <span className="bg-[#fafafa] px-3 py-1.5 rounded border text-xs font-semibold text-muted-foreground">CTT Expresso</span>
           </div>
           <p className="text-xs text-center text-muted-foreground">
-            Entrega via CTT e DPD — Tracking em tempo real 🇵🇹
+            Envio com tracking em tempo real 🇵🇹
           </p>
         </section>
       </div>
