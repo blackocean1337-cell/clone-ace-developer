@@ -127,7 +127,7 @@ const CheckoutPage = () => {
   const [mbwayPhone, setMbwayPhone] = useState("");
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [orderExpanded, setOrderExpanded] = useState(false);
 
   // Personalization upsell
   const [showPersonalization, setShowPersonalization] = useState(false);
@@ -384,19 +384,16 @@ const CheckoutPage = () => {
           </section>
         )}
 
-        {/* ─── SECTION 5: CONTACT & SHIPPING FORM ─── */}
-        <section className="mt-8">
-          <h2 className="font-checkout-heading text-xl font-bold mb-4">Dados de Contacto e Envio</h2>
-          <div className="space-y-4">
-            <FormField label="Nome completo" value={name} onChange={setName} error={errors.name} placeholder="João Silva" />
-            <FormField label="Email" type="email" value={email} onChange={setEmail} error={errors.email} placeholder="joao@email.com" hint="Enviaremos a confirmação e tracking para este email" />
-            <FormField label="Telemóvel" type="tel" value={phone} onChange={setPhone} error={errors.phone} placeholder="+351 912 345 678" hint="Para atualizações de entrega por SMS" inputMode="tel" />
+        {/* ─── SECTION 5: SHIPPING ADDRESS ─── */}
+        <section className="mt-6">
+          <h2 className="font-checkout-heading text-xl font-bold mb-3">Morada de Entrega</h2>
+          <div className="space-y-3">
             <FormField label="Morada completa" value={address} onChange={setAddress} error={errors.address} placeholder="Rua dos Campeões, Nº 10, 2º Esq." />
             <div className="grid grid-cols-2 gap-3">
               <FormField label="Código Postal" value={postalCode} onChange={setPostalCode} error={errors.postalCode} placeholder="1000-001" inputMode="numeric" />
               <FormField label="Cidade" value={city} onChange={setCity} error={errors.city} placeholder="Lisboa" />
             </div>
-            <FormField label="NIF (opcional)" value={nif} onChange={setNif} placeholder="123456789" hint="Para fatura com NIF da empresa" inputMode="numeric" />
+            <FormField label="NIF (opcional)" value={nif} onChange={setNif} placeholder="123456789" hint="Para fatura com NIF" inputMode="numeric" />
           </div>
         </section>
 
