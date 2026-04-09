@@ -10,7 +10,8 @@ import {
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 
 /* ─── CONSTANTS ─── */
-const FREE_SHIPPING_THRESHOLD = 49;
+const FREE_SHIPPING_THRESHOLD = 50;
+const SHIPPING_COST = 4.90;
 const CART_TIMER_MINUTES = 15;
 
 /* ─── PT Postal Code → City lookup (simplified) ─── */
@@ -122,7 +123,7 @@ const CheckoutPage = () => {
   const [postalCode, setPostalCode] = useState("");
   const [city, setCity] = useState("");
   const [nif, setNif] = useState("");
-  const [shipping, setShipping] = useState<"standard" | "express" | "pickup">("standard");
+  const [shipping] = useState<"standard">("standard");
   const [payment, setPayment] = useState<"card" | "mbway" | "multibanco">("card");
   const [mbwayPhone, setMbwayPhone] = useState("");
   const [showSizeGuide, setShowSizeGuide] = useState(false);
@@ -138,12 +139,12 @@ const CheckoutPage = () => {
 
   // Calculations
   const subtotal = items.reduce((s, i) => s + i.unitPrice * i.quantity, 0);
-  const shippingCost = shipping === "express" ? 6.99 : shipping === "pickup" ? 0 : subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : 3.99;
+  const shippingCost = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
   const personalizationCost = persAccepted ? 9.99 : 0;
   const total = subtotal + shippingCost + personalizationCost;
   const remainingForFreeShipping = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
   const shippingProgress = Math.min(1, subtotal / FREE_SHIPPING_THRESHOLD);
-  const deliveryDays = shipping === "express" ? 2 : 5;
+  const deliveryDays = 5;
   const deliveryDate = getDeliveryDate(deliveryDays);
 
   // Stock simulation
@@ -310,37 +311,39 @@ const CheckoutPage = () => {
           </div>
         </section>
 
-        {/* ─── SECTION 3: DELIVERY OPTIONS ─── */}
-        <section className="mt-8">
-          <h2 className="font-checkout-heading text-xl font-bold mb-3">Opções de Entrega</h2>
-          <div className="space-y-3">
-            {([
-              { id: "standard" as const, icon: Package, label: "Envio Standard", desc: "3-5 dias úteis", price: subtotal >= FREE_SHIPPING_THRESHOLD ? "GRÁTIS" : "3,99€" },
-              { id: "express" as const, icon: Zap, label: "Envio Expresso", desc: "1-2 dias úteis", price: "6,99€" },
-              { id: "pickup" as const, icon: Store, label: "Recolha em Loja", desc: "Lisboa", price: "GRÁTIS" },
-            ]).map((opt) => (
-              <label
-                key={opt.id}
-                className={`flex items-center gap-3 p-4 rounded-lg border-2 cursor-pointer transition-all ${
-                  shipping === opt.id ? "border-checkout-cta bg-orange-50" : "border-muted hover:border-muted-foreground/30"
-                }`}
-              >
-                <input type="radio" name="shipping" checked={shipping === opt.id} onChange={() => setShipping(opt.id)} className="sr-only" />
-                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${shipping === opt.id ? "border-checkout-cta" : "border-muted-foreground/30"}`}>
-                  {shipping === opt.id && <div className="w-2.5 h-2.5 rounded-full bg-checkout-cta" />}
-                </div>
-                <opt.icon size={18} className="text-muted-foreground flex-shrink-0" />
-                <div className="flex-1">
-                  <span className="font-semibold text-sm">{opt.label}</span>
-                  <span className="text-xs text-muted-foreground ml-2">{opt.desc}</span>
-                </div>
-                <span className={`text-sm font-bold ${opt.price === "GRÁTIS" ? "text-checkout-trust" : ""}`}>{opt.price}</span>
-              </label>
-            ))}
+        {/* ─── SECTION 3: SHIPPING INFO ─── */}
+        <section className="mt-6">
+          <div className="flex items-center justify-between bg-[#fafafa] p-4 rounded-lg">
+            <div className="flex items-center gap-3">
+              <Package size={18} className="text-muted-foreground" />
+              <div>
+                <p className="text-sm font-semibold">Envio Standard — 3-5 dias úteis</p>
+                <p className="text-xs text-muted-foreground">Recebe até: <strong className="text-foreground">{deliveryDate}</strong></p>
+              </div>
+            </div>
+            {shippingCost === 0 ? (
+              <span className="text-sm font-bold text-checkout-trust">GRÁTIS ✓</span>
+            ) : (
+              <span className="text-sm font-bold">{SHIPPING_COST.toFixed(2).replace(".", ",")}€</span>
+            )}
           </div>
-          <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
-            📦 Recebe até: <strong className="text-[#111]">{deliveryDate}</strong>
-          </p>
+
+          {remainingForFreeShipping > 0 && (
+            <div className="mt-3 bg-orange-50 border border-checkout-cta/30 rounded-lg p-4">
+              <p className="text-sm font-semibold mb-2">
+                🚚 Faltam <strong className="text-checkout-urgency">{remainingForFreeShipping.toFixed(2)}€</strong> para envio grátis!
+              </p>
+              <div className="h-2 bg-muted rounded-full overflow-hidden mb-3">
+                <motion.div className="h-full bg-checkout-cta rounded-full" initial={{ width: 0 }} animate={{ width: `${shippingProgress * 100}%` }} transition={{ duration: 0.6 }} />
+              </div>
+              <button
+                onClick={() => navigate("/")}
+                className="w-full text-sm font-bold text-checkout-cta underline underline-offset-2 hover:text-checkout-cta-hover transition-colors"
+              >
+                ← Voltar à loja e adicionar mais artigos
+              </button>
+            </div>
+          )}
         </section>
 
         {/* ─── SECTION 4: PERSONALIZATION UPSELL ─── */}
