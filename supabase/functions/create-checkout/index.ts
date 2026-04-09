@@ -29,6 +29,7 @@ serve(async (req) => {
     if (!stripeKey) throw new Error("STRIPE_SECRET_KEY is not set");
 
     const { items, successUrl, cancelUrl } = await req.json();
+    const origin = req.headers.get("origin") || "https://clone-ace-developer.lovable.app";
 
     if (!items || !Array.isArray(items) || items.length === 0) {
       throw new Error("No items provided");
