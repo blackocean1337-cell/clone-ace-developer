@@ -24,12 +24,12 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="font-body text-sm sm:text-base text-fincut-gray mt-3"
+          className="font-body text-sm sm:text-base text-fincut-gray mt-3 max-w-md"
         >
-          Finalmente! A t-shirt que lhe fica bem.
+          Cortada para todas as morfologias. Tecido premium, caimento perfeito.
         </motion.p>
         <motion.a
-          href="/products/tshirt-iconic-black"
+          href="/products/t-shirt-tech"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}

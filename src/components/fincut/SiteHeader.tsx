@@ -39,7 +39,7 @@ const SiteHeader = () => {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          <Link to="/products/tshirt-iconic-black" className="font-body text-sm text-secondary-foreground hover:text-fincut-gold transition-colors duration-200">
+          <Link to="/products/t-shirt-tech" className="font-body text-sm text-secondary-foreground hover:text-fincut-gold transition-colors duration-200">
             O Icónico
           </Link>
           <button
