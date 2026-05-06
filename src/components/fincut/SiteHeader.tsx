@@ -39,7 +39,7 @@ const SiteHeader = () => {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          <Link to="/products/tshirt-iconic-black" className="font-body text-sm text-secondary-foreground hover:text-fincut-gold transition-colors duration-200">
+          <Link to="/products/t-shirt-tech" className="font-body text-sm text-secondary-foreground hover:text-fincut-gold transition-colors duration-200">
             O Icónico
           </Link>
           <button
@@ -91,6 +91,23 @@ const SiteHeader = () => {
                   <h4 className="font-body text-[11px] text-muted-foreground uppercase tracking-[0.2em] mb-4">
                     A NOSSA SELEÇÃO
                   </h4>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link to="/products/t-shirt-tech" onClick={() => setProductsOpen(false)} className="font-body text-sm text-fincut-black hover:text-fincut-gold transition-colors duration-200">
+                        Bestseller — A Icónica Preta
+                      </Link>
+                    </li>
+                    <li>
+                      <button onClick={() => { setProductsOpen(false); window.dispatchEvent(new Event("open-pack-builder")); }} className="font-body text-sm text-fincut-black hover:text-fincut-gold transition-colors duration-200">
+                        Pack personalizado
+                      </button>
+                    </li>
+                    <li>
+                      <Link to="/historia" onClick={() => setProductsOpen(false)} className="font-body text-sm text-fincut-black hover:text-fincut-gold transition-colors duration-200">
+                        A nossa história
+                      </Link>
+                    </li>
+                  </ul>
                 </div>
                 <div>
                   <h4 className="font-body text-[11px] text-muted-foreground uppercase tracking-[0.2em] mb-4">
@@ -142,7 +159,7 @@ const SiteHeader = () => {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden bg-fincut-black border-t border-fincut-slate/30 px-4 py-6 space-y-4">
-          <a href="#iconique" className="block font-body text-sm text-secondary-foreground">O Icónico</a>
+          <Link to="/products/t-shirt-tech" onClick={() => setMobileOpen(false)} className="block font-body text-sm text-secondary-foreground">O Icónico</Link>
           <div>
             <button
               onClick={() => setProductsOpen(!productsOpen)}

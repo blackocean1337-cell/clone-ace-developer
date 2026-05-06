@@ -45,7 +45,7 @@ const TrackOrderPage = () => {
             </label>
             <input
               type="email"
-              placeholder="email@example.com"
+              placeholder="joao@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full bg-transparent border-b border-border px-0 py-3 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground transition-colors"
