@@ -13,9 +13,8 @@ const SiteFooter = () => {
           <div>
             <h4 className="font-display text-sm font-bold mb-5">Contato</h4>
             <ul className="space-y-3 font-body text-sm text-fincut-gray">
-              <li><a href="/acompanhar-encomenda" className="hover:text-secondary-foreground transition-colors underline">Acompanhe meu pedido</a></li>
-              <li><a href="#" className="hover:text-secondary-foreground transition-colors underline">Contacte-nos</a></li>
-              
+              <li><a href="/acompanhar-encomenda" className="hover:text-secondary-foreground transition-colors underline">Acompanhe a sua encomenda</a></li>
+              <li><a href="mailto:info@mrtuga.co" className="hover:text-secondary-foreground transition-colors underline">Contacte-nos</a></li>
               <li><a href="/faq" className="hover:text-secondary-foreground transition-colors underline">Perguntas frequentes</a></li>
             </ul>
           </div>
@@ -24,8 +23,8 @@ const SiteFooter = () => {
           <div>
             <h4 className="font-display text-sm font-bold mb-5">Contacte-nos</h4>
             <p className="font-body text-sm text-fincut-gray leading-relaxed">
-              Nossa equipe está disponível de segunda a sábado, das 9h às 22h.<br />
-              info@mrtuga.co
+              A nossa equipa está disponível de segunda a sábado, das 9h às 22h.<br />
+              <a href="mailto:info@mrtuga.co" className="hover:text-secondary-foreground transition-colors underline">info@mrtuga.co</a>
             </p>
           </div>
 
