@@ -1,2 +1,2 @@
-Contact: mailto:info@mrtuga.com
+Contact: mailto:support@mrtuga.com
 Preferred-Languages: pt, en
