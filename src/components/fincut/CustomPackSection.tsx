@@ -281,7 +281,7 @@ const PackBuilderModal = ({ open, onClose, onOpenSizeTech, onAddToCart, initialS
                       <span className={`font-body text-xs ${
                   selectedColors.length >= 6 ? "text-fincut-gold font-semibold" : "text-muted-foreground"}`
                   }>
-                        18 €/artigo
+                        33,90 €/artigo
                       </span>
                     </div>
                   </div>
