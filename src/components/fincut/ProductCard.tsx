@@ -35,7 +35,7 @@ const ProductCard = ({ image, name, price, colors, darkBg = true, slug }: Produc
             </span>
           }
           <h3 className="font-body text-sm font-medium text-foreground">{name}</h3>
-          <p className="font-body text-sm text-muted-foreground">até: {price}</p>
+          <p className="font-body text-sm text-muted-foreground">desde {price}</p>
         </div>
       </Wrapper>
     </motion.div>);
