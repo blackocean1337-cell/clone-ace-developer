@@ -248,17 +248,24 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
                 <div className="px-6 pb-6 mt-auto pt-4 border-t border-muted">
                   <button 
                     onClick={async () => {
+                      const newWindow = window.open("about:blank", "_blank");
                       try {
                         const { createCheckout } = await import("@/lib/shopify");
                         const url = await createCheckout(items);
-                        window.open(url, "_blank");
+                        if (newWindow) {
+                          newWindow.location.href = url;
+                        } else {
+                          window.location.href = url;
+                        }
                       } catch (err) {
                         console.error("Shopify checkout error:", err);
+                        if (newWindow) newWindow.close();
                       }
                     }}
                     className="w-full h-14 bg-[#fff176] text-fincut-black font-display text-sm font-bold tracking-[0.15em] uppercase hover:bg-[#ffee58] transition-colors duration-200 flex items-center justify-center gap-2">
                     PASSAR AO PAGAMENTO | {totalPrice} €
                   </button>
+
 
                 </div>
               </>
