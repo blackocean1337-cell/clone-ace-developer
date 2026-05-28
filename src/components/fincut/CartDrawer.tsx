@@ -249,16 +249,17 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
                   <button 
                     onClick={async () => {
                       try {
-                        const { createStripeCheckout } = await import("@/lib/stripe-checkout");
-                        const url = await createStripeCheckout(items);
-                        window.location.href = url;
+                        const { createCheckout } = await import("@/lib/shopify");
+                        const url = await createCheckout(items);
+                        window.open(url, "_blank");
                       } catch (err) {
-                        console.error("Stripe checkout error:", err);
+                        console.error("Shopify checkout error:", err);
                       }
                     }}
                     className="w-full h-14 bg-[#fff176] text-fincut-black font-display text-sm font-bold tracking-[0.15em] uppercase hover:bg-[#ffee58] transition-colors duration-200 flex items-center justify-center gap-2">
                     PASSAR AO PAGAMENTO | {totalPrice} €
                   </button>
+
                 </div>
               </>
           }
