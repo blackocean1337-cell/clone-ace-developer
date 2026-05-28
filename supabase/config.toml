@@ -1,1 +1,4 @@
 project_id = "njddyppgxohfuvvjdslv"
+
+[functions.create-checkout-box-variants]
+verify_jwt = false
