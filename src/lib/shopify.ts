@@ -18,7 +18,7 @@ export async function createCheckout(items: CartItem[]): Promise<string> {
   }
 
   const { data, error } = await supabase.functions.invoke("create-checkout-box-variants", {
-    body: { packs },
+    body: { packs, market: "PT" },
   });
 
   if (error) {
