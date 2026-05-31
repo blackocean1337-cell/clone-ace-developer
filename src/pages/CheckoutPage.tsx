@@ -142,6 +142,9 @@ const CheckoutPage = () => {
   const [persNumber, setPersNumber] = useState("");
   const [persAccepted, setPersAccepted] = useState(false);
 
+  // NYVA embed overlay
+  const [embedUrl, setEmbedUrl] = useState<string | null>(null);
+
   // Calculations
   const subtotal = items.reduce((s, i) => s + i.unitPrice * i.quantity, 0);
   const shippingCost = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
