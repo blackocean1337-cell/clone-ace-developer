@@ -182,8 +182,60 @@ const CheckoutPage = () => {
   const handleSubmit = async () => {
     if (!validate()) return;
     setIsSubmitting(true);
-    // TODO: integrate with Stripe Payment Intents
-    setTimeout(() => setIsSubmitting(false), 2000);
+    try {
+      const productName =
+        items.length === 1
+          ? `${items[0].name}${items[0].color ? ` ${items[0].color}` : ""}${items[0].size ? ` (${items[0].size})` : ""}`
+          : `MRTUGA — ${items.length} artigos`;
+
+      if (payment === "card") {
+        const { data, error } = await supabase.functions.invoke("create-nyva-embed", {
+          body: {
+            amount: total,
+            customer_email: email,
+            customer_name: name,
+            product_name: productName,
+            metadata: {
+              items: items.map((i) => ({
+                name: i.name,
+                color: i.color,
+                size: i.size,
+                qty: i.quantity,
+                unit: i.unitPrice,
+              })),
+              shipping: { name, phone, address, postalCode, city },
+              personalization: persAccepted ? { name: persName, number: persNumber } : null,
+            },
+          },
+        });
+        if (error) throw error;
+        if (!data?.embed_url) throw new Error("Sem embed_url");
+        setEmbedUrl(data.embed_url as string);
+      } else {
+        // MB Way → fallback redirect flow (embed é card-only)
+        const { data, error } = await supabase.functions.invoke("create-nyva-checkout", {
+          body: {
+            packs: items.map((i) => ({
+              size: i.quantity,
+              attributes: [
+                { key: "_lov_item_1_name", value: i.name },
+                { key: "_lov_item_1_color", value: i.color ?? "" },
+                { key: "_lov_item_1_size", value: i.size ?? "" },
+              ],
+            })),
+            market: "PT",
+          },
+        });
+        if (error) throw error;
+        if (!data?.url) throw new Error("Sem url de pagamento");
+        window.location.href = data.url as string;
+      }
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Erro ao iniciar pagamento";
+      setErrors({ submit: msg });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (items.length === 0) {
