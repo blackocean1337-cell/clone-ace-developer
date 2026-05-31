@@ -12,7 +12,7 @@ import { supabase } from "@/integrations/supabase/client";
 import NyvaEmbedOverlay from "@/components/checkout/NyvaEmbedOverlay";
 import mbwayLogo from "@/assets/mbway-logo.png";
 import cardLogo from "@/assets/visa-mastercard-logo.png";
-import checkoutLogo from "@/assets/checkout-logo.png";
+
 
 /* ─── CONSTANTS ─── */
 const FREE_SHIPPING_THRESHOLD = 50;
