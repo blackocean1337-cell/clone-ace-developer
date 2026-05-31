@@ -454,8 +454,6 @@ const CustomPackSection = () => {
         onValidate={handleSizeTechValidate} />
       
     </>);
-      
-    </>);
 
 };
 
