@@ -87,11 +87,12 @@ serve(async (req) => {
     };
     if (webhookUrl) payload.webhook_url = webhookUrl;
 
-    const res = await fetch(`${NYVA_BASE}/api/partner/merchants/${merchantId}/payment-links`, {
+    const res = await fetch(`${NYVA_BASE}/api/merchant/payment-links`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "X-API-Key": apiKey,
+        "X-Merchant-Email": merchantEmail,
       },
       body: JSON.stringify(payload),
     });
