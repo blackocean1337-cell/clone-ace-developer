@@ -1,89 +1,95 @@
-# Sistema de Packs Shopify — Plano de Implementação
-
-Replicar a arquitetura "box variants + Draft Order + webhook" descrita no prompt, substituindo o checkout atual (Stripe / Shopify Storefront cartCreate) por um Draft Order Shopify onde os packs viajam como **uma única linha** e os produtos reais vão como atributos `_lov_*`.
-
 ## Objetivo
 
-- Cada pack (ex.: "Pack 3 t-shirts") = 1 linha no Shopify a apontar para uma **variante-caixa** (preço já = preço do pack).
-- Produtos reais (cor, tamanho, nome) viajam como `_lov_item_N_*` attributes na linha.
-- Itens avulso (qty 1, sem pack) continuam como linha individual normal.
-- Webhook recebe a order e "explode" as caixas em `order_items` reais para fulfillment interno.
+Substituir o fluxo atual de checkout (Shopify Draft Order → `invoiceUrl`) por **NYVA Pay**. Ao clicar em "PASSAR AO PAGAMENTO", a app chama a NYVA API, recebe um `pay_url` e redireciona o cliente para essa página hospedada.
 
 ## Arquitetura
 
 ```text
-CartDrawer ──► createShopifyCheckout(items)
-                     │
-                     ▼
-        edge fn: create-checkout-box-variants
-                     │
-            agrupa itens por pack
-            resolve variante-caixa por preço/qty
-            monta draftOrderCreate (GraphQL)
-                     │
-                     ▼
-        Shopify Draft Order ──► invoiceUrl ──► cliente paga
-                                                     │
-                                                     ▼
-                            webhook orders/paid ──► shopify-webhook
-                                                     │
-                                          explode _lov_item_* em linhas reais
-                                          (logging / fulfillment interno)
+CartDrawer ──► supabase.functions.invoke('create-nyva-checkout')
+                          │
+                          ▼
+            Edge Function (Deno, verify_jwt=false)
+                          │
+                          ▼
+    POST https://nyvapay.com/api/partner/merchants/{MERCHANT_ID}/payment-links
+            headers: X-API-Key: NYVA_PARTNER_API_KEY
+                          │
+                          ▼
+                  { pay_url } ──► redireciona o cliente
+
+    POST https://nyvapay.com/.../webhooks (configurado no link)
+                          │
+                          ▼
+            Edge Function pública nyva-webhook
+                          │
+                          ▼
+                guarda em public.orders
 ```
 
-## Etapas
+## Secrets a configurar
 
-### 1. Catálogo Shopify — criar variantes-caixa
-Produto manual no Shopify (fora de scope de código): "MRTUGA Pack" com variantes:
-- `PACK-1` (18€), `PACK-2-FOR-1` (preço pack 2), `PACK-3-FOR-2` (36€), `PACK-4-FOR-3`, `PACK-5-FOR-4`, etc.
-- Guardar os `gid://shopify/ProductVariant/...` num mapa.
+Pedir ao utilizador via `add_secret`:
+- `NYVA_PARTNER_API_KEY` — chave master criada em Settings & API (formato `nv_…`)
+- `NYVA_MERCHANT_ID` — UUID do merchant MRTUGA dentro do portal NYVA
 
-### 2. `src/lib/cartUtils.ts` (novo)
-- `flattenCartItems(items)` → expande qty em unidades atómicas.
-- `applyBundleDiscount(units)` → agrupa em packs conforme regras MRTUGA (ex.: Leve 3 Paga 2).
-- `buildLineAttributes(packUnits)` → produz `[{ key: "_lov_item_1_name", value: "..." }, { key: "_lov_item_1_color", ... }, ...]`.
+## Passos
 
-### 3. `src/lib/shopify.ts` (refactor)
-Substituir `cartCreate` Storefront por chamada à edge function:
-- `createShopifyCheckout(items)` → `supabase.functions.invoke("create-checkout-box-variants", { body: { items } })` → devolve `invoiceUrl`.
+### 1. Tabela `orders` (Lovable Cloud)
+Migração criando `public.orders` para registar pagamentos recebidos via webhook:
+- `id uuid pk`, `payment_request_id text unique`, `order_ref text`, `amount numeric`, `currency text`, `status text`, `customer_email text`, `customer_name text`, `note text`, `metadata jsonb`, `created_at timestamptz`
+- GRANTs apropriados (apenas `service_role` escreve; `authenticated` SELECT só se necessário no futuro; sem `anon`).
+- RLS ENABLE + policies restritas.
 
-### 4. `supabase/functions/create-checkout-box-variants/index.ts` (novo)
-- Recebe `items[]`.
-- Corre `flattenCartItems` + `applyBundleDiscount` (lógica partilhada, copiada para Deno).
-- Resolve `BOX_VARIANT_MAP[packSize]`.
-- Chama Shopify Admin GraphQL `draftOrderCreate` com:
-  - `lineItems`: 1 por pack + 1 por item avulso.
-  - `customAttributes`: resumo global do pedido.
-  - Cada lineItem com `customAttributes` `_lov_item_N_*`.
-- Devolve `{ url: invoiceUrl }`.
-- Usa `SHOPIFY_ACCESS_TOKEN` (já existe nos secrets).
+### 2. Edge Function: `create-nyva-checkout`
+- CORS + `verify_jwt = false` (checkout é público).
+- Body de entrada: `{ packs, market }` (mesmo shape atual de `create-checkout-box-variants`).
+- Calcula:
+  - `amount` total = Σ `packPayUnits(cap) * 18` por pack.
+  - `product_name` = label do pack PT (ex.: "Leva 3 Paga 2") — usa `_shared/packTitles.ts` já existente.
+  - `note` = resumo condensado das t-shirts (cor, tamanho).
+  - `metadata` = `{ items: JSON.stringify(packs), market }` para reconciliar depois.
+- POST para `https://nyvapay.com/api/partner/merchants/${NYVA_MERCHANT_ID}/payment-links` com:
+  ```json
+  {
+    "amount": <total>,
+    "currency": "EUR",
+    "product_name": "<label>",
+    "order": "MRTUGA-<timestamp>",
+    "payment_type": "one_time",
+    "webhook_url": "https://<project>.functions.supabase.co/nyva-webhook",
+    "success_redirect_url": "https://mrtuga.co/obrigado",
+    "metadata": { ... }
+  }
+  ```
+- Devolve `{ url: pay_url }`.
 
-### 5. `supabase/functions/shopify-webhook/index.ts` (novo)
-- Subscrever `orders/paid` no Shopify (manual após deploy, dar URL ao utilizador).
-- Para cada line_item, ler `properties` `_lov_item_*` e logar/persistir os itens reais.
-- (Persistência em DB fica para iteração futura — esta versão só faz log + 200 OK.)
+### 3. Edge Function: `nyva-webhook`
+- Pública, `verify_jwt = false`, sem CORS necessário.
+- Recebe `payment.succeeded` (e ignora outros por agora; subscrição não se aplica).
+- Faz `upsert` em `public.orders` usando `payment_request_id` como chave de idempotência (via Service Role).
+- Devolve `200 ok`.
 
-### 6. `CartDrawer.tsx`
-- Passar a chamar `createShopifyCheckout` (já chama; só muda o que está por trás).
-- Remover dependência de `stripe-checkout.ts` se já não for usado.
+### 4. Frontend: `src/lib/shopify.ts`
+- Renomear a função `createCheckout` para apontar para `create-nyva-checkout` (mantendo a mesma assinatura para não tocar no `CartDrawer`).
+- Opção: criar `src/lib/nyva.ts` novo e atualizar o import no `CartDrawer.tsx`. Deixar `shopify.ts` legado por enquanto, sem ser chamado.
 
-## Detalhes técnicos
+### 5. Limpeza
+- Não apagar `create-checkout-box-variants` agora — deixar como fallback até validar NYVA em produção.
+- Atualizar memória do projeto: arquitetura passa de "Shopify Draft Order" para "NYVA Pay hosted checkout".
 
-- **Sem alterações de DB** nesta fase (webhook só loga). Pedir confirmação antes de criar tabela `orders` / `order_items`.
-- **Mapa de variantes-caixa**: hardcoded no edge function, ajustável quando criarmos os produtos no Shopify.
-- **Regras de bundle**: parametrizadas em `cartUtils.ts` (ex.: `{ minQty: 3, payQty: 2 }` para a campanha "Leve 3 Paga 2").
-- **Itens avulso**: continuam a usar as variantes reais já mapeadas em `PRODUCT_VARIANT_MAP`.
-- **Config**: `supabase/config.toml` adiciona `verify_jwt = false` para `shopify-webhook`.
+## Validação
 
-## O que fica fora (perguntar depois)
+1. Adicionar a uma t-shirt 3 unidades → "PASSAR AO PAGAMENTO" → deve abrir nova aba em `nyvapay.com/pay/...` com o valor correto (36 €).
+2. Completar pagamento de teste → confirmar webhook recebido (`supabase--edge_function_logs nyva-webhook`) e linha em `public.orders`.
 
-- Webhook subscription automation (precisa Admin API scope `write_orders` + registo manual).
-- Persistência de orders/items em Supabase.
-- Decomposição visual no Shopify admin (continuará a ver "PACK-3-FOR-2" como produto; os items reais estão nos attributes).
+## Notas técnicas
 
-## Pré-requisitos antes de implementar
+- **Sem itens detalhados na NYVA** — a API só recebe um `amount`/`product_name` por link, por isso o resumo das t-shirts vai em `note` + `metadata` (e poderá ser exposto no nosso painel via `orders`).
+- **Sem KYC no nosso lado** — assumimos que o merchant MRTUGA já está aprovado no portal NYVA (caso contrário a API devolve 403 e mostramos mensagem).
+- **Moeda EUR** — confirmar no portal NYVA que está suportada; se não, fica USD e adicionamos conversão depois.
 
-Preciso de confirmação em 2 pontos:
+## Bloqueios
 
-1. **Variantes-caixa no Shopify** — já existem? Se não, crio o mapa com placeholders e tu preenches os GIDs depois.
-2. **Regra de bundle ativa hoje** — confirmar que é "Leve 3 Paga 2" (= 33% off ao atingir múltiplos de 3) e se há outras (2x1, 5x4, etc.).
+Antes de implementar, preciso de:
+1. **NYVA_PARTNER_API_KEY** (criar em Settings & API → "Create key" no portal NYVA).
+2. **NYVA_MERCHANT_ID** (UUID do merchant MRTUGA — visível no portal ou via `GET /api/partner/merchants`).
