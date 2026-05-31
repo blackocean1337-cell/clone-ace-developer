@@ -11,3 +11,6 @@ verify_jwt = false
 
 [functions.nyva-debug]
 verify_jwt = false
+
+[functions.create-nyva-embed]
+verify_jwt = false
