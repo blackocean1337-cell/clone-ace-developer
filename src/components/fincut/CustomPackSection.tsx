@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Plus } from "lucide-react";
 import SizeTechModal from "./SizeTechModal";
-import CartDrawer, { type CartItem } from "./CartDrawer";
+import { type CartItem } from "./CartDrawer";
+import { useCart } from "@/context/CartContext";
 const tshirtWhite = "/lovable-uploads/e49adb7b-5a69-4ca3-8159-1d3f4e70974b.png";
 const tshirtNavy = "/lovable-uploads/eead22c9-62c0-42ee-9771-29643ce81759.png";
 const tshirtBlack = "/lovable-uploads/32553b57-a7a2-4fe9-bf8a-e4107c83a779.png";
@@ -338,10 +339,9 @@ const PackBuilderModal = ({ open, onClose, onOpenSizeTech, onAddToCart, initialS
 };
 
 const CustomPackSection = () => {
+  const { addItem, openCart } = useCart();
   const [packBuilderOpen, setPackBuilderOpen] = useState(false);
   const [sizeTechOpen, setSizeTechOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [packInitialStep, setPackInitialStep] = useState(1);
   const [packPreselectedSize, setPackPreselectedSize] = useState<string | undefined>();
 
@@ -368,16 +368,17 @@ const CustomPackSection = () => {
 
   const handleAddToCart = (colors: string[], size: string) => {
     const price = pricePerArticle(colors.length);
-    const cartItems: CartItem[] = colors.map((color) => ({
-      name: "A t-shirt Icónica",
-      size,
-      color: color.toUpperCase(),
-      unitPrice: price,
-      quantity: 1
-    }));
-    setCartItems(cartItems);
+    colors.forEach((color) => {
+      addItem({
+        name: "A t-shirt Icónica",
+        size,
+        color: color.toUpperCase(),
+        unitPrice: price,
+        quantity: 1,
+      } as CartItem);
+    });
     setPackBuilderOpen(false);
-    setCartOpen(true);
+    openCart();
   };
 
   return (
@@ -451,11 +452,6 @@ const CustomPackSection = () => {
         open={sizeTechOpen}
         onClose={handleSizeTechClose}
         onValidate={handleSizeTechValidate} />
-      
-      <CartDrawer
-        open={cartOpen}
-        onClose={() => setCartOpen(false)}
-        items={cartItems} />
       
     </>);
 
