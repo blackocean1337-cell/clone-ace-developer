@@ -8,6 +8,8 @@ import {
   ArrowRight, RotateCcw, Phone, CreditCard, X
 } from "lucide-react";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+import { supabase } from "@/integrations/supabase/client";
+import NyvaEmbedOverlay from "@/components/checkout/NyvaEmbedOverlay";
 import mbwayLogo from "@/assets/mbway-logo.png";
 import cardLogo from "@/assets/visa-mastercard-logo.png";
 import checkoutLogo from "@/assets/checkout-logo.png";
@@ -140,6 +142,9 @@ const CheckoutPage = () => {
   const [persNumber, setPersNumber] = useState("");
   const [persAccepted, setPersAccepted] = useState(false);
 
+  // NYVA embed overlay
+  const [embedUrl, setEmbedUrl] = useState<string | null>(null);
+
   // Calculations
   const subtotal = items.reduce((s, i) => s + i.unitPrice * i.quantity, 0);
   const shippingCost = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
@@ -177,8 +182,60 @@ const CheckoutPage = () => {
   const handleSubmit = async () => {
     if (!validate()) return;
     setIsSubmitting(true);
-    // TODO: integrate with Stripe Payment Intents
-    setTimeout(() => setIsSubmitting(false), 2000);
+    try {
+      const productName =
+        items.length === 1
+          ? `${items[0].name}${items[0].color ? ` ${items[0].color}` : ""}${items[0].size ? ` (${items[0].size})` : ""}`
+          : `MRTUGA — ${items.length} artigos`;
+
+      if (payment === "card") {
+        const { data, error } = await supabase.functions.invoke("create-nyva-embed", {
+          body: {
+            amount: total,
+            customer_email: email,
+            customer_name: name,
+            product_name: productName,
+            metadata: {
+              items: items.map((i) => ({
+                name: i.name,
+                color: i.color,
+                size: i.size,
+                qty: i.quantity,
+                unit: i.unitPrice,
+              })),
+              shipping: { name, phone, address, postalCode, city },
+              personalization: persAccepted ? { name: persName, number: persNumber } : null,
+            },
+          },
+        });
+        if (error) throw error;
+        if (!data?.embed_url) throw new Error("Sem embed_url");
+        setEmbedUrl(data.embed_url as string);
+      } else {
+        // MB Way → fallback redirect flow (embed é card-only)
+        const { data, error } = await supabase.functions.invoke("create-nyva-checkout", {
+          body: {
+            packs: items.map((i) => ({
+              size: i.quantity,
+              attributes: [
+                { key: "_lov_item_1_name", value: i.name },
+                { key: "_lov_item_1_color", value: i.color ?? "" },
+                { key: "_lov_item_1_size", value: i.size ?? "" },
+              ],
+            })),
+            market: "PT",
+          },
+        });
+        if (error) throw error;
+        if (!data?.url) throw new Error("Sem url de pagamento");
+        window.location.href = data.url as string;
+      }
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Erro ao iniciar pagamento";
+      setErrors({ submit: msg });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (items.length === 0) {
@@ -196,6 +253,18 @@ const CheckoutPage = () => {
   return (
     <div className="min-h-screen bg-white font-checkout-body text-[#111]">
       <SizeGuideModal open={showSizeGuide} onClose={() => setShowSizeGuide(false)} />
+      <AnimatePresence>
+        {embedUrl && (
+          <NyvaEmbedOverlay
+            embedUrl={embedUrl}
+            onClose={() => setEmbedUrl(null)}
+            onSuccess={() => {
+              setEmbedUrl(null);
+              navigate("/obrigado");
+            }}
+          />
+        )}
+      </AnimatePresence>
 
       {/* ─── TOP BAR (sticky) ─── */}
       <div className="sticky top-0 z-40 bg-white border-b shadow-sm">
