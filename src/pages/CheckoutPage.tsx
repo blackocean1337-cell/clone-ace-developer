@@ -269,7 +269,7 @@ const CheckoutPage = () => {
       {/* ─── TOP BAR (sticky) ─── */}
       <div className="sticky top-0 z-40 bg-white border-b shadow-sm">
         <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
-          <img src={checkoutLogo} alt="Mister Tuga" className="h-10 object-contain mx-auto" />
+          
         </div>
         {/* Progress bar */}
         <div className="max-w-3xl mx-auto px-4 pb-3">
