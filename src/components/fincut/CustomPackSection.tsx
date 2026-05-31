@@ -339,10 +339,9 @@ const PackBuilderModal = ({ open, onClose, onOpenSizeTech, onAddToCart, initialS
 };
 
 const CustomPackSection = () => {
+  const { addItem, openCart } = useCart();
   const [packBuilderOpen, setPackBuilderOpen] = useState(false);
   const [sizeTechOpen, setSizeTechOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [packInitialStep, setPackInitialStep] = useState(1);
   const [packPreselectedSize, setPackPreselectedSize] = useState<string | undefined>();
 
@@ -369,16 +368,17 @@ const CustomPackSection = () => {
 
   const handleAddToCart = (colors: string[], size: string) => {
     const price = pricePerArticle(colors.length);
-    const cartItems: CartItem[] = colors.map((color) => ({
-      name: "A t-shirt Icónica",
-      size,
-      color: color.toUpperCase(),
-      unitPrice: price,
-      quantity: 1
-    }));
-    setCartItems(cartItems);
+    colors.forEach((color) => {
+      addItem({
+        name: "A t-shirt Icónica",
+        size,
+        color: color.toUpperCase(),
+        unitPrice: price,
+        quantity: 1,
+      } as CartItem);
+    });
     setPackBuilderOpen(false);
-    setCartOpen(true);
+    openCart();
   };
 
   return (
