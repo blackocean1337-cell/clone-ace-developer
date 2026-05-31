@@ -26,9 +26,9 @@ serve(async (req) => {
 
   try {
     const apiKey = Deno.env.get("NYVA_PARTNER_API_KEY");
-    const merchantId = Deno.env.get("NYVA_MERCHANT_ID");
+    const merchantEmail = Deno.env.get("NYVA_MERCHANT_ID"); // stored as email
     if (!apiKey) throw new Error("NYVA_PARTNER_API_KEY not set");
-    if (!merchantId) throw new Error("NYVA_MERCHANT_ID not set");
+    if (!merchantEmail) throw new Error("NYVA_MERCHANT_ID (email) not set");
 
     const projectId = Deno.env.get("SUPABASE_URL")?.match(/https:\/\/([^.]+)\.supabase\.co/)?.[1];
 
