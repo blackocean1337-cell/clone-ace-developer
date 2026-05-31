@@ -453,10 +453,7 @@ const CustomPackSection = () => {
         onClose={handleSizeTechClose}
         onValidate={handleSizeTechValidate} />
       
-      <CartDrawer
-        open={cartOpen}
-        onClose={() => setCartOpen(false)}
-        items={cartItems} />
+    </>);
       
     </>);
 
