@@ -19,6 +19,7 @@ serve(async (req) => {
     const merchantId = Deno.env.get("NYVA_MERCHANT_ID");
     if (!apiKey) throw new Error("NYVA_PARTNER_API_KEY not set");
     if (!merchantId) throw new Error("NYVA_MERCHANT_ID not set");
+    console.log("NYVA merchant_id len:", merchantId.length, "preview:", merchantId.slice(0, 6) + "..." + merchantId.slice(-4), "apiKey len:", apiKey.length);
 
     const body = await req.json().catch(() => ({}));
     const amount = Number(body?.amount);
