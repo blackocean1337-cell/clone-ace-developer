@@ -14,6 +14,54 @@ export type Database = {
   }
   public: {
     Tables: {
+      orders: {
+        Row: {
+          amount: number
+          created_at: string
+          currency: string
+          customer_email: string | null
+          customer_name: string | null
+          id: string
+          metadata: Json
+          note: string | null
+          order_ref: string | null
+          payment_request_id: string
+          product_name: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          currency?: string
+          customer_email?: string | null
+          customer_name?: string | null
+          id?: string
+          metadata?: Json
+          note?: string | null
+          order_ref?: string | null
+          payment_request_id: string
+          product_name?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          currency?: string
+          customer_email?: string | null
+          customer_name?: string | null
+          id?: string
+          metadata?: Json
+          note?: string | null
+          order_ref?: string | null
+          payment_request_id?: string
+          product_name?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       product_images: {
         Row: {
           created_at: string
