@@ -138,6 +138,15 @@ const CheckoutPage = () => {
   const [postalCode, setPostalCode] = useState("");
   const [city, setCity] = useState("");
   const [district, setDistrict] = useState("");
+
+  // Billing address (defaults to shipping)
+  const [billingSameAsShipping, setBillingSameAsShipping] = useState(true);
+  const [billingName, setBillingName] = useState("");
+  const [billingAddress, setBillingAddress] = useState("");
+  const [billingPostalCode, setBillingPostalCode] = useState("");
+  const [billingCity, setBillingCity] = useState("");
+  const [billingDistrict, setBillingDistrict] = useState("");
+  
   
   const [shipping] = useState<"standard">("standard");
   const [payment, setPayment] = useState<"card" | "mbway">("mbway");
@@ -216,10 +225,25 @@ const CheckoutPage = () => {
     if (!postalCode.trim() || !/^\d{4}-?\d{3}$/.test(postalCode.replace(/\s/g, ""))) e.postalCode = "Código postal inválido (XXXX-XXX)";
     if (!city.trim()) e.city = "Cidade é obrigatória";
     if (!district.trim()) e.district = "Distrito é obrigatório";
+    if (!billingSameAsShipping) {
+      if (!billingName.trim()) e.billingName = "Nome de faturação é obrigatório";
+      if (!billingAddress.trim()) e.billingAddress = "Morada de faturação é obrigatória";
+      if (!billingPostalCode.trim() || !/^\d{4}-?\d{3}$/.test(billingPostalCode.replace(/\s/g, ""))) e.billingPostalCode = "Código postal inválido (XXXX-XXX)";
+      if (!billingCity.trim()) e.billingCity = "Cidade de faturação é obrigatória";
+      if (!billingDistrict.trim()) e.billingDistrict = "Distrito de faturação é obrigatório";
+    }
     if (payment === "mbway" && !mbwayPhone.trim()) e.mbwayPhone = "Número MB Way é obrigatório";
     setErrors(e);
     return Object.keys(e).length === 0;
-  }, [name, email, phone, address, postalCode, city, district, payment, mbwayPhone]);
+  }, [name, email, phone, address, postalCode, city, district, billingSameAsShipping, billingName, billingAddress, billingPostalCode, billingCity, billingDistrict, payment, mbwayPhone]);
+
+  const billingValid =
+    billingSameAsShipping ||
+    (billingName.trim() !== "" &&
+      billingAddress.trim() !== "" &&
+      /^\d{4}-?\d{3}$/.test(billingPostalCode.replace(/\s/g, "")) &&
+      billingCity.trim() !== "" &&
+      billingDistrict.trim() !== "");
 
   // Form válido para cartão (NÃO obriga mbwayPhone)
   const isCardFormValid =
@@ -229,7 +253,8 @@ const CheckoutPage = () => {
     address.trim() !== "" &&
     /^\d{4}-?\d{3}$/.test(postalCode.replace(/\s/g, "")) &&
     city.trim() !== "" &&
-    district.trim() !== "";
+    district.trim() !== "" &&
+    billingValid;
 
   const productName =
     items.length === 1
@@ -248,11 +273,11 @@ const CheckoutPage = () => {
           customer_name: name,
           product_name: productName,
           billing_address: {
-            name,
-            line1: address,
-            city,
-            state: district,
-            postalCode,
+            name: billingSameAsShipping ? name : billingName,
+            line1: billingSameAsShipping ? address : billingAddress,
+            city: billingSameAsShipping ? city : billingCity,
+            state: billingSameAsShipping ? district : billingDistrict,
+            postalCode: billingSameAsShipping ? postalCode : billingPostalCode,
             country: "PT",
           },
           metadata: {
@@ -275,7 +300,7 @@ const CheckoutPage = () => {
       setIsCreatingEmbed(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [total, email, name, productName, effectiveItems, phone, address, postalCode, city, district, persAccepted, persName, persNumber, promoCode, discount, embedUrl, isCreatingEmbed]);
+  }, [total, email, name, productName, effectiveItems, phone, address, postalCode, city, district, billingSameAsShipping, billingName, billingAddress, billingPostalCode, billingCity, billingDistrict, persAccepted, persName, persNumber, promoCode, discount, embedUrl, isCreatingEmbed]);
 
   // Auto-criar embed quando seleciona cartão e form fica válido
   useEffect(() => {
@@ -581,6 +606,32 @@ const CheckoutPage = () => {
             
           </div>
         </section>
+
+        {/* ─── SECTION 5b: BILLING ADDRESS ─── */}
+        <section className="mt-6">
+          <h2 className="font-checkout-heading text-xl font-bold mb-3">Morada de Faturação</h2>
+          <label className="flex items-center gap-2 mb-3 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={billingSameAsShipping}
+              onChange={(e) => setBillingSameAsShipping(e.target.checked)}
+              className="w-4 h-4 accent-black"
+            />
+            <span className="text-sm">Igual à morada de entrega</span>
+          </label>
+          {!billingSameAsShipping && (
+            <div className="space-y-3">
+              <FormField label="Nome completo" value={billingName} onChange={setBillingName} error={errors.billingName} placeholder="Nome do titular" />
+              <FormField label="Morada completa" value={billingAddress} onChange={setBillingAddress} error={errors.billingAddress} placeholder="Rua, Nº, Andar" />
+              <div className="grid grid-cols-2 gap-3">
+                <FormField label="Código Postal" value={billingPostalCode} onChange={setBillingPostalCode} error={errors.billingPostalCode} placeholder="1000-001" inputMode="numeric" />
+                <FormField label="Cidade" value={billingCity} onChange={setBillingCity} error={errors.billingCity} placeholder="Lisboa" />
+              </div>
+              <FormField label="Distrito" value={billingDistrict} onChange={setBillingDistrict} error={errors.billingDistrict} placeholder="Lisboa, Porto, Setúbal…" />
+            </div>
+          )}
+        </section>
+
 
         {/* ─── SECTION 6: PAYMENT METHODS ─── */}
         <section className="mt-6">
