@@ -44,20 +44,17 @@ serve(async (req) => {
     const orderRef = `MRTUGA-${Date.now()}`;
     const successUrl = `https://mrtuga.co/obrigado?ref=${encodeURIComponent(orderRef)}`;
 
-    const payload = {
+    const payload: Record<string, unknown> = {
       merchant_id: merchantId,
       surface: "checkout",
       amount: Number(amount.toFixed(2)),
       currency: "EUR",
       product_name: productName,
       customer_email: customerEmail,
-      customer_name: customerName || undefined,
       success_redirect_url: successUrl,
       return_origin: "https://mrtuga.co",
-      payment_type: "one_time",
-      order: orderRef,
-      metadata: { ...metadata, order_ref: orderRef },
     };
+    if (customerName) payload.customer_name = customerName;
 
     const res = await fetch(`${NYVA_BASE}/api/partner/onboarding-sessions`, {
       method: "POST",
