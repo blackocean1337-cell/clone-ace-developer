@@ -640,31 +640,33 @@ const CheckoutPage = () => {
           </div>
         </section>
 
-        {/* ─── SECTION 8: MEGA CTA BUTTON ─── */}
-        <section className="mt-8">
-          <motion.button
-            onClick={handleSubmit}
-            disabled={isSubmitting}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full h-16 bg-checkout-cta text-black font-checkout-heading text-lg font-extrabold uppercase tracking-wider rounded-lg shadow-lg hover:bg-checkout-cta-hover transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
-          >
-            {isSubmitting ? (
-              <Loader2 size={24} className="animate-spin" />
-            ) : (
-              <>
-                <Check size={20} />
-                FINALIZAR COMPRA — PAGAR {total.toFixed(2)}€
-              </>
-            )}
-          </motion.button>
-          <div className="text-center mt-2 space-y-1">
-            <p className="text-xs text-muted-foreground flex items-center justify-center gap-1">
-              <Lock size={10} /> Encriptação SSL 256-bit | Os teus dados estão seguros
-            </p>
-            <p className="text-xs text-muted-foreground">Após pagamento recebes email de confirmação imediato</p>
-          </div>
-        </section>
+        {/* ─── SECTION 8: MEGA CTA BUTTON (só MB Way; cartão paga no iframe inline) ─── */}
+        {payment === "mbway" && (
+          <section className="mt-8">
+            <motion.button
+              onClick={handleSubmit}
+              disabled={isSubmitting}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full h-16 bg-checkout-cta text-black font-checkout-heading text-lg font-extrabold uppercase tracking-wider rounded-lg shadow-lg hover:bg-checkout-cta-hover transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
+            >
+              {isSubmitting ? (
+                <Loader2 size={24} className="animate-spin" />
+              ) : (
+                <>
+                  <Check size={20} />
+                  FINALIZAR COMPRA — PAGAR {total.toFixed(2)}€
+                </>
+              )}
+            </motion.button>
+            <div className="text-center mt-2 space-y-1">
+              <p className="text-xs text-muted-foreground flex items-center justify-center gap-1">
+                <Lock size={10} /> Encriptação SSL 256-bit | Os teus dados estão seguros
+              </p>
+              <p className="text-xs text-muted-foreground">Após pagamento recebes email de confirmação imediato</p>
+            </div>
+          </section>
+        )}
 
         {/* ─── SECTION 9: RETURNS ─── */}
         <section className="mt-8 bg-green-50 border border-checkout-trust/20 rounded-lg p-5">
