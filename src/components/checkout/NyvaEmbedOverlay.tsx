@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { X, Lock } from "lucide-react";
-import checkoutLogo from "@/assets/checkout-logo.png";
 
 interface Props {
   embedUrl: string;
@@ -44,7 +43,6 @@ export default function NyvaEmbedOverlay({ embedUrl, onClose, onSuccess }: Props
     >
       <div className="border-b shadow-sm">
         <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
-          <img src={checkoutLogo} alt="Mister Tuga" className="h-10 object-contain" />
           <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
             <Lock size={14} /> PAGAMENTO SEGURO
           </div>
