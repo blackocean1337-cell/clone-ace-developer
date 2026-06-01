@@ -14,6 +14,11 @@ export default function NyvaEmbedOverlay({ embedUrl, onClose, onSuccess }: Props
     const handler = (event: MessageEvent) => {
       const data = event.data;
       if (!data || typeof data !== "object") return;
+      // Official NYVA event
+      if (data.source === "nyva-embed" && data.type === "nyva:checkout:complete") {
+        onSuccess?.();
+        return;
+      }
       const type = (data.type || data.event || "").toString().toLowerCase();
       if (type.includes("success") || type.includes("paid") || type.includes("complete")) {
         onSuccess?.();
