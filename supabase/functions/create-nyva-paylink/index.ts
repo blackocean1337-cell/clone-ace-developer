@@ -78,12 +78,17 @@ serve(async (req) => {
       product_name: productName,
       order: orderRef,
       note,
-      payment_type: "one_time",
       success_redirect_url: "https://mrtuga.co/obrigado",
       metadata: {
-        items,
-        promo_code: promoCode,
-        discount,
+        line_items: JSON.stringify(
+          items.map((i) => ({
+            name: `${i.name}${i.color ? ` ${i.color}` : ""}${i.size ? ` (${i.size})` : ""}`,
+            qty: Number(i.quantity) || 0,
+            total: Number(((Number(i.quantity) || 0) * (Number(i.unitPrice) || 0)).toFixed(2)),
+          }))
+        ),
+        promo_code: promoCode ?? "",
+        discount: String(discount),
       },
     };
     if (webhookUrl) payload.webhook_url = webhookUrl;
