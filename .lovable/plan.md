@@ -1,48 +1,30 @@
-# Código promocional TUGA1 — tudo a 1€
+# Iframe NYVA inline no /checkout
 
-Criar um código promocional secreto que, quando aplicado, passa o preço unitário de cada artigo do carrinho para **1€**. Envio e personalização continuam a aplicar-se às regras normais.
+Mover o iframe da NYVA para **dentro** da página `/checkout`, logo abaixo do seletor MB Way / Cartão, em vez de abrir como overlay full-screen.
 
 ## Comportamento
 
-- Código (case-insensitive): **`TUGA1`**
-- Aplicável em dois sítios já existentes:
-  1. Campo "CÓDIGO PROMO" do `CartDrawer` (já tem input + botão APLICAR, hoje sem lógica)
-  2. Novo campo "Código promocional" no `CheckoutPage` (linha acima do resumo de totais)
-- Persistência: guardado em `localStorage` como `mrtuga-promo` para sobreviver à navegação cart → checkout
-- Feedback: badge verde "✓ TUGA1 aplicado — tudo a 1€" + link "remover"
-- Códigos inválidos mostram erro inline "Código inválido"
+- **MB Way selecionado** (default): nada muda — mostra o campo "Número MB Way" + botão grande "FINALIZAR COMPRA — PAGAR Xé" como hoje.
+- **Cartão selecionado**:
+  1. Painel inline aparece debaixo dos dois botões de método.
+  2. Se os dados de envio (email, nome, telemóvel, morada, CP, cidade) **ainda não estão preenchidos** → mostra aviso: "Preenche os dados acima para pagar com cartão" + link âncora.
+  3. Quando válido → chama `create-nyva-embed` automaticamente (uma vez), com loader "A preparar pagamento seguro…".
+  4. Quando `embed_url` chega → renderiza `<iframe>` inline (≥620 px de altura, full width do container) com header mini "🔒 PAGAMENTO SEGURO".
+  5. O botão grande "FINALIZAR COMPRA" **desaparece** com cartão (o pagamento é feito dentro do iframe). MB Way mantém o botão.
+  6. Se o utilizador editar campos depois → invalida o iframe e mostra botão "Atualizar pagamento" para regenerar.
 
-## Cálculo
+## Detalhes técnicos
 
-Quando promo === `TUGA1`:
-```
-subtotalOriginal = Σ unitPrice * qty
-subtotal         = Σ 1 * qty           ← cada artigo passa a 1€
-desconto         = subtotalOriginal − subtotal
-shippingCost     = subtotal >= 55 ? 0 : 4.90   (regra normal mantida)
-total            = subtotal + shippingCost + personalizationCost
-```
+- Remover o uso do `NyvaEmbedOverlay` no `CheckoutPage.tsx` (o componente pode ficar, mas deixa de ser importado/renderizado).
+- Novo `useEffect` que dispara `create-nyva-embed` quando `payment === "card"` && form válido && `embedUrl` está null && total > 0. Debounce simples via flag `isCreatingEmbed` para evitar chamadas duplicadas.
+- `handleSubmit` deixa de ter ramo `card` — só trata MB Way (Shopify fallback).
+- O iframe inline reutiliza os mesmos `allow` e `postMessage` listener de sucesso/cancelamento que estão no `NyvaEmbedOverlay`.
+- Recálculo do `total` (com promo TUGA1) já é o que passa para `amount`.
+- Em caso de erro do edge function, mostrar mensagem inline com botão "Tentar novamente".
 
-Resumo no checkout passa a mostrar:
-```
-Subtotal              <riscado>XX.XX€</riscado>  YY.YY€
-Desconto (TUGA1)      −ZZ.ZZ€
-Envio                 ...
-Total                 ...
-```
+## Ficheiros
 
-## Integração com pagamento
+- `src/pages/CheckoutPage.tsx` — remover overlay, adicionar painel inline com iframe + estados (`isCreatingEmbed`, `embedError`), ocultar mega-CTA quando `payment === "card"`.
+- `src/components/checkout/NyvaInlinePanel.tsx` (novo, opcional) — encapsula iframe + listener `postMessage` + header mini. Mantém o código do `CheckoutPage` legível.
 
-O `total` recalculado já é o valor passado para:
-- `create-nyva-embed` (cartão) → `amount: total`
-- Fluxo MB Way / Shopify fallback
-
-Os metadados enviados para a edge function passam a incluir `promo_code: "TUGA1"` e o `unitPrice` de cada item já reflecte o 1€, para que o backend/Shopify receba os valores corretos sem precisar de alterações.
-
-## Ficheiros a alterar
-
-- `src/lib/promo.ts` (novo) — `applyPromo(items, code)` puro, devolve `{ items, discount, code }`. Centraliza a regra para reutilizar.
-- `src/pages/CheckoutPage.tsx` — campo de input do promo, badge de aplicado, recalcular `subtotal`/`total`, mostrar linha de desconto, ler `mrtuga-promo` no mount.
-- `src/components/fincut/CartDrawer.tsx` — ligar o input/botão APLICAR existente à mesma função, guardar em `localStorage`, mostrar badge aplicado, refletir total descontado no botão "PASSAR AO PAGAMENTO".
-
-Sem alterações de backend, edge functions, Shopify ou Stripe — o código vive só no frontend.
+Sem alterações em edge functions ou backend.
