@@ -198,10 +198,11 @@ const CheckoutPage = () => {
   // Stock simulation
   const stockLeft = 3;
 
-  // Postal code → city
+  // Postal code → city + district
   useEffect(() => {
     if (postalCode.length >= 4) {
       setCity(getCityFromPostal(postalCode));
+      setDistrict((prev) => prev || getDistrictFromPostal(postalCode));
     }
   }, [postalCode]);
 
@@ -214,10 +215,11 @@ const CheckoutPage = () => {
     if (!address.trim()) e.address = "Morada é obrigatória";
     if (!postalCode.trim() || !/^\d{4}-?\d{3}$/.test(postalCode.replace(/\s/g, ""))) e.postalCode = "Código postal inválido (XXXX-XXX)";
     if (!city.trim()) e.city = "Cidade é obrigatória";
+    if (!district.trim()) e.district = "Distrito é obrigatório";
     if (payment === "mbway" && !mbwayPhone.trim()) e.mbwayPhone = "Número MB Way é obrigatório";
     setErrors(e);
     return Object.keys(e).length === 0;
-  }, [name, email, phone, address, postalCode, city, payment, mbwayPhone]);
+  }, [name, email, phone, address, postalCode, city, district, payment, mbwayPhone]);
 
   // Form válido para cartão (NÃO obriga mbwayPhone)
   const isCardFormValid =
@@ -226,7 +228,8 @@ const CheckoutPage = () => {
     phone.trim() !== "" &&
     address.trim() !== "" &&
     /^\d{4}-?\d{3}$/.test(postalCode.replace(/\s/g, "")) &&
-    city.trim() !== "";
+    city.trim() !== "" &&
+    district.trim() !== "";
 
   const productName =
     items.length === 1
