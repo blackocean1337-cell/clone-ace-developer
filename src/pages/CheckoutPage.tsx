@@ -143,8 +143,10 @@ const CheckoutPage = () => {
   const [persNumber, setPersNumber] = useState("");
   const [persAccepted, setPersAccepted] = useState(false);
 
-  // NYVA embed overlay
+  // NYVA inline embed
   const [embedUrl, setEmbedUrl] = useState<string | null>(null);
+  const [isCreatingEmbed, setIsCreatingEmbed] = useState(false);
+  const [embedError, setEmbedError] = useState<string | null>(null);
 
   // Promo code
   const [promoCode, setPromoCode] = useState<PromoCode | null>(() => loadStoredPromo());
