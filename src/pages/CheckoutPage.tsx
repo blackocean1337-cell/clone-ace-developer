@@ -209,59 +209,94 @@ const CheckoutPage = () => {
     return Object.keys(e).length === 0;
   }, [name, email, phone, address, postalCode, city, payment, mbwayPhone]);
 
+  // Form válido para cartão (NÃO obriga mbwayPhone)
+  const isCardFormValid =
+    name.trim() !== "" &&
+    /\S+@\S+\.\S+/.test(email.trim()) &&
+    phone.trim() !== "" &&
+    address.trim() !== "" &&
+    /^\d{4}-?\d{3}$/.test(postalCode.replace(/\s/g, "")) &&
+    city.trim() !== "";
+
+  const productName =
+    items.length === 1
+      ? `${items[0].name}${items[0].color ? ` ${items[0].color}` : ""}${items[0].size ? ` (${items[0].size})` : ""}`
+      : `MRTUGA — ${items.length} artigos`;
+
+  const createCardEmbed = useCallback(async () => {
+    if (isCreatingEmbed || embedUrl) return;
+    setIsCreatingEmbed(true);
+    setEmbedError(null);
+    try {
+      const { data, error } = await supabase.functions.invoke("create-nyva-embed", {
+        body: {
+          amount: total,
+          customer_email: email,
+          customer_name: name,
+          product_name: productName,
+          metadata: {
+            items: effectiveItems.map((i) => ({
+              name: i.name, color: i.color, size: i.size, qty: i.quantity, unit: i.unitPrice,
+            })),
+            shipping: { name, phone, address, postalCode, city },
+            personalization: persAccepted ? { name: persName, number: persNumber } : null,
+            promo_code: promoCode,
+            discount,
+          },
+        },
+      });
+      if (error) throw error;
+      if (!data?.embed_url) throw new Error("Sem embed_url");
+      setEmbedUrl(data.embed_url as string);
+    } catch (err) {
+      setEmbedError(err instanceof Error ? err.message : "Erro ao iniciar pagamento");
+    } finally {
+      setIsCreatingEmbed(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [total, email, name, productName, effectiveItems, phone, address, postalCode, city, persAccepted, persName, persNumber, promoCode, discount, embedUrl, isCreatingEmbed]);
+
+  // Auto-criar embed quando seleciona cartão e form fica válido
+  useEffect(() => {
+    if (payment === "card" && isCardFormValid && !embedUrl && !isCreatingEmbed && !embedError) {
+      createCardEmbed();
+    }
+  }, [payment, isCardFormValid, embedUrl, isCreatingEmbed, embedError, createCardEmbed]);
+
+  // Invalida o embed se mudar de método ou alterar dados-chave
+  useEffect(() => {
+    if (payment !== "card" && embedUrl) setEmbedUrl(null);
+  }, [payment, embedUrl]);
+
+  useEffect(() => {
+    // Se o total ou email mudarem depois de criado, marcar como stale
+    setEmbedUrl(null);
+    setEmbedError(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [total, email, name, phone, address, postalCode, city, promoCode, persAccepted]);
+
   const handleSubmit = async () => {
     if (!validate()) return;
+    // Cartão é tratado inline pelo iframe — só MB Way passa por aqui
+    if (payment === "card") return;
     setIsSubmitting(true);
     try {
-      const productName =
-        items.length === 1
-          ? `${items[0].name}${items[0].color ? ` ${items[0].color}` : ""}${items[0].size ? ` (${items[0].size})` : ""}`
-          : `MRTUGA — ${items.length} artigos`;
-
-      if (payment === "card") {
-        const { data, error } = await supabase.functions.invoke("create-nyva-embed", {
-          body: {
-            amount: total,
-            customer_email: email,
-            customer_name: name,
-            product_name: productName,
-            metadata: {
-              items: effectiveItems.map((i) => ({
-                name: i.name,
-                color: i.color,
-                size: i.size,
-                qty: i.quantity,
-                unit: i.unitPrice,
-              })),
-              shipping: { name, phone, address, postalCode, city },
-              personalization: persAccepted ? { name: persName, number: persNumber } : null,
-              promo_code: promoCode,
-              discount,
-            },
-          },
-        });
-        if (error) throw error;
-        if (!data?.embed_url) throw new Error("Sem embed_url");
-        setEmbedUrl(data.embed_url as string);
-      } else {
-        // MB Way → fallback redirect flow (embed é card-only)
-        const { data, error } = await supabase.functions.invoke("create-nyva-checkout", {
-          body: {
-            packs: items.map((i) => ({
-              size: i.quantity,
-              attributes: [
-                { key: "_lov_item_1_name", value: i.name },
-                { key: "_lov_item_1_color", value: i.color ?? "" },
-                { key: "_lov_item_1_size", value: i.size ?? "" },
-              ],
-            })),
-            market: "PT",
-          },
-        });
-        if (error) throw error;
-        if (!data?.url) throw new Error("Sem url de pagamento");
-        window.location.href = data.url as string;
-      }
+      const { data, error } = await supabase.functions.invoke("create-nyva-checkout", {
+        body: {
+          packs: items.map((i) => ({
+            size: i.quantity,
+            attributes: [
+              { key: "_lov_item_1_name", value: i.name },
+              { key: "_lov_item_1_color", value: i.color ?? "" },
+              { key: "_lov_item_1_size", value: i.size ?? "" },
+            ],
+          })),
+          market: "PT",
+        },
+      });
+      if (error) throw error;
+      if (!data?.url) throw new Error("Sem url de pagamento");
+      window.location.href = data.url as string;
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Erro ao iniciar pagamento";
       setErrors({ submit: msg });
