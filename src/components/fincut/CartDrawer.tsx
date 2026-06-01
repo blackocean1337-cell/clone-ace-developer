@@ -295,14 +295,49 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
                       <span>−{discount.toFixed(2)} €</span>
                     </div>
                   )}
-                  <button 
-                    onClick={() => {
-                      onClose?.();
-                      navigate("/checkout");
+                  <button
+                    disabled={isCreatingLink || items.length === 0}
+                    onClick={async () => {
+                      if (isCreatingLink) return;
+                      setLinkError(null);
+                      setIsCreatingLink(true);
+                      try {
+                        const { data, error } = await supabase.functions.invoke("create-nyva-paylink", {
+                          body: {
+                            items: promo.items,
+                            promo_code: promoCode,
+                            discount,
+                          },
+                        });
+                        if (error) throw error;
+                        if (!data?.url) throw new Error("Sem URL de pagamento");
+                        onClose?.();
+                        window.location.href = data.url as string;
+                      } catch (err) {
+                        setLinkError(err instanceof Error ? err.message : "Erro ao iniciar pagamento");
+                        setIsCreatingLink(false);
+                      }
                     }}
-                    className="w-full h-14 bg-[#fff176] text-fincut-black font-display text-sm font-bold tracking-[0.15em] uppercase hover:bg-[#ffee58] transition-colors duration-200 flex items-center justify-center gap-2">
-                    PASSAR AO PAGAMENTO | {discount > 0 && <span className="line-through opacity-60 mr-1">{originalTotalPrice.toFixed(2)} €</span>}{totalPrice.toFixed(2)} €
+                    className="w-full h-14 bg-[#fff176] text-fincut-black font-display text-sm font-bold tracking-[0.15em] uppercase hover:bg-[#ffee58] transition-colors duration-200 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed">
+                    {isCreatingLink ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        A PREPARAR PAGAMENTO…
+                      </>
+                    ) : (
+                      <>
+                        PASSAR AO PAGAMENTO | {discount > 0 && <span className="line-through opacity-60 mr-1">{originalTotalPrice.toFixed(2)} €</span>}{totalPrice.toFixed(2)} €
+                      </>
+                    )}
                   </button>
+                  {linkError && (
+                    <p className="text-xs text-red-600 mt-2 text-center">
+                      {linkError} —{" "}
+                      <button onClick={() => setLinkError(null)} className="underline font-bold">
+                        tentar novamente
+                      </button>
+                    </p>
+                  )}
 
 
                 </div>
