@@ -16,8 +16,8 @@ import { applyPromo, loadStoredPromo, saveStoredPromo, normalizePromo, type Prom
 
 
 /* ─── CONSTANTS ─── */
-const FREE_SHIPPING_THRESHOLD = 50;
-const SHIPPING_COST = 4.90;
+const FREE_SHIPPING_THRESHOLD = 0;
+const SHIPPING_COST = 0;
 const CART_TIMER_MINUTES = 15;
 
 /* ─── PT Postal Code → City lookup (simplified) ─── */
