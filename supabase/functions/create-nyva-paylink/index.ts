@@ -78,6 +78,7 @@ serve(async (req) => {
       product_name: productName,
       order: orderRef,
       note,
+      embed_source: "woo",
       success_redirect_url: "https://mrtuga.co/obrigado",
       metadata: {
         line_items: JSON.stringify(
