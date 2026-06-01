@@ -251,7 +251,7 @@ const CheckoutPage = () => {
             name,
             line1: address,
             city,
-            state: city,
+            state: district,
             postalCode,
             country: "PT",
           },
