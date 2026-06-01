@@ -62,7 +62,7 @@ export default function NyvaEmbedOverlay({ embedUrl, onClose, onSuccess }: Props
         <iframe
           src={embedUrl}
           title="NYVA Checkout"
-          allow="payment *; clipboard-write"
+          allow="payment *; fullscreen *; publickey-credentials-get *; clipboard-write"
           className="w-full h-full border-0 block"
         />
       </div>
