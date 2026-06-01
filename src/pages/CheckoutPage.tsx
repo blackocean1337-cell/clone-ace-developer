@@ -283,18 +283,7 @@ const CheckoutPage = () => {
   return (
     <div className="min-h-screen bg-white font-checkout-body text-[#111]">
       <SizeGuideModal open={showSizeGuide} onClose={() => setShowSizeGuide(false)} />
-      <AnimatePresence>
-        {embedUrl && (
-          <NyvaEmbedOverlay
-            embedUrl={embedUrl}
-            onClose={() => setEmbedUrl(null)}
-            onSuccess={() => {
-              setEmbedUrl(null);
-              navigate("/obrigado");
-            }}
-          />
-        )}
-      </AnimatePresence>
+      {/* NYVA agora renderiza inline na secção de pagamento */}
 
       {/* ─── TOP BAR (sticky) ─── */}
       <div className="sticky top-0 z-40 bg-white border-b shadow-sm">
