@@ -138,6 +138,15 @@ const CheckoutPage = () => {
   const [postalCode, setPostalCode] = useState("");
   const [city, setCity] = useState("");
   const [district, setDistrict] = useState("");
+
+  // Billing address (defaults to shipping)
+  const [billingSameAsShipping, setBillingSameAsShipping] = useState(true);
+  const [billingName, setBillingName] = useState("");
+  const [billingAddress, setBillingAddress] = useState("");
+  const [billingPostalCode, setBillingPostalCode] = useState("");
+  const [billingCity, setBillingCity] = useState("");
+  const [billingDistrict, setBillingDistrict] = useState("");
+  
   
   const [shipping] = useState<"standard">("standard");
   const [payment, setPayment] = useState<"card" | "mbway">("mbway");
