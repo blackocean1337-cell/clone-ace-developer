@@ -761,17 +761,19 @@ const CheckoutPage = () => {
         </section>
       </div>
 
-      {/* ─── MOBILE STICKY BOTTOM CTA ─── */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-2xl p-4 md:hidden z-40">
-        <motion.button
-          onClick={handleSubmit}
-          disabled={isSubmitting}
-          whileTap={{ scale: 0.97 }}
-          className="w-full h-14 bg-checkout-cta text-black font-checkout-heading text-base font-extrabold uppercase tracking-wider rounded-lg flex items-center justify-center gap-2 disabled:opacity-60"
-        >
-          {isSubmitting ? <Loader2 size={20} className="animate-spin" /> : <>Finalizar — {total.toFixed(2)}€</>}
-        </motion.button>
-      </div>
+      {/* ─── MOBILE STICKY BOTTOM CTA (só MB Way; cartão paga no iframe inline) ─── */}
+      {payment === "mbway" && (
+        <div className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-2xl p-4 md:hidden z-40">
+          <motion.button
+            onClick={handleSubmit}
+            disabled={isSubmitting}
+            whileTap={{ scale: 0.97 }}
+            className="w-full h-14 bg-checkout-cta text-black font-checkout-heading text-base font-extrabold uppercase tracking-wider rounded-lg flex items-center justify-center gap-2 disabled:opacity-60"
+          >
+            {isSubmitting ? <Loader2 size={20} className="animate-spin" /> : <>Finalizar — {total.toFixed(2)}€</>}
+          </motion.button>
+        </div>
+      )}
     </div>
   );
 };
