@@ -26,16 +26,40 @@ const FREE_SHIPPING_THRESHOLD = 55;
 
 const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps) => {
   const [promoOpen, setPromoOpen] = useState(false);
-  const [promoCode, setPromoCode] = useState("");
+  const [promoCode, setPromoCode] = useState<PromoCode | null>(() => loadStoredPromo());
+  const [promoInput, setPromoInput] = useState("");
+  const [promoError, setPromoError] = useState<string | null>(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (open) setPromoCode(loadStoredPromo());
+  }, [open]);
 
   if (!open) return null;
 
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
+  const promo = applyPromo(items, promoCode);
+  const originalTotalPrice = promo.originalSubtotal;
+  const totalPrice = promo.subtotal;
+  const discount = promo.discount;
   const remainingForFreeShipping = Math.max(0, FREE_SHIPPING_THRESHOLD - totalPrice);
   const shippingProgress = Math.min(1, totalPrice / FREE_SHIPPING_THRESHOLD);
   const hasFreeShipping = remainingForFreeShipping === 0;
+
+  const handleApplyPromo = () => {
+    const valid = normalizePromo(promoInput);
+    if (!valid) { setPromoError("Código inválido"); return; }
+    setPromoCode(valid);
+    saveStoredPromo(valid);
+    setPromoInput("");
+    setPromoError(null);
+  };
+
+  const handleRemovePromo = () => {
+    setPromoCode(null);
+    saveStoredPromo(null);
+    setPromoError(null);
+  };
 
   return (
     <AnimatePresence>
