@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { supabase } from "@/integrations/supabase/client";
-import NyvaEmbedOverlay from "@/components/checkout/NyvaEmbedOverlay";
+import NyvaInlinePanel from "@/components/checkout/NyvaInlinePanel";
 import mbwayLogo from "@/assets/mbway-logo.png";
 import cardLogo from "@/assets/visa-mastercard-logo.png";
 import { applyPromo, loadStoredPromo, saveStoredPromo, normalizePromo, type PromoCode } from "@/lib/promo";
@@ -143,8 +143,10 @@ const CheckoutPage = () => {
   const [persNumber, setPersNumber] = useState("");
   const [persAccepted, setPersAccepted] = useState(false);
 
-  // NYVA embed overlay
+  // NYVA inline embed
   const [embedUrl, setEmbedUrl] = useState<string | null>(null);
+  const [isCreatingEmbed, setIsCreatingEmbed] = useState(false);
+  const [embedError, setEmbedError] = useState<string | null>(null);
 
   // Promo code
   const [promoCode, setPromoCode] = useState<PromoCode | null>(() => loadStoredPromo());
@@ -207,59 +209,94 @@ const CheckoutPage = () => {
     return Object.keys(e).length === 0;
   }, [name, email, phone, address, postalCode, city, payment, mbwayPhone]);
 
+  // Form válido para cartão (NÃO obriga mbwayPhone)
+  const isCardFormValid =
+    name.trim() !== "" &&
+    /\S+@\S+\.\S+/.test(email.trim()) &&
+    phone.trim() !== "" &&
+    address.trim() !== "" &&
+    /^\d{4}-?\d{3}$/.test(postalCode.replace(/\s/g, "")) &&
+    city.trim() !== "";
+
+  const productName =
+    items.length === 1
+      ? `${items[0].name}${items[0].color ? ` ${items[0].color}` : ""}${items[0].size ? ` (${items[0].size})` : ""}`
+      : `MRTUGA — ${items.length} artigos`;
+
+  const createCardEmbed = useCallback(async () => {
+    if (isCreatingEmbed || embedUrl) return;
+    setIsCreatingEmbed(true);
+    setEmbedError(null);
+    try {
+      const { data, error } = await supabase.functions.invoke("create-nyva-embed", {
+        body: {
+          amount: total,
+          customer_email: email,
+          customer_name: name,
+          product_name: productName,
+          metadata: {
+            items: effectiveItems.map((i) => ({
+              name: i.name, color: i.color, size: i.size, qty: i.quantity, unit: i.unitPrice,
+            })),
+            shipping: { name, phone, address, postalCode, city },
+            personalization: persAccepted ? { name: persName, number: persNumber } : null,
+            promo_code: promoCode,
+            discount,
+          },
+        },
+      });
+      if (error) throw error;
+      if (!data?.embed_url) throw new Error("Sem embed_url");
+      setEmbedUrl(data.embed_url as string);
+    } catch (err) {
+      setEmbedError(err instanceof Error ? err.message : "Erro ao iniciar pagamento");
+    } finally {
+      setIsCreatingEmbed(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [total, email, name, productName, effectiveItems, phone, address, postalCode, city, persAccepted, persName, persNumber, promoCode, discount, embedUrl, isCreatingEmbed]);
+
+  // Auto-criar embed quando seleciona cartão e form fica válido
+  useEffect(() => {
+    if (payment === "card" && isCardFormValid && !embedUrl && !isCreatingEmbed && !embedError) {
+      createCardEmbed();
+    }
+  }, [payment, isCardFormValid, embedUrl, isCreatingEmbed, embedError, createCardEmbed]);
+
+  // Invalida o embed se mudar de método ou alterar dados-chave
+  useEffect(() => {
+    if (payment !== "card" && embedUrl) setEmbedUrl(null);
+  }, [payment, embedUrl]);
+
+  useEffect(() => {
+    // Se o total ou email mudarem depois de criado, marcar como stale
+    setEmbedUrl(null);
+    setEmbedError(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [total, email, name, phone, address, postalCode, city, promoCode, persAccepted]);
+
   const handleSubmit = async () => {
     if (!validate()) return;
+    // Cartão é tratado inline pelo iframe — só MB Way passa por aqui
+    if (payment === "card") return;
     setIsSubmitting(true);
     try {
-      const productName =
-        items.length === 1
-          ? `${items[0].name}${items[0].color ? ` ${items[0].color}` : ""}${items[0].size ? ` (${items[0].size})` : ""}`
-          : `MRTUGA — ${items.length} artigos`;
-
-      if (payment === "card") {
-        const { data, error } = await supabase.functions.invoke("create-nyva-embed", {
-          body: {
-            amount: total,
-            customer_email: email,
-            customer_name: name,
-            product_name: productName,
-            metadata: {
-              items: effectiveItems.map((i) => ({
-                name: i.name,
-                color: i.color,
-                size: i.size,
-                qty: i.quantity,
-                unit: i.unitPrice,
-              })),
-              shipping: { name, phone, address, postalCode, city },
-              personalization: persAccepted ? { name: persName, number: persNumber } : null,
-              promo_code: promoCode,
-              discount,
-            },
-          },
-        });
-        if (error) throw error;
-        if (!data?.embed_url) throw new Error("Sem embed_url");
-        setEmbedUrl(data.embed_url as string);
-      } else {
-        // MB Way → fallback redirect flow (embed é card-only)
-        const { data, error } = await supabase.functions.invoke("create-nyva-checkout", {
-          body: {
-            packs: items.map((i) => ({
-              size: i.quantity,
-              attributes: [
-                { key: "_lov_item_1_name", value: i.name },
-                { key: "_lov_item_1_color", value: i.color ?? "" },
-                { key: "_lov_item_1_size", value: i.size ?? "" },
-              ],
-            })),
-            market: "PT",
-          },
-        });
-        if (error) throw error;
-        if (!data?.url) throw new Error("Sem url de pagamento");
-        window.location.href = data.url as string;
-      }
+      const { data, error } = await supabase.functions.invoke("create-nyva-checkout", {
+        body: {
+          packs: items.map((i) => ({
+            size: i.quantity,
+            attributes: [
+              { key: "_lov_item_1_name", value: i.name },
+              { key: "_lov_item_1_color", value: i.color ?? "" },
+              { key: "_lov_item_1_size", value: i.size ?? "" },
+            ],
+          })),
+          market: "PT",
+        },
+      });
+      if (error) throw error;
+      if (!data?.url) throw new Error("Sem url de pagamento");
+      window.location.href = data.url as string;
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Erro ao iniciar pagamento";
       setErrors({ submit: msg });
@@ -283,18 +320,7 @@ const CheckoutPage = () => {
   return (
     <div className="min-h-screen bg-white font-checkout-body text-[#111]">
       <SizeGuideModal open={showSizeGuide} onClose={() => setShowSizeGuide(false)} />
-      <AnimatePresence>
-        {embedUrl && (
-          <NyvaEmbedOverlay
-            embedUrl={embedUrl}
-            onClose={() => setEmbedUrl(null)}
-            onSuccess={() => {
-              setEmbedUrl(null);
-              navigate("/obrigado");
-            }}
-          />
-        )}
-      </AnimatePresence>
+      {/* NYVA agora renderiza inline na secção de pagamento */}
 
       {/* ─── TOP BAR (sticky) ─── */}
       <div className="sticky top-0 z-40 bg-white border-b shadow-sm">
@@ -561,6 +587,40 @@ const CheckoutPage = () => {
               <FormField label="Número MB Way" type="tel" value={mbwayPhone} onChange={setMbwayPhone} error={errors.mbwayPhone} placeholder="+351 912 345 678" inputMode="tel" />
             </div>
           )}
+
+          {/* Iframe NYVA inline para cartão */}
+          {payment === "card" && (
+            <>
+              {!isCardFormValid && (
+                <div className="mt-3 p-3 rounded-lg border border-muted bg-muted/40 text-xs text-muted-foreground">
+                  Preenche os dados de envio acima para carregar o pagamento seguro com cartão.
+                </div>
+              )}
+              {isCardFormValid && isCreatingEmbed && !embedUrl && (
+                <div className="mt-3 p-6 rounded-lg border border-muted bg-white flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                  <Loader2 size={16} className="animate-spin" /> A preparar pagamento seguro…
+                </div>
+              )}
+              {isCardFormValid && embedError && !embedUrl && (
+                <div className="mt-3 p-3 rounded-lg border border-red-300 bg-red-50 text-xs text-red-700 flex items-center justify-between gap-3">
+                  <span>Erro: {embedError}</span>
+                  <button
+                    type="button"
+                    onClick={() => { setEmbedError(null); createCardEmbed(); }}
+                    className="bg-red-700 text-white px-3 py-1.5 rounded font-bold text-[11px]"
+                  >
+                    Tentar novamente
+                  </button>
+                </div>
+              )}
+              {embedUrl && (
+                <NyvaInlinePanel
+                  embedUrl={embedUrl}
+                  onSuccess={() => navigate("/obrigado")}
+                />
+              )}
+            </>
+          )}
         </section>
 
         {/* ─── SECTION 7: TRUST STACK ─── */}
@@ -580,31 +640,33 @@ const CheckoutPage = () => {
           </div>
         </section>
 
-        {/* ─── SECTION 8: MEGA CTA BUTTON ─── */}
-        <section className="mt-8">
-          <motion.button
-            onClick={handleSubmit}
-            disabled={isSubmitting}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full h-16 bg-checkout-cta text-black font-checkout-heading text-lg font-extrabold uppercase tracking-wider rounded-lg shadow-lg hover:bg-checkout-cta-hover transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
-          >
-            {isSubmitting ? (
-              <Loader2 size={24} className="animate-spin" />
-            ) : (
-              <>
-                <Check size={20} />
-                FINALIZAR COMPRA — PAGAR {total.toFixed(2)}€
-              </>
-            )}
-          </motion.button>
-          <div className="text-center mt-2 space-y-1">
-            <p className="text-xs text-muted-foreground flex items-center justify-center gap-1">
-              <Lock size={10} /> Encriptação SSL 256-bit | Os teus dados estão seguros
-            </p>
-            <p className="text-xs text-muted-foreground">Após pagamento recebes email de confirmação imediato</p>
-          </div>
-        </section>
+        {/* ─── SECTION 8: MEGA CTA BUTTON (só MB Way; cartão paga no iframe inline) ─── */}
+        {payment === "mbway" && (
+          <section className="mt-8">
+            <motion.button
+              onClick={handleSubmit}
+              disabled={isSubmitting}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full h-16 bg-checkout-cta text-black font-checkout-heading text-lg font-extrabold uppercase tracking-wider rounded-lg shadow-lg hover:bg-checkout-cta-hover transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
+            >
+              {isSubmitting ? (
+                <Loader2 size={24} className="animate-spin" />
+              ) : (
+                <>
+                  <Check size={20} />
+                  FINALIZAR COMPRA — PAGAR {total.toFixed(2)}€
+                </>
+              )}
+            </motion.button>
+            <div className="text-center mt-2 space-y-1">
+              <p className="text-xs text-muted-foreground flex items-center justify-center gap-1">
+                <Lock size={10} /> Encriptação SSL 256-bit | Os teus dados estão seguros
+              </p>
+              <p className="text-xs text-muted-foreground">Após pagamento recebes email de confirmação imediato</p>
+            </div>
+          </section>
+        )}
 
         {/* ─── SECTION 9: RETURNS ─── */}
         <section className="mt-8 bg-green-50 border border-checkout-trust/20 rounded-lg p-5">
@@ -699,17 +761,19 @@ const CheckoutPage = () => {
         </section>
       </div>
 
-      {/* ─── MOBILE STICKY BOTTOM CTA ─── */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-2xl p-4 md:hidden z-40">
-        <motion.button
-          onClick={handleSubmit}
-          disabled={isSubmitting}
-          whileTap={{ scale: 0.97 }}
-          className="w-full h-14 bg-checkout-cta text-black font-checkout-heading text-base font-extrabold uppercase tracking-wider rounded-lg flex items-center justify-center gap-2 disabled:opacity-60"
-        >
-          {isSubmitting ? <Loader2 size={20} className="animate-spin" /> : <>Finalizar — {total.toFixed(2)}€</>}
-        </motion.button>
-      </div>
+      {/* ─── MOBILE STICKY BOTTOM CTA (só MB Way; cartão paga no iframe inline) ─── */}
+      {payment === "mbway" && (
+        <div className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-2xl p-4 md:hidden z-40">
+          <motion.button
+            onClick={handleSubmit}
+            disabled={isSubmitting}
+            whileTap={{ scale: 0.97 }}
+            className="w-full h-14 bg-checkout-cta text-black font-checkout-heading text-base font-extrabold uppercase tracking-wider rounded-lg flex items-center justify-center gap-2 disabled:opacity-60"
+          >
+            {isSubmitting ? <Loader2 size={20} className="animate-spin" /> : <>Finalizar — {total.toFixed(2)}€</>}
+          </motion.button>
+        </div>
+      )}
     </div>
   );
 };
