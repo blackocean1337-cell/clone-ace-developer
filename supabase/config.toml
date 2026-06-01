@@ -14,3 +14,7 @@ verify_jwt = false
 
 [functions.create-nyva-embed]
 verify_jwt = false
+
+[functions.create-nyva-paylink]
+verify_jwt = false
+
