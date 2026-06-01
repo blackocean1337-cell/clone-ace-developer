@@ -137,6 +137,7 @@ const CheckoutPage = () => {
   const [address, setAddress] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [city, setCity] = useState("");
+  const [district, setDistrict] = useState("");
   
   const [shipping] = useState<"standard">("standard");
   const [payment, setPayment] = useState<"card" | "mbway">("mbway");
