@@ -247,37 +247,58 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
                 onClick={() => setPromoOpen(!promoOpen)}
                 className="w-full flex items-center justify-between py-3 font-display text-sm font-bold tracking-[0.15em] text-fincut-black uppercase">
                 
-                    CÓDIGO PROMO
+                    <span className="flex items-center gap-2">
+                      CÓDIGO PROMO
+                      {promoCode && <span className="text-[10px] bg-checkout-trust text-white px-2 py-0.5 rounded normal-case tracking-normal">✓ {promoCode}</span>}
+                    </span>
                     <ChevronDown
                   size={16}
                   className={`transition-transform duration-200 ${promoOpen ? "rotate-180" : ""}`} />
                 
                   </button>
-                  {promoOpen &&
-              <div className="flex gap-2 mb-4">
-                      <input
-                  type="text"
-                  value={promoCode}
-                  onChange={(e) => setPromoCode(e.target.value)}
-                  placeholder="Introduza o código"
-                  className="flex-1 border border-muted px-3 py-2 font-body text-sm text-fincut-black placeholder:text-muted-foreground focus:outline-none focus:border-fincut-black" />
-                
-                      <button className="bg-fincut-black text-white px-4 py-2 font-display text-xs font-bold tracking-widest">
-                        APLICAR
-                      </button>
+                  {promoOpen && (
+                    <div className="mb-4">
+                      {promoCode ? (
+                        <div className="flex items-center justify-between bg-checkout-trust/10 border border-checkout-trust/30 rounded px-3 py-2">
+                          <span className="text-xs font-bold text-checkout-trust">✓ {promoCode} aplicado — tudo a 1€</span>
+                          <button type="button" onClick={handleRemovePromo} className="text-[10px] underline text-muted-foreground hover:text-fincut-black">remover</button>
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="flex gap-2">
+                            <input
+                              type="text"
+                              value={promoInput}
+                              onChange={(e) => { setPromoInput(e.target.value); setPromoError(null); }}
+                              onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); handleApplyPromo(); } }}
+                              placeholder="Introduza o código"
+                              className="flex-1 border border-muted px-3 py-2 font-body text-sm text-fincut-black placeholder:text-muted-foreground focus:outline-none focus:border-fincut-black" />
+                            <button type="button" onClick={handleApplyPromo} className="bg-fincut-black text-white px-4 py-2 font-display text-xs font-bold tracking-widest">
+                              APLICAR
+                            </button>
+                          </div>
+                          {promoError && <p className="text-[11px] text-red-600 mt-1">{promoError}</p>}
+                        </div>
+                      )}
                     </div>
-              }
+                  )}
                 </div>
 
                 {/* Footer CTA */}
                 <div className="px-6 pb-6 mt-auto pt-4 border-t border-muted">
+                  {discount > 0 && (
+                    <div className="flex justify-between text-xs mb-2 text-checkout-trust font-bold">
+                      <span>Desconto ({promoCode})</span>
+                      <span>−{discount.toFixed(2)} €</span>
+                    </div>
+                  )}
                   <button 
                     onClick={() => {
                       onClose?.();
                       navigate("/checkout");
                     }}
                     className="w-full h-14 bg-[#fff176] text-fincut-black font-display text-sm font-bold tracking-[0.15em] uppercase hover:bg-[#ffee58] transition-colors duration-200 flex items-center justify-center gap-2">
-                    PASSAR AO PAGAMENTO | {totalPrice} €
+                    PASSAR AO PAGAMENTO | {discount > 0 && <span className="line-through opacity-60 mr-1">{originalTotalPrice.toFixed(2)} €</span>}{totalPrice.toFixed(2)} €
                   </button>
 
 
