@@ -20,16 +20,25 @@ const FREE_SHIPPING_THRESHOLD = 0;
 const SHIPPING_COST = 0;
 const CART_TIMER_MINUTES = 15;
 
-/* ─── PT Postal Code → City lookup (simplified) ─── */
+/* ─── PT Postal Code → City / District lookup (simplified) ─── */
 const POSTAL_CITY_MAP: Record<string, string> = {
   "1": "Lisboa", "2": "Lisboa", "3": "Coimbra", "4": "Porto",
   "5": "Vila Real", "6": "Castelo Branco", "7": "Évora", "8": "Faro",
   "9": "Funchal",
 };
+const POSTAL_DISTRICT_MAP: Record<string, string> = {
+  "1": "Lisboa", "2": "Setúbal", "3": "Coimbra", "4": "Porto",
+  "5": "Vila Real", "6": "Castelo Branco", "7": "Évora", "8": "Faro",
+  "9": "Madeira",
+};
 
 function getCityFromPostal(code: string): string {
   const first = code.charAt(0);
   return POSTAL_CITY_MAP[first] || "";
+}
+function getDistrictFromPostal(code: string): string {
+  const first = code.charAt(0);
+  return POSTAL_DISTRICT_MAP[first] || "";
 }
 
 /* ─── Delivery date calculation (skip weekends) ─── */
