@@ -234,6 +234,14 @@ const CheckoutPage = () => {
           customer_email: email,
           customer_name: name,
           product_name: productName,
+          billing_address: {
+            name,
+            line1: address,
+            city,
+            state: city,
+            postalCode,
+            country: "PT",
+          },
           metadata: {
             items: effectiveItems.map((i) => ({
               name: i.name, color: i.color, size: i.size, qty: i.quantity, unit: i.unitPrice,
