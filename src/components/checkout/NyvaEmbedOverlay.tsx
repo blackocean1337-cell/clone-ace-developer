@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { X, Lock } from "lucide-react";
-import checkoutLogo from "@/assets/checkout-logo.png";
 
 interface Props {
   embedUrl: string;
