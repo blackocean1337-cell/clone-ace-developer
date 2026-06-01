@@ -607,6 +607,32 @@ const CheckoutPage = () => {
           </div>
         </section>
 
+        {/* ─── SECTION 5b: BILLING ADDRESS ─── */}
+        <section className="mt-6">
+          <h2 className="font-checkout-heading text-xl font-bold mb-3">Morada de Faturação</h2>
+          <label className="flex items-center gap-2 mb-3 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={billingSameAsShipping}
+              onChange={(e) => setBillingSameAsShipping(e.target.checked)}
+              className="w-4 h-4 accent-black"
+            />
+            <span className="text-sm">Igual à morada de entrega</span>
+          </label>
+          {!billingSameAsShipping && (
+            <div className="space-y-3">
+              <FormField label="Nome completo" value={billingName} onChange={setBillingName} error={errors.billingName} placeholder="Nome do titular" />
+              <FormField label="Morada completa" value={billingAddress} onChange={setBillingAddress} error={errors.billingAddress} placeholder="Rua, Nº, Andar" />
+              <div className="grid grid-cols-2 gap-3">
+                <FormField label="Código Postal" value={billingPostalCode} onChange={setBillingPostalCode} error={errors.billingPostalCode} placeholder="1000-001" inputMode="numeric" />
+                <FormField label="Cidade" value={billingCity} onChange={setBillingCity} error={errors.billingCity} placeholder="Lisboa" />
+              </div>
+              <FormField label="Distrito" value={billingDistrict} onChange={setBillingDistrict} error={errors.billingDistrict} placeholder="Lisboa, Porto, Setúbal…" />
+            </div>
+          )}
+        </section>
+
+
         {/* ─── SECTION 6: PAYMENT METHODS ─── */}
         <section className="mt-6">
           <h2 className="font-checkout-heading text-xl font-bold mb-3">Método de Pagamento</h2>
