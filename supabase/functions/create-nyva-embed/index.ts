@@ -26,6 +26,7 @@ serve(async (req) => {
     const customerEmail = String(body?.customer_email ?? "").trim();
     const customerName = String(body?.customer_name ?? "").trim();
     const productName = String(body?.product_name ?? "MRTUGA Order").slice(0, 200);
+    const billingAddress = body?.billing_address ?? null;
     const metadata = body?.metadata ?? {};
 
     if (!amount || amount <= 0) {
@@ -55,6 +56,9 @@ serve(async (req) => {
       return_origin: "https://mrtuga.co",
     };
     if (customerName) payload.customer_name = customerName;
+    if (billingAddress && typeof billingAddress === "object") {
+      payload.billing_address = billingAddress;
+    }
 
     const res = await fetch(`${NYVA_BASE}/api/partner/onboarding-sessions`, {
       method: "POST",
