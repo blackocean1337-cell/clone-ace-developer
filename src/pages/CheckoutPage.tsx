@@ -359,7 +359,7 @@ const CheckoutPage = () => {
                   className="overflow-hidden"
                 >
                   <div className="pt-3 mt-3 border-t space-y-2">
-                    {items.map((item, idx) => (
+                    {effectiveItems.map((item, idx) => (
                       <div key={idx} className="flex items-center gap-3">
                         <div className="w-12 h-12 bg-white rounded border flex items-center justify-center flex-shrink-0">
                           <img src={item.image || "/lovable-uploads/dd6d21cb-9655-4120-bc20-560351fcf99d.png"} alt={item.name} className="w-10 h-10 object-contain" />
