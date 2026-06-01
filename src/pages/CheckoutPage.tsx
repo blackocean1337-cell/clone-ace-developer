@@ -146,8 +146,17 @@ const CheckoutPage = () => {
   // NYVA embed overlay
   const [embedUrl, setEmbedUrl] = useState<string | null>(null);
 
-  // Calculations
-  const subtotal = items.reduce((s, i) => s + i.unitPrice * i.quantity, 0);
+  // Promo code
+  const [promoCode, setPromoCode] = useState<PromoCode | null>(() => loadStoredPromo());
+  const [promoInput, setPromoInput] = useState("");
+  const [promoError, setPromoError] = useState<string | null>(null);
+
+  // Calculations (com promo aplicado)
+  const promo = applyPromo(items, promoCode);
+  const effectiveItems = promo.items;
+  const originalSubtotal = promo.originalSubtotal;
+  const subtotal = promo.subtotal;
+  const discount = promo.discount;
   const shippingCost = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
   const personalizationCost = persAccepted ? 9.99 : 0;
   const total = subtotal + shippingCost + personalizationCost;
@@ -155,6 +164,24 @@ const CheckoutPage = () => {
   const shippingProgress = Math.min(1, subtotal / FREE_SHIPPING_THRESHOLD);
   const deliveryDays = 5;
   const deliveryDate = getDeliveryDate(deliveryDays);
+
+  const applyPromoCode = () => {
+    const valid = normalizePromo(promoInput);
+    if (!valid) {
+      setPromoError("Código inválido");
+      return;
+    }
+    setPromoCode(valid);
+    saveStoredPromo(valid);
+    setPromoInput("");
+    setPromoError(null);
+  };
+
+  const removePromoCode = () => {
+    setPromoCode(null);
+    saveStoredPromo(null);
+    setPromoError(null);
+  };
 
   // Stock simulation
   const stockLeft = 3;
