@@ -394,7 +394,7 @@ const CheckoutPage = () => {
                       )}
                       <div className="flex justify-between">
                         <span>Envio</span>
-                        {shippingCost === 0 ? <span className="text-checkout-trust font-bold">GRÁTIS</span> : <span>{shippingCost.toFixed(2)}€</span>}
+                        <span className="text-checkout-trust font-bold">GRÁTIS</span>
                       </div>
                       {persAccepted && <div className="flex justify-between"><span>Personalização</span><span>{personalizationCost.toFixed(2)}€</span></div>}
                     </div>
