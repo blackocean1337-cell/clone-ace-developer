@@ -257,11 +257,11 @@ const CheckoutPage = () => {
           customer_name: name,
           product_name: productName,
           billing_address: {
-            name,
-            line1: address,
-            city,
-            state: district,
-            postalCode,
+            name: billingSameAsShipping ? name : billingName,
+            line1: billingSameAsShipping ? address : billingAddress,
+            city: billingSameAsShipping ? city : billingCity,
+            state: billingSameAsShipping ? district : billingDistrict,
+            postalCode: billingSameAsShipping ? postalCode : billingPostalCode,
             country: "PT",
           },
           metadata: {
