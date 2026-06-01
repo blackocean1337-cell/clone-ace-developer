@@ -284,7 +284,7 @@ const CheckoutPage = () => {
       setIsCreatingEmbed(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [total, email, name, productName, effectiveItems, phone, address, postalCode, city, district, persAccepted, persName, persNumber, promoCode, discount, embedUrl, isCreatingEmbed]);
+  }, [total, email, name, productName, effectiveItems, phone, address, postalCode, city, district, billingSameAsShipping, billingName, billingAddress, billingPostalCode, billingCity, billingDistrict, persAccepted, persName, persNumber, promoCode, discount, embedUrl, isCreatingEmbed]);
 
   // Auto-criar embed quando seleciona cartão e form fica válido
   useEffect(() => {
