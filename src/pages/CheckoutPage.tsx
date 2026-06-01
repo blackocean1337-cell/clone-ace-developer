@@ -259,7 +259,7 @@ const CheckoutPage = () => {
             items: effectiveItems.map((i) => ({
               name: i.name, color: i.color, size: i.size, qty: i.quantity, unit: i.unitPrice,
             })),
-            shipping: { name, phone, address, postalCode, city },
+            shipping: { name, phone, address, postalCode, city, district },
             personalization: persAccepted ? { name: persName, number: persNumber } : null,
             promo_code: promoCode,
             discount,
