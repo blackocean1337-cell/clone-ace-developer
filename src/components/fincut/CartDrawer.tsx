@@ -30,6 +30,8 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
   const [promoCode, setPromoCode] = useState<PromoCode | null>(() => loadStoredPromo());
   const [promoInput, setPromoInput] = useState("");
   const [promoError, setPromoError] = useState<string | null>(null);
+  const [isCreatingLink, setIsCreatingLink] = useState(false);
+  const [linkError, setLinkError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
