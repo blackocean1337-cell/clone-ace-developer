@@ -587,6 +587,40 @@ const CheckoutPage = () => {
               <FormField label="Número MB Way" type="tel" value={mbwayPhone} onChange={setMbwayPhone} error={errors.mbwayPhone} placeholder="+351 912 345 678" inputMode="tel" />
             </div>
           )}
+
+          {/* Iframe NYVA inline para cartão */}
+          {payment === "card" && (
+            <>
+              {!isCardFormValid && (
+                <div className="mt-3 p-3 rounded-lg border border-muted bg-muted/40 text-xs text-muted-foreground">
+                  Preenche os dados de envio acima para carregar o pagamento seguro com cartão.
+                </div>
+              )}
+              {isCardFormValid && isCreatingEmbed && !embedUrl && (
+                <div className="mt-3 p-6 rounded-lg border border-muted bg-white flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                  <Loader2 size={16} className="animate-spin" /> A preparar pagamento seguro…
+                </div>
+              )}
+              {isCardFormValid && embedError && !embedUrl && (
+                <div className="mt-3 p-3 rounded-lg border border-red-300 bg-red-50 text-xs text-red-700 flex items-center justify-between gap-3">
+                  <span>Erro: {embedError}</span>
+                  <button
+                    type="button"
+                    onClick={() => { setEmbedError(null); createCardEmbed(); }}
+                    className="bg-red-700 text-white px-3 py-1.5 rounded font-bold text-[11px]"
+                  >
+                    Tentar novamente
+                  </button>
+                </div>
+              )}
+              {embedUrl && (
+                <NyvaInlinePanel
+                  embedUrl={embedUrl}
+                  onSuccess={() => navigate("/obrigado")}
+                />
+              )}
+            </>
+          )}
         </section>
 
         {/* ─── SECTION 7: TRUST STACK ─── */}
