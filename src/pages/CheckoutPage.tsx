@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { supabase } from "@/integrations/supabase/client";
-import NyvaEmbedOverlay from "@/components/checkout/NyvaEmbedOverlay";
+import NyvaInlinePanel from "@/components/checkout/NyvaInlinePanel";
 import mbwayLogo from "@/assets/mbway-logo.png";
 import cardLogo from "@/assets/visa-mastercard-logo.png";
 import { applyPromo, loadStoredPromo, saveStoredPromo, normalizePromo, type PromoCode } from "@/lib/promo";
