@@ -462,11 +462,7 @@ const CheckoutPage = () => {
                 <p className="text-xs text-muted-foreground">Recebe até: <strong className="text-foreground">{deliveryDate}</strong></p>
               </div>
             </div>
-            {shippingCost === 0 ? (
-              <span className="text-sm font-bold text-checkout-trust">GRÁTIS ✓</span>
-            ) : (
-              <span className="text-sm font-bold">{SHIPPING_COST.toFixed(2).replace(".", ",")}€</span>
-            )}
+            <span className="text-sm font-bold text-checkout-trust">GRÁTIS ✓</span>
           </div>
 
           {remainingForFreeShipping > 0 && (
