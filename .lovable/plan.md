@@ -1,30 +1,21 @@
-# Iframe NYVA inline no /checkout
+Atualmente o formulário recolhe: nome, email, telemóvel, morada, código postal, cidade. Para enviar um `billing_address` completo à NYVA falta o **distrito** (mapeia para `state`). O país é fixo PT.
 
-Mover o iframe da NYVA para **dentro** da página `/checkout`, logo abaixo do seletor MB Way / Cartão, em vez de abrir como overlay full-screen.
+## Alterações em `src/pages/CheckoutPage.tsx`
 
-## Comportamento
+1. **Novo state**: `const [district, setDistrict] = useState("")`.
+2. **Novo campo no formulário** (logo a seguir ao código postal/cidade): `FormField` "Distrito" com placeholder "Lisboa, Porto, Setúbal…". Largura igual à da cidade (grid 2 colunas no desktop).
+3. **Auto-preencher distrito a partir do CP** quando possível — estender `getCityFromPostal` (ou criar `getDistrictFromPostal`) com mapeamento simples por prefixo (1xxx→Lisboa, 2xxx→Setúbal/Lisboa, 3xxx→Coimbra, 4xxx→Porto, etc.). Não bloqueia edição manual.
+4. **Validação**: adicionar `if (!district.trim()) e.district = "Distrito é obrigatório"` em `validate()` e em `isCardFormValid`.
+5. **`createCardEmbed`**: substituir o `state: city` placeholder pelo `state: district` real no objeto `billing_address`.
+6. **`handleSubmit` (MB Way / Shopify fallback)**: incluir distrito nos atributos enviados ao Shopify, se aplicável (manter consistência).
 
-- **MB Way selecionado** (default): nada muda — mostra o campo "Número MB Way" + botão grande "FINALIZAR COMPRA — PAGAR Xé" como hoje.
-- **Cartão selecionado**:
-  1. Painel inline aparece debaixo dos dois botões de método.
-  2. Se os dados de envio (email, nome, telemóvel, morada, CP, cidade) **ainda não estão preenchidos** → mostra aviso: "Preenche os dados acima para pagar com cartão" + link âncora.
-  3. Quando válido → chama `create-nyva-embed` automaticamente (uma vez), com loader "A preparar pagamento seguro…".
-  4. Quando `embed_url` chega → renderiza `<iframe>` inline (≥620 px de altura, full width do container) com header mini "🔒 PAGAMENTO SEGURO".
-  5. O botão grande "FINALIZAR COMPRA" **desaparece** com cartão (o pagamento é feito dentro do iframe). MB Way mantém o botão.
-  6. Se o utilizador editar campos depois → invalida o iframe e mostra botão "Atualizar pagamento" para regenerar.
+## Sem alterações
 
-## Detalhes técnicos
-
-- Remover o uso do `NyvaEmbedOverlay` no `CheckoutPage.tsx` (o componente pode ficar, mas deixa de ser importado/renderizado).
-- Novo `useEffect` que dispara `create-nyva-embed` quando `payment === "card"` && form válido && `embedUrl` está null && total > 0. Debounce simples via flag `isCreatingEmbed` para evitar chamadas duplicadas.
-- `handleSubmit` deixa de ter ramo `card` — só trata MB Way (Shopify fallback).
-- O iframe inline reutiliza os mesmos `allow` e `postMessage` listener de sucesso/cancelamento que estão no `NyvaEmbedOverlay`.
-- Recálculo do `total` (com promo TUGA1) já é o que passa para `amount`.
-- Em caso de erro do edge function, mostrar mensagem inline com botão "Tentar novamente".
+- Edge function `create-nyva-embed` já reencaminha `billing_address` tal como vem do cliente.
+- País continua fixo `"PT"` no payload.
+- Sem alterações em backend, RLS ou config.
 
 ## Ficheiros
 
-- `src/pages/CheckoutPage.tsx` — remover overlay, adicionar painel inline com iframe + estados (`isCreatingEmbed`, `embedError`), ocultar mega-CTA quando `payment === "card"`.
-- `src/components/checkout/NyvaInlinePanel.tsx` (novo, opcional) — encapsula iframe + listener `postMessage` + header mini. Mantém o código do `CheckoutPage` legível.
-
-Sem alterações em edge functions ou backend.
+- `src/pages/CheckoutPage.tsx` — novo state, campo no JSX, validação e payload.
+- (opcional) helper de CP→distrito no mesmo ficheiro ou em `src/lib/`.
