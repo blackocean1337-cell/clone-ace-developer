@@ -375,12 +375,55 @@ const CheckoutPage = () => {
                       </div>
                     ))}
                     <div className="pt-2 border-t text-xs space-y-1">
-                      <div className="flex justify-between"><span>Subtotal</span><span>{subtotal.toFixed(2)}€</span></div>
+                      <div className="flex justify-between">
+                        <span>Subtotal</span>
+                        {discount > 0 ? (
+                          <span>
+                            <span className="line-through text-muted-foreground mr-1">{originalSubtotal.toFixed(2)}€</span>
+                            <span className="font-bold">{subtotal.toFixed(2)}€</span>
+                          </span>
+                        ) : (
+                          <span>{subtotal.toFixed(2)}€</span>
+                        )}
+                      </div>
+                      {discount > 0 && (
+                        <div className="flex justify-between text-checkout-trust font-bold">
+                          <span>Desconto ({promoCode})</span>
+                          <span>−{discount.toFixed(2)}€</span>
+                        </div>
+                      )}
                       <div className="flex justify-between">
                         <span>Envio</span>
                         {shippingCost === 0 ? <span className="text-checkout-trust font-bold">GRÁTIS</span> : <span>{shippingCost.toFixed(2)}€</span>}
                       </div>
                       {persAccepted && <div className="flex justify-between"><span>Personalização</span><span>{personalizationCost.toFixed(2)}€</span></div>}
+                    </div>
+
+                    {/* Promo code */}
+                    <div className="pt-3 mt-2 border-t">
+                      {promoCode ? (
+                        <div className="flex items-center justify-between bg-checkout-trust/10 border border-checkout-trust/30 rounded px-3 py-2">
+                          <span className="text-xs font-bold text-checkout-trust">✓ {promoCode} aplicado — tudo a 1€</span>
+                          <button type="button" onClick={removePromoCode} className="text-[10px] underline text-muted-foreground hover:text-[#111]">remover</button>
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="flex gap-2">
+                            <input
+                              type="text"
+                              value={promoInput}
+                              onChange={(e) => { setPromoInput(e.target.value); setPromoError(null); }}
+                              onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); applyPromoCode(); } }}
+                              placeholder="Código promocional"
+                              className="flex-1 border border-muted px-3 py-2 text-xs font-checkout-body focus:outline-none focus:border-[#111]"
+                            />
+                            <button type="button" onClick={applyPromoCode} className="bg-[#111] text-white px-3 py-2 text-[11px] font-bold tracking-wider uppercase">
+                              APLICAR
+                            </button>
+                          </div>
+                          {promoError && <p className="text-[10px] text-red-600 mt-1">{promoError}</p>}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </motion.div>
