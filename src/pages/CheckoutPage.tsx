@@ -573,6 +573,7 @@ const CheckoutPage = () => {
               <FormField label="Código Postal" value={postalCode} onChange={setPostalCode} error={errors.postalCode} placeholder="1000-001" inputMode="numeric" />
               <FormField label="Cidade" value={city} onChange={setCity} error={errors.city} placeholder="Lisboa" />
             </div>
+            <FormField label="Distrito" value={district} onChange={setDistrict} error={errors.district} placeholder="Lisboa, Porto, Setúbal…" />
             
           </div>
         </section>
