@@ -20,16 +20,25 @@ const FREE_SHIPPING_THRESHOLD = 0;
 const SHIPPING_COST = 0;
 const CART_TIMER_MINUTES = 15;
 
-/* ─── PT Postal Code → City lookup (simplified) ─── */
+/* ─── PT Postal Code → City / District lookup (simplified) ─── */
 const POSTAL_CITY_MAP: Record<string, string> = {
   "1": "Lisboa", "2": "Lisboa", "3": "Coimbra", "4": "Porto",
   "5": "Vila Real", "6": "Castelo Branco", "7": "Évora", "8": "Faro",
   "9": "Funchal",
 };
+const POSTAL_DISTRICT_MAP: Record<string, string> = {
+  "1": "Lisboa", "2": "Setúbal", "3": "Coimbra", "4": "Porto",
+  "5": "Vila Real", "6": "Castelo Branco", "7": "Évora", "8": "Faro",
+  "9": "Madeira",
+};
 
 function getCityFromPostal(code: string): string {
   const first = code.charAt(0);
   return POSTAL_CITY_MAP[first] || "";
+}
+function getDistrictFromPostal(code: string): string {
+  const first = code.charAt(0);
+  return POSTAL_DISTRICT_MAP[first] || "";
 }
 
 /* ─── Delivery date calculation (skip weekends) ─── */
@@ -128,6 +137,7 @@ const CheckoutPage = () => {
   const [address, setAddress] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [city, setCity] = useState("");
+  const [district, setDistrict] = useState("");
   
   const [shipping] = useState<"standard">("standard");
   const [payment, setPayment] = useState<"card" | "mbway">("mbway");
@@ -188,10 +198,11 @@ const CheckoutPage = () => {
   // Stock simulation
   const stockLeft = 3;
 
-  // Postal code → city
+  // Postal code → city + district
   useEffect(() => {
     if (postalCode.length >= 4) {
       setCity(getCityFromPostal(postalCode));
+      setDistrict((prev) => prev || getDistrictFromPostal(postalCode));
     }
   }, [postalCode]);
 
@@ -204,10 +215,11 @@ const CheckoutPage = () => {
     if (!address.trim()) e.address = "Morada é obrigatória";
     if (!postalCode.trim() || !/^\d{4}-?\d{3}$/.test(postalCode.replace(/\s/g, ""))) e.postalCode = "Código postal inválido (XXXX-XXX)";
     if (!city.trim()) e.city = "Cidade é obrigatória";
+    if (!district.trim()) e.district = "Distrito é obrigatório";
     if (payment === "mbway" && !mbwayPhone.trim()) e.mbwayPhone = "Número MB Way é obrigatório";
     setErrors(e);
     return Object.keys(e).length === 0;
-  }, [name, email, phone, address, postalCode, city, payment, mbwayPhone]);
+  }, [name, email, phone, address, postalCode, city, district, payment, mbwayPhone]);
 
   // Form válido para cartão (NÃO obriga mbwayPhone)
   const isCardFormValid =
@@ -216,7 +228,8 @@ const CheckoutPage = () => {
     phone.trim() !== "" &&
     address.trim() !== "" &&
     /^\d{4}-?\d{3}$/.test(postalCode.replace(/\s/g, "")) &&
-    city.trim() !== "";
+    city.trim() !== "" &&
+    district.trim() !== "";
 
   const productName =
     items.length === 1
@@ -238,7 +251,7 @@ const CheckoutPage = () => {
             name,
             line1: address,
             city,
-            state: city,
+            state: district,
             postalCode,
             country: "PT",
           },
@@ -246,7 +259,7 @@ const CheckoutPage = () => {
             items: effectiveItems.map((i) => ({
               name: i.name, color: i.color, size: i.size, qty: i.quantity, unit: i.unitPrice,
             })),
-            shipping: { name, phone, address, postalCode, city },
+            shipping: { name, phone, address, postalCode, city, district },
             personalization: persAccepted ? { name: persName, number: persNumber } : null,
             promo_code: promoCode,
             discount,
@@ -262,7 +275,7 @@ const CheckoutPage = () => {
       setIsCreatingEmbed(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [total, email, name, productName, effectiveItems, phone, address, postalCode, city, persAccepted, persName, persNumber, promoCode, discount, embedUrl, isCreatingEmbed]);
+  }, [total, email, name, productName, effectiveItems, phone, address, postalCode, city, district, persAccepted, persName, persNumber, promoCode, discount, embedUrl, isCreatingEmbed]);
 
   // Auto-criar embed quando seleciona cartão e form fica válido
   useEffect(() => {
@@ -564,6 +577,7 @@ const CheckoutPage = () => {
               <FormField label="Código Postal" value={postalCode} onChange={setPostalCode} error={errors.postalCode} placeholder="1000-001" inputMode="numeric" />
               <FormField label="Cidade" value={city} onChange={setCity} error={errors.city} placeholder="Lisboa" />
             </div>
+            <FormField label="Distrito" value={district} onChange={setDistrict} error={errors.district} placeholder="Lisboa, Porto, Setúbal…" />
             
           </div>
         </section>
