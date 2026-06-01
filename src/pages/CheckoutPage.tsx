@@ -16,8 +16,8 @@ import { applyPromo, loadStoredPromo, saveStoredPromo, normalizePromo, type Prom
 
 
 /* ─── CONSTANTS ─── */
-const FREE_SHIPPING_THRESHOLD = 50;
-const SHIPPING_COST = 4.90;
+const FREE_SHIPPING_THRESHOLD = 0;
+const SHIPPING_COST = 0;
 const CART_TIMER_MINUTES = 15;
 
 /* ─── PT Postal Code → City lookup (simplified) ─── */
@@ -394,7 +394,7 @@ const CheckoutPage = () => {
                       )}
                       <div className="flex justify-between">
                         <span>Envio</span>
-                        {shippingCost === 0 ? <span className="text-checkout-trust font-bold">GRÁTIS</span> : <span>{shippingCost.toFixed(2)}€</span>}
+                        <span className="text-checkout-trust font-bold">GRÁTIS</span>
                       </div>
                       {persAccepted && <div className="flex justify-between"><span>Personalização</span><span>{personalizationCost.toFixed(2)}€</span></div>}
                     </div>
@@ -462,11 +462,7 @@ const CheckoutPage = () => {
                 <p className="text-xs text-muted-foreground">Recebe até: <strong className="text-foreground">{deliveryDate}</strong></p>
               </div>
             </div>
-            {shippingCost === 0 ? (
-              <span className="text-sm font-bold text-checkout-trust">GRÁTIS ✓</span>
-            ) : (
-              <span className="text-sm font-bold">{SHIPPING_COST.toFixed(2).replace(".", ",")}€</span>
-            )}
+            <span className="text-sm font-bold text-checkout-trust">GRÁTIS ✓</span>
           </div>
 
           {remainingForFreeShipping > 0 && (
