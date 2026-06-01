@@ -224,7 +224,7 @@ const CheckoutPage = () => {
             customer_name: name,
             product_name: productName,
             metadata: {
-              items: items.map((i) => ({
+              items: effectiveItems.map((i) => ({
                 name: i.name,
                 color: i.color,
                 size: i.size,
@@ -233,6 +233,8 @@ const CheckoutPage = () => {
               })),
               shipping: { name, phone, address, postalCode, city },
               personalization: persAccepted ? { name: persName, number: persNumber } : null,
+              promo_code: promoCode,
+              discount,
             },
           },
         });
