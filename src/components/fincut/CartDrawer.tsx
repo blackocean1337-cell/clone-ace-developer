@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X, Minus, Plus, ChevronDown, Truck, ShoppingCart, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 const tshirtBlack = "/lovable-uploads/dd6d21cb-9655-4120-bc20-560351fcf99d.png";
 import { Link } from "react-router-dom";
+import { applyPromo, loadStoredPromo, saveStoredPromo, normalizePromo, type PromoCode } from "@/lib/promo";
 
 interface CartItem {
   name: string;
@@ -25,16 +26,40 @@ const FREE_SHIPPING_THRESHOLD = 55;
 
 const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps) => {
   const [promoOpen, setPromoOpen] = useState(false);
-  const [promoCode, setPromoCode] = useState("");
+  const [promoCode, setPromoCode] = useState<PromoCode | null>(() => loadStoredPromo());
+  const [promoInput, setPromoInput] = useState("");
+  const [promoError, setPromoError] = useState<string | null>(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (open) setPromoCode(loadStoredPromo());
+  }, [open]);
 
   if (!open) return null;
 
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
+  const promo = applyPromo(items, promoCode);
+  const originalTotalPrice = promo.originalSubtotal;
+  const totalPrice = promo.subtotal;
+  const discount = promo.discount;
   const remainingForFreeShipping = Math.max(0, FREE_SHIPPING_THRESHOLD - totalPrice);
   const shippingProgress = Math.min(1, totalPrice / FREE_SHIPPING_THRESHOLD);
   const hasFreeShipping = remainingForFreeShipping === 0;
+
+  const handleApplyPromo = () => {
+    const valid = normalizePromo(promoInput);
+    if (!valid) { setPromoError("Código inválido"); return; }
+    setPromoCode(valid);
+    saveStoredPromo(valid);
+    setPromoInput("");
+    setPromoError(null);
+  };
+
+  const handleRemovePromo = () => {
+    setPromoCode(null);
+    saveStoredPromo(null);
+    setPromoError(null);
+  };
 
   return (
     <AnimatePresence>
@@ -222,37 +247,58 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
                 onClick={() => setPromoOpen(!promoOpen)}
                 className="w-full flex items-center justify-between py-3 font-display text-sm font-bold tracking-[0.15em] text-fincut-black uppercase">
                 
-                    CÓDIGO PROMO
+                    <span className="flex items-center gap-2">
+                      CÓDIGO PROMO
+                      {promoCode && <span className="text-[10px] bg-checkout-trust text-white px-2 py-0.5 rounded normal-case tracking-normal">✓ {promoCode}</span>}
+                    </span>
                     <ChevronDown
                   size={16}
                   className={`transition-transform duration-200 ${promoOpen ? "rotate-180" : ""}`} />
                 
                   </button>
-                  {promoOpen &&
-              <div className="flex gap-2 mb-4">
-                      <input
-                  type="text"
-                  value={promoCode}
-                  onChange={(e) => setPromoCode(e.target.value)}
-                  placeholder="Introduza o código"
-                  className="flex-1 border border-muted px-3 py-2 font-body text-sm text-fincut-black placeholder:text-muted-foreground focus:outline-none focus:border-fincut-black" />
-                
-                      <button className="bg-fincut-black text-white px-4 py-2 font-display text-xs font-bold tracking-widest">
-                        APLICAR
-                      </button>
+                  {promoOpen && (
+                    <div className="mb-4">
+                      {promoCode ? (
+                        <div className="flex items-center justify-between bg-checkout-trust/10 border border-checkout-trust/30 rounded px-3 py-2">
+                          <span className="text-xs font-bold text-checkout-trust">✓ {promoCode} aplicado — tudo a 1€</span>
+                          <button type="button" onClick={handleRemovePromo} className="text-[10px] underline text-muted-foreground hover:text-fincut-black">remover</button>
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="flex gap-2">
+                            <input
+                              type="text"
+                              value={promoInput}
+                              onChange={(e) => { setPromoInput(e.target.value); setPromoError(null); }}
+                              onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); handleApplyPromo(); } }}
+                              placeholder="Introduza o código"
+                              className="flex-1 border border-muted px-3 py-2 font-body text-sm text-fincut-black placeholder:text-muted-foreground focus:outline-none focus:border-fincut-black" />
+                            <button type="button" onClick={handleApplyPromo} className="bg-fincut-black text-white px-4 py-2 font-display text-xs font-bold tracking-widest">
+                              APLICAR
+                            </button>
+                          </div>
+                          {promoError && <p className="text-[11px] text-red-600 mt-1">{promoError}</p>}
+                        </div>
+                      )}
                     </div>
-              }
+                  )}
                 </div>
 
                 {/* Footer CTA */}
                 <div className="px-6 pb-6 mt-auto pt-4 border-t border-muted">
+                  {discount > 0 && (
+                    <div className="flex justify-between text-xs mb-2 text-checkout-trust font-bold">
+                      <span>Desconto ({promoCode})</span>
+                      <span>−{discount.toFixed(2)} €</span>
+                    </div>
+                  )}
                   <button 
                     onClick={() => {
                       onClose?.();
                       navigate("/checkout");
                     }}
                     className="w-full h-14 bg-[#fff176] text-fincut-black font-display text-sm font-bold tracking-[0.15em] uppercase hover:bg-[#ffee58] transition-colors duration-200 flex items-center justify-center gap-2">
-                    PASSAR AO PAGAMENTO | {totalPrice} €
+                    PASSAR AO PAGAMENTO | {discount > 0 && <span className="line-through opacity-60 mr-1">{originalTotalPrice.toFixed(2)} €</span>}{totalPrice.toFixed(2)} €
                   </button>
 
 

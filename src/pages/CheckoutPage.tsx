@@ -12,6 +12,7 @@ import { supabase } from "@/integrations/supabase/client";
 import NyvaEmbedOverlay from "@/components/checkout/NyvaEmbedOverlay";
 import mbwayLogo from "@/assets/mbway-logo.png";
 import cardLogo from "@/assets/visa-mastercard-logo.png";
+import { applyPromo, loadStoredPromo, saveStoredPromo, normalizePromo, type PromoCode } from "@/lib/promo";
 
 
 /* ─── CONSTANTS ─── */
@@ -145,8 +146,17 @@ const CheckoutPage = () => {
   // NYVA embed overlay
   const [embedUrl, setEmbedUrl] = useState<string | null>(null);
 
-  // Calculations
-  const subtotal = items.reduce((s, i) => s + i.unitPrice * i.quantity, 0);
+  // Promo code
+  const [promoCode, setPromoCode] = useState<PromoCode | null>(() => loadStoredPromo());
+  const [promoInput, setPromoInput] = useState("");
+  const [promoError, setPromoError] = useState<string | null>(null);
+
+  // Calculations (com promo aplicado)
+  const promo = applyPromo(items, promoCode);
+  const effectiveItems = promo.items;
+  const originalSubtotal = promo.originalSubtotal;
+  const subtotal = promo.subtotal;
+  const discount = promo.discount;
   const shippingCost = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
   const personalizationCost = persAccepted ? 9.99 : 0;
   const total = subtotal + shippingCost + personalizationCost;
@@ -154,6 +164,24 @@ const CheckoutPage = () => {
   const shippingProgress = Math.min(1, subtotal / FREE_SHIPPING_THRESHOLD);
   const deliveryDays = 5;
   const deliveryDate = getDeliveryDate(deliveryDays);
+
+  const applyPromoCode = () => {
+    const valid = normalizePromo(promoInput);
+    if (!valid) {
+      setPromoError("Código inválido");
+      return;
+    }
+    setPromoCode(valid);
+    saveStoredPromo(valid);
+    setPromoInput("");
+    setPromoError(null);
+  };
+
+  const removePromoCode = () => {
+    setPromoCode(null);
+    saveStoredPromo(null);
+    setPromoError(null);
+  };
 
   // Stock simulation
   const stockLeft = 3;
@@ -196,7 +224,7 @@ const CheckoutPage = () => {
             customer_name: name,
             product_name: productName,
             metadata: {
-              items: items.map((i) => ({
+              items: effectiveItems.map((i) => ({
                 name: i.name,
                 color: i.color,
                 size: i.size,
@@ -205,6 +233,8 @@ const CheckoutPage = () => {
               })),
               shipping: { name, phone, address, postalCode, city },
               personalization: persAccepted ? { name: persName, number: persNumber } : null,
+              promo_code: promoCode,
+              discount,
             },
           },
         });
@@ -329,7 +359,7 @@ const CheckoutPage = () => {
                   className="overflow-hidden"
                 >
                   <div className="pt-3 mt-3 border-t space-y-2">
-                    {items.map((item, idx) => (
+                    {effectiveItems.map((item, idx) => (
                       <div key={idx} className="flex items-center gap-3">
                         <div className="w-12 h-12 bg-white rounded border flex items-center justify-center flex-shrink-0">
                           <img src={item.image || "/lovable-uploads/dd6d21cb-9655-4120-bc20-560351fcf99d.png"} alt={item.name} className="w-10 h-10 object-contain" />
@@ -345,12 +375,55 @@ const CheckoutPage = () => {
                       </div>
                     ))}
                     <div className="pt-2 border-t text-xs space-y-1">
-                      <div className="flex justify-between"><span>Subtotal</span><span>{subtotal.toFixed(2)}€</span></div>
+                      <div className="flex justify-between">
+                        <span>Subtotal</span>
+                        {discount > 0 ? (
+                          <span>
+                            <span className="line-through text-muted-foreground mr-1">{originalSubtotal.toFixed(2)}€</span>
+                            <span className="font-bold">{subtotal.toFixed(2)}€</span>
+                          </span>
+                        ) : (
+                          <span>{subtotal.toFixed(2)}€</span>
+                        )}
+                      </div>
+                      {discount > 0 && (
+                        <div className="flex justify-between text-checkout-trust font-bold">
+                          <span>Desconto ({promoCode})</span>
+                          <span>−{discount.toFixed(2)}€</span>
+                        </div>
+                      )}
                       <div className="flex justify-between">
                         <span>Envio</span>
                         {shippingCost === 0 ? <span className="text-checkout-trust font-bold">GRÁTIS</span> : <span>{shippingCost.toFixed(2)}€</span>}
                       </div>
                       {persAccepted && <div className="flex justify-between"><span>Personalização</span><span>{personalizationCost.toFixed(2)}€</span></div>}
+                    </div>
+
+                    {/* Promo code */}
+                    <div className="pt-3 mt-2 border-t">
+                      {promoCode ? (
+                        <div className="flex items-center justify-between bg-checkout-trust/10 border border-checkout-trust/30 rounded px-3 py-2">
+                          <span className="text-xs font-bold text-checkout-trust">✓ {promoCode} aplicado — tudo a 1€</span>
+                          <button type="button" onClick={removePromoCode} className="text-[10px] underline text-muted-foreground hover:text-[#111]">remover</button>
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="flex gap-2">
+                            <input
+                              type="text"
+                              value={promoInput}
+                              onChange={(e) => { setPromoInput(e.target.value); setPromoError(null); }}
+                              onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); applyPromoCode(); } }}
+                              placeholder="Código promocional"
+                              className="flex-1 border border-muted px-3 py-2 text-xs font-checkout-body focus:outline-none focus:border-[#111]"
+                            />
+                            <button type="button" onClick={applyPromoCode} className="bg-[#111] text-white px-3 py-2 text-[11px] font-bold tracking-wider uppercase">
+                              APLICAR
+                            </button>
+                          </div>
+                          {promoError && <p className="text-[10px] text-red-600 mt-1">{promoError}</p>}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </motion.div>
