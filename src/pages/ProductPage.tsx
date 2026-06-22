@@ -540,8 +540,8 @@ const ProductPage = () => {
                 ? (packOptions[selectedQuantity] || [])[selectedPack] || []
                 : [];
               const packPriceMultiplier = selectedQuantity === "pack2" ? 1 : selectedQuantity === "pack3" ? 0.89 : selectedQuantity === "pack4" ? 0.79 : selectedQuantity === "pack6" ? 0.69 : 1;
-              const unitPrice = isPackMode ? Math.round(product.price * packPriceMultiplier) : product.price;
-              const totalPackPrice = isPackMode ? unitPrice * currentPackTshirts.length : product.price;
+              const unitPrice = isPackMode ? +(displayPrice * packPriceMultiplier).toFixed(2) : displayPrice;
+              const totalPackPrice = isPackMode ? +(unitPrice * currentPackTshirts.length).toFixed(2) : displayPrice;
 
               const reverseColorMap: Record<string, string> = {};
               Object.entries(colorImageMap).forEach(([name, img]) => { reverseColorMap[img] = name; });
@@ -569,7 +569,7 @@ const ProductPage = () => {
                     name: product.name,
                     size: selectedSize,
                     color: selectedColor,
-                    unitPrice: product.price,
+                    unitPrice: displayPrice,
                     quantity: 1,
                     image: product.cardImage
                   });
