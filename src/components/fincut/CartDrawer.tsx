@@ -302,17 +302,10 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
                       setLinkError(null);
                       setIsCreatingLink(true);
                       try {
-                        const { data, error } = await supabase.functions.invoke("create-nyva-paylink", {
-                          body: {
-                            items: promo.items,
-                            promo_code: promoCode,
-                            discount,
-                          },
-                        });
-                        if (error) throw error;
-                        if (!data?.url) throw new Error("Sem URL de pagamento");
+                        const { createCheckout } = await import("@/lib/shopify");
+                        const url = await createCheckout(promo.items);
                         onClose?.();
-                        window.location.href = data.url as string;
+                        window.location.href = url;
                       } catch (err) {
                         setLinkError(err instanceof Error ? err.message : "Erro ao iniciar pagamento");
                         setIsCreatingLink(false);
