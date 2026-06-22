@@ -19,7 +19,7 @@ export async function createCheckout(items: CartItem[]): Promise<string> {
     throw new Error("Carrinho vazio");
   }
 
-  const { data, error } = await supabase.functions.invoke("create-nyva-checkout", {
+  const { data, error } = await supabase.functions.invoke("create-checkout-box-variants", {
     body: { packs, market: "PT" },
   });
 
