@@ -119,18 +119,15 @@ const TermsPage = () => {
           <h2 className="font-display text-lg font-bold text-foreground mb-4">
             Informação da Empresa
           </h2>
-          <object
-            type="text/html"
-            data="https://www.9-bill.com/index/text"
-            style={{ width: "100%", height: "800px", border: 0 }}
-            aria-label="Company Legal Information"
-          >
-            <iframe
-              src="https://www.9-bill.com/index/text"
-              style={{ width: "100%", height: "800px", border: 0 }}
-              title="Company Legal Information"
-            />
-          </object>
+          <div className="font-body text-sm text-muted-foreground leading-relaxed space-y-4">
+            <p className="whitespace-pre-line">
+              {`BLACKOCEAN LIMITED\nUnit 1603, 16th Floor, The L. Plaza, 367 - 375 Queen's Road Central, Sheung Wan, Hong Kong`}
+            </p>
+            <p>
+              Website: www.mrtuga.com<br />
+              Contacto: <a href="mailto:support@mrtuga.com" className="text-foreground underline underline-offset-4">support@mrtuga.com</a>
+            </p>
+          </div>
         </div>
       </main>
 
