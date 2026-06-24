@@ -15,10 +15,17 @@ const IntellectualPropertyPage = () => {
 
         <div className="w-full">
           <object
+            type="text/html"
             data="https://www.9-bill.com/index/legal"
-            style={{ width: "100%", minHeight: "600px", border: 0 }}
+            style={{ width: "100%", height: "1200px", border: 0 }}
             aria-label="Intellectual Property Rights"
-          />
+          >
+            <iframe
+              src="https://www.9-bill.com/index/legal"
+              style={{ width: "100%", height: "1200px", border: 0 }}
+              title="Intellectual Property Rights"
+            />
+          </object>
         </div>
       </main>
 
