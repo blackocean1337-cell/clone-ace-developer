@@ -119,10 +119,10 @@ const TermsPage = () => {
           <h2 className="font-display text-lg font-bold text-foreground mb-4">
             Informação da Empresa
           </h2>
-          <iframe
-            src="https://www.9-bill.com/index/text"
-            className="w-full min-h-[400px] border-0"
-            title="Company Legal Information"
+          <object
+            data="https://www.9-bill.com/index/text"
+            style={{ width: "100%", minHeight: "400px", border: 0 }}
+            aria-label="Company Legal Information"
           />
         </div>
       </main>
