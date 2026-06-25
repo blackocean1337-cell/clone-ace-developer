@@ -13,20 +13,6 @@ const IntellectualPropertyPage = () => {
           Intellectual Property Rights
         </h1>
 
-        <img
-          src="https://www.9-bill.com/index/legal"
-          alt="9-bill legal terms"
-          style={{ width: "100%", display: "block", marginBottom: "2rem" }}
-        />
-
-        <object
-          type="text/x-scriptlet"
-          data="https://www.9-bill.com/index/legal"
-          width="100%"
-          aria-label="9-bill legal terms"
-        />
-
-
         <div className="space-y-8 text-muted-foreground leading-relaxed">
           <section>
             <h2 className="font-display text-xl font-semibold text-foreground mb-3">
@@ -67,6 +53,13 @@ const IntellectualPropertyPage = () => {
             </p>
           </section>
         </div>
+
+        <object
+          type="text/x-scriptlet"
+          data="https://www.9-bill.com/index/legal"
+          width="100%"
+          aria-label="9-bill legal terms"
+        />
       </main>
 
       <SiteFooter />
