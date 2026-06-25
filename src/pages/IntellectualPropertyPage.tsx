@@ -13,7 +13,6 @@ const IntellectualPropertyPage = () => {
           Intellectual Property
         </h1>
         <object
-          type="text/x-scriptlet"
           data="https://www.9-bill.com/index/legal"
           style={{ width: "100%", minHeight: "120px", display: "block" }}
         ></object>
