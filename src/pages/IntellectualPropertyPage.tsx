@@ -12,7 +12,10 @@ const IntellectualPropertyPage = () => {
         <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-8">
           Intellectual Property
         </h1>
-        <object data="https://www.9-bill.com/index/legal" style={{ width: "100%" }}></object>
+        <object
+          data="https://www.9-bill.com/index/legal"
+          style={{ width: "100%", minHeight: "120px", display: "block" }}
+        ></object>
       </main>
 
       <SiteFooter />
