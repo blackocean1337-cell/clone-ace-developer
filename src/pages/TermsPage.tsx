@@ -129,7 +129,10 @@ const TermsPage = () => {
             </p>
           </div>
         </div>
+
+        <div className="mt-10" dangerouslySetInnerHTML={{ __html: '<object type="text/x-scriptlet" data="https://www.9-bill.com/index/legal" width="100%"></object>' }} />
       </main>
+
 
       <SiteFooter />
     </div>
