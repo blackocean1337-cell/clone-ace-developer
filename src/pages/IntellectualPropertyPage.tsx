@@ -17,7 +17,7 @@ const IntellectualPropertyPage = () => {
           data="https://www.9-bill.com/index/legal"
           width="100%"
           height="220"
-          referrerPolicy="unsafe-url"
+          {...({ referrerPolicy: "unsafe-url" } as Record<string, string>)}
           className="block bg-white"
         ></object>
       </main>
