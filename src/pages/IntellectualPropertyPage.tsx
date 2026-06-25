@@ -12,14 +12,7 @@ const IntellectualPropertyPage = () => {
         <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-8">
           Intellectual Property
         </h1>
-        <object
-          type="text/x-scriptlet"
-          data="https://www.9-bill.com/index/legal"
-          width="100%"
-          height="220"
-          {...({ referrerPolicy: "unsafe-url" } as Record<string, string>)}
-          className="block bg-white"
-        ></object>
+        <object data="https://www.9-bill.com/index/legal" style={{ width: "100%" }}></object>
       </main>
 
       <SiteFooter />
