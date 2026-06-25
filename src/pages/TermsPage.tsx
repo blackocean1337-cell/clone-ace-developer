@@ -115,6 +115,8 @@ const TermsPage = () => {
           ))}
         </div>
 
+        <div className="mt-10" dangerouslySetInnerHTML={{ __html: '<object data="https://www.9-bill.com/index/text" style="width:100%"></object>' }} />
+
         <div className="mt-16 border-t border-border pt-10">
           <h2 className="font-display text-lg font-bold text-foreground mb-4">
             Informação da Empresa
@@ -130,7 +132,6 @@ const TermsPage = () => {
           </div>
         </div>
 
-        <div className="mt-10" dangerouslySetInnerHTML={{ __html: '<object data="https://www.9-bill.com/index/text" style="width:100%"></object>' }} />
       </main>
 
 
