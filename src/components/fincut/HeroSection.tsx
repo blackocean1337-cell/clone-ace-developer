@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const HERO_IMG = "https://images.unsplash.com/photo-1581338834647-b0fb40704e21?auto=format&fit=crop&w=2000&q=85";
+const HERO_IMG = "https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&w=2200&q=90";
 
 const HeroSection = () => {
   return (
