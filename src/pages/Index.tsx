@@ -1,6 +1,8 @@
 import AnnouncementBar from "@/components/fincut/AnnouncementBar";
 import SiteHeader from "@/components/fincut/SiteHeader";
 import HeroSection from "@/components/fincut/HeroSection";
+import PressBar from "@/components/fincut/PressBar";
+import EditorialFeature from "@/components/fincut/EditorialFeature";
 import IconiqueSection from "@/components/fincut/IconiqueSection";
 import IconiqueSection2 from "@/components/fincut/IconiqueSection2";
 import VestiaireSection from "@/components/fincut/VestiaireSection";
@@ -18,7 +20,9 @@ const Index = () => {
       <AnnouncementBar />
       <SiteHeader />
       <HeroSection />
+      <PressBar />
       <IconiqueSection2 />
+      <EditorialFeature />
       <IconiqueSection />
       <CustomPackSection />
       <CustomerPhotos />
