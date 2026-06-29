@@ -85,7 +85,7 @@ const sections = [
   },
   {
     title: "Secção 20 – Contactos",
-    content: `As questões relativas às Condições de Utilização devem ser enviadas para info@mrtuga.com.`,
+    content: `As questões relativas às Condições de Utilização devem ser enviadas para support@mrtuga.com.`,
   },
 ];
 
@@ -127,7 +127,7 @@ const TermsPage = () => {
             </p>
             <p>
               Website: www.mrtuga.com<br />
-              Contacto: <a href="mailto:info@mrtuga.com" className="text-foreground underline underline-offset-4">info@mrtuga.com</a>
+              Contacto: <a href="mailto:support@mrtuga.com" className="text-foreground underline underline-offset-4">support@mrtuga.com</a>
             </p>
           </div>
         </div>
