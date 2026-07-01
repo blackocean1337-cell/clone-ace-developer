@@ -11,7 +11,7 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
-const SHOPIFY_DOMAIN = "gw8700-hn.myshopify.com";
+const SHOPIFY_DOMAIN = "wkxepy-d0.myshopify.com";
 const SHOPIFY_API_VERSION = "2025-07";
 const ADMIN_URL = `https://${SHOPIFY_DOMAIN}/admin/api/${SHOPIFY_API_VERSION}/graphql.json`;
 
