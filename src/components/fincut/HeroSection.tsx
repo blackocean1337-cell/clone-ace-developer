@@ -33,7 +33,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="inline-block mt-6 px-6 py-3 bg-[#FACC15] hover:bg-[#eab308] text-black font-body text-xs font-bold tracking-widest uppercase transition-colors duration-200"
+          className="inline-block mt-6 px-6 py-3 border border-fincut-gold text-fincut-gold font-display text-xs font-semibold tracking-widest uppercase hover:bg-fincut-gold hover:text-primary-foreground transition-all duration-200"
         >
           Descubra o nosso bestseller
         </motion.a>
