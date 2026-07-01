@@ -15,7 +15,7 @@ const SHOPIFY_DOMAIN = "wkxepy-d0.myshopify.com";
 const SHOPIFY_API_VERSION = "2025-07";
 const ADMIN_URL = `https://${SHOPIFY_DOMAIN}/admin/api/${SHOPIFY_API_VERSION}/graphql.json`;
 // Primary checkout domain configured in Shopify (Settings → Domains)
-const SHOPIFY_CHECKOUT_HOST = "checkout.mrtuga.com";
+const SHOPIFY_CHECKOUT_HOST = "securesafe-checkout.myshopify.com";
 
 const BASE_UNIT_PRICE = 18; // EUR
 const VALID_CAPS: PackCapacity[] = [1, 3, 6, 9, 12];
