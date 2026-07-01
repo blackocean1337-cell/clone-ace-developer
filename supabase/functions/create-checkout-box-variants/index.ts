@@ -14,6 +14,7 @@ const corsHeaders = {
 const SHOPIFY_DOMAIN = "wkxepy-d0.myshopify.com";
 const SHOPIFY_API_VERSION = "2025-07";
 const ADMIN_URL = `https://${SHOPIFY_DOMAIN}/admin/api/${SHOPIFY_API_VERSION}/graphql.json`;
+const SHOPIFY_CHECKOUT_HOST = SHOPIFY_DOMAIN;
 
 const BASE_UNIT_PRICE = 18; // EUR
 const VALID_CAPS: PackCapacity[] = [1, 3, 6, 9, 12];
@@ -45,6 +46,13 @@ async function adminGql(
     throw new Error(`Shopify Admin error: ${JSON.stringify(json.errors || json)}`);
   }
   return json.data;
+}
+
+function forceWkxepyCheckoutUrl(rawUrl: string): string {
+  const url = new URL(rawUrl);
+  url.protocol = "https:";
+  url.hostname = SHOPIFY_CHECKOUT_HOST;
+  return url.toString();
 }
 
 serve(async (req) => {
@@ -100,8 +108,9 @@ serve(async (req) => {
     if (errs.length) throw new Error(`draftOrderCreate: ${JSON.stringify(errs)}`);
     const invoiceUrl = result.draftOrderCreate.draftOrder?.invoiceUrl;
     if (!invoiceUrl) throw new Error("Sem invoiceUrl");
+    const checkoutUrl = forceWkxepyCheckoutUrl(invoiceUrl);
 
-    return new Response(JSON.stringify({ url: invoiceUrl }), {
+    return new Response(JSON.stringify({ url: checkoutUrl }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 200,
     });
