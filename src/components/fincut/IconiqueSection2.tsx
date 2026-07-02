@@ -19,9 +19,12 @@ const IconiqueSection2 = () => {
   };
 
   const packCards = [
-    { img: cards.find((c) => c.slug === "t-shirt-blanc")?.cardImage, name: "T-shirt Col-rond", colorName: "BRANCO", hex: "#ffffff", size: "M", rotate: -8, x: -70, y: 20, z: 1 },
-    { img: cards.find((c) => c.slug === "t-shirt-navy")?.cardImage, name: "T-shirt Col-rond", colorName: "AZUL", hex: "#1e3a5f", size: "AO GOSTO", rotate: 4, x: 0, y: 40, z: 2 },
-    { img: cards.find((c) => c.slug === "t-shirt-tech")?.cardImage, name: "T-shirt Col-rond", colorName: "PRETO", hex: "#000000", size: "S", rotate: 10, x: 70, y: 0, z: 3 },
+    // back-left: blue t-shirt
+    { img: cards.find((c) => c.slug === "t-shirt-navy")?.cardImage, name: "T-shirt Col-rond", colorName: "AZUL", hex: "#4a6a8a", size: "M", rotate: -10, x: -18, y: 12, z: 1, placeholder: false },
+    // middle: placeholder "+"
+    { img: null, name: "Produto a escolher", colorName: "AO GOSTO", hex: "#e5e5e5", size: "AO GOSTO", rotate: -2, x: 5, y: -6, z: 2, placeholder: true },
+    // front-right: black t-shirt
+    { img: cards.find((c) => c.slug === "t-shirt-tech")?.cardImage, name: "T-shirt Col-rond", colorName: "PRETO", hex: "#000000", size: "S", rotate: 8, x: 28, y: -18, z: 3, placeholder: false },
   ];
 
   return (
