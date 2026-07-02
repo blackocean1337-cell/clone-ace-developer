@@ -177,15 +177,16 @@ const defaultCare = [
   "Um ligeiro encolhimento de cerca de 5% pode ocorrer na secagem em máquina.",
 ];
 
+// Fallback gallery uses only MRTUGA-branded assets (no Fincut label).
+// The Fincut-labelled `product-*.jpg` files are intentionally excluded so
+// they don't flash on the PDP before the Supabase gallery loads.
 const defaultGallery = [
-  productBlackFront,
+  tshirtBlack,
   productModel1,
-  productWhiteBack,
   productModel2,
-  productBlackBack,
-  productNavy,
-  productKaki,
-  productWhiteFront,
+  tshirtWhite,
+  tshirtNavy,
+  tshirtKaki,
 ];
 
 export const products: Product[] = [
