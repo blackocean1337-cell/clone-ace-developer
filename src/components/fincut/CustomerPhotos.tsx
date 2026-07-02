@@ -50,8 +50,8 @@ const CustomerPhotos = () => {
   };
 
   return (
-    <section className="max-w-[1440px] mx-auto pl-5 xl:pl-20 mb-[60px] xl:mb-[80px]">
-      <div className="flex justify-between items-center mb-[20px] pr-5 xl:pr-20">
+    <section className="max-w-[1440px] mx-auto pl-5 lg:pl-20 mb-[60px] lg:mb-[80px]">
+      <div className="flex justify-between items-center mb-[20px] pr-5 lg:pr-20">
         <h2 className="text-gray-900 text-[14px] xl:text-[18px] leading-[110%]">
           As vossas fotos (Obrigado!)
         </h2>
@@ -79,7 +79,7 @@ const CustomerPhotos = () => {
         </div>
       </div>
 
-      <div className="overflow-hidden -mr-5 xl:-mr-20">
+      <div className="overflow-hidden -mr-5 lg:-mr-20">
         <div
           ref={scrollRef}
           className="flex overflow-x-auto scrollbar-hide"
