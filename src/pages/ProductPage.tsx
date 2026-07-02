@@ -135,6 +135,7 @@ const ProductPage = () => {
   const [packHighlight, setPackHighlight] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<string | null>("description");
   const [countdown, setCountdown] = useState({ hours: 13, minutes: 39 });
+  const [offerCountdown, setOfferCountdown] = useState({ days: 3, hours: 5, minutes: 50, seconds: 3 });
 
   // Pack images now show in the pack selector, not in the main gallery
   const isPackSelected = selectedQuantity !== "unite" && selectedQuantity !== "custom";
