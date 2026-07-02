@@ -7,7 +7,17 @@ import tshirtVneck from "@/assets/tshirt-vneck.png";
 import tshirtLongsleeve from "@/assets/tshirt-longsleeve.png";
 import pullBlack from "@/assets/pull-black.png";
 import tshirtCinzentoAsset from "@/assets/tshirt-cinzento.png.asset.json";
+import tshirtAzulCeuAsset from "@/assets/tshirt-azul-ceu.png.asset.json";
+import tshirtSalmaoAsset from "@/assets/tshirt-salmao.png.asset.json";
+import tshirtTurquesaAsset from "@/assets/tshirt-turquesa.png.asset.json";
+import tshirtBordeauxAsset from "@/assets/tshirt-bordeaux.png.asset.json";
+import tshirtBegeAsset from "@/assets/tshirt-bege.png.asset.json";
 const tshirtCinzento = tshirtCinzentoAsset.url;
+const tshirtAzulCeu = tshirtAzulCeuAsset.url;
+const tshirtSalmao = tshirtSalmaoAsset.url;
+const tshirtTurquesa = tshirtTurquesaAsset.url;
+const tshirtBordeaux = tshirtBordeauxAsset.url;
+const tshirtBege = tshirtBegeAsset.url;
 
 import productBlackFront from "@/assets/product-black-front.jpg";
 import productModel1 from "@/assets/product-model-1.jpg";
@@ -42,11 +52,11 @@ const defaultColors = [
   { name: "Caqui", hex: "#5c6b4e", slug: "t-shirt-kaki" },
   { name: "Azul marinho", hex: "#2c3e6b", slug: "t-shirt-navy" },
   { name: "Cinzento", hex: "#9b9b9b", slug: "t-shirt-cinzento" },
-  { name: "Azul céu", hex: "#7fb5d5" },
-  { name: "Salmão", hex: "#e8a598" },
-  { name: "Turquesa", hex: "#4fb8a8" },
-  { name: "Bordeaux", hex: "#6b1f2a" },
-  { name: "Bege", hex: "#d9c7a8" },
+  { name: "Azul céu", hex: "#7fb5d5", slug: "t-shirt-azul-ceu" },
+  { name: "Salmão", hex: "#e8a598", slug: "t-shirt-salmao" },
+  { name: "Turquesa", hex: "#4fb8a8", slug: "t-shirt-turquesa" },
+  { name: "Bordeaux", hex: "#6b1f2a", slug: "t-shirt-bordeaux" },
+  { name: "Bege", hex: "#d9c7a8", slug: "t-shirt-bege" },
   { name: "Verde militar", hex: "#3d4a2a" },
 ];
 
@@ -167,6 +177,91 @@ export const products: Product[] = [
     badge: "ICÓNICA",
     cardImage: tshirtCinzento,
     galleryImages: [tshirtCinzento, productModel1, productModel2, productBlackBack],
+    colors: defaultColors,
+    sizes: defaultSizes,
+    features: defaultFeatures,
+    description: defaultDescription,
+    materials: defaultMaterials,
+    care: defaultCare,
+  },
+  {
+    slug: "t-shirt-azul-ceu",
+    name: "A t-shirt Icónica.",
+    price: 18,
+    priceLabel: "33,90 €",
+    category: "T-shirt",
+    collar: "Gola redonda",
+    badge: "ICÓNICA",
+    cardImage: tshirtAzulCeu,
+    galleryImages: [tshirtAzulCeu, productModel1, productModel2, productBlackBack],
+    colors: defaultColors,
+    sizes: defaultSizes,
+    features: defaultFeatures,
+    description: defaultDescription,
+    materials: defaultMaterials,
+    care: defaultCare,
+  },
+  {
+    slug: "t-shirt-salmao",
+    name: "A t-shirt Icónica.",
+    price: 18,
+    priceLabel: "33,90 €",
+    category: "T-shirt",
+    collar: "Gola redonda",
+    badge: "ICÓNICA",
+    cardImage: tshirtSalmao,
+    galleryImages: [tshirtSalmao, productModel1, productModel2, productBlackBack],
+    colors: defaultColors,
+    sizes: defaultSizes,
+    features: defaultFeatures,
+    description: defaultDescription,
+    materials: defaultMaterials,
+    care: defaultCare,
+  },
+  {
+    slug: "t-shirt-turquesa",
+    name: "A t-shirt Icónica.",
+    price: 18,
+    priceLabel: "33,90 €",
+    category: "T-shirt",
+    collar: "Gola redonda",
+    badge: "ICÓNICA",
+    cardImage: tshirtTurquesa,
+    galleryImages: [tshirtTurquesa, productModel1, productModel2, productBlackBack],
+    colors: defaultColors,
+    sizes: defaultSizes,
+    features: defaultFeatures,
+    description: defaultDescription,
+    materials: defaultMaterials,
+    care: defaultCare,
+  },
+  {
+    slug: "t-shirt-bordeaux",
+    name: "A t-shirt Icónica.",
+    price: 18,
+    priceLabel: "33,90 €",
+    category: "T-shirt",
+    collar: "Gola redonda",
+    badge: "ICÓNICA",
+    cardImage: tshirtBordeaux,
+    galleryImages: [tshirtBordeaux, productModel1, productModel2, productBlackBack],
+    colors: defaultColors,
+    sizes: defaultSizes,
+    features: defaultFeatures,
+    description: defaultDescription,
+    materials: defaultMaterials,
+    care: defaultCare,
+  },
+  {
+    slug: "t-shirt-bege",
+    name: "A t-shirt Icónica.",
+    price: 18,
+    priceLabel: "33,90 €",
+    category: "T-shirt",
+    collar: "Gola redonda",
+    badge: "ICÓNICA",
+    cardImage: tshirtBege,
+    galleryImages: [tshirtBege, productModel1, productModel2, productBlackBack],
     colors: defaultColors,
     sizes: defaultSizes,
     features: defaultFeatures,
