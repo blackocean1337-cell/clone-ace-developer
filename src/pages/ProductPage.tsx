@@ -254,6 +254,13 @@ const ProductPage = () => {
           <span className="underline text-foreground">Unidade</span>
         </nav>
 
+        {/* Offer countdown pill */}
+        <div className="mb-4 sm:mb-6 flex">
+          <span className="inline-flex items-center gap-1.5 bg-fincut-gold text-primary-foreground font-display text-[11px] sm:text-xs font-bold tracking-wider uppercase px-3 py-1.5 rounded-sm">
+            {offerCountdown.days}d : {String(offerCountdown.hours).padStart(2, "0")}h : {String(offerCountdown.minutes).padStart(2, "0")}m : {String(offerCountdown.seconds).padStart(2, "0")}s
+          </span>
+        </div>
+
         {/* Product Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 lg:gap-12">
           {/* Left: Image Gallery */}
