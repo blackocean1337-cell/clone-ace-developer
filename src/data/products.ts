@@ -385,7 +385,7 @@ export const products: Product[] = [
     collar: "Gola redonda",
     badge: "ESSENCIAL",
     cardImage: tshirtLongsleeve,
-    galleryImages: [tshirtLongsleeve, productModel1, productModel2, productBlackBack],
+    galleryImages: [tshirtLongsleeve],
     colors: [
       { name: "Preto", hex: "#1a1a1a" },
       { name: "Branco", hex: "#f5f5f0" },
