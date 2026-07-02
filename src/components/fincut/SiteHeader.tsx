@@ -11,7 +11,7 @@ const productLinks = [
   { label: "A t-shirt Gola V", slug: "t-shirt-col-v" },
   { label: "A t-shirt Manga Comprida", slug: "t-shirt-manches-longues" },
   { label: "O Polo", slug: "polo" },
-  { label: "A Camisola", slug: "pull" },
+  { label: "A Malha", slug: "pull" },
 ];
 
 const SiteHeader = () => {
