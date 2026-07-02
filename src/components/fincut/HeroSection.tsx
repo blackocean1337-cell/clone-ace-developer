@@ -4,7 +4,7 @@ const HERO_MOBILE = "https://cdn.shopify.com/s/files/1/0773/6472/4060/files/BANN
 const HeroSection = () => {
   return (
     <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] mb-[30px] xl:mb-[40px]">
-      <div className="relative w-full h-[567px] overflow-hidden">
+      <div className="relative w-full h-[380px] md:h-[440px] overflow-hidden">
         <picture className="block w-full h-full">
           <source media="(min-width: 768px)" srcSet={HERO_DESKTOP} />
           <img
