@@ -1,12 +1,14 @@
-import heroBg from "@/assets/hero-bg.jpg";
+import heroDesktop from "@/assets/hero-desktop.webp.asset.json";
+import heroMobile from "@/assets/hero-mobile.webp.asset.json";
 
 const HeroSection = () => {
   return (
     <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] mb-[30px] xl:mb-[40px]">
       <div className="relative w-full h-[540px] xl:h-[567px] overflow-hidden">
         <picture className="block w-full h-full">
+          <source media="(min-width: 1024px)" srcSet={heroDesktop.url} />
           <img
-            src={heroBg}
+            src={heroMobile.url}
             alt="A t-shirt que se adapta à sua morfologia"
             className="w-full h-full object-cover"
             loading="eager"
