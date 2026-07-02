@@ -102,17 +102,16 @@ serve(async (req) => {
     });
 
     // Compute promo discount at draft-order level
-    let appliedDiscount: { title: string; value: string; valueType: "FIXED_AMOUNT" } | null = null;
+    let appliedDiscount: { title: string; value: number; valueType: "FIXED_AMOUNT" } | null = null;
     if (promoCode === "TUGA1") {
-      // Target total = totalPayUnits × 1€
       const target = totalPayUnits * 1;
       const value = Math.max(0, subtotal - target);
       if (value > 0) {
-        appliedDiscount = { title: "TUGA1", value: value.toFixed(2), valueType: "FIXED_AMOUNT" };
+        appliedDiscount = { title: "TUGA1", value: Math.round(value * 100) / 100, valueType: "FIXED_AMOUNT" };
       }
     } else if (promoCode === "TUGA30") {
       if (subtotal > 30) {
-        appliedDiscount = { title: "TUGA30", value: "30.00", valueType: "FIXED_AMOUNT" };
+        appliedDiscount = { title: "TUGA30", value: 30, valueType: "FIXED_AMOUNT" };
       }
     }
 
