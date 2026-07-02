@@ -547,10 +547,10 @@ export const products: Product[] = [
     features: [
       "Malha fina e elegante",
       "Calor sem volume supérfluo",
-      "A camisola que acompanha todos os seus looks",
+      "A malha que acompanha todos os seus looks",
     ],
     description: [
-      "A camisola essencial.",
+      "A malha essencial.",
       "Uma malha fina e cerrada que traz calor e elegância sem volume desnecessário.",
       "Corte ajustado fiel ao ADN MRTUGA, para uma silhueta estruturada.",
       "Perfeita sozinha ou em camadas.",
@@ -581,10 +581,10 @@ export const products: Product[] = [
     features: [
       "Malha fina e elegante",
       "Calor sem volume supérfluo",
-      "A camisola que acompanha todos os seus looks",
+      "A malha que acompanha todos os seus looks",
     ],
     description: [
-      "A camisola essencial.",
+      "A malha essencial.",
       "Uma malha fina e cerrada que traz calor e elegância sem volume desnecessário.",
       "Corte ajustado fiel ao ADN MRTUGA, para uma silhueta estruturada.",
       "Perfeita sozinha ou em camadas.",
