@@ -6,13 +6,9 @@ const poloBlack = "/lovable-uploads/874bd929-ea57-4973-96cc-bddac15da4b3.png";
 import tshirtVneck from "@/assets/tshirt-vneck.png";
 import tshirtLongsleeveAsset from "@/assets/tshirt-longsleeve-preto.png.asset.json";
 const tshirtLongsleeve = tshirtLongsleeveAsset.url;
-import pullPretoAsset from "@/assets/pull-preto.jpg.asset.json";
-import pullPreto2Asset from "@/assets/pull-preto-2.jpg.asset.json";
-import pullPreto3Asset from "@/assets/pull-preto-3.jpg.asset.json";
+import pullPretoAsset from "@/assets/pull-preto-new.png.asset.json";
 import pullBegeAsset from "@/assets/pull-bege.jpg.asset.json";
 const pullPreto = pullPretoAsset.url;
-const pullPreto2 = pullPreto2Asset.url;
-const pullPreto3 = pullPreto3Asset.url;
 const pullBege = pullBegeAsset.url;
 const pullColors = [
   { name: "Preto", hex: "#1a1a1a", slug: "pull" },
@@ -545,7 +541,7 @@ export const products: Product[] = [
     collar: "Gola redonda",
     badge: "PREMIUM",
     cardImage: pullPreto,
-    galleryImages: [pullPreto, pullPreto2, pullPreto3],
+    galleryImages: [pullPreto],
     colors: pullColors,
     sizes: defaultSizes,
     features: [
