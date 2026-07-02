@@ -47,13 +47,7 @@ const colorHex: Record<string, string> = {
   turquoise: "#a8dcd9"
 };
 
-const pricePerArticle = (count: number) => {
-  if (count >= 6) return 18;
-  if (count >= 4) return 20;
-  if (count >= 3) return 22;
-  if (count >= 2) return 24;
-  return 28;
-};
+const pricePerArticle = (_count: number) => 33.9;
 
 interface PackBuilderModalProps {
   open: boolean;
