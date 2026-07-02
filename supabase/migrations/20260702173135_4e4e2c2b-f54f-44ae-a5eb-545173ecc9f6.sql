@@ -1,0 +1,1 @@
+UPDATE public.product_images SET image_url='https://njddyppgxohfuvvjdslv.supabase.co/storage/v1/object/public/product-images/polo/polo-preto-new.png' WHERE id='37375679-891b-4b76-b29c-668920291d01';
