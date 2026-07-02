@@ -6,6 +6,8 @@ const poloBlack = "/lovable-uploads/874bd929-ea57-4973-96cc-bddac15da4b3.png";
 import tshirtVneck from "@/assets/tshirt-vneck.png";
 import tshirtLongsleeve from "@/assets/tshirt-longsleeve.png";
 import pullBlack from "@/assets/pull-black.png";
+import tshirtCinzentoAsset from "@/assets/tshirt-cinzento.png.asset.json";
+const tshirtCinzento = tshirtCinzentoAsset.url;
 
 import productBlackFront from "@/assets/product-black-front.jpg";
 import productModel1 from "@/assets/product-model-1.jpg";
@@ -39,7 +41,7 @@ const defaultColors = [
   { name: "Branco", hex: "#f5f5f0", slug: "t-shirt-blanc" },
   { name: "Caqui", hex: "#5c6b4e", slug: "t-shirt-kaki" },
   { name: "Azul marinho", hex: "#2c3e6b", slug: "t-shirt-navy" },
-  { name: "Cinzento", hex: "#9b9b9b" },
+  { name: "Cinzento", hex: "#9b9b9b", slug: "t-shirt-cinzento" },
   { name: "Azul céu", hex: "#7fb5d5" },
   { name: "Salmão", hex: "#e8a598" },
   { name: "Turquesa", hex: "#4fb8a8" },
@@ -148,6 +150,23 @@ export const products: Product[] = [
     badge: "ICÓNICA",
     cardImage: tshirtKaki,
     galleryImages: [productKaki, productModel1, productModel2, productBlackBack],
+    colors: defaultColors,
+    sizes: defaultSizes,
+    features: defaultFeatures,
+    description: defaultDescription,
+    materials: defaultMaterials,
+    care: defaultCare,
+  },
+  {
+    slug: "t-shirt-cinzento",
+    name: "A t-shirt Icónica.",
+    price: 18,
+    priceLabel: "33,90 €",
+    category: "T-shirt",
+    collar: "Gola redonda",
+    badge: "ICÓNICA",
+    cardImage: tshirtCinzento,
+    galleryImages: [tshirtCinzento, productModel1, productModel2, productBlackBack],
     colors: defaultColors,
     sizes: defaultSizes,
     features: defaultFeatures,
@@ -289,7 +308,7 @@ export const getProductBySlug = (slug: string): Product | undefined => {
 };
 
 export const iconiqueProducts = products.filter((p) =>
-  ["t-shirt-tech", "t-shirt-blanc", "t-shirt-navy", "t-shirt-kaki"].includes(p.slug)
+  ["t-shirt-tech", "t-shirt-blanc", "t-shirt-navy", "t-shirt-kaki", "t-shirt-cinzento"].includes(p.slug)
 ).concat(products.filter((p) => p.slug === "polo"));
 
 export const vestiaireProducts = products.filter((p) =>
