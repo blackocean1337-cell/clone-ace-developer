@@ -34,6 +34,32 @@ const tshirtVneckBordeaux = tshirtVneckBordeauxAsset.url;
 const tshirtVneckBege = tshirtVneckBegeAsset.url;
 const tshirtVneckVerdeMilitar = tshirtVneckVerdeMilitarAsset.url;
 
+import longsleeveBrancoAsset from "@/assets/longsleeve-branco.png.asset.json";
+import longsleeveAzulMarinhoAsset from "@/assets/longsleeve-azul-marinho.png.asset.json";
+import longsleeveVerdeMilitarAsset from "@/assets/longsleeve-verde-militar.png.asset.json";
+import longsleeveAzulCeuAsset from "@/assets/longsleeve-azul-ceu.png.asset.json";
+import longsleeveSalmaoAsset from "@/assets/longsleeve-salmao.png.asset.json";
+import longsleeveBordeauxAsset from "@/assets/longsleeve-bordeaux.png.asset.json";
+import longsleeveCinzentoAsset from "@/assets/longsleeve-cinzento.png.asset.json";
+const longsleeveBranco = longsleeveBrancoAsset.url;
+const longsleeveAzulMarinho = longsleeveAzulMarinhoAsset.url;
+const longsleeveVerdeMilitar = longsleeveVerdeMilitarAsset.url;
+const longsleeveAzulCeu = longsleeveAzulCeuAsset.url;
+const longsleeveSalmao = longsleeveSalmaoAsset.url;
+const longsleeveBordeaux = longsleeveBordeauxAsset.url;
+const longsleeveCinzento = longsleeveCinzentoAsset.url;
+
+const longsleeveColors = [
+  { name: "Preto", hex: "#1a1a1a", slug: "t-shirt-manches-longues" },
+  { name: "Branco", hex: "#f5f5f0", slug: "t-shirt-manches-longues-branco" },
+  { name: "Azul marinho", hex: "#2c3e6b", slug: "t-shirt-manches-longues-azul-marinho" },
+  { name: "Cinzento", hex: "#9b9b9b", slug: "t-shirt-manches-longues-cinzento" },
+  { name: "Azul céu", hex: "#7fb5d5", slug: "t-shirt-manches-longues-azul-ceu" },
+  { name: "Salmão", hex: "#e8a598", slug: "t-shirt-manches-longues-salmao" },
+  { name: "Bordeaux", hex: "#6b1f2a", slug: "t-shirt-manches-longues-bordeaux" },
+  { name: "Verde militar", hex: "#3d4a2a", slug: "t-shirt-manches-longues-verde-militar" },
+];
+
 const vneckColors = [
   { name: "Preto", hex: "#1a1a1a", slug: "t-shirt-col-v" },
   { name: "Cinzento", hex: "#9b9b9b", slug: "t-shirt-col-v-cinzento" },
