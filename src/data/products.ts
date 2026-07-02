@@ -6,6 +6,8 @@ const poloBlack = "/lovable-uploads/874bd929-ea57-4973-96cc-bddac15da4b3.png";
 import tshirtVneck from "@/assets/tshirt-vneck.png";
 import tshirtLongsleeve from "@/assets/tshirt-longsleeve.png";
 import pullBlack from "@/assets/pull-black.png";
+import tshirtCinzentoAsset from "@/assets/tshirt-cinzento.png.asset.json";
+const tshirtCinzento = tshirtCinzentoAsset.url;
 
 import productBlackFront from "@/assets/product-black-front.jpg";
 import productModel1 from "@/assets/product-model-1.jpg";
