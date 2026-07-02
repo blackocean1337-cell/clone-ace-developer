@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useParams, Navigate, useNavigate } from "react-router-dom";
-import { ChevronRight, ChevronLeft, Truck, Star, Ruler, Droplets, Award } from "lucide-react";
+import { ChevronRight, ChevronLeft, ChevronDown, Truck, Star, Ruler, Droplets, Award, SlidersHorizontal } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnnouncementBar from "@/components/fincut/AnnouncementBar";
 import ReviewsSection from "@/components/fincut/ReviewsSection";
