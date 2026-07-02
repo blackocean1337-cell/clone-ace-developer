@@ -20,9 +20,17 @@ const VestiaireSection = () => {
     if (!el) return;
     el.addEventListener("scroll", updateArrows, { passive: true });
     window.addEventListener("resize", updateArrows);
+    const onWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        el.scrollLeft += e.deltaY;
+        e.preventDefault();
+      }
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
     return () => {
       el.removeEventListener("scroll", updateArrows);
       window.removeEventListener("resize", updateArrows);
+      el.removeEventListener("wheel", onWheel);
     };
   }, []);
 
