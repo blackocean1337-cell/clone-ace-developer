@@ -68,6 +68,14 @@ const VestiaireSection = () => {
           ref={scrollRef}
           className="flex overflow-x-auto scrollbar-hide"
           style={{ gap: "20px", scrollSnapType: "x mandatory" }}
+          onWheel={(e) => {
+            const el = scrollRef.current;
+            if (!el) return;
+            if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+              el.scrollLeft += e.deltaY;
+              e.preventDefault();
+            }
+          }}
         >
           {vestiaireProducts.map((p) => (
             <div
