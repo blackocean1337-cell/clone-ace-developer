@@ -4,14 +4,16 @@ const HeroSection = () => {
   return (
     <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] mb-[30px] xl:mb-[40px]">
       <div className="relative w-full h-[540px] xl:h-[567px] overflow-hidden">
-        <img
-          src={heroBg}
-          alt="A t-shirt que se adapta à sua morfologia"
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="eager"
-          decoding="async"
-          style={{ objectPosition: "center 35%" }}
-        />
+        <picture className="block w-full h-full">
+          <img
+            src={heroBg}
+            alt="A t-shirt que se adapta à sua morfologia"
+            className="w-full h-full object-cover"
+            loading="eager"
+            decoding="async"
+            style={{ objectPosition: "center 35%" }}
+          />
+        </picture>
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
         <div className="absolute inset-0 py-[40px] px-[20px] xl:px-[80px] flex items-end z-10 text-white">
           <div className="max-w-xl">
