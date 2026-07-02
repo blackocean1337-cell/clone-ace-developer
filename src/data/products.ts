@@ -109,14 +109,8 @@ const vneckColors = [
   { name: "Verde militar", hex: "#3d4a2a", slug: "t-shirt-col-v-verde-militar" },
 ];
 
-import tshirtBlack from "@/assets/product-black-front.jpg";
 import productModel1 from "@/assets/product-model-1.jpg";
-import tshirtWhite from "@/assets/product-white-back.jpg";
 import productModel2 from "@/assets/product-model-2.jpg";
-import tshirtBlack from "@/assets/product-black-back.jpg";
-import tshirtNavy from "@/assets/product-navy.jpg";
-import tshirtKaki from "@/assets/product-kaki.jpg";
-import tshirtWhite from "@/assets/product-white-front.png";
 
 export interface Product {
   slug: string;
