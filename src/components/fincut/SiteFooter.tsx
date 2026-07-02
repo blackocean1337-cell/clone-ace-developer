@@ -9,7 +9,7 @@ const SiteFooter = () => {
   const headingCls = "text-[14px] mb-[20px] leading-[110%] font-normal text-white";
 
   return (
-    <footer className="bg-gray-900 text-white p-[20px] xl:px-[40px] xl:py-[60px] font-sans">
+    <footer className="bg-gray-900 text-white mt-auto px-5 py-10 lg:px-20 xl:pb-[60px] xl:pt-[56px] font-sans">
       <style>{`
         .mrtuga-footer-grid {
           grid-template-areas:
@@ -24,69 +24,11 @@ const SiteFooter = () => {
           }
         }
       `}</style>
-      <div className="mrtuga-footer-grid grid gap-[40px] xl:grid-cols-6 xl:gap-x-[20px] xl:gap-y-[40px] max-w-[1440px] mx-auto">
-
-        {/* Newsletter */}
-        <div style={{ gridArea: "newsletter" }}>
-          <div className="flex flex-col">
-            <h3 className={headingCls}>Junte-se ao MRClub</h3>
-            <p className="text-[14px] text-gray-400 mb-[20px] leading-[110%]">
-              Ao juntar-se ao MRClub tem acesso em primeira mão às novidades,
-              ofertas exclusivas e muito mais!
-            </p>
-            <form className="flex gap-[10px]" onSubmit={(e) => e.preventDefault()}>
-              <input
-                name="email"
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="O seu e-mail"
-                className="flex-1 h-[42px] rounded-[6px] border border-gray-400 bg-gray-900 text-[14px] px-[10px] leading-[110%] font-normal placeholder:text-gray-400 focus:outline-none text-white"
-              />
-              <button
-                type="submit"
-                className="bg-primary text-primary-foreground rounded-[6px] w-[42px] h-[42px] flex items-center justify-center"
-                aria-label="Subscrever"
-              >
-                <ChevronRight className="w-[24px] h-[24px] shrink-0" />
-              </button>
-            </form>
-          </div>
-
-          {/* Social - desktop */}
-          <div className="hidden xl:block mt-[32px]">
-            <h3 className={headingCls}>Siga-nos</h3>
-            <ul className="space-y-[15px] xl:space-y-[20px]">
-              <li>
-                <a
-                  href="https://www.instagram.com/mrtuga.co/"
-                  className="flex items-center gap-[8px] text-[14px] text-gray-400 hover:text-white transition-colors leading-[110%]"
-                >
-                  <Instagram className="w-[16px] h-[16px] shrink-0" />
-                  <span className="underline decoration-1 underline-offset-3 xl:no-underline">
-                    Instagram
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.facebook.com/mrtuga"
-                  className="flex items-center gap-[8px] text-[14px] text-gray-400 hover:text-white transition-colors leading-[110%]"
-                >
-                  <Facebook className="w-[16px] h-[16px] shrink-0" />
-                  <span className="underline decoration-1 underline-offset-3 xl:no-underline">
-                    Facebook
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
+      <div className="mrtuga-footer-grid grid gap-[40px] xl:grid-cols-6 xl:gap-x-[20px] xl:gap-y-[40px]">
+...
         {/* Logo */}
         <div className="xl:mb-[20px]" style={{ gridArea: "logo" }}>
-          <div className="font-display font-black tracking-tighter text-white leading-none text-[64px] xl:text-[56px] xl:w-[220px]">
+          <div className="font-display font-black tracking-tighter text-white leading-none text-[48px] xl:text-[40px] xl:w-[220px]">
             MRTUGA
           </div>
         </div>
