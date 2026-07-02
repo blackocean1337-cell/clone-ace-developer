@@ -156,17 +156,17 @@ const IconiqueSection2 = () => {
           </div>
         </div>
 
-        {/* Pack card */}
-        <div className="relative rounded-[6px] bg-[#001f4d] p-[30px] overflow-hidden aspect-[2.05/1]">
-          <div className="relative z-10 h-full flex flex-col justify-between max-w-[55%]">
+        {/* Pack card — replicated 1:1 from Fincut */}
+        <div className="relative rounded-[6px] bg-[#0a0a0a] p-[30px] overflow-hidden aspect-[2.05/1]">
+          <div className="relative z-10 h-full flex flex-col justify-between max-w-[52%]">
             <div>
-              <span className="inline-block bg-[#facc15] text-gray-900 text-[12px] uppercase px-[8px] py-[6px] leading-[110%] mb-[15px] rounded-[2px] font-medium">
+              <span className="inline-block bg-[#facc15] text-gray-900 text-[12px] uppercase px-[8px] py-[6px] leading-[110%] mb-[15px] rounded-[2px] font-medium tracking-wide">
                 Até -35%
               </span>
-              <h2 className="text-[20px] xl:text-[22px] font-serif leading-[110%] text-white">
+              <h2 className="text-[20px] xl:text-[24px] font-serif leading-[115%] text-white">
                 Componha o seu pack 100% personalizado
               </h2>
-              <p className="mt-[12px] text-[13px] xl:text-[14px] leading-[140%] text-gray-300">
+              <p className="mt-[12px] text-[13px] xl:text-[14px] leading-[140%] text-gray-400 max-w-[360px]">
                 O seu pack à medida em poucos cliques, escolha as cores, quanto mais artigos juntar, maior o desconto.
               </p>
             </div>
@@ -177,13 +177,45 @@ const IconiqueSection2 = () => {
               Crio o meu pack
             </button>
           </div>
-          {decorativeImage && (
-            <img
-              src={decorativeImage}
-              alt="Pack personalizado"
-              className="absolute right-[20px] top-1/2 -translate-y-1/2 h-[80%] max-w-[45%] object-contain object-right opacity-95 pointer-events-none"
-            />
-          )}
+
+          {/* Decorative polaroid stack — mimics Fincut mini product cards */}
+          <div className="absolute right-[20px] xl:right-[40px] top-1/2 -translate-y-1/2 w-[45%] h-[85%] pointer-events-none">
+            {packCards.map((c, i) => (
+              <div
+                key={i}
+                className="absolute left-1/2 top-1/2 w-[42%] bg-white rounded-[4px] shadow-[0_8px_24px_rgba(0,0,0,0.35)] p-[8px]"
+                style={{
+                  transform: `translate(-50%, -50%) translate(${c.x}px, ${c.y}px) rotate(${c.rotate}deg)`,
+                  zIndex: c.z,
+                }}
+              >
+                <div className="w-full aspect-square bg-[#f5f5f5] rounded-[2px] overflow-hidden flex items-center justify-center">
+                  {c.img && (
+                    <img src={c.img} alt="" className="w-full h-full object-contain" />
+                  )}
+                </div>
+                <div className="mt-[6px] px-[2px]">
+                  <p className="text-[7px] xl:text-[8px] font-serif leading-[110%] text-gray-900 truncate">
+                    {c.name}
+                  </p>
+                  <div className="flex items-center justify-between mt-[3px] gap-[4px]">
+                    <div className="flex items-center gap-[3px] min-w-0">
+                      <span
+                        className="w-[6px] h-[6px] rounded-full border border-gray-300 flex-shrink-0"
+                        style={{ backgroundColor: c.hex }}
+                      />
+                      <span className="text-[6px] xl:text-[7px] text-gray-500 uppercase truncate">
+                        {c.colorName}
+                      </span>
+                    </div>
+                    <span className="text-[6px] xl:text-[7px] text-gray-700 border border-gray-300 rounded-[2px] px-[3px] py-[1px] flex-shrink-0">
+                      {c.size}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
