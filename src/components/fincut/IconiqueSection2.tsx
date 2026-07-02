@@ -160,58 +160,65 @@ const IconiqueSection2 = () => {
         </div>
 
         {/* Pack card — replicated 1:1 from Fincut */}
-        <div className="relative rounded-[6px] bg-[#0a0a0a] px-[30px] pt-[30px] pb-[50px] overflow-hidden aspect-[2.05/1]">
-          <div className="relative z-10 h-full flex flex-col justify-between max-w-[52%]">
-            <div>
-              <span className="inline-block bg-[#facc15] text-gray-900 text-[12px] uppercase px-[8px] py-[6px] leading-[110%] mb-[15px] rounded-[2px] font-medium tracking-wide">
-                Até -35%
-              </span>
-              <h2 className="text-[20px] xl:text-[24px] font-serif leading-[115%] text-white">
-                Componha o seu pack 100% personalizado
-              </h2>
-              <p className="mt-[12px] text-[13px] xl:text-[14px] leading-[140%] text-gray-400 max-w-[360px]">
-                O seu pack à medida em poucos cliques, escolha as cores, quanto mais artigos juntar, maior o desconto.
-              </p>
-            </div>
-            <button
-              onClick={openPack}
-              className="cursor-pointer bg-[#facc15] hover:bg-[#facc15]/90 uppercase text-gray-900 text-[13px] xl:text-[14px] font-medium rounded-[6px] py-[14px] px-[20px] leading-[110%] inline-flex items-center justify-center transition-colors w-fit tracking-wide"
-            >
-              Crio o meu pack
-            </button>
+        <div className="relative rounded-[6px] bg-[#0a0a0a] p-[40px] xl:p-[50px] overflow-hidden aspect-[1.85/1]">
+          {/* Text block top-left */}
+          <div className="relative z-10 max-w-[54%]">
+            <span className="inline-block bg-[#facc15] text-gray-900 text-[11px] xl:text-[12px] uppercase px-[10px] py-[6px] leading-[110%] mb-[24px] rounded-[4px] tracking-[0.02em]">
+              Até -35%
+            </span>
+            <h2 className="text-[24px] xl:text-[30px] font-serif leading-[115%] text-white">
+              Componha o seu pack 100% personalizado
+            </h2>
+            <p className="mt-[14px] text-[13px] xl:text-[14px] leading-[145%] text-gray-400">
+              O seu pack à medida em poucos cliques, escolha as cores, quanto mais artigos juntar, maior o desconto.
+            </p>
           </div>
 
-          {/* Decorative polaroid stack — mimics Fincut mini product cards */}
-          <div className="absolute right-[20px] xl:right-[40px] top-1/2 -translate-y-1/2 w-[45%] h-[85%] pointer-events-none">
+          {/* Button bottom-left */}
+          <button
+            onClick={openPack}
+            className="absolute left-[40px] xl:left-[50px] bottom-[40px] xl:bottom-[50px] z-10 cursor-pointer bg-[#facc15] hover:bg-[#facc15]/90 uppercase text-gray-900 text-[13px] xl:text-[14px] rounded-[6px] py-[16px] px-[24px] leading-[110%] inline-flex items-center justify-center transition-colors tracking-[0.05em]"
+          >
+            Crio o meu pack
+          </button>
+
+          {/* Polaroid stack on right */}
+          <div className="absolute right-[6%] top-1/2 -translate-y-1/2 w-[42%] aspect-[1.3/1] pointer-events-none">
             {packCards.map((c, i) => (
               <div
                 key={i}
-                className="absolute left-1/2 top-1/2 w-[42%] bg-white rounded-[4px] shadow-[0_8px_24px_rgba(0,0,0,0.35)] p-[8px]"
+                className="absolute left-1/2 top-1/2 w-[48%] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.4)] p-[10px] pb-[18px]"
                 style={{
-                  transform: `translate(-50%, -50%) translate(${c.x}px, ${c.y}px) rotate(${c.rotate}deg)`,
+                  transform: `translate(-50%, -50%) translate(${c.x}%, ${c.y}%) rotate(${c.rotate}deg)`,
                   zIndex: c.z,
                 }}
               >
-                <div className="w-full aspect-square bg-[#f5f5f5] rounded-[2px] overflow-hidden flex items-center justify-center">
-                  {c.img && (
-                    <img src={c.img} alt="" className="w-full h-full object-contain" />
+                <div className="w-full aspect-square bg-white overflow-hidden flex items-center justify-center">
+                  {c.placeholder ? (
+                    <div className="w-[70%] h-[70%] border border-dashed border-gray-300 flex items-center justify-center">
+                      <svg viewBox="0 0 24 24" className="w-[28%] h-[28%] text-gray-400" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M12 5v14M5 12h14" strokeLinecap="round" />
+                      </svg>
+                    </div>
+                  ) : (
+                    c.img && <img src={c.img} alt="" className="w-full h-full object-contain" />
                   )}
                 </div>
                 <div className="mt-[6px] px-[2px]">
-                  <p className="text-[7px] xl:text-[8px] font-serif leading-[110%] text-gray-900 truncate">
+                  <p className="text-[8px] xl:text-[9px] font-serif leading-[110%] text-gray-900 truncate">
                     {c.name}
                   </p>
                   <div className="flex items-center justify-between mt-[3px] gap-[4px]">
                     <div className="flex items-center gap-[3px] min-w-0">
                       <span
-                        className="w-[6px] h-[6px] rounded-full border border-gray-300 flex-shrink-0"
+                        className={`w-[7px] h-[7px] rounded-full flex-shrink-0 ${c.placeholder ? "border border-gray-300" : ""}`}
                         style={{ backgroundColor: c.hex }}
                       />
-                      <span className="text-[6px] xl:text-[7px] text-gray-500 uppercase truncate">
+                      <span className="text-[6px] xl:text-[7px] text-gray-500 uppercase truncate tracking-wide">
                         {c.colorName}
                       </span>
                     </div>
-                    <span className="text-[6px] xl:text-[7px] text-gray-700 border border-gray-300 rounded-[2px] px-[3px] py-[1px] flex-shrink-0">
+                    <span className="text-[6px] xl:text-[7px] text-gray-700 border border-gray-300 px-[4px] py-[1px] flex-shrink-0 uppercase">
                       {c.size}
                     </span>
                   </div>
