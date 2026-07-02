@@ -13,7 +13,7 @@ const SiteFooter = () => {
       <style>{`
         .mrtuga-footer-grid {
           grid-template-areas:
-            'newsletter' 'logo' 'contact' 'categories' 'info' 'mobile' 'social' 'payment' 'copyright';
+            'logo' 'mobile' 'categories' 'info' 'contact' 'newsletter' 'payment' 'copyright';
         }
         @media (min-width: 1024px) {
           .mrtuga-footer-grid {
