@@ -10,23 +10,21 @@ const SiteFooter = () => {
 
   return (
     <footer className="bg-gray-900 text-white p-[20px] xl:px-[40px] xl:py-[60px] font-sans">
-      <div
-        className="grid gap-[40px] xl:grid-cols-6 xl:gap-x-[20px] xl:gap-y-[40px] max-w-[1440px] mx-auto"
-        style={{
-          gridTemplateAreas:
-            "'newsletter' 'logo' 'contact' 'categories' 'info' 'mobile' 'social' 'payment' 'copyright'",
-        }}
-      >
-        <style>{`
-          @media (min-width: 1280px) {
-            footer .fincut-grid {
-              grid-template-areas:
-                'logo logo logo logo logo logo'
-                'mobile categories info contact newsletter newsletter'
-                'bottom bottom bottom bottom bottom bottom' !important;
-            }
+      <style>{`
+        .mrtuga-footer-grid {
+          grid-template-areas:
+            'newsletter' 'logo' 'contact' 'categories' 'info' 'mobile' 'social' 'payment' 'copyright';
+        }
+        @media (min-width: 1280px) {
+          .mrtuga-footer-grid {
+            grid-template-areas:
+              'logo logo logo logo logo logo'
+              'mobile categories info contact newsletter newsletter'
+              'bottom bottom bottom bottom bottom bottom';
           }
-        `}</style>
+        }
+      `}</style>
+      <div className="mrtuga-footer-grid grid gap-[40px] xl:grid-cols-6 xl:gap-x-[20px] xl:gap-y-[40px] max-w-[1440px] mx-auto">
 
         {/* Newsletter */}
         <div style={{ gridArea: "newsletter" }}>
