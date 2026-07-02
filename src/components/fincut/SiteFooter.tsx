@@ -13,7 +13,7 @@ const SiteFooter = () => {
       <style>{`
         .mrtuga-footer-grid {
           grid-template-areas:
-            'newsletter' 'logo' 'contact' 'categories' 'info' 'mobile' 'social' 'payment' 'copyright';
+            'logo' 'mobile' 'categories' 'info' 'contact' 'newsletter' 'payment' 'copyright';
         }
         @media (min-width: 1024px) {
           .mrtuga-footer-grid {
@@ -71,17 +71,41 @@ const SiteFooter = () => {
           </ul>
         </div>
 
-        {/* Social mobile */}
-        <div className="lg:hidden" style={{ gridArea: "social" }}>
+        {/* Newsletter + Social (desktop visible, mobile visible) */}
+        <div style={{ gridArea: "newsletter" }}>
+          <h3 className={headingCls}>Junte-se ao MRTUGA Club</h3>
+          <p className="text-[14px] text-gray-400 leading-[130%] mb-[16px]">
+            Ao juntar-se ao MRTUGA Club tem acesso em primeira mão a novidades, ofertas exclusivas e muito mais!
+          </p>
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="relative mb-[24px]"
+          >
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="O seu e-mail"
+              className="w-full bg-transparent border-b border-gray-500 py-[10px] pr-[44px] text-[14px] text-white placeholder:text-gray-500 focus:outline-none focus:border-white"
+            />
+            <button
+              type="submit"
+              aria-label="Subscrever"
+              className="absolute right-0 top-1/2 -translate-y-1/2 w-[32px] h-[32px] rounded-full bg-[#FACC15] flex items-center justify-center text-gray-900 hover:brightness-95"
+            >
+              <ChevronRight className="w-[16px] h-[16px]" />
+            </button>
+          </form>
+
           <h3 className={headingCls}>Siga-nos</h3>
-          <ul className="space-y-[15px]">
+          <ul className="space-y-[12px]">
             <li>
               <a
                 href="https://www.instagram.com/mrtuga.co/"
                 className="flex items-center gap-[8px] text-[14px] text-gray-400 hover:text-white transition-colors leading-[110%]"
               >
                 <Instagram className="w-[16px] h-[16px] shrink-0" />
-                <span className="underline decoration-1 underline-offset-3">Instagram</span>
+                <span>Instagram</span>
               </a>
             </li>
             <li>
@@ -90,11 +114,12 @@ const SiteFooter = () => {
                 className="flex items-center gap-[8px] text-[14px] text-gray-400 hover:text-white transition-colors leading-[110%]"
               >
                 <Facebook className="w-[16px] h-[16px] shrink-0" />
-                <span className="underline decoration-1 underline-offset-3">Facebook</span>
+                <span>Facebook</span>
               </a>
             </li>
           </ul>
         </div>
+
 
         {/* Help (mobile grid-area) */}
         <div style={{ gridArea: "mobile" }}>
