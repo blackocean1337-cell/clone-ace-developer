@@ -15,20 +15,22 @@ const HeroSection = () => {
           />
         </picture>
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-        <div className="absolute inset-0 py-[40px] px-[20px] xl:px-[80px] flex items-end z-10 text-white">
-          <div className="max-w-xl">
-            <h1 className="text-gray-100 mb-[20px] xl:mb-[26px] font-serif text-[24px] xl:text-[48px] whitespace-pre-line leading-[110%]">
-              A t-shirt que se adapta à sua morfologia
-            </h1>
-            <p className="text-[14px] xl:text-[16px] leading-[110%]">
-              Finalmente! A t-shirt que lhe assenta na perfeição.
-            </p>
-            <a
-              className="uppercase inline-block mt-[20px] xl:mt-[26px] py-[16px] px-[10px] xl:p-[20px] bg-[#facc15] text-gray-900 rounded-[6px] text-[14px] xl:text-[18px] leading-[110%]"
-              href="/products/t-shirt-tech"
-            >
-              Descubra o nosso bestseller
-            </a>
+        <div className="absolute inset-0 flex items-end z-10 text-white">
+          <div className="w-full max-w-[1440px] mx-auto px-5 lg:px-20 py-[40px]">
+            <div className="max-w-xl">
+              <h1 className="text-gray-100 mb-[20px] xl:mb-[26px] font-serif text-[24px] xl:text-[48px] whitespace-pre-line leading-[110%]">
+                A t-shirt que se adapta à sua morfologia
+              </h1>
+              <p className="text-[14px] xl:text-[16px] leading-[110%]">
+                Finalmente! A t-shirt que lhe assenta na perfeição.
+              </p>
+              <a
+                className="uppercase inline-block mt-[20px] xl:mt-[26px] py-[16px] px-[10px] xl:p-[20px] bg-[#facc15] text-gray-900 rounded-[6px] text-[14px] xl:text-[18px] leading-[110%]"
+                href="/products/t-shirt-tech"
+              >
+                Descubra o nosso bestseller
+              </a>
+            </div>
           </div>
         </div>
       </div>
