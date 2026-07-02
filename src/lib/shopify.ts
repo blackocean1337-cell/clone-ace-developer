@@ -1,6 +1,7 @@
 import { supabase } from "@/integrations/supabase/client";
 import type { CartItem } from "@/components/fincut/CartDrawer";
 import { groupCartIntoPacks, buildLineAttributes } from "@/lib/cartUtils";
+import { loadStoredPromo } from "@/lib/promo";
 
 /**
  * Creates a NYVA Pay payment link and returns the hosted pay_url.
@@ -19,8 +20,10 @@ export async function createCheckout(items: CartItem[]): Promise<string> {
     throw new Error("Carrinho vazio");
   }
 
+  const promoCode = loadStoredPromo();
+
   const { data, error } = await supabase.functions.invoke("create-checkout-box-variants", {
-    body: { packs, market: "PT" },
+    body: { packs, market: "PT", promoCode },
   });
 
   if (error) {
