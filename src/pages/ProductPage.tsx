@@ -349,7 +349,7 @@ const ProductPage = () => {
               <h3 className="font-display text-sm font-semibold text-foreground mb-3">
                 Selecione a sua quantidade:
               </h3>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-3 gap-2">
                 {quantityOptions.map((opt) =>
                 <button
                   key={opt.id}
@@ -370,16 +370,16 @@ const ProductPage = () => {
                       }
                     }
                   }}
-                  className={`relative border px-2 sm:px-3 py-2.5 sm:py-3 text-center transition-all duration-200 ${
+                  className={`relative border rounded-sm px-2 sm:px-3 py-3 sm:py-4 text-center transition-all duration-200 ${
                   opt.id === "custom" ?
-                  "border-foreground bg-foreground text-background" :
+                  "col-span-2 border-foreground bg-background text-foreground hover:bg-muted/40" :
                   selectedQuantity === opt.id ?
-                  "border-foreground bg-background text-foreground" :
+                  "border-foreground bg-foreground text-background" :
                   "border-border hover:border-muted-foreground"}`
                   }>
                   
                     {opt.badge &&
-                  <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-fincut-gold text-primary-foreground text-[9px] font-bold px-2 py-0.5 uppercase tracking-wider whitespace-nowrap">
+                  <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-fincut-gold text-primary-foreground text-[9px] font-bold px-2 py-0.5 uppercase tracking-wider whitespace-nowrap rounded-sm">
                         {opt.badge}
                       </span>
                   }
