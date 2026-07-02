@@ -158,7 +158,6 @@ export const products: Product[] = [
     care: defaultCare,
   },
   {
-  {
     slug: "t-shirt-cinzento",
     name: "A t-shirt Icónica.",
     price: 18,
