@@ -17,7 +17,7 @@ const ADMIN_URL = `https://${SHOPIFY_DOMAIN}/admin/api/${SHOPIFY_API_VERSION}/gr
 // Primary checkout domain configured in Shopify (Settings → Domains)
 const SHOPIFY_CHECKOUT_HOST = "securesafe-checkout.myshopify.com";
 
-const BASE_UNIT_PRICE = 18; // EUR
+const BASE_UNIT_PRICE = 33.90; // EUR — matches product display price
 const VALID_CAPS: PackCapacity[] = [1, 3, 6, 9, 12];
 
 interface PackInput {
