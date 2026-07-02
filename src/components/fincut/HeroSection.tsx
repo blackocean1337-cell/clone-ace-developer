@@ -1,21 +1,17 @@
-import heroDesktop from "@/assets/hero-desktop.webp.asset.json";
-import heroMobile from "@/assets/hero-mobile.webp.asset.json";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   return (
     <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] mb-[30px] xl:mb-[40px]">
       <div className="relative w-full h-[540px] xl:h-[567px] overflow-hidden">
-        <picture className="block w-full h-full">
-          <source media="(min-width: 1024px)" srcSet={heroDesktop.url} />
-          <img
-            src={heroMobile.url}
-            alt="A t-shirt que se adapta à sua morfologia"
-            className="w-full h-full object-cover"
-            loading="eager"
-            decoding="async"
-            style={{ objectPosition: "center 35%" }}
-          />
-        </picture>
+        <img
+          src={heroBg}
+          alt="A t-shirt que se adapta à sua morfologia"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+          decoding="async"
+          style={{ objectPosition: "center 35%" }}
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
         <div className="absolute inset-0 py-[40px] px-[20px] xl:px-[80px] flex items-end z-10 text-white">
           <div className="max-w-xl">
