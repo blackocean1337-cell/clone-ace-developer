@@ -21,10 +21,13 @@ const VestiaireSection = () => {
     el.addEventListener("scroll", updateArrows, { passive: true });
     window.addEventListener("resize", updateArrows);
     const onWheel = (e: WheelEvent) => {
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        el.scrollLeft += e.deltaY;
-        e.preventDefault();
-      }
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+      const maxScroll = el.scrollWidth - el.clientWidth;
+      const atStart = el.scrollLeft <= 0 && e.deltaY < 0;
+      const atEnd = el.scrollLeft >= maxScroll - 1 && e.deltaY > 0;
+      if (atStart || atEnd) return; // let page scroll vertically
+      el.scrollLeft += e.deltaY;
+      e.preventDefault();
     };
     el.addEventListener("wheel", onWheel, { passive: false });
     return () => {
