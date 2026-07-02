@@ -135,6 +135,7 @@ const ProductPage = () => {
   const [packHighlight, setPackHighlight] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<string | null>("description");
   const [countdown, setCountdown] = useState({ hours: 13, minutes: 39 });
+  const [offerCountdown, setOfferCountdown] = useState({ days: 3, hours: 5, minutes: 50, seconds: 3 });
 
   // Pack images now show in the pack selector, not in the main gallery
   const isPackSelected = selectedQuantity !== "unite" && selectedQuantity !== "custom";
@@ -164,6 +165,21 @@ const ProductPage = () => {
       });
     }, 60000);
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setOfferCountdown((p) => {
+        let { days, hours, minutes, seconds } = p;
+        seconds -= 1;
+        if (seconds < 0) { seconds = 59; minutes -= 1; }
+        if (minutes < 0) { minutes = 59; hours -= 1; }
+        if (hours < 0) { hours = 23; days -= 1; }
+        if (days < 0) return p;
+        return { days, hours, minutes, seconds };
+      });
+    }, 1000);
+    return () => clearInterval(t);
   }, []);
 
   if (!product) return <Navigate to="/" replace />;
@@ -237,6 +253,13 @@ const ProductPage = () => {
           <span className="mx-1">/</span>
           <span className="underline text-foreground">Unidade</span>
         </nav>
+
+        {/* Offer countdown pill */}
+        <div className="mb-4 sm:mb-6 flex">
+          <span className="inline-flex items-center gap-1.5 bg-fincut-gold text-primary-foreground font-display text-[11px] sm:text-xs font-bold tracking-wider uppercase px-3 py-1.5 rounded-sm">
+            {offerCountdown.days}d : {String(offerCountdown.hours).padStart(2, "0")}h : {String(offerCountdown.minutes).padStart(2, "0")}m : {String(offerCountdown.seconds).padStart(2, "0")}s
+          </span>
+        </div>
 
         {/* Product Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 lg:gap-12">
@@ -325,7 +348,7 @@ const ProductPage = () => {
                   </div>
                 </div>
 
-                <span className="border border-foreground px-3 py-1 font-display text-xs font-bold tracking-wider uppercase">
+                <span className="bg-fincut-gold text-primary-foreground px-3 py-1.5 font-display text-xs font-bold tracking-wider uppercase rounded-sm">
                   {product.badge}
                 </span>
               </div>
@@ -349,7 +372,7 @@ const ProductPage = () => {
               <h3 className="font-display text-sm font-semibold text-foreground mb-3">
                 Selecione a sua quantidade:
               </h3>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-3 gap-2">
                 {quantityOptions.map((opt) =>
                 <button
                   key={opt.id}
@@ -370,16 +393,16 @@ const ProductPage = () => {
                       }
                     }
                   }}
-                  className={`relative border px-2 sm:px-3 py-2.5 sm:py-3 text-center transition-all duration-200 ${
+                  className={`relative border rounded-sm px-2 sm:px-3 py-3 sm:py-4 text-center transition-all duration-200 ${
                   opt.id === "custom" ?
-                  "border-foreground bg-foreground text-background" :
+                  "col-span-2 border-foreground bg-background text-foreground hover:bg-muted/40" :
                   selectedQuantity === opt.id ?
-                  "border-foreground bg-background text-foreground" :
+                  "border-foreground bg-foreground text-background" :
                   "border-border hover:border-muted-foreground"}`
                   }>
                   
                     {opt.badge &&
-                  <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-fincut-gold text-primary-foreground text-[9px] font-bold px-2 py-0.5 uppercase tracking-wider whitespace-nowrap">
+                  <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-fincut-gold text-primary-foreground text-[9px] font-bold px-2 py-0.5 uppercase tracking-wider whitespace-nowrap rounded-sm">
                         {opt.badge}
                       </span>
                   }
