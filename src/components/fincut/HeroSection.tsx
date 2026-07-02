@@ -1,20 +1,21 @@
-import heroBg from "@/assets/hero-bg.jpg";
+const HERO_DESKTOP = "https://cdn.shopify.com/s/files/1/0773/6472/4060/files/BANNERFDP2.jpg?v=1780982471";
+const HERO_MOBILE = "https://cdn.shopify.com/s/files/1/0773/6472/4060/files/BANNERMOBILEFDP2.jpg?v=1780982561";
 
 const HeroSection = () => {
   return (
     <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] mb-[30px] xl:mb-[40px]">
       <div className="relative w-full h-[567px] overflow-hidden">
         <picture className="block w-full h-full">
+          <source media="(min-width: 768px)" srcSet={HERO_DESKTOP} />
           <img
-            src={heroBg}
+            src={HERO_MOBILE}
             alt="A t-shirt que se adapta à sua morfologia"
             className="w-full h-full object-cover"
             loading="eager"
             decoding="async"
-            style={{ objectPosition: "center 15%" }}
+            style={{ objectPosition: "center center" }}
           />
         </picture>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
         <div className="absolute inset-0 flex items-end z-10 text-white">
           <div className="w-full max-w-[1440px] mx-auto px-5 lg:px-20 py-[40px]">
             <div className="max-w-xl">
