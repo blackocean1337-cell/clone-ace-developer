@@ -157,7 +157,7 @@ const IconiqueSection2 = () => {
         </div>
 
         {/* Pack card — replicated 1:1 from Fincut */}
-        <div className="relative rounded-[6px] bg-[#0a0a0a] p-[30px] overflow-hidden aspect-[2.05/1]">
+        <div className="relative rounded-[6px] bg-[#0a0a0a] px-[30px] pt-[30px] pb-[50px] overflow-hidden aspect-[2.05/1]">
           <div className="relative z-10 h-full flex flex-col justify-between max-w-[52%]">
             <div>
               <span className="inline-block bg-[#facc15] text-gray-900 text-[12px] uppercase px-[8px] py-[6px] leading-[110%] mb-[15px] rounded-[2px] font-medium tracking-wide">
