@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { ChevronRight, Facebook, Instagram } from "lucide-react";
+import mbwayLogo from "@/assets/footer-mbway.png.asset.json";
+import visaLogo from "@/assets/footer-visa.png.asset.json";
+import mastercardLogo from "@/assets/footer-mastercard.png.asset.json";
 
 const SiteFooter = () => {
   const [email, setEmail] = useState("");
@@ -136,15 +139,10 @@ const SiteFooter = () => {
           <h3 className="text-[14px] mb-[20px] font-normal lg:mb-0 leading-[110%] text-white">
             Pagamento seguro
           </h3>
-          <div className="flex flex-wrap items-center gap-[8px]">
-            {["MB WAY", "VISA", "MASTERCARD"].map((m) => (
-              <span
-                key={m}
-                className="text-[11px] tracking-wide px-[8px] py-[4px] rounded-[4px] bg-white text-gray-900 font-semibold"
-              >
-                {m}
-              </span>
-            ))}
+          <div className="flex flex-wrap items-center gap-[10px] bg-white rounded-[6px] px-[12px] py-[8px] w-fit">
+            <img src={mbwayLogo.url} alt="MB WAY" className="h-[22px] w-auto object-contain" />
+            <img src={visaLogo.url} alt="Visa" className="h-[16px] w-auto object-contain" />
+            <img src={mastercardLogo.url} alt="Mastercard" className="h-[22px] w-auto object-contain" />
           </div>
         </div>
 
@@ -168,15 +166,10 @@ const SiteFooter = () => {
           </div>
           <div className="flex flex-col items-center gap-[12px] justify-self-center">
             <h3 className="text-[14px] leading-[110%] text-white">Pagamento seguro</h3>
-            <div className="flex items-center gap-[8px]">
-              {["MB WAY", "VISA", "MASTERCARD"].map((m) => (
-                <span
-                  key={m}
-                  className="text-[11px] tracking-wide px-[8px] py-[4px] rounded-[4px] bg-white text-gray-900 font-semibold"
-                >
-                  {m}
-                </span>
-              ))}
+            <div className="flex items-center gap-[10px] bg-white rounded-[6px] px-[12px] py-[8px]">
+              <img src={mbwayLogo.url} alt="MB WAY" className="h-[22px] w-auto object-contain" />
+              <img src={visaLogo.url} alt="Visa" className="h-[16px] w-auto object-contain" />
+              <img src={mastercardLogo.url} alt="Mastercard" className="h-[22px] w-auto object-contain" />
             </div>
           </div>
           <div />
