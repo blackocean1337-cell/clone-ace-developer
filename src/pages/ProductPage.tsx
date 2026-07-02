@@ -325,7 +325,7 @@ const ProductPage = () => {
                   </div>
                 </div>
 
-                <span className="border border-foreground px-3 py-1 font-display text-xs font-bold tracking-wider uppercase">
+                <span className="bg-fincut-gold text-primary-foreground px-3 py-1.5 font-display text-xs font-bold tracking-wider uppercase rounded-sm">
                   {product.badge}
                 </span>
               </div>
