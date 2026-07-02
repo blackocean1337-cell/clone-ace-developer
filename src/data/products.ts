@@ -41,7 +41,7 @@ const defaultColors = [
   { name: "Branco", hex: "#f5f5f0", slug: "t-shirt-blanc" },
   { name: "Caqui", hex: "#5c6b4e", slug: "t-shirt-kaki" },
   { name: "Azul marinho", hex: "#2c3e6b", slug: "t-shirt-navy" },
-  { name: "Cinzento", hex: "#9b9b9b" },
+  { name: "Cinzento", hex: "#9b9b9b", slug: "t-shirt-cinzento" },
   { name: "Azul céu", hex: "#7fb5d5" },
   { name: "Salmão", hex: "#e8a598" },
   { name: "Turquesa", hex: "#4fb8a8" },
