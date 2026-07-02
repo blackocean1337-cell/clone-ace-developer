@@ -534,10 +534,10 @@ export const products: Product[] = [
   }))),
   {
     slug: "pull",
-    name: "A Camisola",
+    name: "A Malha",
     price: 55,
     priceLabel: "33,90 €",
-    category: "Camisola",
+    category: "Malha",
     collar: "Gola redonda",
     badge: "PREMIUM",
     cardImage: pullPreto,
@@ -547,10 +547,10 @@ export const products: Product[] = [
     features: [
       "Malha fina e elegante",
       "Calor sem volume supérfluo",
-      "A camisola que acompanha todos os seus looks",
+      "A malha que acompanha todos os seus looks",
     ],
     description: [
-      "A camisola essencial.",
+      "A malha essencial.",
       "Uma malha fina e cerrada que traz calor e elegância sem volume desnecessário.",
       "Corte ajustado fiel ao ADN MRTUGA, para uma silhueta estruturada.",
       "Perfeita sozinha ou em camadas.",
@@ -568,10 +568,10 @@ export const products: Product[] = [
   },
   {
     slug: "pull-bege",
-    name: "A Camisola",
+    name: "A Malha",
     price: 55,
     priceLabel: "33,90 €",
-    category: "Camisola",
+    category: "Malha",
     collar: "Gola redonda",
     badge: "PREMIUM",
     cardImage: pullBege,
@@ -581,10 +581,10 @@ export const products: Product[] = [
     features: [
       "Malha fina e elegante",
       "Calor sem volume supérfluo",
-      "A camisola que acompanha todos os seus looks",
+      "A malha que acompanha todos os seus looks",
     ],
     description: [
-      "A camisola essencial.",
+      "A malha essencial.",
       "Uma malha fina e cerrada que traz calor e elegância sem volume desnecessário.",
       "Corte ajustado fiel ao ADN MRTUGA, para uma silhueta estruturada.",
       "Perfeita sozinha ou em camadas.",
