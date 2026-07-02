@@ -4,7 +4,8 @@ const tshirtNavy = "/lovable-uploads/eead22c9-62c0-42ee-9771-29643ce81759.png";
 const tshirtKaki = "/lovable-uploads/55cd436d-3d1d-450c-bccd-a22ec73d3c83.png";
 const poloBlack = "/lovable-uploads/874bd929-ea57-4973-96cc-bddac15da4b3.png";
 import tshirtVneck from "@/assets/tshirt-vneck.png";
-import tshirtLongsleeve from "@/assets/tshirt-longsleeve.png";
+import tshirtLongsleeveAsset from "@/assets/tshirt-longsleeve-preto.png.asset.json";
+const tshirtLongsleeve = tshirtLongsleeveAsset.url;
 import pullBlack from "@/assets/pull-black.png";
 import tshirtCinzentoAsset from "@/assets/tshirt-cinzento.png.asset.json";
 import tshirtAzulCeuAsset from "@/assets/tshirt-azul-ceu.png.asset.json";
@@ -384,7 +385,7 @@ export const products: Product[] = [
     collar: "Gola redonda",
     badge: "ESSENCIAL",
     cardImage: tshirtLongsleeve,
-    galleryImages: [productBlackFront, productModel1, productModel2, productBlackBack],
+    galleryImages: [tshirtLongsleeve, productModel1, productModel2, productBlackBack],
     colors: [
       { name: "Preto", hex: "#1a1a1a" },
       { name: "Branco", hex: "#f5f5f0" },
