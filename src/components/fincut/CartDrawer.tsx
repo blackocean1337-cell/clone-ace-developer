@@ -263,7 +263,7 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
                     <div className="mb-4">
                       {promoCode ? (
                         <div className="flex items-center justify-between bg-checkout-trust/10 border border-checkout-trust/30 rounded px-3 py-2">
-                          <span className="text-xs font-bold text-checkout-trust">✓ {promoCode} aplicado — tudo a 1€</span>
+                          <span className="text-xs font-bold text-checkout-trust">✓ {promoCode} aplicado{promoCode === "TUGA1" ? " — tudo a 1€" : promoCode === "TUGA30" ? " — −30€" : ""}</span>
                           <button type="button" onClick={handleRemovePromo} className="text-[10px] underline text-muted-foreground hover:text-fincut-black">remover</button>
                         </div>
                       ) : (
