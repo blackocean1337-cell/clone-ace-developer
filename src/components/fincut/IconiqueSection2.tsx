@@ -95,7 +95,7 @@ const IconiqueSection2 = () => {
       </div>
 
       {/* Desktop: 2 cols — left carousel of pairs, right pack card */}
-      <div className="hidden lg:grid lg:grid-cols-2 lg:gap-[20px] lg:items-start">
+      <div className="hidden lg:grid lg:grid-cols-2 lg:gap-[20px] lg:items-stretch">
         <div className="relative">
           <div className="overflow-hidden">
             <div
