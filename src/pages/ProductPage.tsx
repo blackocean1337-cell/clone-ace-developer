@@ -367,64 +367,68 @@ const ProductPage = () => {
               })}
             </div>
 
-            {/* Quantity selector */}
+            {/* Quantity selector — Fincut-exact CSS */}
             <div>
-              <h3 className="font-display text-sm font-semibold text-foreground mb-3">
+              <h3 className="font-serif text-[16px] xl:text-[18px] leading-[110%] text-foreground mb-[20px]">
                 Selecione a sua quantidade:
               </h3>
-              <div className="grid grid-cols-3 gap-2">
-                {quantityOptions.map((opt) =>
-                <button
-                  key={opt.id}
-                  onClick={() => {
-                    if (opt.id === "custom") {
-                      window.dispatchEvent(new Event("open-pack-builder"));
-                    } else {
-                      setSelectedQuantity(opt.id);
-                      setSelectedImage(0);
-                      if (opt.id !== "unite") {
-                        setSelectedPack(null);
-                        setPackHighlight(true);
-                        setTimeout(() => {
-                          document.getElementById("pack-selector")?.scrollIntoView({ behavior: "smooth", block: "center" });
-                        }, 100);
-                      } else {
-                        setPackHighlight(false);
-                      }
-                    }
-                  }}
-                  className={`relative border rounded-sm px-2 sm:px-3 py-3 sm:py-4 text-center transition-all duration-200 ${
-                  opt.id === "custom" ?
-                  "col-span-2 border-foreground bg-background text-foreground hover:bg-muted/40" :
-                  selectedQuantity === opt.id ?
-                  "border-foreground bg-foreground text-background" :
-                  "border-border hover:border-muted-foreground"}`
-                  }>
-                  
-                    {opt.badge &&
-                  <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-fincut-gold text-primary-foreground text-[9px] font-bold px-2 py-0.5 uppercase tracking-wider whitespace-nowrap rounded-sm">
-                        {opt.badge}
+              <div className="grid grid-cols-3 gap-[10px]">
+                {quantityOptions.map((opt) => {
+                  const isSelected = selectedQuantity === opt.id;
+                  const isCustom = opt.id === "custom";
+                  const isBestSeller = opt.id === "pack4";
+                  return (
+                    <button
+                      key={opt.id}
+                      onClick={() => {
+                        if (isCustom) {
+                          window.dispatchEvent(new Event("open-pack-builder"));
+                        } else {
+                          setSelectedQuantity(opt.id);
+                          setSelectedImage(0);
+                          if (opt.id !== "unite") {
+                            setSelectedPack(null);
+                            setPackHighlight(true);
+                            setTimeout(() => {
+                              document.getElementById("pack-selector")?.scrollIntoView({ behavior: "smooth", block: "center" });
+                            }, 100);
+                          } else {
+                            setPackHighlight(false);
+                          }
+                        }
+                      }}
+                      className={`relative rounded-[6px] py-[16px] px-[10px] text-center transition-colors border cursor-pointer ${
+                        isCustom ? "col-span-2 bg-background border-foreground text-foreground hover:bg-muted/30" :
+                        isSelected ? "bg-foreground text-background border-foreground" :
+                        "bg-background text-foreground border-border hover:border-muted-foreground"
+                      }`}
+                    >
+                      {opt.badge && (
+                        <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-fincut-gold text-foreground text-[9px] xl:text-[11px] p-[6px] leading-[110%] uppercase whitespace-nowrap rounded-[4px] font-semibold tracking-wider z-10">
+                          {opt.badge}
+                        </span>
+                      )}
+                      <span className={`block text-[13px] xl:text-[14px] uppercase leading-[110%] ${isSelected ? "text-background" : "text-foreground"}`}>
+                        {opt.label}
                       </span>
-                  }
-                    <span className="font-display text-[10px] sm:text-xs font-bold tracking-wider block">
-                      {opt.label}
-                    </span>
-                    {opt.sublabel &&
-                  <span className={`text-[10px] block mt-0.5 ${
-                  selectedQuantity === opt.id ? "text-background/70" : "text-muted-foreground"}`
-                  }>
-                        {opt.sublabel}
-                      </span>
-                  }
-                    {opt.price &&
-                  <span className={`text-xs font-semibold block mt-0.5 ${
-                  opt.id === "pack4" && selectedQuantity !== opt.id ? "text-fincut-gold" : ""}`
-                  }>
-                        {opt.price}
-                      </span>
-                  }
-                  </button>
-                )}
+                      {opt.sublabel && (
+                        <span className={`block mt-[5px] xl:mt-[8px] text-[11px] xl:text-[12px] leading-[150%] italic ${
+                          isSelected ? "text-background/60" : "text-muted-foreground"
+                        }`}>
+                          {opt.sublabel}
+                        </span>
+                      )}
+                      {opt.price && (
+                        <span className={`block mt-[5px] xl:mt-[8px] text-[11px] xl:text-[12px] leading-[150%] ${
+                          isSelected ? "text-background/70" :
+                          isBestSeller ? "text-[#A62323]" : "text-muted-foreground"
+                        }`}>
+                          {opt.price}
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
