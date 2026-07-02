@@ -153,37 +153,33 @@ const IconiqueSection2 = () => {
         </div>
 
         {/* Pack card */}
-        <div className="lg:aspect-[2.05/1]">
-          <div className="h-full flex flex-col gap-[10px]">
-            <div className="relative overflow-hidden flex-1 rounded-[6px] bg-gray-900 flex flex-row items-stretch gap-[20px] p-[20px] lg:p-[30px]">
-              <div className="flex-1 flex flex-col justify-between gap-[20px]">
-                <div>
-                  <span className="inline-block bg-[#facc15] text-gray-900 text-[11px] lg:text-[14px] uppercase p-[8px] leading-[110%] mb-[15px]">
-                    Até -35%
-                  </span>
-                  <h2 className="lg:max-w-[320px] text-[20px] lg:text-[22px] font-serif leading-[110%] text-white">
-                    Componha o seu pack 100% personalizado
-                  </h2>
-                  <p className="mt-[12px] lg:max-w-[360px] text-[14px] lg:text-[16px] leading-[140%] text-gray-400">
-                    O seu pack à medida em poucos cliques, escolha as cores, quanto mais artigos juntar, maior o desconto.
-                  </p>
-                </div>
-                <button
-                  onClick={openPack}
-                  className="cursor-pointer bg-[#facc15] hover:bg-[#facc15]/90 uppercase text-gray-900 text-[14px] lg:text-[16px] h-auto rounded-[6px] py-[16px] px-[10px] lg:p-[20px] leading-[110%] inline-flex items-center justify-center transition-colors w-fit"
-                >
-                  Crio o meu pack
-                </button>
-              </div>
-              {decorativeImage && (
-                <img
-                  src={decorativeImage}
-                  alt="Pack personalizado"
-                  className="self-stretch h-full max-w-[34%] object-contain object-left flex-shrink-0 -translate-x-[60px] opacity-90"
-                />
-              )}
+        <div className="relative rounded-[6px] bg-[#001f4d] p-[30px] overflow-hidden aspect-[2.05/1]">
+          <div className="relative z-10 h-full flex flex-col justify-between max-w-[55%]">
+            <div>
+              <span className="inline-block bg-[#facc15] text-gray-900 text-[12px] uppercase px-[8px] py-[6px] leading-[110%] mb-[15px] rounded-[2px] font-medium">
+                Até -35%
+              </span>
+              <h2 className="text-[20px] xl:text-[22px] font-serif leading-[110%] text-white">
+                Componha o seu pack 100% personalizado
+              </h2>
+              <p className="mt-[12px] text-[13px] xl:text-[14px] leading-[140%] text-gray-300">
+                O seu pack à medida em poucos cliques, escolha as cores, quanto mais artigos juntar, maior o desconto.
+              </p>
             </div>
+            <button
+              onClick={openPack}
+              className="cursor-pointer bg-[#facc15] hover:bg-[#facc15]/90 uppercase text-gray-900 text-[13px] xl:text-[14px] font-medium rounded-[6px] py-[14px] px-[20px] leading-[110%] inline-flex items-center justify-center transition-colors w-fit tracking-wide"
+            >
+              Crio o meu pack
+            </button>
           </div>
+          {decorativeImage && (
+            <img
+              src={decorativeImage}
+              alt="Pack personalizado"
+              className="absolute right-[20px] top-1/2 -translate-y-1/2 h-[80%] max-w-[45%] object-contain object-right opacity-95 pointer-events-none"
+            />
+          )}
         </div>
       </div>
     </section>
