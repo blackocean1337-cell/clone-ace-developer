@@ -167,6 +167,21 @@ const ProductPage = () => {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    const t = setInterval(() => {
+      setOfferCountdown((p) => {
+        let { days, hours, minutes, seconds } = p;
+        seconds -= 1;
+        if (seconds < 0) { seconds = 59; minutes -= 1; }
+        if (minutes < 0) { minutes = 59; hours -= 1; }
+        if (hours < 0) { hours = 23; days -= 1; }
+        if (days < 0) return p;
+        return { days, hours, minutes, seconds };
+      });
+    }, 1000);
+    return () => clearInterval(t);
+  }, []);
+
   if (!product) return <Navigate to="/" replace />;
 
   const productColorNames = product.colors.map(c => c.name);
