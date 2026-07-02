@@ -445,6 +445,9 @@ export const products: Product[] = [
     { name: "Salmão", slug: "t-shirt-manches-longues-salmao", image: longsleeveSalmao },
     { name: "Bordeaux", slug: "t-shirt-manches-longues-bordeaux", image: longsleeveBordeaux },
     { name: "Verde militar", slug: "t-shirt-manches-longues-verde-militar", image: longsleeveVerdeMilitar },
+    { name: "Caqui", slug: "t-shirt-manches-longues-caqui", image: longsleeveCaqui },
+    { name: "Turquesa", slug: "t-shirt-manches-longues-turquesa", image: longsleeveTurquesa },
+    { name: "Bege", slug: "t-shirt-manches-longues-bege", image: longsleeveBege },
   ].map((c) => ({
     slug: c.slug,
     name: `A t-shirt Manga Comprida ${c.name}`,
