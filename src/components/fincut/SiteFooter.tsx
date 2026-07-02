@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { ChevronRight, Facebook, Instagram } from "lucide-react";
+import mbwayLogo from "@/assets/footer-mbway.png.asset.json";
+import visaLogo from "@/assets/footer-visa.png.asset.json";
+import mastercardLogo from "@/assets/footer-mastercard.png.asset.json";
 
 const SiteFooter = () => {
   const [email, setEmail] = useState("");
