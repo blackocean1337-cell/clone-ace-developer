@@ -6,7 +6,14 @@ const poloBlack = "/lovable-uploads/874bd929-ea57-4973-96cc-bddac15da4b3.png";
 import tshirtVneck from "@/assets/tshirt-vneck.png";
 import tshirtLongsleeveAsset from "@/assets/tshirt-longsleeve-preto.png.asset.json";
 const tshirtLongsleeve = tshirtLongsleeveAsset.url;
-import pullBlack from "@/assets/pull-black.png";
+import pullPretoAsset from "@/assets/pull-preto.jpg.asset.json";
+import pullBegeAsset from "@/assets/pull-bege.jpg.asset.json";
+const pullPreto = pullPretoAsset.url;
+const pullBege = pullBegeAsset.url;
+const pullColors = [
+  { name: "Preto", hex: "#1a1a1a", slug: "pull" },
+  { name: "Bege", hex: "#d9c7a8", slug: "pull-bege" },
+];
 import tshirtCinzentoAsset from "@/assets/tshirt-cinzento.png.asset.json";
 import tshirtAzulCeuAsset from "@/assets/tshirt-azul-ceu.png.asset.json";
 import tshirtSalmaoAsset from "@/assets/tshirt-salmao.png.asset.json";
@@ -533,13 +540,43 @@ export const products: Product[] = [
     category: "Camisola",
     collar: "Gola redonda",
     badge: "PREMIUM",
-    cardImage: pullBlack,
-    galleryImages: [productBlackFront, productModel1, productBlackBack],
-    colors: [
-      { name: "Preto", hex: "#1a1a1a" },
-      { name: "Azul marinho", hex: "#2c3e6b" },
-      { name: "Cinzento", hex: "#9b9b9b" },
+    cardImage: pullPreto,
+    galleryImages: [pullPreto],
+    colors: pullColors,
+    sizes: defaultSizes,
+    features: [
+      "Malha fina e elegante",
+      "Calor sem volume supérfluo",
+      "A camisola que acompanha todos os seus looks",
     ],
+    description: [
+      "A camisola essencial.",
+      "Uma malha fina e cerrada que traz calor e elegância sem volume desnecessário.",
+      "Corte ajustado fiel ao ADN MRTUGA, para uma silhueta estruturada.",
+      "Perfeita sozinha ou em camadas.",
+    ],
+    materials: [
+      "50% lã merino, 50% acrílico",
+      "Malha fina e cerrada",
+      "Resistente ao borboto",
+      "Etiqueta impressa",
+    ],
+    care: [
+      "Lavagem a 30°C recomendada. Secagem ao ar.",
+      "Não passar a ferro diretamente sobre o tecido.",
+    ],
+  },
+  {
+    slug: "pull-bege",
+    name: "A Camisola",
+    price: 55,
+    priceLabel: "33,90 €",
+    category: "Camisola",
+    collar: "Gola redonda",
+    badge: "PREMIUM",
+    cardImage: pullBege,
+    galleryImages: [pullBege],
+    colors: pullColors,
     sizes: defaultSizes,
     features: [
       "Malha fina e elegante",
