@@ -95,7 +95,7 @@ const IconiqueSection2 = () => {
       </div>
 
       {/* Desktop: 2 cols — left carousel of pairs, right pack card */}
-      <div className="hidden lg:grid lg:grid-cols-2 lg:gap-[20px] lg:items-start">
+      <div className="hidden lg:grid lg:grid-cols-2 lg:gap-[20px] lg:items-stretch">
         <div className="relative">
           <div className="overflow-hidden">
             <div
@@ -160,7 +160,7 @@ const IconiqueSection2 = () => {
         </div>
 
         {/* Pack card — replicated 1:1 from Fincut */}
-        <div className="relative rounded-[6px] bg-[#0a0a0a] p-[40px] xl:p-[50px] overflow-hidden aspect-[1.85/1]">
+        <div className="relative rounded-[6px] bg-[#0a0a0a] p-[40px] xl:p-[50px] overflow-hidden h-full flex flex-col">
           {/* Text block top-left */}
           <div className="relative z-10 max-w-[54%]">
             <span className="inline-block bg-[#facc15] text-gray-900 text-[11px] xl:text-[12px] uppercase px-[10px] py-[6px] leading-[110%] mb-[24px] rounded-[4px] tracking-[0.02em]">
@@ -174,13 +174,15 @@ const IconiqueSection2 = () => {
             </p>
           </div>
 
-          {/* Button bottom-left */}
-          <button
-            onClick={openPack}
-            className="absolute left-[40px] xl:left-[50px] bottom-[40px] xl:bottom-[50px] z-10 cursor-pointer bg-[#facc15] hover:bg-[#facc15]/90 uppercase text-gray-900 text-[13px] xl:text-[14px] rounded-[6px] py-[16px] px-[24px] leading-[110%] inline-flex items-center justify-center transition-colors tracking-[0.05em]"
-          >
-            Crio o meu pack
-          </button>
+          {/* Button bottom-left (in flow, pushed to bottom) */}
+          <div className="relative z-10 mt-auto pt-[32px] max-w-[54%]">
+            <button
+              onClick={openPack}
+              className="cursor-pointer bg-[#facc15] hover:bg-[#facc15]/90 uppercase text-gray-900 text-[13px] xl:text-[14px] rounded-[6px] py-[16px] px-[24px] leading-[110%] inline-flex items-center justify-center transition-colors tracking-[0.05em]"
+            >
+              Crio o meu pack
+            </button>
+          </div>
 
           {/* Polaroid stack on right */}
           <div className="absolute right-[6%] top-1/2 -translate-y-1/2 w-[42%] aspect-[1.3/1] pointer-events-none">
