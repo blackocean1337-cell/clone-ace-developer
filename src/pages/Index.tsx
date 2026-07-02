@@ -19,10 +19,10 @@ const Index = () => {
       <SiteHeader />
       <HeroSection />
       <IconiqueSection2 />
+      <VestiaireSection />
       <IconiqueSection />
       <CustomPackSection />
       <CustomerPhotos />
-      <VestiaireSection />
       <PackSection />
       <CustomerPhotos2 />
       <ReviewsSection />
