@@ -29,30 +29,62 @@ const IconiqueSection2 = () => {
         Mais de 1 milhão de t-shirts vendidas
       </p>
 
-      {/* Mobile: single hero card */}
-      <div className="lg:hidden">
-        {cards[0] && (
-          <Link to={`/products/${cards[0].slug}`} className="block">
-            <div className="relative overflow-hidden aspect-square">
-              <img
-                src={cards[0].cardImage}
-                alt={cards[0].name}
-                loading="lazy"
-                className="rounded-[6px] w-full h-full object-cover"
-              />
-              <span className="absolute right-[20px] bottom-[20px] text-[11px] leading-[110%] text-gray-900">
-                +{cards[0].colors.length} CORES
-              </span>
+      {/* Mobile: horizontal scroll of cards + pack */}
+      <div className="lg:hidden -mr-5">
+        <div
+          className="flex overflow-x-auto scrollbar-hide gap-[12px] pr-5"
+          style={{ scrollSnapType: "x mandatory" }}
+        >
+          {cards.map((p) => (
+            <Link
+              key={p.slug}
+              to={`/products/${p.slug}`}
+              className="block flex-shrink-0 w-[75vw] max-w-[300px]"
+              style={{ scrollSnapAlign: "start" }}
+            >
+              <div className="relative overflow-hidden aspect-square rounded-[6px] bg-[#f2f2f2]">
+                <img
+                  src={p.cardImage}
+                  alt={p.name}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+                <span className="absolute right-[16px] bottom-[16px] text-[11px] leading-[110%] text-gray-900 uppercase">
+                  +{p.colors.length} CORES
+                </span>
+              </div>
+              <p className="mt-[14px] text-[14px] leading-[110%] text-gray-900 uppercase">
+                {p.name}
+              </p>
+              <p className="mt-[8px] leading-[110%]">
+                <span className="text-[11px] text-gray-400">desde: </span>
+                <span className="text-[14px] text-gray-900">{p.priceLabel}</span>
+              </p>
+            </Link>
+          ))}
+          {/* Pack card at end */}
+          <div
+            className="flex-shrink-0 w-[75vw] max-w-[300px]"
+            style={{ scrollSnapAlign: "start" }}
+          >
+            <div className="relative overflow-hidden aspect-square rounded-[6px] bg-gray-900 p-[20px] flex flex-col justify-between">
+              <div>
+                <span className="inline-block bg-[#facc15] text-gray-900 text-[11px] uppercase p-[6px] leading-[110%] mb-[12px]">
+                  Até -35%
+                </span>
+                <h3 className="text-[16px] font-serif leading-[110%] text-white">
+                  Componha o seu pack 100% personalizado
+                </h3>
+              </div>
+              <button
+                onClick={openPack}
+                className="cursor-pointer bg-[#facc15] hover:bg-[#facc15]/90 uppercase text-gray-900 text-[13px] rounded-[6px] py-[12px] px-[14px] leading-[110%] inline-flex items-center justify-center transition-colors w-fit"
+              >
+                Crio o meu pack
+              </button>
             </div>
-            <p className="mt-[20px] text-[14px] leading-[110%] text-gray-900 uppercase">
-              {cards[0].name}
-            </p>
-            <p className="mt-[10px] leading-[110%]">
-              <span className="text-[11px] text-gray-400">desde: </span>
-              <span className="text-[14px] text-gray-900">{cards[0].priceLabel}</span>
-            </p>
-          </Link>
-        )}
+          </div>
+        </div>
       </div>
 
       {/* Desktop: 2 cols — left carousel of pairs, right pack card */}
