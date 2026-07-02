@@ -65,13 +65,21 @@ serve(async (req) => {
     const token = Deno.env.get("SHOPIFY_ACCESS_TOKEN");
     if (!token) throw new Error("SHOPIFY_ACCESS_TOKEN missing");
 
-    const body = (await req.json()) as { packs: PackInput[]; market?: string };
+    const body = (await req.json()) as {
+      packs: PackInput[];
+      market?: string;
+      promoCode?: string | null;
+    };
     const { packs } = body;
     const market = (body.market || "PT").toUpperCase();
+    const promoCode = (body.promoCode || "").trim().toUpperCase();
 
     if (!Array.isArray(packs) || packs.length === 0) {
       throw new Error("packs vazio");
     }
+
+    let subtotal = 0;
+    let totalPayUnits = 0;
 
     const lineItems = packs.map((p) => {
       const cap = VALID_CAPS.includes(p.size as PackCapacity)
@@ -80,15 +88,33 @@ serve(async (req) => {
       if (!cap) throw new Error(`Capacidade inválida: ${p.size}`);
 
       const title = getPackTitle(cap, market).slice(0, 255);
+      const price = packPrice(cap);
+      subtotal += price;
+      totalPayUnits += packPayUnits(cap);
       return {
         title,
         quantity: 1,
-        originalUnitPrice: packPrice(cap).toFixed(2),
+        originalUnitPrice: price.toFixed(2),
         requiresShipping: true,
         taxable: true,
         customAttributes: p.attributes,
       };
     });
+
+    // Compute promo discount at draft-order level
+    let appliedDiscount: { title: string; value: string; valueType: "FIXED_AMOUNT" } | null = null;
+    if (promoCode === "TUGA1") {
+      // Target total = totalPayUnits × 1€
+      const target = totalPayUnits * 1;
+      const value = Math.max(0, subtotal - target);
+      if (value > 0) {
+        appliedDiscount = { title: "TUGA1", value: value.toFixed(2), valueType: "FIXED_AMOUNT" };
+      }
+    } else if (promoCode === "TUGA30") {
+      if (subtotal > 30) {
+        appliedDiscount = { title: "TUGA30", value: "30.00", valueType: "FIXED_AMOUNT" };
+      }
+    }
 
     const draftQ = `
       mutation($input: DraftOrderInput!) {
@@ -98,13 +124,15 @@ serve(async (req) => {
         }
       }
     `;
-    const result = await adminGql(token, draftQ, {
-      input: {
-        lineItems,
-        useCustomerDefaultAddress: false,
-        tags: ["lovable-checkout", `market:${market}`],
-      },
-    });
+    const draftInput: Record<string, unknown> = {
+      lineItems,
+      useCustomerDefaultAddress: false,
+      tags: ["lovable-checkout", `market:${market}`, ...(promoCode ? [`promo:${promoCode}`] : [])],
+    };
+    if (appliedDiscount) {
+      draftInput.appliedDiscount = appliedDiscount;
+    }
+    const result = await adminGql(token, draftQ, { input: draftInput });
     const errs = result?.draftOrderCreate?.userErrors || [];
     if (errs.length) throw new Error(`draftOrderCreate: ${JSON.stringify(errs)}`);
     const invoiceUrl = result.draftOrderCreate.draftOrder?.invoiceUrl;
