@@ -6,7 +6,14 @@ const poloBlack = "/lovable-uploads/874bd929-ea57-4973-96cc-bddac15da4b3.png";
 import tshirtVneck from "@/assets/tshirt-vneck.png";
 import tshirtLongsleeveAsset from "@/assets/tshirt-longsleeve-preto.png.asset.json";
 const tshirtLongsleeve = tshirtLongsleeveAsset.url;
-import pullBlack from "@/assets/pull-black.png";
+import pullPretoAsset from "@/assets/pull-preto.jpg.asset.json";
+import pullBegeAsset from "@/assets/pull-bege.jpg.asset.json";
+const pullPreto = pullPretoAsset.url;
+const pullBege = pullBegeAsset.url;
+const pullColors = [
+  { name: "Preto", hex: "#1a1a1a", slug: "pull" },
+  { name: "Bege", hex: "#d9c7a8", slug: "pull-bege" },
+];
 import tshirtCinzentoAsset from "@/assets/tshirt-cinzento.png.asset.json";
 import tshirtAzulCeuAsset from "@/assets/tshirt-azul-ceu.png.asset.json";
 import tshirtSalmaoAsset from "@/assets/tshirt-salmao.png.asset.json";
