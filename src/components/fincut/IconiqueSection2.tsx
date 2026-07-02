@@ -21,8 +21,8 @@ const IconiqueSection2 = () => {
   const decorativeImage = cards[0]?.cardImage;
 
   return (
-    <section className="max-w-[1440px] mx-auto px-5 xl:px-20 mb-[60px] xl:mb-[80px]">
-      <h2 className="leading-[110%] mb-[10px] xl:mb-[20px] font-serif text-[20px] xl:text-[24px] text-gray-900">
+    <section className="max-w-[1440px] mx-auto px-5 lg:px-20 mb-[60px] lg:mb-[80px]">
+      <h2 className="leading-[110%] mb-[10px] lg:mb-[20px] font-serif text-[20px] lg:text-[24px] text-gray-900">
         A Icónica
       </h2>
       <p className="text-[14px] leading-[110%] mb-[20px] text-gray-900">
@@ -30,7 +30,7 @@ const IconiqueSection2 = () => {
       </p>
 
       {/* Mobile: single hero card */}
-      <div className="xl:hidden">
+      <div className="lg:hidden">
         {cards[0] && (
           <Link to={`/products/${cards[0].slug}`} className="block">
             <div className="relative overflow-hidden aspect-square">
@@ -56,7 +56,7 @@ const IconiqueSection2 = () => {
       </div>
 
       {/* Desktop: 2 cols — left carousel of pairs, right pack card */}
-      <div className="hidden xl:grid xl:grid-cols-2 xl:gap-[20px] xl:items-start">
+      <div className="hidden lg:grid lg:grid-cols-2 lg:gap-[20px] lg:items-start">
         <div className="relative">
           <div className="overflow-hidden">
             <div
@@ -121,24 +121,24 @@ const IconiqueSection2 = () => {
         </div>
 
         {/* Pack card */}
-        <div className="xl:aspect-[2.05/1]">
+        <div className="lg:aspect-[2.05/1]">
           <div className="h-full flex flex-col gap-[10px]">
-            <div className="relative overflow-hidden flex-1 rounded-[6px] bg-gray-900 flex flex-row items-stretch gap-[20px] p-[20px] xl:p-[30px]">
+            <div className="relative overflow-hidden flex-1 rounded-[6px] bg-gray-900 flex flex-row items-stretch gap-[20px] p-[20px] lg:p-[30px]">
               <div className="flex-1 flex flex-col justify-between gap-[20px]">
                 <div>
-                  <span className="inline-block bg-[#facc15] text-gray-900 text-[11px] xl:text-[14px] uppercase p-[8px] leading-[110%] mb-[15px]">
+                  <span className="inline-block bg-[#facc15] text-gray-900 text-[11px] lg:text-[14px] uppercase p-[8px] leading-[110%] mb-[15px]">
                     Até -35%
                   </span>
-                  <h2 className="xl:max-w-[320px] text-[20px] xl:text-[22px] font-serif leading-[110%] text-white">
+                  <h2 className="lg:max-w-[320px] text-[20px] lg:text-[22px] font-serif leading-[110%] text-white">
                     Componha o seu pack 100% personalizado
                   </h2>
-                  <p className="mt-[12px] xl:max-w-[360px] text-[14px] xl:text-[16px] leading-[140%] text-gray-400">
+                  <p className="mt-[12px] lg:max-w-[360px] text-[14px] lg:text-[16px] leading-[140%] text-gray-400">
                     O seu pack à medida em poucos cliques, escolha as cores, quanto mais artigos juntar, maior o desconto.
                   </p>
                 </div>
                 <button
                   onClick={openPack}
-                  className="cursor-pointer bg-[#facc15] hover:bg-[#facc15]/90 uppercase text-gray-900 text-[14px] xl:text-[16px] h-auto rounded-[6px] py-[16px] px-[10px] xl:p-[20px] leading-[110%] inline-flex items-center justify-center transition-colors w-fit"
+                  className="cursor-pointer bg-[#facc15] hover:bg-[#facc15]/90 uppercase text-gray-900 text-[14px] lg:text-[16px] h-auto rounded-[6px] py-[16px] px-[10px] lg:p-[20px] leading-[110%] inline-flex items-center justify-center transition-colors w-fit"
                 >
                   Crio o meu pack
                 </button>
