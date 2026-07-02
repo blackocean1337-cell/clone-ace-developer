@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useParams, Navigate, useNavigate } from "react-router-dom";
-import { ChevronRight, ChevronLeft, Truck, Star, Ruler, Droplets, Award } from "lucide-react";
+import { ChevronRight, ChevronLeft, ChevronDown, Truck, Star, Ruler, Droplets, Award, SlidersHorizontal } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnnouncementBar from "@/components/fincut/AnnouncementBar";
 import ReviewsSection from "@/components/fincut/ReviewsSection";
@@ -695,83 +695,92 @@ const ProductPage = () => {
       {/* Trustpilot Reviews */}
       <ReviewsSection />
 
-      {/* Big Reviews Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-        {/* Header */}
-        <div className="text-center mb-8 sm:mb-10">
-          <h2 className="font-display text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-2">+8.000 homens já vestem MRTUGA!
-
+      {/* Big Reviews Section — Fincut layout */}
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+        {/* Centered heading */}
+        <div className="text-center mb-4">
+          <h2 className="font-serif text-[26px] sm:text-[32px] md:text-[38px] leading-[1.1] text-foreground">
+            + de 100.000 homens já vestem MRTUGA
           </h2>
-          <div className="flex items-center justify-center gap-2">
-            <div className="flex gap-0.5">
-              {[1, 2, 3, 4, 5].map((i) =>
-              <Star key={i} size={18} fill="#00b67a" className="text-[#00b67a]" />
-              )}
-            </div>
-            <span className="font-body text-sm font-semibold text-foreground">4.5</span>
-            <span className="font-body text-xs text-muted-foreground">| EM 6709 AVALIAÇÕES NO TRUSPILOT   </span>
+        </div>
+        <div className="flex items-center justify-center gap-2 mb-8 sm:mb-10">
+          <div className="flex gap-[2px]">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <Star key={i} size={18} fill="#FACC15" strokeWidth={0} className="text-[#FACC15]" />
+            ))}
           </div>
+          <span className="font-body text-[14px] font-semibold text-foreground ml-1">4.7</span>
+          <span className="font-body text-[12px] text-muted-foreground uppercase tracking-[0.08em]">
+            | Sobre 152 avaliações
+          </span>
         </div>
 
-        {/* Subheader */}
-        <div className="hidden sm:flex items-center justify-between mb-6">
-          <div className="flex items-center gap-2">
-            <div className="flex gap-0.5">
-              {[1, 2, 3, 4].map((i) =>
-              <Star key={i} size={20} fill="#00b67a" className="text-[#00b67a]" />
-              )}
-              <Star size={20} fill="#00b67a" className="text-[#00b67a] opacity-40" />
-            </div>
-            <span className="font-body text-sm text-foreground font-medium">5,325 avaliações</span>
-          </div>
-          
-
-          
-        </div>
-
-        {/* Reviews grid - masonry style */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-3 sm:gap-4 space-y-3 sm:space-y-4">
-          {reviews.map((review, i) =>
-          <div
-            key={i}
-            className="break-inside-avoid border border-border rounded-sm overflow-hidden hover:shadow-md transition-shadow duration-200">
-            
-              {review.image &&
-            <img
-              src={review.image}
-              alt={review.author}
-              className="w-full aspect-[4/5] object-cover"
-              loading="lazy" />
-
-            }
-              <div className="p-4 space-y-2">
-                <div className="flex items-center gap-2">
-                  <span className="font-body text-sm font-semibold text-foreground">{review.author}</span>
-                  {review.verified &&
-                <span className="flex items-center gap-0.5 text-[#00b67a] text-xs">
-                      <svg viewBox="0 0 20 20" className="w-3.5 h-3.5 fill-[#00b67a]">
-                        <path d="M10 0a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.3 7.7l-5 5a1 1 0 0 1-1.4 0l-2-2a1 1 0 1 1 1.4-1.4L8.6 11l4.3-4.3a1 1 0 0 1 1.4 1.4z" />
-                      </svg>
-                      Verificado
-                    </span>
-                }
+        {/* Filter row */}
+        <div className="flex items-center justify-between mb-8 pb-6 border-b border-border">
+          <button className="inline-flex items-center gap-2 border border-border rounded-full pl-3 pr-4 py-2 hover:bg-muted/40 transition">
+            <div className="flex gap-[2px]">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <div key={i} className="w-[16px] h-[16px] bg-[#00b67a] flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="w-[10px] h-[10px] fill-white">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
                 </div>
-                <p className="font-body text-[11px] text-muted-foreground">{review.date}</p>
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, s) =>
-                <Star key={s} size={14} fill={s < review.stars ? "#00b67a" : "#e5e7eb"} className={s < review.stars ? "text-[#00b67a]" : "text-border"} />
+              ))}
+            </div>
+            <span className="font-body text-[13px] text-foreground">152 Avaliações</span>
+            <ChevronDown size={14} className="text-muted-foreground" />
+          </button>
+          <div className="flex items-center gap-3">
+            <button className="px-4 py-2 border border-border rounded-full font-body text-[13px] text-foreground hover:bg-muted/40 transition">
+              Escrever avaliação
+            </button>
+            <button className="w-9 h-9 border border-border rounded-full flex items-center justify-center hover:bg-muted/40 transition" aria-label="Filtros">
+              <SlidersHorizontal size={14} className="text-foreground" />
+            </button>
+          </div>
+        </div>
+
+        {/* Reviews grid */}
+        <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-6 gap-4 space-y-4">
+          {reviews.map((review, i) => (
+            <div
+              key={i}
+              className="break-inside-avoid border border-border rounded-[4px] p-4 bg-background"
+            >
+              <div className="flex items-center gap-1.5 mb-1">
+                <span className="font-body text-[14px] font-semibold text-foreground">{review.author}</span>
+                {review.verified && (
+                  <span className="inline-flex items-center gap-1 text-[#00b67a] text-[11px]">
+                    <svg viewBox="0 0 20 20" className="w-[14px] h-[14px] fill-[#00b67a]">
+                      <path d="M10 0a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.3 7.7l-5 5a1 1 0 0 1-1.4 0l-2-2a1 1 0 1 1 1.4-1.4L8.6 11l4.3-4.3a1 1 0 0 1 1.4 1.4z" />
+                    </svg>
+                    Verificado
+                  </span>
                 )}
-                </div>
-                <p className="font-body text-sm text-foreground leading-relaxed">{review.text}</p>
-                {review.article &&
-              <div className="pt-2">
-                    <p className="font-body text-[10px] text-muted-foreground uppercase tracking-wider">Tipo de artigo:</p>
-                    <p className="font-body text-xs text-foreground font-medium">{review.article}</p>
-                  </div>
-              }
               </div>
+              <p className="font-body text-[11px] text-muted-foreground mb-2">{review.date}</p>
+              <div className="flex gap-[2px] mb-3">
+                {[...Array(5)].map((_, s) => (
+                  <div
+                    key={s}
+                    className="w-[14px] h-[14px] flex items-center justify-center"
+                    style={{ backgroundColor: s < review.stars ? "#00b67a" : "#e5e7eb" }}
+                  >
+                    <svg viewBox="0 0 24 24" className="w-[9px] h-[9px] fill-white">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  </div>
+                ))}
+              </div>
+              <p className="font-body text-[13px] text-foreground leading-[1.5] mb-3">{review.text}</p>
+              {review.article && (
+                <div className="pt-3 border-t border-border">
+                  <p className="font-body text-[11px] text-muted-foreground">Tipo de artigo:</p>
+                  <p className="font-body text-[12px] text-foreground">{review.article}</p>
+                </div>
+              )}
             </div>
-          )}
+          ))}
         </div>
       </section>
 
