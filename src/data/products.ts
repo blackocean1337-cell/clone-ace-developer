@@ -109,14 +109,14 @@ const vneckColors = [
   { name: "Verde militar", hex: "#3d4a2a", slug: "t-shirt-col-v-verde-militar" },
 ];
 
-import productBlackFront from "@/assets/product-black-front.jpg";
+import tshirtBlack from "@/assets/product-black-front.jpg";
 import productModel1 from "@/assets/product-model-1.jpg";
-import productWhiteBack from "@/assets/product-white-back.jpg";
+import tshirtWhite from "@/assets/product-white-back.jpg";
 import productModel2 from "@/assets/product-model-2.jpg";
-import productBlackBack from "@/assets/product-black-back.jpg";
-import productNavy from "@/assets/product-navy.jpg";
-import productKaki from "@/assets/product-kaki.jpg";
-import productWhiteFront from "@/assets/product-white-front.png";
+import tshirtBlack from "@/assets/product-black-back.jpg";
+import tshirtNavy from "@/assets/product-navy.jpg";
+import tshirtKaki from "@/assets/product-kaki.jpg";
+import tshirtWhite from "@/assets/product-white-front.png";
 
 export interface Product {
   slug: string;
@@ -216,7 +216,7 @@ export const products: Product[] = [
     collar: "Gola redonda",
     badge: "ICÓNICA",
     cardImage: tshirtWhite,
-    galleryImages: [productWhiteFront, productWhiteBack, productModel1, productModel2],
+    galleryImages: [tshirtWhite, tshirtWhite, productModel1, productModel2],
     colors: defaultColors,
     sizes: defaultSizes,
     features: defaultFeatures,
@@ -233,7 +233,7 @@ export const products: Product[] = [
     collar: "Gola redonda",
     badge: "ICÓNICA",
     cardImage: tshirtNavy,
-    galleryImages: [productNavy, productModel1, productModel2, productBlackBack],
+    galleryImages: [tshirtNavy, productModel1, productModel2, tshirtBlack],
     colors: defaultColors,
     sizes: defaultSizes,
     features: defaultFeatures,
@@ -250,7 +250,7 @@ export const products: Product[] = [
     collar: "Gola redonda",
     badge: "ICÓNICA",
     cardImage: tshirtKaki,
-    galleryImages: [productKaki, productModel1, productModel2, productBlackBack],
+    galleryImages: [tshirtKaki, productModel1, productModel2, tshirtBlack],
     colors: defaultColors,
     sizes: defaultSizes,
     features: defaultFeatures,
@@ -267,7 +267,7 @@ export const products: Product[] = [
     collar: "Gola redonda",
     badge: "ICÓNICA",
     cardImage: tshirtCinzento,
-    galleryImages: [tshirtCinzento, productModel1, productModel2, productBlackBack],
+    galleryImages: [tshirtCinzento, productModel1, productModel2, tshirtBlack],
     colors: defaultColors,
     sizes: defaultSizes,
     features: defaultFeatures,
@@ -284,7 +284,7 @@ export const products: Product[] = [
     collar: "Gola redonda",
     badge: "ICÓNICA",
     cardImage: tshirtAzulCeu,
-    galleryImages: [tshirtAzulCeu, productModel1, productModel2, productBlackBack],
+    galleryImages: [tshirtAzulCeu, productModel1, productModel2, tshirtBlack],
     colors: defaultColors,
     sizes: defaultSizes,
     features: defaultFeatures,
@@ -301,7 +301,7 @@ export const products: Product[] = [
     collar: "Gola redonda",
     badge: "ICÓNICA",
     cardImage: tshirtSalmao,
-    galleryImages: [tshirtSalmao, productModel1, productModel2, productBlackBack],
+    galleryImages: [tshirtSalmao, productModel1, productModel2, tshirtBlack],
     colors: defaultColors,
     sizes: defaultSizes,
     features: defaultFeatures,
@@ -318,7 +318,7 @@ export const products: Product[] = [
     collar: "Gola redonda",
     badge: "ICÓNICA",
     cardImage: tshirtTurquesa,
-    galleryImages: [tshirtTurquesa, productModel1, productModel2, productBlackBack],
+    galleryImages: [tshirtTurquesa, productModel1, productModel2, tshirtBlack],
     colors: defaultColors,
     sizes: defaultSizes,
     features: defaultFeatures,
@@ -335,7 +335,7 @@ export const products: Product[] = [
     collar: "Gola redonda",
     badge: "ICÓNICA",
     cardImage: tshirtBordeaux,
-    galleryImages: [tshirtBordeaux, productModel1, productModel2, productBlackBack],
+    galleryImages: [tshirtBordeaux, productModel1, productModel2, tshirtBlack],
     colors: defaultColors,
     sizes: defaultSizes,
     features: defaultFeatures,
@@ -352,7 +352,7 @@ export const products: Product[] = [
     collar: "Gola redonda",
     badge: "ICÓNICA",
     cardImage: tshirtBege,
-    galleryImages: [tshirtBege, productModel1, productModel2, productBlackBack],
+    galleryImages: [tshirtBege, productModel1, productModel2, tshirtBlack],
     colors: defaultColors,
     sizes: defaultSizes,
     features: defaultFeatures,
@@ -369,7 +369,7 @@ export const products: Product[] = [
     collar: "Gola polo",
     badge: "ESSENCIAL",
     cardImage: poloPreto,
-    galleryImages: [poloPreto, productModel1, productBlackBack],
+    galleryImages: [poloPreto, productModel1, tshirtBlack],
     colors: poloColors,
     sizes: defaultSizes,
     features: [
@@ -401,7 +401,7 @@ export const products: Product[] = [
     collar: "Gola polo",
     badge: "ESSENCIAL",
     cardImage: img,
-    galleryImages: [img, productModel1, productBlackBack],
+    galleryImages: [img, productModel1, tshirtBlack],
     colors: poloColors,
     sizes: defaultSizes,
     features: [
@@ -427,7 +427,7 @@ export const products: Product[] = [
     collar: "Gola V",
     badge: "ESSENCIAL",
     cardImage: poloBlack,
-    galleryImages: [poloBlack, productModel1, productModel2, productBlackBack],
+    galleryImages: [poloBlack, productModel1, productModel2, tshirtBlack],
     colors: vneckColors,
     sizes: defaultSizes,
     features: defaultFeatures,
@@ -457,7 +457,7 @@ export const products: Product[] = [
     collar: "Gola V",
     badge: "ESSENCIAL",
     cardImage: img,
-    galleryImages: [img, productModel1, productModel2, productBlackBack],
+    galleryImages: [img, productModel1, productModel2, tshirtBlack],
     colors: vneckColors,
     sizes: defaultSizes,
     features: defaultFeatures,
