@@ -16,6 +16,7 @@ const HeroSection = () => {
             style={{ objectPosition: "center center" }}
           />
         </picture>
+        <div className="absolute inset-0 bg-black/20 z-[1]" />
         <div className="absolute inset-0 flex items-end z-10 text-white">
           <div className="w-full max-w-[1440px] mx-auto px-5 lg:px-20 py-[40px]">
             <div className="max-w-xl">
