@@ -73,9 +73,9 @@ const VestiaireSection = () => {
             <div
               key={p.slug}
               className="min-w-0 flex-shrink-0"
-              style={{ width: "288px", scrollSnapAlign: "start" }}
+              style={{ width: "240px", scrollSnapAlign: "start" }}
             >
-              <div className="xl:w-[360px] w-[288px]">
+              <div className="xl:w-[300px] w-[240px]">
                 <Link to={`/products/${p.slug}`} className="block group">
                   <div className="relative mb-[20px] overflow-hidden aspect-square bg-[#f2f2f2] rounded-[6px]">
                     <img
