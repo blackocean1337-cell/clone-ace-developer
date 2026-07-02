@@ -342,7 +342,11 @@ export const products: Product[] = [
     galleryImages: [productBlackFront, productModel1, productBlackBack],
     colors: [
       { name: "Preto", hex: "#1a1a1a" },
+      { name: "Azul marinho", hex: "#2c3e6b" },
       { name: "Branco", hex: "#f5f5f0" },
+      { name: "Verde militar", hex: "#5c6b4e" },
+      { name: "Cinzento", hex: "#9b9b9b" },
+      { name: "Azul céu", hex: "#c9dbe0" },
     ],
     sizes: defaultSizes,
     features: [
