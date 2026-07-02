@@ -34,6 +34,28 @@ const tshirtVneckBordeaux = tshirtVneckBordeauxAsset.url;
 const tshirtVneckBege = tshirtVneckBegeAsset.url;
 const tshirtVneckVerdeMilitar = tshirtVneckVerdeMilitarAsset.url;
 
+import poloPretoAsset from "@/assets/polo-preto.png.asset.json";
+import poloAzulMarinhoAsset from "@/assets/polo-azul-marinho.png.asset.json";
+import poloBrancoAsset from "@/assets/polo-branco.png.asset.json";
+import poloVerdeMilitarAsset from "@/assets/polo-verde-militar.png.asset.json";
+import poloCinzentoAsset from "@/assets/polo-cinzento.png.asset.json";
+import poloAzulCeuAsset from "@/assets/polo-azul-ceu.png.asset.json";
+const poloPreto = poloPretoAsset.url;
+const poloAzulMarinho = poloAzulMarinhoAsset.url;
+const poloBranco = poloBrancoAsset.url;
+const poloVerdeMilitar = poloVerdeMilitarAsset.url;
+const poloCinzento = poloCinzentoAsset.url;
+const poloAzulCeu = poloAzulCeuAsset.url;
+
+const poloColors = [
+  { name: "Preto", hex: "#1a1a1a", slug: "polo" },
+  { name: "Azul marinho", hex: "#2c3e6b", slug: "polo-azul-marinho" },
+  { name: "Branco", hex: "#f5f5f0", slug: "polo-branco" },
+  { name: "Verde militar", hex: "#5c6b4e", slug: "polo-verde-militar" },
+  { name: "Cinzento", hex: "#9b9b9b", slug: "polo-cinzento" },
+  { name: "Azul céu", hex: "#c9dbe0", slug: "polo-azul-ceu" },
+];
+
 import longsleeveBrancoAsset from "@/assets/longsleeve-branco.png.asset.json";
 import longsleeveAzulMarinhoAsset from "@/assets/longsleeve-azul-marinho.png.asset.json";
 import longsleeveVerdeMilitarAsset from "@/assets/longsleeve-verde-militar.png.asset.json";
@@ -338,16 +360,9 @@ export const products: Product[] = [
     category: "Polo",
     collar: "Gola polo",
     badge: "ESSENCIAL",
-    cardImage: productBlackFront,
-    galleryImages: [productBlackFront, productModel1, productBlackBack],
-    colors: [
-      { name: "Preto", hex: "#1a1a1a" },
-      { name: "Azul marinho", hex: "#2c3e6b" },
-      { name: "Branco", hex: "#f5f5f0" },
-      { name: "Verde militar", hex: "#5c6b4e" },
-      { name: "Cinzento", hex: "#9b9b9b" },
-      { name: "Azul céu", hex: "#c9dbe0" },
-    ],
+    cardImage: poloPreto,
+    galleryImages: [poloPreto, productModel1, productBlackBack],
+    colors: poloColors,
     sizes: defaultSizes,
     features: [
       "Corte ajustado e elegante",
@@ -363,6 +378,38 @@ export const products: Product[] = [
     materials: defaultMaterials,
     care: defaultCare,
   },
+  ...([
+    { slug: "polo-azul-marinho", img: poloAzulMarinho },
+    { slug: "polo-branco", img: poloBranco },
+    { slug: "polo-verde-militar", img: poloVerdeMilitar },
+    { slug: "polo-cinzento", img: poloCinzento },
+    { slug: "polo-azul-ceu", img: poloAzulCeu },
+  ].map(({ slug, img }) => ({
+    slug,
+    name: "O Polo",
+    price: 18,
+    priceLabel: "33,90 €",
+    category: "Polo",
+    collar: "Gola polo",
+    badge: "ESSENCIAL",
+    cardImage: img,
+    galleryImages: [img, productModel1, productBlackBack],
+    colors: poloColors,
+    sizes: defaultSizes,
+    features: [
+      "Corte ajustado e elegante",
+      "Tecido piqué suave e respirável",
+      "O polo que estrutura a sua silhueta",
+    ],
+    description: [
+      "O polo reinventado.",
+      "Um corte ajustado, perfeitamente dominado. A gola traz um toque de elegância mantendo um espírito descontraído.",
+      "Tecido piqué de alta qualidade, suave ao toque e resistente ao longo do tempo.",
+      "Um essencial para todas as ocasiões.",
+    ],
+    materials: defaultMaterials,
+    care: defaultCare,
+  }))),
   {
     slug: "t-shirt-col-v",
     name: "A t-shirt gola V",
