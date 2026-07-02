@@ -41,6 +41,9 @@ import longsleeveAzulCeuAsset from "@/assets/longsleeve-azul-ceu.png.asset.json"
 import longsleeveSalmaoAsset from "@/assets/longsleeve-salmao.png.asset.json";
 import longsleeveBordeauxAsset from "@/assets/longsleeve-bordeaux.png.asset.json";
 import longsleeveCinzentoAsset from "@/assets/longsleeve-cinzento.png.asset.json";
+import longsleeveCaquiAsset from "@/assets/longsleeve-caqui.png.asset.json";
+import longsleeveTurquesaAsset from "@/assets/longsleeve-turquesa.png.asset.json";
+import longsleeveBegeAsset from "@/assets/longsleeve-bege.png.asset.json";
 const longsleeveBranco = longsleeveBrancoAsset.url;
 const longsleeveAzulMarinho = longsleeveAzulMarinhoAsset.url;
 const longsleeveVerdeMilitar = longsleeveVerdeMilitarAsset.url;
@@ -48,15 +51,21 @@ const longsleeveAzulCeu = longsleeveAzulCeuAsset.url;
 const longsleeveSalmao = longsleeveSalmaoAsset.url;
 const longsleeveBordeaux = longsleeveBordeauxAsset.url;
 const longsleeveCinzento = longsleeveCinzentoAsset.url;
+const longsleeveCaqui = longsleeveCaquiAsset.url;
+const longsleeveTurquesa = longsleeveTurquesaAsset.url;
+const longsleeveBege = longsleeveBegeAsset.url;
 
 const longsleeveColors = [
   { name: "Preto", hex: "#1a1a1a", slug: "t-shirt-manches-longues" },
   { name: "Branco", hex: "#f5f5f0", slug: "t-shirt-manches-longues-branco" },
   { name: "Azul marinho", hex: "#2c3e6b", slug: "t-shirt-manches-longues-azul-marinho" },
+  { name: "Caqui", hex: "#5c6b4e", slug: "t-shirt-manches-longues-caqui" },
   { name: "Cinzento", hex: "#9b9b9b", slug: "t-shirt-manches-longues-cinzento" },
   { name: "Azul céu", hex: "#7fb5d5", slug: "t-shirt-manches-longues-azul-ceu" },
   { name: "Salmão", hex: "#e8a598", slug: "t-shirt-manches-longues-salmao" },
+  { name: "Turquesa", hex: "#4fb8a8", slug: "t-shirt-manches-longues-turquesa" },
   { name: "Bordeaux", hex: "#6b1f2a", slug: "t-shirt-manches-longues-bordeaux" },
+  { name: "Bege", hex: "#d9c7a8", slug: "t-shirt-manches-longues-bege" },
   { name: "Verde militar", hex: "#3d4a2a", slug: "t-shirt-manches-longues-verde-militar" },
 ];
 
@@ -436,6 +445,9 @@ export const products: Product[] = [
     { name: "Salmão", slug: "t-shirt-manches-longues-salmao", image: longsleeveSalmao },
     { name: "Bordeaux", slug: "t-shirt-manches-longues-bordeaux", image: longsleeveBordeaux },
     { name: "Verde militar", slug: "t-shirt-manches-longues-verde-militar", image: longsleeveVerdeMilitar },
+    { name: "Caqui", slug: "t-shirt-manches-longues-caqui", image: longsleeveCaqui },
+    { name: "Turquesa", slug: "t-shirt-manches-longues-turquesa", image: longsleeveTurquesa },
+    { name: "Bege", slug: "t-shirt-manches-longues-bege", image: longsleeveBege },
   ].map((c) => ({
     slug: c.slug,
     name: `A t-shirt Manga Comprida ${c.name}`,
