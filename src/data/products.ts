@@ -338,7 +338,7 @@ export const products: Product[] = [
     category: "Polo",
     collar: "Gola polo",
     badge: "ESSENCIAL",
-    cardImage: poloBlack,
+    cardImage: productBlackFront,
     galleryImages: [productBlackFront, productModel1, productBlackBack],
     colors: [
       { name: "Preto", hex: "#1a1a1a" },
