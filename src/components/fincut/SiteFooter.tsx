@@ -1,94 +1,224 @@
 import { useState } from "react";
+import { ChevronRight, Facebook, Instagram } from "lucide-react";
 
 const SiteFooter = () => {
   const [email, setEmail] = useState("");
 
+  const linkCls =
+    "text-[14px] text-gray-400 underline decoration-1 underline-offset-3 xl:underline-offset-3 leading-[110%]";
+  const headingCls = "text-[14px] mb-[20px] leading-[110%] font-normal text-white";
+
   return (
-    <footer className="bg-fincut-black text-secondary-foreground">
-      {/* Top links section */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-12">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-6">
+    <footer className="bg-gray-900 text-white p-[20px] xl:px-[40px] xl:py-[60px] font-sans">
+      <div
+        className="grid gap-[40px] xl:grid-cols-6 xl:gap-x-[20px] xl:gap-y-[40px] max-w-[1440px] mx-auto"
+        style={{
+          gridTemplateAreas:
+            "'newsletter' 'logo' 'contact' 'categories' 'info' 'mobile' 'social' 'payment' 'copyright'",
+        }}
+      >
+        <style>{`
+          @media (min-width: 1280px) {
+            footer .fincut-grid {
+              grid-template-areas:
+                'logo logo logo logo logo logo'
+                'mobile categories info contact newsletter newsletter'
+                'bottom bottom bottom bottom bottom bottom' !important;
+            }
+          }
+        `}</style>
 
-          {/* Contato */}
-          <div>
-            <h4 className="font-display text-sm font-bold mb-5">Contato</h4>
-            <ul className="space-y-3 font-body text-sm text-fincut-gray">
-              <li><a href="/acompanhar-encomenda" className="hover:text-secondary-foreground transition-colors underline">Acompanhe a sua encomenda</a></li>
-              <li><a href="mailto:support@mrtuga.com" className="hover:text-secondary-foreground transition-colors underline">Contacte-nos</a></li>
-              <li><a href="/faq" className="hover:text-secondary-foreground transition-colors underline">Perguntas frequentes</a></li>
-            </ul>
-          </div>
-
-          {/* Contacte-nos */}
-          <div>
-            <h4 className="font-display text-sm font-bold mb-5">Contacte-nos</h4>
-            <p className="font-body text-sm text-fincut-gray leading-relaxed">
-              A nossa equipa está disponível de segunda a sábado, das 9h às 22h.<br />
-              <a href="mailto:support@mrtuga.com" className="hover:text-secondary-foreground transition-colors underline">support@mrtuga.com</a>
+        {/* Newsletter */}
+        <div style={{ gridArea: "newsletter" }}>
+          <div className="flex flex-col">
+            <h3 className={headingCls}>Junte-se ao MRClub</h3>
+            <p className="text-[14px] text-gray-400 mb-[20px] leading-[110%]">
+              Ao juntar-se ao MRClub tem acesso em primeira mão às novidades,
+              ofertas exclusivas e muito mais!
             </p>
-          </div>
-
-          {/* Categorias */}
-          <div>
-            <h4 className="font-display text-sm font-bold mb-5">Categorias</h4>
-            <ul className="space-y-3 font-body text-sm text-fincut-gray">
-              <li><a href="/products/t-shirt-tech" className="hover:text-secondary-foreground transition-colors underline">A T-SHIRT ICÓNICA - PRETA</a></li>
-              <li><a href="/products/t-shirt-blanc" className="hover:text-secondary-foreground transition-colors underline">A T-SHIRT ICÓNICA - BRANCA</a></li>
-              <li><a href="/products/t-shirt-navy" className="hover:text-secondary-foreground transition-colors underline">A T-SHIRT ICÓNICA - AZUL MARINHO</a></li>
-              <li><a href="/products/t-shirt-kaki" className="hover:text-secondary-foreground transition-colors underline">A T-SHIRT ICÓNICA - VERDE CÁQUI</a></li>
-              <li><a href="/products/polo" className="hover:text-secondary-foreground transition-colors underline">A T-SHIRT ICÓNICA EM V</a></li>
-            </ul>
-          </div>
-
-          {/* Informação */}
-          <div>
-            <h4 className="font-display text-sm font-bold mb-5">Informação</h4>
-            <ul className="space-y-3 font-body text-sm text-fincut-gray">
-              <li><a href="/termos" className="hover:text-secondary-foreground transition-colors underline">Condições gerais de venda e utilização</a></li>
-              <li><a href="/privacidade" className="hover:text-secondary-foreground transition-colors underline">Política de Privacidade</a></li>
-              <li><a href="/politica-entrega" className="hover:text-secondary-foreground transition-colors underline">Política de entrega</a></li>
-              <li><a href="/politica-reembolso" className="hover:text-secondary-foreground transition-colors underline">Política de reembolso</a></li>
-              <li><a href="/intellectual-property" className="hover:text-secondary-foreground transition-colors underline">Intellectual Property Rights</a></li>
-            </ul>
-          </div>
-
-          {/* Junte-se ao FinClub */}
-          <div>
-            <h4 className="font-display text-sm font-bold mb-5">Junte-se ao MRClub</h4>
-            <p className="font-body text-sm text-fincut-gray leading-relaxed mb-4">
-              Ao ingressar no MRClub você tem acesso prévio aos nossos novos produtos, ofertas exclusivas e muito mais!
-            </p>
-            <div className="flex">
+            <form className="flex gap-[10px]" onSubmit={(e) => e.preventDefault()}>
               <input
+                name="email"
                 type="email"
-                placeholder="Seu melhor e-mail"
+                required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 min-w-0 bg-transparent border border-fincut-gray/40 px-4 py-3 text-sm font-body text-secondary-foreground placeholder:text-fincut-gray focus:outline-none focus:border-primary" />
-              
-              <button className="bg-primary text-primary-foreground px-4 py-3 font-bold text-lg hover:bg-fincut-gold-hover transition-colors">
-                ›
+                placeholder="O seu e-mail"
+                className="flex-1 h-[42px] rounded-[6px] border border-gray-400 bg-gray-900 text-[14px] px-[10px] leading-[110%] font-normal placeholder:text-gray-400 focus:outline-none text-white"
+              />
+              <button
+                type="submit"
+                className="bg-primary text-primary-foreground rounded-[6px] w-[42px] h-[42px] flex items-center justify-center"
+                aria-label="Subscrever"
+              >
+                <ChevronRight className="w-[24px] h-[24px] shrink-0" />
               </button>
-            </div>
+            </form>
+          </div>
+
+          {/* Social - desktop */}
+          <div className="hidden xl:block mt-[32px]">
+            <h3 className={headingCls}>Siga-nos</h3>
+            <ul className="space-y-[15px] xl:space-y-[20px]">
+              <li>
+                <a
+                  href="https://www.instagram.com/mrtuga.co/"
+                  className="flex items-center gap-[8px] text-[14px] text-gray-400 hover:text-white transition-colors leading-[110%]"
+                >
+                  <Instagram className="w-[16px] h-[16px] shrink-0" />
+                  <span className="underline decoration-1 underline-offset-3 xl:no-underline">
+                    Instagram
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/mrtuga"
+                  className="flex items-center gap-[8px] text-[14px] text-gray-400 hover:text-white transition-colors leading-[110%]"
+                >
+                  <Facebook className="w-[16px] h-[16px] shrink-0" />
+                  <span className="underline decoration-1 underline-offset-3 xl:no-underline">
+                    Facebook
+                  </span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
 
-      {/* Giant FINCUT logo */}
-      <div className="w-full overflow-hidden px-6 lg:px-8">
-        <h2 className="font-display font-black text-secondary-foreground text-[18vw] leading-[0.85] tracking-tighter select-none text-center">
-          MRTUGA
-        </h2>
-      </div>
+        {/* Logo */}
+        <div className="xl:mb-[20px]" style={{ gridArea: "logo" }}>
+          <div className="font-display font-black tracking-tighter text-white leading-none text-[64px] xl:text-[56px] xl:w-[220px]">
+            MRTUGA
+          </div>
+        </div>
 
-      {/* Bottom bar */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-4">
-          <p className="font-body text-[11px] text-fincut-gray">2026© Todos os direitos reservados</p>
+        {/* Contact */}
+        <div style={{ gridArea: "contact" }}>
+          <h3 className={headingCls}>Contacte-nos</h3>
+          <p className="text-[14px] text-gray-400 inline-block mb-[10px] xl:mb-0 leading-[110%]">
+            A nossa equipa está disponível de segunda a sábado, das 9h às 22h.
+          </p>
+          <a
+            href="mailto:support@mrtuga.com"
+            className="mt-[10px] text-[14px] text-gray-400 block xl:inline underline decoration-1 underline-offset-3 xl:no-underline leading-[110%]"
+          >
+            support@mrtuga.com
+          </a>
+        </div>
+
+        {/* Categories */}
+        <div style={{ gridArea: "categories" }}>
+          <h3 className={headingCls}>Os nossos produtos</h3>
+          <ul className="space-y-[15px] xl:space-y-[20px]">
+            <li><a className={linkCls} href="/products/t-shirt-tech">A t-shirt Icónica</a></li>
+            <li><a className={linkCls} href="/products/t-shirt-col-v">A t-shirt Gola V</a></li>
+            <li><a className={linkCls} href="/products/polo">O Polo</a></li>
+            <li><a className={linkCls} href="/products/t-shirt-manches-longues">A t-shirt Manga Comprida</a></li>
+            <li><a className={linkCls} href="/products/pull">A Malha</a></li>
+          </ul>
+        </div>
+
+        {/* Info */}
+        <div style={{ gridArea: "info" }}>
+          <h3 className={headingCls}>Informações</h3>
+          <ul className="space-y-[15px] xl:space-y-[20px]">
+            <li><a className={linkCls} href="/termos">Condições gerais de venda</a></li>
+            <li><a className={linkCls} href="/privacidade">Política de privacidade</a></li>
+            <li><a className={linkCls} href="/politica-entrega">Política de entrega</a></li>
+            <li><a className={linkCls} href="/politica-reembolso">Política de reembolso</a></li>
+            <li><a className={linkCls} href="/intellectual-property">Direitos de propriedade intelectual</a></li>
+          </ul>
+        </div>
+
+        {/* Social mobile */}
+        <div className="xl:hidden" style={{ gridArea: "social" }}>
+          <h3 className={headingCls}>Siga-nos</h3>
+          <ul className="space-y-[15px]">
+            <li>
+              <a
+                href="https://www.instagram.com/mrtuga.co/"
+                className="flex items-center gap-[8px] text-[14px] text-gray-400 hover:text-white transition-colors leading-[110%]"
+              >
+                <Instagram className="w-[16px] h-[16px] shrink-0" />
+                <span className="underline decoration-1 underline-offset-3">Instagram</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/mrtuga"
+                className="flex items-center gap-[8px] text-[14px] text-gray-400 hover:text-white transition-colors leading-[110%]"
+              >
+                <Facebook className="w-[16px] h-[16px] shrink-0" />
+                <span className="underline decoration-1 underline-offset-3">Facebook</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Help (mobile grid-area) */}
+        <div style={{ gridArea: "mobile" }}>
+          <h3 className={headingCls}>Precisa de ajuda?</h3>
+          <ul className="space-y-[15px] xl:space-y-[20px]">
+            <li><a className={linkCls} href="/acompanhar-encomenda">Acompanhar a minha encomenda</a></li>
+            <li><a className={linkCls} href="/avaliacoes">Avaliações de clientes</a></li>
+            <li><a className={linkCls} href="/faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        {/* Payment mobile */}
+        <div className="xl:hidden" style={{ gridArea: "payment" }}>
+          <h3 className="text-[14px] mb-[20px] font-normal xl:mb-0 leading-[110%] text-white">
+            Pagamento seguro
+          </h3>
+          <div className="flex flex-wrap items-center gap-[8px]">
+            {["MB WAY", "VISA", "MASTERCARD"].map((m) => (
+              <span
+                key={m}
+                className="text-[11px] tracking-wide px-[8px] py-[4px] rounded-[4px] bg-white text-gray-900 font-semibold"
+              >
+                {m}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Copyright mobile */}
+        <div
+          className="flex justify-between items-center xl:hidden"
+          style={{ gridArea: "copyright" }}
+        >
+          <div className="text-[14px] text-gray-400 whitespace-nowrap leading-[110%]">
+            2026© Todos os direitos reservados
+          </div>
+        </div>
+
+        {/* Bottom desktop bar */}
+        <div
+          className="hidden xl:grid xl:grid-cols-3 xl:items-center xl:gap-[20px] xl:pt-[48px]"
+          style={{ gridArea: "bottom" }}
+        >
+          <div className="text-[14px] text-gray-400 leading-[110%]">
+            2026© Todos os direitos reservados.
+          </div>
+          <div className="flex flex-col items-center gap-[12px] justify-self-center">
+            <h3 className="text-[14px] leading-[110%] text-white">Pagamento seguro</h3>
+            <div className="flex items-center gap-[8px]">
+              {["MB WAY", "VISA", "MASTERCARD"].map((m) => (
+                <span
+                  key={m}
+                  className="text-[11px] tracking-wide px-[8px] py-[4px] rounded-[4px] bg-white text-gray-900 font-semibold"
+                >
+                  {m}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div />
         </div>
       </div>
-    </footer>);
-
+    </footer>
+  );
 };
 
 export default SiteFooter;
