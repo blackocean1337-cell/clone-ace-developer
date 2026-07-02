@@ -545,7 +545,7 @@ export const products: Product[] = [
     collar: "Gola redonda",
     badge: "PREMIUM",
     cardImage: pullPreto,
-    galleryImages: [pullPreto],
+    galleryImages: [pullPreto, pullPreto2, pullPreto3],
     colors: pullColors,
     sizes: defaultSizes,
     features: [
