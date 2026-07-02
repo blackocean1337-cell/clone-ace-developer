@@ -27,8 +27,8 @@ const SiteFooter = () => {
       <div className="mrtuga-footer-grid grid gap-[40px] lg:grid-cols-6 lg:gap-x-[20px] lg:gap-y-[40px]">
 ...
         {/* Logo */}
-        <div className="xl:mb-[20px]" style={{ gridArea: "logo" }}>
-          <div className="font-display font-black tracking-tighter text-white leading-none text-[48px] xl:text-[40px] xl:w-[220px]">
+        <div className="lg:mb-[20px]" style={{ gridArea: "logo" }}>
+          <div className="font-display font-black tracking-tighter text-white leading-none text-[48px] lg:text-[40px] lg:w-[220px]">
             MRTUGA
           </div>
         </div>
@@ -36,12 +36,12 @@ const SiteFooter = () => {
         {/* Contact */}
         <div style={{ gridArea: "contact" }}>
           <h3 className={headingCls}>Contacte-nos</h3>
-          <p className="text-[14px] text-gray-400 inline-block mb-[10px] xl:mb-0 leading-[110%]">
+          <p className="text-[14px] text-gray-400 inline-block mb-[10px] lg:mb-0 leading-[110%]">
             A nossa equipa está disponível de segunda a sábado, das 9h às 22h.
           </p>
           <a
             href="mailto:support@mrtuga.com"
-            className="mt-[10px] text-[14px] text-gray-400 block xl:inline underline decoration-1 underline-offset-3 xl:no-underline leading-[110%]"
+            className="mt-[10px] text-[14px] text-gray-400 block lg:inline underline decoration-1 underline-offset-3 lg:no-underline leading-[110%]"
           >
             support@mrtuga.com
           </a>
@@ -50,7 +50,7 @@ const SiteFooter = () => {
         {/* Categories */}
         <div style={{ gridArea: "categories" }}>
           <h3 className={headingCls}>Os nossos produtos</h3>
-          <ul className="space-y-[15px] xl:space-y-[20px]">
+          <ul className="space-y-[15px] lg:space-y-[20px]">
             <li><a className={linkCls} href="/products/t-shirt-tech">A t-shirt Icónica</a></li>
             <li><a className={linkCls} href="/products/t-shirt-col-v">A t-shirt Gola V</a></li>
             <li><a className={linkCls} href="/products/polo">O Polo</a></li>
@@ -62,7 +62,7 @@ const SiteFooter = () => {
         {/* Info */}
         <div style={{ gridArea: "info" }}>
           <h3 className={headingCls}>Informações</h3>
-          <ul className="space-y-[15px] xl:space-y-[20px]">
+          <ul className="space-y-[15px] lg:space-y-[20px]">
             <li><a className={linkCls} href="/termos">Condições gerais de venda</a></li>
             <li><a className={linkCls} href="/privacidade">Política de privacidade</a></li>
             <li><a className={linkCls} href="/politica-entrega">Política de entrega</a></li>
@@ -72,7 +72,7 @@ const SiteFooter = () => {
         </div>
 
         {/* Social mobile */}
-        <div className="xl:hidden" style={{ gridArea: "social" }}>
+        <div className="lg:hidden" style={{ gridArea: "social" }}>
           <h3 className={headingCls}>Siga-nos</h3>
           <ul className="space-y-[15px]">
             <li>
@@ -99,7 +99,7 @@ const SiteFooter = () => {
         {/* Help (mobile grid-area) */}
         <div style={{ gridArea: "mobile" }}>
           <h3 className={headingCls}>Precisa de ajuda?</h3>
-          <ul className="space-y-[15px] xl:space-y-[20px]">
+          <ul className="space-y-[15px] lg:space-y-[20px]">
             <li><a className={linkCls} href="/acompanhar-encomenda">Acompanhar a minha encomenda</a></li>
             <li><a className={linkCls} href="/avaliacoes">Avaliações de clientes</a></li>
             <li><a className={linkCls} href="/faq">FAQ</a></li>
@@ -107,8 +107,8 @@ const SiteFooter = () => {
         </div>
 
         {/* Payment mobile */}
-        <div className="xl:hidden" style={{ gridArea: "payment" }}>
-          <h3 className="text-[14px] mb-[20px] font-normal xl:mb-0 leading-[110%] text-white">
+        <div className="lg:hidden" style={{ gridArea: "payment" }}>
+          <h3 className="text-[14px] mb-[20px] font-normal lg:mb-0 leading-[110%] text-white">
             Pagamento seguro
           </h3>
           <div className="flex flex-wrap items-center gap-[8px]">
@@ -125,7 +125,7 @@ const SiteFooter = () => {
 
         {/* Copyright mobile */}
         <div
-          className="flex justify-between items-center xl:hidden"
+          className="flex justify-between items-center lg:hidden"
           style={{ gridArea: "copyright" }}
         >
           <div className="text-[14px] text-gray-400 whitespace-nowrap leading-[110%]">
@@ -135,7 +135,7 @@ const SiteFooter = () => {
 
         {/* Bottom desktop bar */}
         <div
-          className="hidden xl:grid xl:grid-cols-3 xl:items-center xl:gap-[20px] xl:pt-[48px]"
+          className="hidden lg:grid lg:grid-cols-3 lg:items-center lg:gap-[20px] lg:pt-[48px]"
           style={{ gridArea: "bottom" }}
         >
           <div className="text-[14px] text-gray-400 leading-[110%]">
