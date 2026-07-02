@@ -7,7 +7,17 @@ import tshirtVneck from "@/assets/tshirt-vneck.png";
 import tshirtLongsleeve from "@/assets/tshirt-longsleeve.png";
 import pullBlack from "@/assets/pull-black.png";
 import tshirtCinzentoAsset from "@/assets/tshirt-cinzento.png.asset.json";
+import tshirtAzulCeuAsset from "@/assets/tshirt-azul-ceu.png.asset.json";
+import tshirtSalmaoAsset from "@/assets/tshirt-salmao.png.asset.json";
+import tshirtTurquesaAsset from "@/assets/tshirt-turquesa.png.asset.json";
+import tshirtBordeauxAsset from "@/assets/tshirt-bordeaux.png.asset.json";
+import tshirtBegeAsset from "@/assets/tshirt-bege.png.asset.json";
 const tshirtCinzento = tshirtCinzentoAsset.url;
+const tshirtAzulCeu = tshirtAzulCeuAsset.url;
+const tshirtSalmao = tshirtSalmaoAsset.url;
+const tshirtTurquesa = tshirtTurquesaAsset.url;
+const tshirtBordeaux = tshirtBordeauxAsset.url;
+const tshirtBege = tshirtBegeAsset.url;
 
 import productBlackFront from "@/assets/product-black-front.jpg";
 import productModel1 from "@/assets/product-model-1.jpg";
