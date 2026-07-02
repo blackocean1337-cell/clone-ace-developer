@@ -18,7 +18,11 @@ const IconiqueSection2 = () => {
     window.dispatchEvent(new CustomEvent("open-pack-builder"));
   };
 
-  const decorativeImage = cards[0]?.cardImage;
+  const packCards = [
+    { img: cards.find((c) => c.slug === "t-shirt-blanc")?.cardImage, name: "T-shirt Col-rond", colorName: "BRANCO", hex: "#ffffff", size: "M", rotate: -8, x: -70, y: 20, z: 1 },
+    { img: cards.find((c) => c.slug === "t-shirt-navy")?.cardImage, name: "T-shirt Col-rond", colorName: "AZUL", hex: "#1e3a5f", size: "AO GOSTO", rotate: 4, x: 0, y: 40, z: 2 },
+    { img: cards.find((c) => c.slug === "t-shirt-tech")?.cardImage, name: "T-shirt Col-rond", colorName: "PRETO", hex: "#000000", size: "S", rotate: 10, x: 70, y: 0, z: 3 },
+  ];
 
   return (
     <section className="max-w-[1440px] mx-auto px-5 lg:px-20 mb-[60px] lg:mb-[80px]">
