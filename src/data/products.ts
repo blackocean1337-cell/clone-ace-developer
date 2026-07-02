@@ -222,6 +222,12 @@ export const products: Product[] = [
       { name: "Azul marinho", hex: "#2c3e6b" },
       { name: "Caqui", hex: "#5c6b4e" },
       { name: "Cinzento", hex: "#9b9b9b" },
+      { name: "Azul céu", hex: "#7fb5d5" },
+      { name: "Salmão", hex: "#e8a598" },
+      { name: "Turquesa", hex: "#4fb8a8" },
+      { name: "Bordeaux", hex: "#6b1f2a" },
+      { name: "Bege", hex: "#d9c7a8" },
+      { name: "Verde militar", hex: "#3d4a2a" },
     ],
     sizes: defaultSizes,
     features: [
