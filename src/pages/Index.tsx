@@ -21,7 +21,7 @@ const Index = () => {
       <IconiqueSection2 />
       <VestiaireSection />
       <IconiqueSection />
-      <CustomPackSection />
+      
       <CustomerPhotos />
       <PackSection />
       <CustomerPhotos2 />
