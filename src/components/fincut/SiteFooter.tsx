@@ -5,17 +5,17 @@ const SiteFooter = () => {
   const [email, setEmail] = useState("");
 
   const linkCls =
-    "text-[14px] text-gray-400 underline decoration-1 underline-offset-3 xl:underline-offset-3 leading-[110%]";
+    "text-[14px] text-gray-400 underline decoration-1 underline-offset-3 lg:underline-offset-3 leading-[110%]";
   const headingCls = "text-[14px] mb-[20px] leading-[110%] font-normal text-white";
 
   return (
-    <footer className="bg-gray-900 text-white mt-auto px-5 py-10 lg:px-20 xl:pb-[60px] xl:pt-[56px] font-sans">
+    <footer className="bg-gray-900 text-white mt-auto px-5 py-10 lg:px-20 lg:pb-[60px] lg:pt-[56px] font-sans">
       <style>{`
         .mrtuga-footer-grid {
           grid-template-areas:
             'newsletter' 'logo' 'contact' 'categories' 'info' 'mobile' 'social' 'payment' 'copyright';
         }
-        @media (min-width: 1280px) {
+        @media (min-width: 1024px) {
           .mrtuga-footer-grid {
             grid-template-areas:
               'logo logo logo logo logo logo'
@@ -24,7 +24,7 @@ const SiteFooter = () => {
           }
         }
       `}</style>
-      <div className="mrtuga-footer-grid grid gap-[40px] xl:grid-cols-6 xl:gap-x-[20px] xl:gap-y-[40px]">
+      <div className="mrtuga-footer-grid grid gap-[40px] lg:grid-cols-6 lg:gap-x-[20px] lg:gap-y-[40px]">
 ...
         {/* Logo */}
         <div className="xl:mb-[20px]" style={{ gridArea: "logo" }}>
