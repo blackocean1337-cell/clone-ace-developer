@@ -81,9 +81,9 @@ const CartDrawer = ({ open, onClose, items, onUpdateQuantity }: CartDrawerProps)
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.2, ease: "easeInOut" }}
-            className="fixed z-[100] flex items-stretch top-0 right-0 bottom-0 xl:top-4 xl:right-4 xl:bottom-4"
+            className="fixed z-[100] flex items-stretch top-0 right-0 bottom-0 lg:top-4 lg:right-4 lg:bottom-4"
           >
-            <div className="w-screen xl:w-[440px] bg-white flex flex-col xl:rounded-[6px] overflow-hidden">
+            <div className="w-screen lg:w-[440px] bg-white flex flex-col lg:rounded-[6px] overflow-hidden">
               {/* Header */}
               <div className="flex items-center justify-between px-5 xl:px-6 pt-5 xl:pt-6 pb-4">
                 <h2 className="font-serif text-[22px] xl:text-[24px] leading-none text-gray-900">
