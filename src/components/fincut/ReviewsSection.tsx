@@ -1,39 +1,34 @@
 import { useEffect, useRef } from "react";
 
 const reviews = [
-{ title: "Tudo estava perfeito", text: "Tudo estava perfeito", author: "Maxime Lapotre", date: "03/10/2026" },
-{ title: "Camiseta muito bem cortada!", text: "Camiseta muito bem cortada!!! Envio rápido!!! Não há nada do que reclamar. Muito bem e continue assim.", author: "Correa", date: "03/09/2026" },
-{ title: "Produto perfeito", text: "Produto perfeito. Preço muito atraente, especialmente na promoção. Obrigado por melhorar os prazos de entrega.", author: "Alioss", date: "03/09/2026" },
-{ title: "Tudo é ótimo", text: "Está tudo ótimo! O corte, a promoção aplicada, a qualidade do produto e o prazo de entrega. Comunicação fácil também", author: "Stephane Crozier", date: "03/09/2026" },
-{ title: "Excelente!", text: "Excelente quando se faz o pedido.", author: "Anthony", date: "03/09/2026" },
-{ title: "Sempre satisfeito", text: "Sempre satisfeito com os produtos MRTUGA: os cortes destacam o corpo!", author: "Xavier", date: "12/03/2026" },
-{ title: "NÍQUEL!", text: "Ras, tudo correu bem e seus compromissos foram cumpridos. Mal posso esperar para levar minhas compras.", author: "Carbono", date: "12/03/2026" },
-{ title: "Para mim a marca MRTUGA é a melhor...", text: "Para mim a marca MRTUGA é a melhor camiseta", author: "Thierry", date: "12/03/2026" }];
+  { title: "Nada a dizer 5 estrelas ❤️👌 encomenda recebida...", text: "Nada a dizer 5 estrelas ❤️👌encomenda recebida há 4 dias muito satisfeito 😌", author: "izu muhamad", date: "30/06/2026" },
+  { title: "As melhores t-shirts que já usei...", text: "As melhores t-shirts que já usei até hoje. Já fiz 2 encomendas de 3 t-shirts cada. E não vou parar por aqui. Assentam perfeitamente, entram bem num chino ou jogger. Uma pérola", author: "Guinel ByGuinel", date: "29/06/2026" },
+  { title: "Ao Topo", text: "Ao TopoQualidade presente", author: "Amaury", date: "29/06/2026" },
+  { title: "Bela qualidade", text: "Bela qualidade Tamanho bem idêntico ao site", author: "Emmanuelle Gautier", date: "29/06/2026" },
+  { title: "Tudo estava perfeito", text: "Tudo estava perfeito", author: "Maxime Lapotre", date: "03/10/2026" },
+  { title: "T-shirt muito bem cortada!", text: "T-shirt muito bem cortada!!! Envio rápido!!! Nada a apontar. Muito bom, continuem assim.", author: "Correa", date: "03/09/2026" },
+  { title: "Produto perfeito", text: "Produto perfeito. Preço muito atractivo, sobretudo em promoção. Obrigado por melhorar os prazos de entrega.", author: "Alioss", date: "03/09/2026" },
+  { title: "Está tudo ótimo", text: "Está tudo ótimo! O corte, a promoção aplicada, a qualidade do produto e o prazo de entrega. Comunicação fácil também", author: "Stéphane Crozier", date: "03/09/2026" },
+  { title: "Excelente!", text: "Excelente quando se faz o pedido.", author: "Anthony", date: "03/09/2026" },
+  { title: "Sempre satisfeito", text: "Sempre satisfeito com os produtos MRTUGA: os cortes valorizam o corpo!", author: "Xavier", date: "12/03/2026" },
+];
 
-
-const TrustpilotStars = () =>
-<div className="flex gap-px">
-    {[...Array(5)].map((_, i) =>
-  <div key={i} className="w-[20px] h-[20px] bg-[#191919] flex items-center justify-center">
-        <svg viewBox="0 0 24 24" className="w-3 h-3 fill-white">
+// Trustpilot green filled star square (5 squares in a row with white star inside)
+const GreenStars = ({ size = 20 }: { size?: number }) => (
+  <div className="flex gap-[2px]">
+    {[...Array(5)].map((_, i) => (
+      <div
+        key={i}
+        style={{ width: size, height: size, backgroundColor: "#00b67a" }}
+        className="flex items-center justify-center"
+      >
+        <svg viewBox="0 0 24 24" style={{ width: size * 0.62, height: size * 0.62 }} className="fill-white">
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
         </svg>
       </div>
-  )}
-  </div>;
-
-
-const HeaderStars = () =>
-<div className="flex gap-px">
-    {[...Array(5)].map((_, i) =>
-  <div key={i} className="w-[22px] h-[22px] bg-[#00b67a] flex items-center justify-center">
-        <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-white">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-        </svg>
-      </div>
-  )}
-  </div>;
-
+    ))}
+  </div>
+);
 
 const ReviewsSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -45,17 +40,14 @@ const ReviewsSection = () => {
     let speed = 1.2;
 
     const step = () => {
-      if (el.scrollLeft >= el.scrollWidth / 2) {
-        el.scrollLeft = 0;
-      }
+      if (el.scrollLeft >= el.scrollWidth / 2) el.scrollLeft = 0;
       el.scrollLeft += speed;
       animationId = requestAnimationFrame(step);
     };
-
     animationId = requestAnimationFrame(step);
 
-    const pause = () => {speed = 0;};
-    const resume = () => {speed = 1.2;};
+    const pause = () => { speed = 0; };
+    const resume = () => { speed = 1.2; };
     el.addEventListener("mouseenter", pause);
     el.addEventListener("mouseleave", resume);
 
@@ -69,48 +61,54 @@ const ReviewsSection = () => {
   const doubled = [...reviews, ...reviews];
 
   return (
-    <section className="bg-background py-14 px-4 sm:px-6 lg:px-8 border-t border-border">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
+    <section className="bg-background pt-14 pb-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1400px] mx-auto">
+        {/* Header — Trustpilot left, rating right */}
         <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-2">
-            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-foreground">
+          <div className="flex items-center gap-[6px]">
+            <svg viewBox="0 0 24 24" className="w-[22px] h-[22px] fill-foreground">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
             </svg>
-            <span className="font-display text-lg font-bold text-foreground">Trustpilot</span>
+            <span className="font-serif text-[20px] leading-none text-foreground">Trustpilot</span>
           </div>
-          <div className="flex items-center gap-3">
-            <span className="font-display text-lg font-bold text-foreground">4.5</span>
-            <HeaderStars />
-            <span className="font-body text-[11px] text-muted-foreground uppercase tracking-wider">BASEADO EM 6709 AVALIAÇÕES </span>
+          <div className="flex items-center gap-[10px]">
+            <span className="font-serif text-[18px] leading-none text-foreground">4.5</span>
+            <GreenStars size={22} />
+            <span className="font-body text-[11px] text-muted-foreground uppercase tracking-[0.08em]">
+              Baseado em 8564 avaliações
+            </span>
           </div>
         </div>
 
-        {/* Infinite loop carousel */}
+        {/* Infinite carousel */}
         <div
           ref={scrollRef}
-          className="flex gap-4 overflow-x-hidden scrollbar-hide">
-          
-          {doubled.map((r, i) =>
-          <div
-            key={i}
-            className="min-w-[250px] sm:min-w-[280px] flex-shrink-0 border border-border p-4 flex flex-col justify-between">
-            
+          className="flex gap-4 overflow-x-hidden scrollbar-hide"
+        >
+          {doubled.map((r, i) => (
+            <div
+              key={i}
+              className="min-w-[280px] sm:min-w-[320px] max-w-[320px] flex-shrink-0 bg-[#f2f2f2] rounded-[4px] p-6 flex flex-col justify-between"
+            >
               <div>
-                <div className="flex items-center justify-between mb-3">
-                  <TrustpilotStars />
-                  <span className="font-body text-[10px] text-muted-foreground">{r.date}</span>
+                <div className="flex items-center justify-between mb-4">
+                  <GreenStars size={20} />
+                  <span className="font-serif italic text-[13px] text-muted-foreground">{r.date}</span>
                 </div>
-                <h3 className="font-display text-sm font-bold text-foreground mb-1 leading-snug">{r.title}</h3>
-                <p className="font-body text-xs text-muted-foreground leading-relaxed line-clamp-3">{r.text}</p>
+                <h3 className="font-serif text-[20px] leading-[1.2] text-foreground mb-3 line-clamp-2">
+                  {r.title}
+                </h3>
+                <p className="font-body text-[14px] text-muted-foreground leading-[1.5] line-clamp-5">
+                  {r.text}
+                </p>
               </div>
-              <p className="font-body text-xs text-foreground font-medium mt-5">{r.author}</p>
+              <p className="font-body text-[13px] text-muted-foreground mt-6">{r.author}</p>
             </div>
-          )}
+          ))}
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 };
 
 export default ReviewsSection;
