@@ -66,7 +66,7 @@ const VestiaireSection = () => {
       <div className="overflow-hidden -mr-5 xl:-mr-20">
         <div
           ref={scrollRef}
-          className="flex overflow-x-auto scrollbar-hidden"
+          className="flex overflow-x-auto scrollbar-hide"
           style={{ gap: "20px", scrollSnapType: "x mandatory" }}
         >
           {vestiaireProducts.map((p) => (
