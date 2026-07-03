@@ -136,7 +136,13 @@ serve(async (req) => {
     if (errs.length) throw new Error(`draftOrderCreate: ${JSON.stringify(errs)}`);
     const invoiceUrl = result.draftOrderCreate.draftOrder?.invoiceUrl;
     if (!invoiceUrl) throw new Error("Sem invoiceUrl");
-    return new Response(JSON.stringify({ url: invoiceUrl }), {
+    // Rewrite host to the primary storefront domain so the checkout runs on
+    // mrtuga.co (whitelisted for card processing) instead of the raw
+    // *.myshopify.com admin domain returned by Shopify.
+    const rewritten = new URL(invoiceUrl);
+    rewritten.protocol = "https:";
+    rewritten.hostname = "checkout.mrtuga.co";
+    return new Response(JSON.stringify({ url: rewritten.toString() }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 200,
     });
