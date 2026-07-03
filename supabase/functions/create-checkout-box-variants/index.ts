@@ -14,8 +14,6 @@ const corsHeaders = {
 const SHOPIFY_DOMAIN = "wkxepy-d0.myshopify.com";
 const SHOPIFY_API_VERSION = "2025-07";
 const ADMIN_URL = `https://${SHOPIFY_DOMAIN}/admin/api/${SHOPIFY_API_VERSION}/graphql.json`;
-// Primary checkout domain configured in Shopify (Settings → Domains)
-const SHOPIFY_CHECKOUT_HOST = "securesafe-checkout.myshopify.com";
 
 const BASE_UNIT_PRICE = 33.90; // EUR — matches product display price
 const VALID_CAPS: PackCapacity[] = [1, 3, 6, 9, 12];
@@ -47,13 +45,6 @@ async function adminGql(
     throw new Error(`Shopify Admin error: ${JSON.stringify(json.errors || json)}`);
   }
   return json.data;
-}
-
-function forceWkxepyCheckoutUrl(rawUrl: string): string {
-  const url = new URL(rawUrl);
-  url.protocol = "https:";
-  url.hostname = SHOPIFY_CHECKOUT_HOST;
-  return url.toString();
 }
 
 serve(async (req) => {
@@ -136,13 +127,7 @@ serve(async (req) => {
     if (errs.length) throw new Error(`draftOrderCreate: ${JSON.stringify(errs)}`);
     const invoiceUrl = result.draftOrderCreate.draftOrder?.invoiceUrl;
     if (!invoiceUrl) throw new Error("Sem invoiceUrl");
-    // Rewrite host to the primary storefront domain so the checkout runs on
-    // mrtuga.co (whitelisted for card processing) instead of the raw
-    // *.myshopify.com admin domain returned by Shopify.
-    const rewritten = new URL(invoiceUrl);
-    rewritten.protocol = "https:";
-    rewritten.hostname = "checkout.mrtuga.co";
-    return new Response(JSON.stringify({ url: rewritten.toString() }), {
+    return new Response(JSON.stringify({ url: invoiceUrl }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 200,
     });
