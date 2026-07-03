@@ -136,9 +136,7 @@ serve(async (req) => {
     if (errs.length) throw new Error(`draftOrderCreate: ${JSON.stringify(errs)}`);
     const invoiceUrl = result.draftOrderCreate.draftOrder?.invoiceUrl;
     if (!invoiceUrl) throw new Error("Sem invoiceUrl");
-    const checkoutUrl = forceWkxepyCheckoutUrl(invoiceUrl);
-
-    return new Response(JSON.stringify({ url: checkoutUrl }), {
+    return new Response(JSON.stringify({ url: invoiceUrl }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 200,
     });
