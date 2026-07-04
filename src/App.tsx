@@ -20,6 +20,7 @@ import IntellectualPropertyPage from "./pages/IntellectualPropertyPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import AdminProductImages from "./pages/AdminProductImages.tsx";
 import ThankYouPage from "./pages/ThankYouPage.tsx";
+import CompanyInfoPage from "./pages/CompanyInfoPage.tsx";
 
 const queryClient = new QueryClient();
 
