@@ -45,7 +45,27 @@ const sections = [
   },
   {
     title: "Contacte-nos",
-    content: `Para saber mais sobre as nossas práticas de privacidade, se tiver questões ou se desejar apresentar uma reclamação, por favor contacte-nos:\n\nPor e-mail: support@mrtuga.com\n\nPor correio: Lisboa, Portugal`,
+    content: `Para saber mais sobre as nossas práticas de privacidade, se tiver questões ou se desejar apresentar uma reclamação, por favor contacte-nos:\n\nPor e-mail: info@mrtuga.com\n\nPor correio: Unit 1603, 16/F, The L. Plaza, 367–375 Queen's Road Central, Sheung Wan, Hong Kong`,
+  },
+  {
+    title: "Responsável pelo Tratamento de Dados",
+    content: `A entidade responsável pelo tratamento dos seus dados pessoais é a BlackOcean Limited, com sede em Unit 1603, 16/F, The L. Plaza, 367–375 Queen's Road Central, Sheung Wan, Hong Kong. Contacto: info@mrtuga.com.`,
+  },
+  {
+    title: "União Europeia — RGPD",
+    content: `Se se encontra no Espaço Económico Europeu (incluindo Portugal e Espanha), tratamos os seus dados pessoais ao abrigo do Regulamento (UE) 2016/679 (RGPD), com os seguintes fundamentos: execução do contrato de compra e venda; cumprimento de obrigações legais (faturação e contabilidade); interesse legítimo (prevenção de fraude e melhoria do serviço); e consentimento (comunicações de marketing).\n\nTem o direito de aceder, retificar, apagar e limitar o tratamento dos seus dados, de se opor ao tratamento, e o direito à portabilidade dos dados. Pode retirar o seu consentimento a qualquer momento. Para exercer estes direitos, contacte-nos em info@mrtuga.com. Tem ainda o direito de apresentar reclamação junto da autoridade de controlo — em Portugal, a CNPD (www.cnpd.pt); em Espanha, a AEPD (www.aepd.es).`,
+  },
+  {
+    title: "Estados Unidos — Califórnia (CCPA/CPRA)",
+    content: `Se é residente na Califórnia, tem os seguintes direitos: saber que categorias e que dados pessoais concretos recolhemos; solicitar a eliminação; solicitar a correção; optar por não permitir a venda ou partilha dos seus dados pessoais; e não ser discriminado pelo exercício destes direitos.\n\nNão vendemos os seus dados pessoais nem os partilhamos para publicidade comportamental de terceiros. Para exercer os seus direitos, contacte info@mrtuga.com.`,
+  },
+  {
+    title: "México — LFPDPPP (Aviso de Privacidade)",
+    content: `Se se encontra no México, os seus dados pessoais são tratados nos termos da Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP). Tem direitos de Acesso, Retificação, Cancelamento e Oposição (direitos ARCO), bem como o direito de revogar o consentimento.\n\nPara exercer os direitos ARCO, envie um pedido para info@mrtuga.com com o seu nome, um meio de contacto e a indicação dos dados em causa. Responderemos nos prazos previstos na lei.`,
+  },
+  {
+    title: "Transferências Internacionais",
+    content: `Os seus dados podem ser tratados fora do seu país de residência, incluindo em Hong Kong, onde a empresa tem sede. Nas transferências de dados de utilizadores do EEE aplicamos garantias adequadas, nomeadamente cláusulas contratuais-tipo aprovadas pela Comissão Europeia.`,
   },
 ];
 
