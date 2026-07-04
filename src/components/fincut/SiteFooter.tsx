@@ -102,6 +102,7 @@ const SiteFooter = () => {
             <li><a className={linkCls} href="/politica-entrega">Política de entrega</a></li>
             <li><a className={linkCls} href="/politica-reembolso">Política de reembolso</a></li>
             <li><a className={linkCls} href="/intellectual-property">Direitos de propriedade intelectual</a></li>
+            <li><a className={linkCls} href="/informacao-empresa">Informação da Empresa</a></li>
           </ul>
         </FooterSection>
 
