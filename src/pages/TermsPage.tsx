@@ -119,16 +119,13 @@ const TermsPage = () => {
 
         <div className="mt-6 border-t border-border pt-6">
           <h2 className="font-display text-lg font-bold text-foreground mb-4">
-            Informação da Empresa
+            Identificação da Empresa
           </h2>
-          <div className="font-body text-sm text-muted-foreground leading-relaxed space-y-4">
-            <p className="whitespace-pre-line">
-              {`BLACKOCEAN LIMITED\nUnit 1603, 16th Floor, The L. Plaza, 367 - 375 Queen's Road Central, Sheung Wan, Hong Kong`}
-            </p>
-            <p>
-              Website: www.mrtuga.com<br />
-              Contacto: <a href="mailto:support@mrtuga.com" className="text-foreground underline underline-offset-4">support@mrtuga.com</a>
-            </p>
+          <div className="font-body text-sm text-muted-foreground leading-relaxed space-y-2">
+            <p>BlackOcean Limited</p>
+            <p>N.º de Registo Comercial (Hong Kong): 78436447</p>
+            <p>Sede registada: Unit 1603, 16/F, The L. Plaza, 367–375 Queen's Road Central, Sheung Wan, Hong Kong</p>
+            <p>Email: <a href="mailto:info@mrtuga.com" className="text-foreground underline underline-offset-4">info@mrtuga.com</a></p>
           </div>
         </div>
 
